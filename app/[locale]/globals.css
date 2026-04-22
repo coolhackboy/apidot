@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "theme.css";
+@import "marketing.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Sidebar width CSS variable with responsive defaults */
+  :root {
+    --sidebar-width: 4rem; /* Mobile default: 64px */
+  }
+
+  /* Desktop default: 256px */
+  @media (min-width: 1024px) {
+    :root {
+      --sidebar-width: 16rem;
+    }
+  }
+}
+
+/* Rich Text Editor Styles */
+.rich-text-editor .ql-toolbar {
+  @apply border-border rounded-t-md bg-muted/50;
+}
+
+.rich-text-editor .ql-container {
+  @apply border-border rounded-b-md bg-background min-h-[200px];
+}
+
+.rich-text-editor .ql-editor {
+  @apply min-h-[200px] text-foreground;
+}
+
+.rich-text-editor .ql-editor.ql-blank::before {
+  @apply text-muted-foreground not-italic;
+}
+
+/* Dark mode support */
+.dark .rich-text-editor .ql-toolbar {
+  @apply bg-muted/30;
+}
+
+.dark .rich-text-editor .ql-stroke {
+  stroke: hsl(var(--foreground));
+}
+
+.dark .rich-text-editor .ql-fill {
+  fill: hsl(var(--foreground));
+}
+
+.dark .rich-text-editor .ql-picker-label {
+  @apply text-foreground;
+}
+
+.dark .rich-text-editor .ql-picker-options {
+  @apply bg-popover border-border;
+}
+
+.dark .rich-text-editor .ql-picker-item {
+  @apply text-foreground;
+}
+
+/* Alternative Page Utility Classes */
+@layer utilities {
+  .glass-card {
+    @apply rounded-[2rem] bg-card/40 border border-border/40 backdrop-blur-md;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:border-primary/30 hover:-translate-y-1;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70;
+  }
+
+  .eyebrow-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-xs font-semibold uppercase tracking-wider text-primary border border-primary/20;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-pulse-slow,
+  .animate-bounce-soft,
+  .animate-ping-slow {
+    animation: none;
+  }
+}
+
+.dashboard-button-theme,
+.model-tool-button-theme {
+  --button-solid-bg: 0 0% 6%;
+  --button-solid-fg: 0 0% 98%;
+  --button-solid-hover: 0 0% 12%;
+  --button-secondary-bg: 0 0% 6%;
+  --button-secondary-fg: 0 0% 98%;
+  --button-secondary-hover: 0 0% 12%;
+}

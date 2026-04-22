@@ -1,0 +1,212 @@
+{
+  "id": "veo-3-1",
+  "groupKey": "video",
+  "navLabel": "Veo 3.1",
+  "method": "POST",
+  "endpoint": {
+    "label": "Veo 3.1",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "通过 APIDot 统一的异步生成端点提交 Veo 3.1 fast、lite 和 quality 视频任务。",
+    "about": "Veo 3.1 与 APIDot 其他生成模型一样，使用同一套提交和状态追踪工作流。所有变体都支持文生视频；`veo3.1-fast` 和 `veo3.1-quality` 还支持通过 `input.image_urls` 做图像引导生成，而 `veo3.1-lite` 应按纯文本生成来使用。",
+    "bestPractices": [
+      "快速试错可以先用 `veo3.1-fast` 或 `veo3.1-lite`，最终高质量成片再切到 `veo3.1-quality`。",
+      "Prompt 中要把镜头运动、视角、音频意图和画面连续性写清楚。",
+      "如果是图像引导生成，请让 `generate_type` 与上传图片数量保持一致，并避免把不支持的组合传给 `veo3.1-lite`。"
+    ],
+    "faq": [
+      {
+        "question": "Veo 3.1 应该选择哪个 model id？",
+        "answer": "需要更快返回时用 `veo3.1-fast`，需要更低成本纯文本生成时用 `veo3.1-lite`，追求更高成片质量时用 `veo3.1-quality`。"
+      },
+      {
+        "question": "`generate_type` 是怎么工作的？",
+        "answer": "传两张图时使用 `frame` 做首尾帧控制；传三张图时使用 `reference` 做参考模式。`veo3.1-lite` 不应该传 `generate_type` 或 `image_urls`。"
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "veo3.1-fast",
+        "description": "目标 Veo 3.1 变体，可选 `veo3.1-fast`、`veo3.1-lite`、`veo3.1-quality`。"
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "可选 webhook 回调地址，用于接收任务终态通知。"
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "Veo 3.1 生成参数容器。"
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "描述场景、镜头运动、音频意图和目标风格的主提示词。"
+      },
+      {
+        "name": "input.duration",
+        "type": "number",
+        "required": false,
+        "defaultValue": "8",
+        "description": "请求的视频时长，单位秒。Veo 3.1 固定为 8 秒。"
+      },
+      {
+        "name": "input.aspect_ratio",
+        "type": "string",
+        "required": false,
+        "defaultValue": "16:9",
+        "description": "支持 `16:9` 和 `9:16`。"
+      },
+      {
+        "name": "input.resolution",
+        "type": "string",
+        "required": false,
+        "defaultValue": "720p",
+        "description": "支持 `720p`、`1080p` 和 `4k`。"
+      },
+      {
+        "name": "input.generate_type",
+        "type": "string",
+        "required": false,
+        "defaultValue": "frame",
+        "description": "可选图像引导模式。两张图使用 `frame`，三张图使用 `reference`。"
+      },
+      {
+        "name": "input.image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "图像引导生成时的输入图片，最多 3 张，每张需可公网访问且小于 10MB。"
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP 风格状态码，提交成功时返回 `200`。"
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "提交成功后立即返回的异步任务标识。"
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "任务初始状态，通常为 `not_started`。"
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "任务创建时间，ISO 8601 格式。"
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "缺少字段、generate 模式不支持，或图片输入组合无效。"
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Bearer API Key 缺失、失效或无效。"
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "当前预付余额不足以覆盖本次 Veo 3.1 请求。"
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "当前 API Key 的提交频率暂时超过限制。"
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"veo3.1-fast\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"一段带有环境音的电影感夜景城市穿行镜头\",\n    \"duration\": 8,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"veo3.1-fast\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"一段带有环境音的电影感夜景城市穿行镜头\",\n    duration: 8,\n    aspect_ratio: \"16:9\",\n    resolution: \"720p\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"veo3.1-fast\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"一段带有环境音的电影感夜景城市穿行镜头\",\n        \"duration\": 8,\n        \"aspect_ratio\": \"16:9\",\n        \"resolution\": \"720p\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+    },
+    "exampleVariants": [
+      {
+        "id": "veo3.1-fast",
+        "label": "veo3.1-fast",
+        "payloadTemplate": {
+          "model": "veo3.1-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "一段带有环境音的电影感夜景城市穿行镜头",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "720p"
+          }
+        }
+      },
+      {
+        "id": "veo3.1-lite",
+        "label": "veo3.1-lite",
+        "payloadTemplate": {
+          "model": "veo3.1-lite",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "清晨日出时分，一座微缩城市慢慢苏醒，镜头平滑推进，光线电影感",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "720p"
+          }
+        }
+      },
+      {
+        "id": "veo3.1-quality",
+        "label": "veo3.1-quality",
+        "payloadTemplate": {
+          "model": "veo3.1-quality",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "黄昏海岸城市的高细节航拍镜头，运动流畅，画面高级，并带有自然环境音",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "4k"
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "veo3.1-fast",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "一段带有环境音的电影感夜景城市穿行镜头",
+        "duration": 8,
+        "aspect_ratio": "16:9",
+        "resolution": "720p"
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"veo3.1-lite does not support image_urls\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+  }
+}

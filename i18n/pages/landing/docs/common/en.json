@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Docs | APIDot",
+    "description": "Unified developer docs for APIDot authentication, async generation, rate limits, webhooks, and model APIs."
+  },
+  "docsPage": {
+    "title": "Docs",
+    "searchPlaceholder": "Search docs...",
+    "tryPlayground": "Try in playground",
+    "openSpec": "Open full docs",
+    "gettingStartedLabel": "Getting started",
+    "modelsVideoLabel": "Models · Video",
+    "exampleRequest": "Example request",
+    "requestBody": "Request body",
+    "response": "Response",
+    "errors": "Errors",
+    "aboutApi": "About API",
+    "bestPractices": "Best practices",
+    "faq": "FAQ",
+    "field": "Field",
+    "type": "Type",
+    "required": "Required",
+    "description": "Description",
+    "articleCta": "Open dashboard",
+    "responseLabel": "Response",
+    "relatedDocs": "Related docs",
+    "previousDoc": "Previous doc",
+    "nextDoc": "Next doc",
+    "browseModelsLabel": "Models",
+    "browseModelsDescription": "Browse API-ready model pages and production playgrounds.",
+    "pricingLabel": "Pricing",
+    "pricingDescription": "Review model-specific credits and production cost before you ship.",
+    "navGroups": [
+      {
+        "label": "Getting started",
+        "items": [
+          {
+            "id": "introduction",
+            "label": "Introduction"
+          },
+          {
+            "id": "quickstart",
+            "label": "Quickstart"
+          },
+          {
+            "id": "authentication",
+            "label": "Authentication"
+          },
+          {
+            "id": "errors-retries",
+            "label": "Errors & retries"
+          },
+          {
+            "id": "rate-limits",
+            "label": "Rate limits"
+          },
+          {
+            "id": "webhooks",
+            "label": "Webhooks"
+          }
+        ]
+      }
+    ],
+    "modelNavGroups": [
+      {
+        "key": "image",
+        "label": "Models · Image"
+      },
+      {
+        "key": "video",
+        "label": "Models · Video"
+      }
+    ],
+    "articles": {
+      "introduction": {
+        "title": "Understand the APIDot async workflow",
+        "lede": "APIDot gives you one async submit contract across image, video, audio, and chat models. Validate a payload in the playground, submit the same request in production, and track everything through the same task lifecycle.",
+        "sections": [
+          {
+            "title": "One submit flow across model families",
+            "body": "Most APIDot generation models use the same submit endpoint, the same Bearer authentication, and the same task-based result flow. That keeps backend integration stable while you switch models, compare providers, or add new capabilities."
+          },
+          {
+            "title": "Every generation starts asynchronously",
+            "body": "Requests return quickly with a task id instead of holding the HTTP connection open until rendering finishes. Your application can poll task status, wait for a callback, or attach that task id to your own internal job system."
+          },
+          {
+            "title": "Use the model page before production",
+            "body": "Each model page in APIDot exposes a production-shaped playground. Use it to confirm the exact model id, supported parameter range, and output behavior before wiring the same request into server-side code."
+          }
+        ]
+      },
+      "quickstart": {
+        "title": "Quickstart",
+        "lede": "The fastest path is: create an API key, validate the request shape on a model page, submit through the unified async endpoint, and then retrieve the result through polling or webhook callbacks.",
+        "sections": [
+          {
+            "title": "1. Create an API key",
+            "body": "Generate an API key in the dashboard and treat it as a server credential. Keep separate keys for development, staging, and production if you want cleaner rotation, logging, and incident isolation."
+          },
+          {
+            "title": "2. Validate one request in the playground",
+            "body": "Before you code against the API, use the model page playground to confirm the model id, prompt shape, optional input fields, and output expectations. That removes guesswork from your first production request."
+          },
+          {
+            "title": "3. Submit, store the task id, and wait for completion",
+            "body": "Submit the generation request, persist the returned task id immediately, then either poll the shared status endpoint or receive webhook callbacks until the task reaches a terminal state.",
+            "code": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"seedance-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A slow dolly-in on a ceramic cup of espresso\",\n    \"duration\": 5,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'"
+          }
+        ]
+      },
+      "authentication": {
+        "title": "Authentication",
+        "lede": "All APIDot requests use Bearer API keys. Keep those keys on the server side and rotate them deliberately.",
+        "sections": [
+          {
+            "title": "Create and rotate keys intentionally",
+            "body": "Generate keys from the dashboard. If a key is exposed, an environment changes, or ownership moves between systems, rotate the key instead of letting one credential live forever."
+          },
+          {
+            "title": "Send the required headers every time",
+            "body": "JSON requests should always include both Authorization and Content-Type so APIDot can authenticate the caller and parse the body consistently.",
+            "code": "Authorization: Bearer <APIDOT_API_KEY>\nContent-Type: application/json"
+          },
+          {
+            "title": "Do not ship keys to the client",
+            "body": "Do not place API keys in browser code, mobile binaries, or public repos. Proxy calls through your backend and layer your own audit logging, allowlists, and abuse controls where needed."
+          }
+        ]
+      },
+      "errors-retries": {
+        "title": "Errors & retries",
+        "lede": "Handle APIDot failures by separating invalid input from temporary platform conditions. Retry only when the failure is likely to succeed later.",
+        "sections": [
+          {
+            "title": "Do not retry bad payloads unchanged",
+            "body": "Missing fields, unsupported parameter combinations, invalid model ids, or malformed URLs should be fixed at the request layer before you send the call again."
+          },
+          {
+            "title": "Retry transient failures with backoff",
+            "body": "Gateway timeouts, temporary upstream pressure, and short-lived internal faults can usually be retried. Use exponential backoff with jitter instead of immediate hot-loop retries."
+          },
+          {
+            "title": "Stop automatic retries for billing problems",
+            "body": "If a request fails because your balance cannot cover the job, resolve the billing state first. Automatic retries should resume only after credits are available again."
+          }
+        ]
+      },
+      "rate-limits": {
+        "title": "Rate limits",
+        "lede": "Practical throughput depends on your account tier, current model demand, upstream health, and how aggressively your system bursts traffic.",
+        "sections": [
+          {
+            "title": "Design for concurrency, not just request count",
+            "body": "Queue large bursts in your own system and control parallelism. Sustained throughput usually matters more than how fast you can fire one isolated submit request."
+          },
+          {
+            "title": "Treat 429 as a pacing signal",
+            "body": "When APIDot returns 429, slow down. Respect any retry guidance when available and avoid immediately replaying the same traffic profile."
+          },
+          {
+            "title": "Separate keys when you need clearer isolation",
+            "body": "Use different API keys across environments, product lines, or workloads when you want one noisy integration to stop affecting the burst budget of another."
+          }
+        ]
+      },
+      "webhooks": {
+        "title": "Webhooks",
+        "lede": "Polling is fine for testing and low-volume tooling. Webhooks are the better production pattern for long-running media generation.",
+        "sections": [
+          {
+            "title": "Polling is the simplest way to get started",
+            "body": "If you are validating a single model or building an internal prototype, polling the shared task status endpoint is often the fastest path with the least infrastructure overhead."
+          },
+          {
+            "title": "Use callback_url in production",
+            "body": "Add a callback_url during submit so APIDot can push terminal task updates to your backend. This reduces wasted traffic and makes long-running jobs easier to manage operationally."
+          },
+          {
+            "title": "Keep handlers idempotent",
+            "body": "Persist task ids, tolerate duplicate deliveries, and re-check final task state before triggering irreversible business actions or downstream deliveries."
+          }
+        ]
+      }
+    }
+  }
+}

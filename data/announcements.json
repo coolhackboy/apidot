@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "announcements": [
+    {
+      "id": "seedream-4-5-api-launch",
+      "title": {
+        "en": "Seedream 4.5 API - ByteDance Ultra 4K Image Generation",
+        "ja": "Seedream 4.5 API - ByteDance Ultra 4K画像生成",
+        "ko": "Seedream 4.5 API - ByteDance Ultra 4K 이미지 생성"
+      },
+      "description": {
+        "en": "Launched December 3, 2025. Experience ByteDance's most advanced AI model with ultra 4K resolution, professional text precision, and intelligent lighting logic. Commercial photography quality at your fingertips.",
+        "ja": "2025年12月3日発売。ByteDanceの最先端AIモデルでUltra 4K解像度、プロフェッショナルテキスト精度、インテリジェント照明ロジックを体験。指先で商用写真品質を実現。",
+        "ko": "2025년 12월 3일 출시. ByteDance의 가장 발전된 AI 모델로 울트라 4K 해상도, 전문 텍스트 정밀도, 지능형 조명 로직을 경험하세요. 손끝에서 상용 사진 품질을 구현."
+      },
+      "buttonText": {
+        "en": "Try Seedream 4.5 API",
+        "ja": "Seedream 4.5 APIを試す",
+        "ko": "Seedream 4.5 API 체험"
+      },
+      "buttonAction": {
+        "type": "external",
+        "url": "/models/seedream-4-5-api"
+      },
+      "media": {
+        "type": "image",
+        "url": "https://cdn.doculator.org/seedream-4-5-api/example-output.jpg",
+        "alt": "Seedream 4.5 API Preview"
+      }
+    },
+    {
+      "id": "ai-music-api-launch",
+      "title": {
+        "en": "AI Music API - Complete Music Generation Suite",
+        "ja": "AI音楽API - 完全な音楽生成スイート",
+        "ko": "AI 음악 API - 완전한 음악 생성 제품군"
+      },
+      "description": {
+        "en": "Generate original music, extend tracks, add vocals, create lyrics, separate stems and more. One API for all your music generation needs.",
+        "ja": "オリジナル音楽の生成、トラックの延長、ボーカルの追加、歌詞の作成、ステム分離など。すべての音楽生成ニーズに対応する1つのAPI。",
+        "ko": "오리지널 음악 생성, 트랙 연장, 보컬 추가, 가사 생성, 스템 분리 등. 모든 음악 생성 요구를 위한 하나의 API."
+      },
+      "buttonText": {
+        "en": "Explore AI Music API",
+        "ja": "AI音楽APIを探索",
+        "ko": "AI 음악 API 살펴보기"
+      },
+      "buttonAction": {
+        "type": "external",
+        "url": "/ai-music-api"
+      },
+      "media": {
+        "type": "image",
+        "url": "https://storage.poyo.ai/upload/mijo3e6s_m4qr9d59wh.webp",
+        "alt": "AI Music API Preview"
+      }
+    },
+    {
+      "id": "nano-banana-2-api-launch",
+      "title": {
+        "en": "Nano Banana 2 API - Next-Gen AI Image Generator",
+        "ja": "Nano Banana 2 API - 次世代AI画像生成ツール",
+        "ko": "Nano Banana 2 API - 차세대 AI 이미지 생성기"
+      },
+      "description": {
+        "en": "Launched November 20, 2025. Revolutionary 5-step workflow powered by Gemini 3 Pro Preview. Generate 4K images with self-correcting technology and perfect text rendering.",
+        "ja": "2025年11月20日発売。Gemini 3 Pro Preview搭載の革命的5ステップワークフロー。自己修正技術と完璧なテキストレンダリングで4K画像を生成。",
+        "ko": "2025년 11월 20일 출시. Gemini 3 Pro Preview 기반의 혁신적 5단계 워크플로우. 자체 수정 기술과 완벽한 텍스트 렌더링으로 4K 이미지 생성."
+      },
+      "buttonText": {
+        "en": "Try Nano Banana 2 API",
+        "ja": "Nano Banana 2 APIを試す",
+        "ko": "Nano Banana 2 API 체험"
+      },
+      "buttonAction": {
+        "type": "external",
+        "url": "/models/nano-banana-2-api"
+      },
+      "media": {
+        "type": "image",
+        "url": "https://storage.poyo.ai/upload/mi86ww1r_s18gz63fb7m.webp",
+        "alt": "Nano Banana 2 API Preview"
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "Seedance 2 API | APIDot",
+    "description": "通过 APIDot 即时接入 ByteDance Seedance 2 API，支持文本、图片、视频、音频多模态生成，原生音画联合生成与最高 1080p 输出。"
+  },
+  "hero": {
+    "title": "Seedance 2 API Playground",
+    "description": "即时体验 ByteDance Seedance 2 与 seedance-2-fast。支持文本、图片、视频、音频参考输入，具备原生音画联合生成、多镜头叙事与导演级镜头控制，可直接迁移到 APIDot 的异步生产链路。"
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "Overview",
+      "title": "为什么团队会选择 {modelName}?",
+      "paragraphs": [
+        "{modelName} 是 ByteDance 面向高质量视频生成推出的多模态模型，支持文本、图片、视频、音频联合输入，并在一次生成中完成画面与音频同步生成。它特别适合需要角色一致性、多镜头叙事、镜头运动控制与原生 lip-sync 的生产级视频工作流。",
+        "在 APIDot 上，使用 model=\"{activeModelId}\" 即可调用当前变体。{activeModelName} 复用统一的异步提交、轮询与 webhook 流程，让你从 playground 验证参数后，直接迁移到正式环境。"
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "title": "{modelName} 的核心能力",
+      "items": [
+        {
+          "title": "原生音视频联合生成",
+          "description": "在同一次生成中同步产出视频、对白、环境音和节奏信息，减少额外配音、对口型和后期对齐成本。"
+        },
+        {
+          "title": "多模态参考输入与一致性控制",
+          "description": "可组合文本、图片、视频和音频参考，锁定人物、产品、风格、运动轨迹与节奏，让复杂创意 brief 更容易稳定落地。"
+        },
+        {
+          "title": "多镜头叙事与角色连续性",
+          "description": "支持单次生成多镜头片段，在镜头切换中保持角色身份、画面风格和叙事连续性，适合广告、短片和预演内容。"
+        },
+        {
+          "title": "标准版与 Fast 版双变体",
+          "description": "标准版适合高质量交付与 1080p 输出，Fast 版适合低成本快速迭代；二者共享同一套 APIDot 接口与异步工作流。"
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "Use Cases",
+      "title": "你可以用 {modelName} 做什么?",
+      "description": "团队通常把 {activeModelName} 用在以下几类生产场景中：",
+      "items": [
+        "广告创意、产品宣传片与社媒短视频",
+        "影视预演、分镜验证与镜头测试",
+        "多语言内容本地化与 lip-sync 版本生成",
+        "游戏过场、互动媒体片段与角色演出",
+        "教育培训视频与一致性讲解角色",
+        "音乐视频、舞蹈片段与 cinematic b-roll"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "Quickstart",
+      "title": "如何通过 APIDot 使用 {modelName}",
+      "steps": [
+        {
+          "eyebrow": "Step 01",
+          "title": "创建 API Key",
+          "description": "在控制台创建 API Key，立即获得 Seedance 2 API 访问权限，无需排队或额外审批。",
+          "actionText": "打开 API Keys",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "Step 02",
+          "title": "充值 Credits",
+          "description": "按秒计费。根据所选模型、分辨率和是否包含视频输入充值余额，即可开始提交生成任务。",
+          "actionText": "充值 Credits",
+          "actionHref": "/dashboard/billing"
+        },
+        {
+          "eyebrow": "Step 03",
+          "title": "接入异步生成链路",
+          "description": "向 {endpoint} 提交 model=\"{activeModelId}\" 的请求，再通过轮询或 webhook 获取最终媒体结果，直接接入生产系统。"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "什么是 {modelName}?",
+          "answer": "{modelName} 是 ByteDance 的多模态视频生成模型，支持文本、图片、视频、音频联合输入，强调原生音画联合生成、导演级镜头控制、角色一致性和多镜头叙事。"
+        },
+        {
+          "question": "{modelName} 支持哪些输入?",
+          "answer": "在 APIDot 的 Seedance 2 工作流中，你可以使用文本提示词，并按模式附加图片、视频和音频参考输入。页面 playground 已内置首尾帧、参考图片、参考视频和参考音频入口。"
+        },
+        {
+          "question": "Seedance 2 的时长与分辨率限制是什么?",
+          "answer": "当前页面支持 4 到 15 秒的视频生成。seedance-2 支持 480p、720p 和 1080p；seedance-2-fast 支持 480p 和 720p，1080p 仅在 seedance-2 标准版可用。"
+        },
+        {
+          "question": "{modelName} 支持原生音频和 lip-sync 吗?",
+          "answer": "支持。Seedance 2 的核心卖点之一就是原生音视频联合生成，可在生成阶段同步处理对白、环境音、音乐节奏与口型匹配，适合多语言内容与叙事视频。"
+        },
+        {
+          "question": "它和 Seedance 1.0 / 1.5 相比有哪些提升?",
+          "answer": "Seedance 2 在多模态输入、原生音频、角色连续性、多镜头叙事和导演级控制上都更进一步，适合更复杂的广告、剧情片段和参考驱动型工作流。"
+        },
+        {
+          "question": "{modelName} 适合商业或生产使用吗?",
+          "answer": "适合。APIDot 提供统一的异步 API、按量计费和可直接嵌入应用的提交/回调链路，适用于创意工具、自动化系统和商业内容生产。具体商用授权仍应以你的平台条款为准。"
+        },
+        {
+          "question": "我多快可以开始接入 {modelName}?",
+          "answer": "通常几分钟内即可开始。创建 API Key、充值 credits、在请求中填写 model=\"{activeModelId}\" 和输入参数后，就可以通过异步接口提交任务并获取结果。"
+        }
+      ]
+    }
+  }
+}

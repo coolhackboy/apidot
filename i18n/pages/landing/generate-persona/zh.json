@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "生成人设 API - AI 音乐风格档案创建器 | PoYo",
+    "description": "使用 PoYo 的生成人设 API 从音频曲目创建可复用的音乐人设。保存声音特征、音乐风格和个性档案，实现一致的 AI 生成音乐。"
+  },
+  "modelLandingContent": {
+    "hero": {
+      "title": "生成人设 API - PoYo 上的 AI 音乐人设创建器",
+      "description": "使用 PoYo 的生成人设 API 从现有音频曲目创建可复用的音乐人设。提取并保存声音特征、音乐风格和艺术个性，在多次生成中实现一致的 AI 音乐。非常适合品牌声音创建、艺术家风格保留和保持音效一致性。",
+      "cta": {
+        "text": "获取 API 密钥",
+        "href": "/dashboard/api-key"
+      }
+    },
+    "features": {
+      "title": "功能特点",
+      "items": [
+        {
+          "icon": "Mic",
+          "title": "声音档案提取",
+          "description": "从现有音频曲目中提取声音特征并保存为可复用的人设。生成人设 API 捕获音色、音调、音高和声音纹理，用于未来的音乐生成。"
+        },
+        {
+          "icon": "Users",
+          "title": "艺术家风格保留",
+          "description": "创建保留音乐风格、流派偏好和表演特征的一致艺术家人设。通过保存的人设档案在多次音乐生成中保持品牌声音。"
+        },
+        {
+          "icon": "Layers",
+          "title": "可复用档案",
+          "description": "一次生成人设，在无限次音乐生成中复用。每个人设包含名称、描述和完整的音频特征，便于管理和参考。"
+        },
+        {
+          "icon": "Music",
+          "title": "风格一致性控制",
+          "description": "通过使用保存的人设确保项目间一致的音乐输出。非常适合创建音乐系列、品牌原声带或在多首曲目中保持艺术身份。"
+        },
+        {
+          "icon": "Zap",
+          "title": "快速生成",
+          "description": "通过优化的 AI 处理快速从音频源生成人设档案。人设创建完成并可使用时，webhook 回调会立即通知您。"
+        },
+        {
+          "icon": "Settings",
+          "title": "自定义配置",
+          "description": "为每个人设提供自定义名称和详细描述。为不同项目、品牌或艺术风格组织和管理多个人设。"
+        }
+      ]
+    },
+    "useCase": {
+      "title": "使用场景",
+      "items": [
+        {
+          "icon": "Radio",
+          "title": "品牌声音创建",
+          "description": "创建独特的品牌声音人设，在营销活动、播客和内容中实现一致的音频品牌。在所有品牌触点保持音效身份。"
+        },
+        {
+          "icon": "Music",
+          "title": "音乐系列制作",
+          "description": "生成保留艺术家特征的一致音乐系列。创建具有统一艺术身份的专辑曲目、播客主题曲或视频系列原声带。"
+        },
+        {
+          "icon": "Film",
+          "title": "内容制作工作流程",
+          "description": "保存成功音频内容的人设并在未来项目中复用。通过一致的音频风格简化视频制作、电影配乐和多媒体内容工作流程。"
+        },
+        {
+          "icon": "Users",
+          "title": "艺术家风格建模",
+          "description": "为授权用例建模和保留特定艺术家风格。创建捕获独特音乐特征的人设，用于混音项目、翻唱或风格转换应用。"
+        },
+        {
+          "icon": "ShoppingBag",
+          "title": "产品音频身份",
+          "description": "为数字产品、应用和服务建立一致的音频身份。创建代表您产品音效品牌的人设，用于通知、功能和用户体验。"
+        },
+        {
+          "icon": "Gamepad2",
+          "title": "游戏角色主题曲",
+          "description": "为游戏角色、场景或阵营生成人设。在关卡、过场动画和游戏时刻保持角色主题曲的音乐一致性。"
+        }
+      ]
+    },
+    "howToUse": {
+      "title": "如何在 PoYo 上使用生成人设 API",
+      "description": "<p><strong>1. 获取 API 密钥：</strong>创建免费的 PoYo 账户并从控制台生成您的 API 密钥。<a href='/dashboard/api-key' style='color: #3b82f6; text-decoration: underline;'>获取 API 密钥 →</a></p><p><strong>2. 首先生成音乐：</strong>使用生成音乐 API 创建音频曲目，它会返回创建人设所需的 task_id 和 audio_id。<a href='https://docs.poyo.ai/api-manual/music-series/generate-music' style='color: #3b82f6; text-decoration: underline;'>生成音乐 →</a></p><p><strong>3. 创建人设：</strong>向生成人设端点发送带有 task_id、audio_id、人设名称和描述的 POST 请求。<a href='https://docs.poyo.ai/api-manual/music-series/generate-persona' style='color: #3b82f6; text-decoration: underline;'>查看 API 文档 →</a></p><p><strong>4. 使用人设 ID：</strong>获取可用于未来生成音乐 API 调用的 persona_id，以保持一致的声音和风格特征。<a href='https://docs.poyo.ai/api-manual/music-series/generate-music' style='color: #3b82f6; text-decoration: underline;'>使用人设 →</a></p>"
+    },
+    "pricing": {
+      "title": "价格",
+      "description": "<p><strong>生成人设 API：</strong><span style='color: #10b981; font-weight: bold;'>$0.005</span> 每次人设创建（1 积分）- 创建可复用的音乐风格档案</p><p><strong>包含功能：</strong>声音档案提取、风格保留、无限人设复用、webhook 回调、自定义名称和描述、永久存储</p><p><strong>企业版：</strong>大批量使用可享受批量折扣。优先处理和专属支持。<a href='/support' style='color: #3b82f6; text-decoration: underline;'>联系销售 →</a></p>"
+    },
+    "faq": {
+      "title": "生成人设 API 常见问题",
+      "items": [
+        {
+          "question": "什么是音乐人设，我为什么要使用它？",
+          "answer": "音乐人设是包含从音频曲目中提取的声音特征、音乐风格和艺术个性的保存档案。使用人设可以在多次音乐生成中保持一致性、创建品牌声音身份或为未来项目保留特定艺术家风格。"
+        },
+        {
+          "question": "如何从我的音频创建人设？",
+          "answer": "首先使用生成音乐 API 生成音乐，它会返回 task_id 和 audio_id。然后使用这些 ID 加上自定义名称和描述调用生成人设 API。您将收到一个 persona_id，可用于未来的音乐生成请求以复制该风格。"
+        },
+        {
+          "question": "我可以在不同的音乐生成中使用人设吗？",
+          "answer": "可以！一旦创建，人设可以通过在生成音乐 API 调用中包含 persona_id 参数来无限复用。这确保了使用该人设的所有生成具有一致的声音特征和音乐风格。"
+        },
+        {
+          "question": "我可以创建多少个人设？",
+          "answer": "您可以创建的人设数量没有限制。每个人设生成花费 1 积分，并永久存储在您的账户中。您可以为不同的项目、品牌或艺术风格创建不同的人设。"
+        },
+        {
+          "question": "人设包含哪些信息？",
+          "answer": "人设包含从源音频中提取的声音特征（音色、音调、音高）、音乐风格偏好、流派属性和表演特征。每个人设还包含您提供的自定义名称和描述，便于组织和参考。"
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "title": "为什么选择 PoYo 的生成人设 API",
+      "items": [
+        {
+          "icon": "BadgeDollarSign",
+          "title": "极其经济实惠",
+          "description": "每次生成仅需 $0.005（1 积分）即可创建人设。一旦创建，无限复用人设无需额外费用。最具性价比的人设创建解决方案。"
+        },
+        {
+          "icon": "Cpu",
+          "title": "由 Suno 驱动",
+          "description": "通过 PoYo 访问 Suno 先进的音乐生成技术进行人设提取。业界领先的 AI 模型确保准确的风格捕获和一致的复现。"
+        },
+        {
+          "icon": "Infinity",
+          "title": "无限复用",
+          "description": "一次生成人设，永久使用。无按次收费或过期日期。非常适合需要一致音频品牌和风格的长期项目。"
+        },
+        {
+          "icon": "Shield",
+          "title": "永久存储",
+          "description": "所有人设永久存储在您的账户中，不会删除或归档。随时通过 API 或控制台访问和管理您的人设库。"
+        },
+        {
+          "icon": "Key",
+          "title": "统一 API 访问",
+          "description": "一个 API 密钥连接生成人设和 15+ 其他音乐 API 以及 500+ AI 模型。通过单一端点简化计费，降低集成复杂度。"
+        },
+        {
+          "icon": "Code",
+          "title": "开发者友好",
+          "description": "简洁的 RESTful API，配有全面的文档。简单的人设创建工作流程，响应清晰。提供 SDK 和代码示例，快速集成。"
+        }
+      ]
+    }
+  }
+}

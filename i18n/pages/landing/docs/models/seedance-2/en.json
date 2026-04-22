@@ -1,0 +1,219 @@
+{
+  "id": "seedance-2",
+  "groupKey": "video",
+  "navLabel": "Seedance 2",
+  "method": "POST",
+  "endpoint": {
+    "label": "Seedance 2",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "Submit Seedance 2 and Seedance 2 Fast video jobs through APIDot's unified async generation endpoint.",
+    "about": "Seedance 2 and `seedance-2-fast` share the same APIDot submit contract. Send the model id, optional callback_url, and model-specific parameters inside `input`, then retrieve the final result through the shared task status endpoint or webhook callbacks.",
+    "bestPractices": [
+      "Use `seedance-2-fast` for iteration, then move to `seedance-2` when you need the highest final quality or 1080p output.",
+      "Be explicit about camera motion, pacing, subject continuity, and audio intent in the prompt.",
+      "Do not mix `image_urls` with any `reference_*_urls` fields in the same request."
+    ],
+    "faq": [
+      {
+        "question": "Can I switch between Seedance 2 variants without changing the endpoint?",
+        "answer": "Yes. Change only the `model` field between `seedance-2` and `seedance-2-fast`. The submit endpoint and the surrounding async workflow remain the same."
+      },
+      {
+        "question": "How do first/last frame mode and reference mode differ?",
+        "answer": "Use `input.image_urls` for first/last frame control with up to two images. Use `reference_image_urls`, `reference_video_urls`, or `reference_audio_urls` for multimodal reference mode. These two approaches cannot be mixed in one request."
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "seedance-2",
+        "description": "Target model id. Use `seedance-2` or `seedance-2-fast`."
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "Optional webhook callback URL for terminal task updates."
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "Container for Seedance 2 generation parameters."
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "Primary generation prompt describing scene, motion, pacing, and style."
+      },
+      {
+        "name": "input.duration",
+        "type": "number",
+        "required": true,
+        "defaultValue": "5",
+        "description": "Video duration in seconds. Current APIDot support is integer values from 4 through 15."
+      },
+      {
+        "name": "input.aspect_ratio",
+        "type": "string",
+        "required": false,
+        "defaultValue": "16:9",
+        "description": "Supported values include `21:9`, `16:9`, `4:3`, `1:1`, `3:4`, and `9:16`."
+      },
+      {
+        "name": "input.resolution",
+        "type": "string",
+        "required": true,
+        "defaultValue": "720p",
+        "description": "`seedance-2` supports `480p`, `720p`, and `1080p`. `seedance-2-fast` supports `480p` and `720p`."
+      },
+      {
+        "name": "input.generate_audio",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "description": "Whether to generate synchronized audio together with the video."
+      },
+      {
+        "name": "input.image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Optional first and last frame images. Use up to 2 URLs only."
+      },
+      {
+        "name": "input.reference_image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Optional reference image URLs for multimodal reference-to-video mode."
+      },
+      {
+        "name": "input.reference_video_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Optional reference video URLs for multimodal reference-to-video mode."
+      },
+      {
+        "name": "input.reference_audio_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Optional reference audio URLs for multimodal reference-to-video mode."
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP-style status code. Successful submits return `200`."
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "Async task identifier returned immediately after submission."
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "Initial task status, typically `not_started`."
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "ISO 8601 timestamp for task creation."
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "Missing fields, unsupported parameter combinations, or invalid reference input combinations."
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Missing, expired, or invalid Bearer API key."
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "The current prepaid balance cannot cover the video job."
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "Submission rate is temporarily above the current allowed limit."
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"seedance-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A slow dolly-in on a ceramic cup of espresso, morning light\",\n    \"duration\": 5,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\",\n    \"generate_audio\": true\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"seedance-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A slow dolly-in on a ceramic cup of espresso, morning light\",\n    duration: 5,\n    aspect_ratio: \"16:9\",\n    resolution: \"720p\",\n    generate_audio: true\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"seedance-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A slow dolly-in on a ceramic cup of espresso, morning light\",\n        \"duration\": 5,\n        \"aspect_ratio\": \"16:9\",\n        \"resolution\": \"720p\",\n        \"generate_audio\": True\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+    },
+    "exampleVariants": [
+      {
+        "id": "seedance-2",
+        "label": "seedance-2",
+        "payloadTemplate": {
+          "model": "seedance-2",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A slow dolly-in on a ceramic cup of espresso, morning light",
+            "duration": 5,
+            "aspect_ratio": "16:9",
+            "resolution": "720p",
+            "generate_audio": true
+          }
+        }
+      },
+      {
+        "id": "seedance-2-fast",
+        "label": "seedance-2-fast",
+        "payloadTemplate": {
+          "model": "seedance-2-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A handheld close-up of rain on a taxi window in neon city light",
+            "duration": 5,
+            "aspect_ratio": "16:9",
+            "resolution": "720p",
+            "generate_audio": true
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "seedance-2",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "A slow dolly-in on a ceramic cup of espresso, morning light",
+        "duration": 5,
+        "aspect_ratio": "16:9",
+        "resolution": "720p",
+        "generate_audio": true
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"image_urls and reference_*_urls cannot be used together\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "开发文档 | APIDot",
+    "description": "APIDot 统一开发文档，覆盖认证、异步生成、限流、Webhook 与模型接口接入。"
+  },
+  "docsPage": {
+    "title": "开发文档",
+    "searchPlaceholder": "搜索文档...",
+    "tryPlayground": "在 Playground 中试用",
+    "openSpec": "查看完整文档",
+    "gettingStartedLabel": "快速开始",
+    "modelsVideoLabel": "模型 · 视频",
+    "exampleRequest": "请求示例",
+    "requestBody": "请求体",
+    "response": "响应",
+    "errors": "错误说明",
+    "aboutApi": "关于 API",
+    "bestPractices": "最佳实践",
+    "faq": "常见问题",
+    "field": "字段",
+    "type": "类型",
+    "required": "必填",
+    "description": "说明",
+    "articleCta": "打开控制台",
+    "responseLabel": "响应",
+    "relatedDocs": "相关文档",
+    "previousDoc": "上一篇",
+    "nextDoc": "下一篇",
+    "browseModelsLabel": "模型",
+    "browseModelsDescription": "浏览支持 API 接入的模型页与生产级 Playground。",
+    "pricingLabel": "定价",
+    "pricingDescription": "接入前先查看模型积分与生产成本。",
+    "navGroups": [
+      {
+        "label": "快速开始",
+        "items": [
+          {
+            "id": "introduction",
+            "label": "简介"
+          },
+          {
+            "id": "quickstart",
+            "label": "快速开始"
+          },
+          {
+            "id": "authentication",
+            "label": "认证"
+          },
+          {
+            "id": "errors-retries",
+            "label": "错误与重试"
+          },
+          {
+            "id": "rate-limits",
+            "label": "速率限制"
+          },
+          {
+            "id": "webhooks",
+            "label": "Webhook"
+          }
+        ]
+      }
+    ],
+    "modelNavGroups": [
+      {
+        "key": "image",
+        "label": "模型 · 图片"
+      },
+      {
+        "key": "video",
+        "label": "模型 · 视频"
+      }
+    ],
+    "articles": {
+      "introduction": {
+        "title": "先理解 APIDot 的异步工作流",
+        "lede": "APIDot 为图像、视频、音频和聊天模型提供统一的异步提交契约。你可以先在模型页验证 payload，再把同样的请求平滑迁移到生产环境。",
+        "sections": [
+          {
+            "title": "跨模型家族复用同一套提交流程",
+            "body": "大多数 APIDot 生成模型都复用同一个 submit 端点、同一套 Bearer 认证方式，以及同一种任务状态回收流程。这样你在切换模型、比较上游或扩展能力时，不需要重写后端接入层。"
+          },
+          {
+            "title": "所有生成任务都默认异步",
+            "body": "提交请求后会很快返回 task id，而不是一直占住连接等待生成完成。你可以轮询状态、接收回调，或把 task id 接到自己的任务系统中统一跟踪。"
+          },
+          {
+            "title": "先在模型页验证，再进生产",
+            "body": "APIDot 每个模型页都提供接近真实生产请求形态的 Playground。先在这里确认 model id、参数范围和输出行为，再接到服务端代码里，会更稳。"
+          }
+        ]
+      },
+      "quickstart": {
+        "title": "快速开始",
+        "lede": "最快的接入路径是：创建 API Key，在模型页确认请求结构，通过统一异步端点提交任务，再用轮询或 webhook 获取最终结果。",
+        "sections": [
+          {
+            "title": "1. 创建 API Key",
+            "body": "在控制台生成 API Key，并把它当作服务端凭证使用。如果你希望开发、测试和生产之间拥有更清晰的轮换与审计边界，建议为不同环境使用不同 Key。"
+          },
+          {
+            "title": "2. 先在 Playground 验证请求",
+            "body": "正式接代码前，先用模型页 Playground 确认 model id、prompt 结构、可选字段和预期输出。这样你的第一条生产请求就不会靠猜。"
+          },
+          {
+            "title": "3. 提交任务、保存 task id、等待完成",
+            "body": "提交生成请求后，立刻保存返回的 task id，然后轮询共享状态端点或等待 webhook 回调，直到任务进入终态。",
+            "code": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"seedance-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A slow dolly-in on a ceramic cup of espresso\",\n    \"duration\": 5,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'"
+          }
+        ]
+      },
+      "authentication": {
+        "title": "认证",
+        "lede": "所有 APIDot 请求都使用 Bearer API Key。密钥必须放在服务端，并且要有明确的轮换策略。",
+        "sections": [
+          {
+            "title": "有意识地创建和轮换密钥",
+            "body": "API Key 应从控制台生成。如果密钥泄露、环境发生变化，或系统归属发生迁移，就应该轮换密钥，而不是无限期复用同一把。"
+          },
+          {
+            "title": "每次请求都带上必要请求头",
+            "body": "JSON 请求应始终包含 Authorization 和 Content-Type，确保 APIDot 能稳定完成鉴权和请求体解析。",
+            "code": "Authorization: Bearer <APIDOT_API_KEY>\nContent-Type: application/json"
+          },
+          {
+            "title": "不要把密钥下发到客户端",
+            "body": "不要把 API Key 放到浏览器代码、移动端包体或公开仓库中。请通过你自己的后端转发请求，并按需补充审计、白名单和风控能力。"
+          }
+        ]
+      },
+      "errors-retries": {
+        "title": "错误与重试",
+        "lede": "处理 APIDot 错误时，先区分无效请求和平台瞬时问题。只有可能随时间恢复的错误才适合自动重试。",
+        "sections": [
+          {
+            "title": "无效 payload 不要原样重试",
+            "body": "缺少字段、参数组合不支持、model id 错误或 URL 不合法，都需要先修正请求本身，再重新提交。"
+          },
+          {
+            "title": "瞬时故障用退避策略重试",
+            "body": "网关超时、上游拥堵和短时间内部异常通常可以恢复，但应使用带抖动的指数退避，而不是马上高频重放。"
+          },
+          {
+            "title": "计费问题先恢复余额再继续",
+            "body": "如果失败原因是余额不足，就先解决账单或充值问题。只有当可用额度恢复后，自动重试才有意义。"
+          }
+        ]
+      },
+      "rate-limits": {
+        "title": "速率限制",
+        "lede": "真实吞吐能力不仅取决于账户等级，也取决于模型热度、上游状态，以及你自己的流量突发方式。",
+        "sections": [
+          {
+            "title": "先设计并发策略，再谈请求数",
+            "body": "面对批量任务时，建议先在自己的系统中排队并控制并发。相比单次请求速度，稳定的持续吞吐通常更重要。"
+          },
+          {
+            "title": "把 429 当成节流信号",
+            "body": "收到 429 后，不要立即重放同一批流量。优先遵循返回中的重试提示，并主动降低提交节奏。"
+          },
+          {
+            "title": "需要隔离时就拆分 Key",
+            "body": "如果你希望环境、产品线或工作负载之间拥有更清晰的隔离，可以拆分 API Key，避免某一类高噪声流量吃满另一类请求的突发额度。"
+          }
+        ]
+      },
+      "webhooks": {
+        "title": "Webhook",
+        "lede": "轮询适合测试和低频工具；对长耗时媒体生成任务来说，Webhook 更适合生产环境。",
+        "sections": [
+          {
+            "title": "测试阶段先轮询就够了",
+            "body": "如果你还在验证模型，或只是做低频内部工具，直接轮询共享状态端点通常是最省基础设施成本的起点。"
+          },
+          {
+            "title": "生产环境推荐 callback_url",
+            "body": "提交时附带 callback_url，APIDot 就能在任务完成或失败后主动通知你的后端。这样可以减少无效轮询，也更适合长链路任务管理。"
+          },
+          {
+            "title": "回调处理必须是幂等的",
+            "body": "请持久化 task id，允许重复投递，并在写入最终业务状态或触发下游动作前，再次确认任务终态。"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "APIDot | The Ultimate AI API Platform for Image, Video, Music & Chat - 80% Cheaper",
+    "description": "APIDot is the ultimate AI API platform for developers. Access premium image, video, music, and chat APIs with one key, faster integration, lower costs, and production-ready performance."
+  },
+  "homePage": {
+    "chip": "Premium AI APIs for developers who want better models at lower cost",
+    "titleLines": ["The Ultimate AI API Platform", "for developers"],
+    "description": "Access premium image, video, music, and chat APIs through one powerful platform. APIDot helps developers ship faster, pay less, and build with the latest AI models without juggling fragmented vendors.",
+    "primaryCta": "Start Building Now",
+    "secondaryCta": "Browse Premium Models",
+    "subnote": "One API key | lower cost | production-ready integration",
+    "trustedByLabel": "Top AI model ecosystems, all in one place",
+    "trustedCompanies": ["OpenAI", "Google", "Kling", "ByteDance", "MiniMax", "Anthropic"],
+    "featuredEyebrow": "Top AI APIs",
+    "featuredTitle": "Best-selling image and video APIs developers are shipping with",
+    "featuredAction": "View all APIs",
+    "integrateEyebrow": "Launch faster",
+    "integrateTitle": "The fastest way to ship premium AI products.",
+    "integrateDescription": "APIDot gives you the simplest path from API key to production. Access premium AI models, integrate faster with a unified workflow, handle async workloads with less code, and cut costs with one account across image, video, music, and chat APIs.",
+    "integratePoints": [
+      {
+        "title": "Launch faster",
+        "description": "Skip vendor sprawl and go live faster with one API platform for premium image, video, music, and chat models."
+      },
+      {
+        "title": "Pay less",
+        "description": "Use lower-cost AI APIs without giving up premium models, modern workflows, or production-ready speed."
+      },
+      {
+        "title": "Integrate in minutes",
+        "description": "Use a simple, developer-friendly integration flow that gets your team from testing to launch with less friction."
+      },
+      {
+        "title": "Scale with one account",
+        "description": "Manage billing, usage, access, and async generation workflows in one place instead of across disconnected providers."
+      }
+    ],
+    "browseEyebrow": "Premium coverage",
+    "browseTitle": "The best AI APIs across every major modality",
+    "modalities": [
+      {
+        "title": "Image",
+        "description": "Premium image APIs for generation, editing, upscale, and reference workflows",
+        "examples": "Nano Banana, GPT-4o Image, Seedream, FLUX",
+        "icon": "ImageIcon"
+      },
+      {
+        "title": "Video",
+        "description": "Latest video APIs with better quality, faster launches, and lower cost",
+        "examples": "Seedance 2, Veo 3.1, Sora 2, Kling",
+        "icon": "Clapperboard"
+      },
+      {
+        "title": "Music",
+        "description": "Production-ready music APIs for generation, vocals, extension, and audio workflows",
+        "examples": "AI Music, MiniMax Music 2.6, Vocal Remover",
+        "icon": "MicVocal"
+      },
+      {
+        "title": "Chat",
+        "description": "Premium chat APIs for coding, reasoning, and advanced multimodal assistants",
+        "examples": "Claude Opus 4.7, Claude 4.5, Gemini 3",
+        "icon": "Languages"
+      }
+    ],
+    "useCasesEyebrow": "Why teams choose APIDot",
+    "useCasesTitle": "Why developers ship faster with APIDot",
+    "useCases": [
+      {
+        "eyebrow": "Creative products",
+        "title": "Creative apps",
+        "description": "Build premium image products faster with better model choice, lower integration overhead, and production-ready APIs built to scale."
+      },
+      {
+        "eyebrow": "Media generation",
+        "title": "Media generation products",
+        "description": "Ship image, video, and music products from one platform instead of stitching together slower, more expensive vendor stacks."
+      },
+      {
+        "eyebrow": "Growth teams",
+        "title": "Marketing automation",
+        "description": "Generate better ad creatives, promo videos, and campaign assets faster while keeping costs lower across multimodal AI workflows."
+      },
+      {
+        "eyebrow": "AI SaaS",
+        "title": "AI SaaS workflows",
+        "description": "Launch SaaS features with premium models, simpler async workflows, and a faster path from prototype to production."
+      },
+      {
+        "eyebrow": "Voice and music",
+        "title": "Voice and music products",
+        "description": "Scale music and audio experiences with production-ready APIs for generation, editing, vocals, and high-volume workflow automation."
+      },
+      {
+        "eyebrow": "Internal automation",
+        "title": "Internal tools and agents",
+        "description": "Equip copilots and internal agents with the best chat, image, video, and audio capabilities through one cheaper, faster AI API platform."
+      }
+    ],
+    "ctaTitle": "Start Building with the Best AI API Platform.",
+    "ctaDescription": "Get your API key, access premium models, launch faster, and cut costs with one platform for image, video, music, and chat APIs.",
+    "ctaPrimary": "Get Your API Key",
+    "ctaSecondary": "Browse Models",
+    "exampleDocId": "gpt-image-2",
+    "exampleVariantId": "gpt-image-2",
+    "stats": [
+      { "value": "99.9%", "label": "Uptime", "note": "" },
+      { "value": "<50ms", "label": "Response Time", "note": "" },
+      { "value": "24/7", "label": "Support", "note": "" },
+      { "value": "#1", "label": "Data Security", "note": "" }
+    ]
+  }
+}

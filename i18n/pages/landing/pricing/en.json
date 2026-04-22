@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "Pricing | APIDot",
+    "description": "Transparent credit-based pricing for APIDot's active image and video APIs."
+  },
+  "hero": {
+    "title": "Pricing",
+    "description": "World-class AI models. Transparent credits. Pay as you go with no tiers or minimum commitments."
+  },
+  "filters": {
+    "all": "All",
+    "video": "Video",
+    "image": "Image",
+    "music": "Audio",
+    "chat": "Chat",
+    "searchPlaceholder": "Search by model, modality, or provider..."
+  },
+  "table": {
+    "modelModality": "MODEL & MODALITY",
+    "creditsPerGen": "CREDITS / GEN",
+    "ourPrice": "OUR PRICE (USD)",
+    "falPrice": "Fal Price (USD)",
+    "discount": "DISCOUNT",
+    "multipleTiers": "{count} prices",
+    "perVideo": "per video",
+    "perGeneration": "per generation",
+    "perSecond": "per second",
+    "perImage": "per image",
+    "noResults": "No pricing rows match the current filter."
+  }
+}

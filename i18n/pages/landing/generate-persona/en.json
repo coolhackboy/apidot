@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Generate Persona API - AI Music Style Profile Creator | PoYo",
+    "description": "Create reusable music personas from audio tracks with PoYo's Generate Persona API. Save vocal characteristics, musical styles, and personality profiles for consistent AI-generated music. "
+  },
+  "modelLandingContent": {
+    "hero": {
+      "title": "Generate Persona API - AI Music Persona Creator on PoYo",
+      "description": "Create reusable music personas from existing audio tracks with PoYo's Generate Persona API. Extract and save vocal characteristics, musical styles, and artistic personality for consistent AI-generated music across multiple generations. Perfect for brand voice creation, artist style preservation, and maintaining sonic consistency.",
+      "cta": {
+        "text": "Get API Key",
+        "href": "/dashboard/api-key"
+      }
+    },
+    "features": {
+      "title": "Features",
+      "items": [
+        {
+          "icon": "Mic",
+          "title": "Voice Profile Extraction",
+          "description": "Extract vocal characteristics from existing audio tracks and save them as reusable personas. Generate Persona API captures timbre, tone, pitch, and vocal texture for future music generations."
+        },
+        {
+          "icon": "Users",
+          "title": "Artist Style Preservation",
+          "description": "Create consistent artist personas that preserve musical style, genre preferences, and performance characteristics. Maintain brand voice across multiple music generations with saved persona profiles."
+        },
+        {
+          "icon": "Layers",
+          "title": "Reusable Profiles",
+          "description": "Generate personas once and reuse them across unlimited music generations. Each persona includes name, description, and complete audio characteristics for easy management and reference."
+        },
+        {
+          "icon": "Music",
+          "title": "Style Consistency Control",
+          "description": "Ensure consistent musical output across projects by using saved personas. Perfect for creating music series, brand soundtracks, or maintaining artistic identity across multiple tracks."
+        },
+        {
+          "icon": "Zap",
+          "title": "Fast Generation",
+          "description": "Quickly generate persona profiles from audio sources with optimized AI processing. Webhook callbacks notify you instantly when your persona is created and ready for use."
+        },
+        {
+          "icon": "Settings",
+          "title": "Custom Configuration",
+          "description": "Provide custom names and detailed descriptions for each persona. Organize and manage multiple personas for different projects, brands, or artistic styles."
+        }
+      ]
+    },
+    "useCase": {
+      "title": "Use Cases",
+      "items": [
+        {
+          "icon": "Radio",
+          "title": "Brand Voice Creation",
+          "description": "Create unique brand voice personas for consistent audio branding across marketing campaigns, podcasts, and content. Maintain sonic identity across all brand touchpoints."
+        },
+        {
+          "icon": "Music",
+          "title": "Music Series Production",
+          "description": "Generate consistent music series with preserved artist characteristics. Create album tracks, podcast themes, or video series soundtracks with unified artistic identity."
+        },
+        {
+          "icon": "Film",
+          "title": "Content Production Workflows",
+          "description": "Save personas from successful audio content and reuse them for future projects. Streamline video production, film scoring, and multimedia content workflows with consistent audio styles."
+        },
+        {
+          "icon": "Users",
+          "title": "Artist Style Modeling",
+          "description": "Model and preserve specific artist styles for authorized use cases. Create personas that capture unique musical characteristics for remix projects, covers, or style transfer applications."
+        },
+        {
+          "icon": "ShoppingBag",
+          "title": "Product Audio Identity",
+          "description": "Establish consistent audio identity for digital products, apps, and services. Create personas that represent your product's sonic brand across notifications, features, and user experiences."
+        },
+        {
+          "icon": "Gamepad2",
+          "title": "Game Character Themes",
+          "description": "Generate personas for game characters, locations, or factions. Maintain musical consistency for character themes across levels, cutscenes, and gameplay moments."
+        }
+      ]
+    },
+    "howToUse": {
+      "title": "How to Use Generate Persona API on PoYo",
+      "description": "<p><strong>1. Get Your API Key:</strong> Create a free PoYo account and generate your API key from the dashboard. <a href='/dashboard/api-key' style='color: #3b82f6; text-decoration: underline;'>Get API Key →</a></p><p><strong>2. Generate Music First:</strong> Use the Generate Music API to create an audio track, which returns a task_id and audio_id that you'll need for persona creation. <a href='https://docs.poyo.ai/api-manual/music-series/generate-music' style='color: #3b82f6; text-decoration: underline;'>Generate Music →</a></p><p><strong>3. Create Persona:</strong> Send a POST request to the generate persona endpoint with task_id, audio_id, persona name, and description. <a href='https://docs.poyo.ai/api-manual/music-series/generate-persona' style='color: #3b82f6; text-decoration: underline;'>View API Docs →</a></p><p><strong>4. Use Persona ID:</strong> Receive a persona_id that can be used in future Generate Music API calls to maintain consistent vocal and style characteristics. <a href='https://docs.poyo.ai/api-manual/music-series/generate-music' style='color: #3b82f6; text-decoration: underline;'>Use Persona →</a></p>"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "<p><strong>Generate Persona API:</strong> <span style='color: #10b981; font-weight: bold;'>$0.005</span> per persona creation (1 credit) - Create reusable music style profiles</p><p><strong>Features Included:</strong> Voice profile extraction, style preservation, unlimited persona reuse, webhook callbacks, custom name and description, permanent storage</p><p><strong>Enterprise:</strong> Volume discounts available for high-volume usage. Priority processing and dedicated support. <a href='/support' style='color: #3b82f6; text-decoration: underline;'>Contact sales →</a></p>"
+    },
+    "faq": {
+      "title": "Generate Persona API FAQ",
+      "items": [
+        {
+          "question": "What is a music persona and why would I use it?",
+          "answer": "A music persona is a saved profile containing vocal characteristics, musical style, and artistic personality extracted from an audio track. Use personas to maintain consistency across multiple music generations, create brand voice identities, or preserve specific artist styles for future projects."
+        },
+        {
+          "question": "How do I create a persona from my audio?",
+          "answer": "First, generate music using the Generate Music API, which returns a task_id and audio_id. Then call the Generate Persona API with these IDs plus a custom name and description. You'll receive a persona_id that can be used in future music generation requests to replicate the style."
+        },
+        {
+          "question": "Can I use personas across different music generations?",
+          "answer": "Yes! Once created, personas can be reused unlimited times across any Generate Music API call by including the persona_id parameter. This ensures consistent vocal characteristics and musical style across all generations using that persona."
+        },
+        {
+          "question": "How many personas can I create?",
+          "answer": "There's no limit to the number of personas you can create. Each persona costs 1 credit to generate and is permanently stored in your account. You can create different personas for various projects, brands, or artistic styles."
+        },
+        {
+          "question": "What information does a persona contain?",
+          "answer": "A persona contains extracted vocal characteristics (timbre, tone, pitch), musical style preferences, genre attributes, and performance characteristics from the source audio. Each persona includes a custom name and description you provide for easy organization and reference."
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "title": "Why Choose PoYo for Generate Persona API",
+      "items": [
+        {
+          "icon": "BadgeDollarSign",
+          "title": "Extremely Affordable",
+          "description": "Create personas at just $0.005 per generation (1 credit). Once created, reuse personas unlimited times with no additional charges. Most cost-effective persona creation solution."
+        },
+        {
+          "icon": "Cpu",
+          "title": "Powered by Suno",
+          "description": "Access Suno's advanced music generation technology for persona extraction. Industry-leading AI models ensure accurate style capture and consistent reproduction."
+        },
+        {
+          "icon": "Infinity",
+          "title": "Unlimited Reuse",
+          "description": "Generate a persona once and use it forever. No per-use fees or expiration dates. Perfect for long-term projects requiring consistent audio branding and style."
+        },
+        {
+          "icon": "Shield",
+          "title": "Permanent Storage",
+          "description": "All personas are permanently stored in your account with no deletion or archival. Access and manage your persona library anytime through the API or dashboard."
+        },
+        {
+          "icon": "Key",
+          "title": "Unified API Access",
+          "description": "One API key connects you to Generate Persona and 15+ other music APIs plus 500+ AI models. Simplify billing and reduce integration complexity with a single endpoint."
+        },
+        {
+          "icon": "Code",
+          "title": "Developer-Friendly",
+          "description": "Clean RESTful API with comprehensive documentation. Simple persona creation workflow with clear responses. SDKs and code examples available for quick integration."
+        }
+      ]
+    }
+  }
+}

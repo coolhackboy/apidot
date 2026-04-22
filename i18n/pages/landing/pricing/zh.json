@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "定价 | APIDot",
+    "description": "APIDot 活跃图像与视频 API 的透明积分定价。"
+  },
+  "hero": {
+    "title": "定价",
+    "description": "顶级 AI 模型，透明积分计费。按量付费，无套餐门槛。"
+  },
+  "filters": {
+    "all": "全部",
+    "video": "视频",
+    "image": "图像",
+    "music": "音频",
+    "chat": "对话",
+    "searchPlaceholder": "按模型、模态或提供商搜索..."
+  },
+  "table": {
+    "modelModality": "模型与模态",
+    "creditsPerGen": "积分 / 次",
+    "ourPrice": "我们的价格 (USD)",
+    "falPrice": "Fal 价格 (USD)",
+    "discount": "折扣",
+    "multipleTiers": "{count} 个价格档位",
+    "perVideo": "每个视频",
+    "perGeneration": "每次生成",
+    "perSecond": "每秒",
+    "perImage": "每张图片",
+    "noResults": "当前筛选条件下没有匹配的定价条目。"
+  }
+}

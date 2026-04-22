@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "段落替换 API - AI 音乐片段替换与编辑 | PoYo",
+    "description": "使用 PoYo 的 AI 段落替换 API 替换音乐曲目中的特定片段。精确的时间点编辑、无缝过渡和风格一致的片段替换。"
+  },
+  "modelLandingContent": {
+    "hero": {
+      "title": "段落替换 API - PoYo AI 音乐片段编辑器",
+      "description": "使用 PoYo 的段落替换 API 替换和编辑现有音乐曲目中的特定时间片段。执行精确的音乐修补，实现无缝过渡、风格一致的替换和自然的音频融合。非常适合修复片段、更改歌词或修改特定音乐段落，同时保持整体连贯性。",
+      "cta": {
+        "text": "获取 API 密钥",
+        "href": "/dashboard/api-key"
+      }
+    },
+    "features": {
+      "title": "功能特点",
+      "items": [
+        {
+          "icon": "Scissors",
+          "title": "精确的时间点编辑",
+          "description": "以两位小数精度替换精确的时间片段（infill_start_s、infill_end_s）。精确到百分之一秒（如 15.25s 到 23.78s）指定起止点，实现精准的音乐编辑和片段替换。"
+        },
+        {
+          "icon": "Wand2",
+          "title": "AI 音乐修补",
+          "description": "生成与现有音频无缝融合的新内容。段落替换 API 分析周围上下文，创建自然的过渡效果，保持编辑之间的音乐连贯性。"
+        },
+        {
+          "icon": "Music",
+          "title": "风格一致的替换",
+          "description": "保持原曲的音乐风格、曲风和制作质量。使用风格标签确保替换的片段与您音乐的整体美学和声音特征相匹配。"
+        },
+        {
+          "icon": "FileText",
+          "title": "歌词修改",
+          "description": "使用 full_lyrics 参数更新特定片段的歌词。在保留原曲音乐编排和人声风格的同时，更改词语、短语或整段歌词。"
+        },
+        {
+          "icon": "Settings",
+          "title": "灵活的风格控制",
+          "description": "应用自定义风格标签引导 AI 在替换片段中的生成。控制曲风、情绪、配器和创意方向，同时保持整体连贯性。"
+        },
+        {
+          "icon": "Workflow",
+          "title": "无缝音频融合",
+          "description": "先进算法确保原始片段和替换片段之间的平滑过渡。无爆音、噪声或突兀变化 - 只有自然流畅的编辑音乐。"
+        }
+      ]
+    },
+    "useCase": {
+      "title": "应用场景",
+      "items": [
+        {
+          "icon": "Music",
+          "title": "音乐制作与编辑",
+          "description": "修复 AI 生成音乐中的问题片段，替换不需要的部分，或在曲目中尝试不同的音乐创意。非常适合后期制作优化。"
+        },
+        {
+          "icon": "Mic",
+          "title": "歌词修正与更新",
+          "description": "无需重新生成整首歌曲即可更改特定歌词。修正错误、为不同版本更新词语，或为不同市场本地化歌词，同时保持音乐完整。"
+        },
+        {
+          "icon": "Film",
+          "title": "视频配乐定制",
+          "description": "调整音乐曲目以适应视频时长要求。替换片段以匹配场景变换，延长或缩短段落，或为特定视觉时刻修改音乐重点。"
+        },
+        {
+          "icon": "Layers",
+          "title": "音乐 A/B 测试",
+          "description": "通过替换特定片段创建同一曲目的变体。测试不同的副歌、桥段或音乐编排，找到最能打动听众的版本。"
+        },
+        {
+          "icon": "Radio",
+          "title": "内容适配",
+          "description": "为不同场景或平台修改音乐。替换片段以创建净化版本，调整时长限制，或调整曲目以满足特定内容要求。"
+        },
+        {
+          "icon": "Sparkles",
+          "title": "创意实验",
+          "description": "通过用不同风格或情绪替换片段来探索音乐变化。混合曲风、测试替代编排，或在保持核心曲目结构的同时创建独特混音。"
+        }
+      ]
+    },
+    "howToUse": {
+      "title": "如何在 PoYo 使用段落替换 API",
+      "description": "<p><strong>1. 获取 API 密钥：</strong>创建免费 PoYo 账户并从控制台生成您的 API 密钥。<a href='/dashboard/api-key' style='color: #3b82f6; text-decoration: underline;'>获取 API 密钥 →</a></p><p><strong>2. 准备源音频：</strong>使用上传音频 API 上传您的基础音乐曲目，或使用之前音乐生成任务的现有曲目 ID。</p><p><strong>3. 定义替换片段：</strong>使用 infill_start_s 和 infill_end_s 参数指定要替换的精确时间范围（支持两位小数精度）。如需修改歌词，添加风格标签和 full_lyrics。<a href='https://docs.poyo.ai/api-manual/music-series/replace-section' style='color: #3b82f6; text-decoration: underline;'>查看 API 文档 →</a></p><p><strong>4. 获取结果：</strong>接收 task_id 并轮询结果，或设置 webhook 回调 URL 以便在片段替换完成时收到通知。<a href='https://docs.poyo.ai/api-manual/music-series/query-music-detail' style='color: #3b82f6; text-decoration: underline;'>查询结果 →</a></p>"
+    },
+    "pricing": {
+      "title": "价格",
+      "description": "<p><strong>段落替换 API：</strong><span style='color: #10b981; font-weight: bold;'>$0.05</span> 每次替换（10 积分）- AI 精准编辑音乐片段</p><p><strong>包含功能：</strong>精确的时间点编辑（两位小数精度）、歌词修改、风格标签控制、无缝融合、webhook 回调、商业使用权</p><p><strong>企业版：</strong>大批量音乐编辑可享受折扣。优先处理和专属支持。<a href='/support' style='color: #3b82f6; text-decoration: underline;'>联系销售 →</a></p>"
+    },
+    "faq": {
+      "title": "段落替换 API 常见问题",
+      "items": [
+        {
+          "question": "片段替换的时间精度有多精确？",
+          "answer": "段落替换 API 对 infill_start_s 和 infill_end_s 参数都支持两位小数精度。这意味着您可以精确到百分之一秒（如 15.25s 到 23.78s）指定时间，实现极其精确的片段编辑和替换。"
+        },
+        {
+          "question": "我可以替换同一曲目中的多个片段吗？",
+          "answer": "每次 API 调用替换由起止时间定义的一个连续片段。要替换多个不连续的片段，您需要进行多次 API 调用或链式多次替换，将一次的输出作为下一次的输入。"
+        },
+        {
+          "question": "如何确保替换的片段与原风格匹配？",
+          "answer": "使用 'tags' 参数指定与原曲的曲风、情绪和配器相匹配的风格特征。AI 会自动分析周围音频上下文，创建无缝过渡并保持风格一致性。"
+        },
+        {
+          "question": "替换片段时歌词会发生什么变化？",
+          "answer": "如果您不提供 full_lyrics，AI 会生成适合音乐上下文的人声。要更改特定歌词，请使用 full_lyrics 参数提供完整歌词（包括未更改的部分），替换的片段将呈现您的新歌词，同时保持人声风格。"
+        },
+        {
+          "question": "可以替换的片段长度有什么限制？",
+          "answer": "您可以替换曲目中任意长度的片段，从几分之一秒到歌曲的大部分。但是，非常长的替换片段（超过 60 秒）可能更适合使用音乐生成 API 并手动合并片段。"
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "title": "为什么选择 PoYo 段落替换 API",
+      "items": [
+        {
+          "icon": "BadgeDollarSign",
+          "title": "经济实惠的精准编辑",
+          "description": "每次编辑仅需 $0.05 即可替换音乐片段。经济高效的音乐优化和后期制作解决方案，无需昂贵的订阅或按分钟收费。"
+        },
+        {
+          "icon": "Cpu",
+          "title": "由 Suno 提供支持",
+          "description": "通过 PoYo 统一 API 访问 Suno 先进的音乐修补技术。行业领先的 AI 确保自然的编辑效果，实现无缝过渡和风格一致性。"
+        },
+        {
+          "icon": "Target",
+          "title": "手术级精度",
+          "description": "两位小数的时间精度让您能够精确定位音乐中的特定时刻。以精确到毫秒的准确度替换小到几分之一秒或大到整段歌词的片段。"
+        },
+        {
+          "icon": "Workflow",
+          "title": "无缝集成",
+          "description": "替换的片段与原始音频自然融合。先进的融合算法消除可听的瑕疵，确保专业品质的编辑曲目可立即使用。"
+        },
+        {
+          "icon": "Key",
+          "title": "统一 API 访问",
+          "description": "一个 API 密钥即可连接段落替换和 15+ 其他音乐 API，以及 500+ AI 模型。简化整个 AI 工作流的计费并降低集成复杂度。"
+        },
+        {
+          "icon": "Code",
+          "title": "开发者友好",
+          "description": "简洁的 RESTful API 配有完整文档和代码示例。任何编程语言都可轻松集成。支持 webhook 实现异步操作和工作流自动化。"
+        }
+      ]
+    }
+  }
+}

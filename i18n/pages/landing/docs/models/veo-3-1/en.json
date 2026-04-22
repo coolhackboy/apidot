@@ -1,0 +1,212 @@
+{
+  "id": "veo-3-1",
+  "groupKey": "video",
+  "navLabel": "Veo 3.1",
+  "method": "POST",
+  "endpoint": {
+    "label": "Veo 3.1",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "Submit Veo 3.1 fast, lite, and quality jobs through APIDot's unified async generation endpoint.",
+    "about": "Veo 3.1 keeps the same APIDot submit-and-track workflow as other generation models. All variants support text-to-video. `veo3.1-fast` and `veo3.1-quality` also support image-guided generation through `input.image_urls`, while `veo3.1-lite` should be treated as text-only.",
+    "bestPractices": [
+      "Use `veo3.1-fast` or `veo3.1-lite` for iteration and move to `veo3.1-quality` when you need the most premium final output.",
+      "Keep prompts explicit about motion, camera perspective, sound intent, and visual continuity.",
+      "For image-guided requests, match `generate_type` to the number of uploaded images and avoid sending unsupported combinations to `veo3.1-lite`."
+    ],
+    "faq": [
+      {
+        "question": "Which Veo 3.1 model id should I use?",
+        "answer": "Use `veo3.1-fast` for faster turnaround, `veo3.1-lite` for lower-cost text-only generation, and `veo3.1-quality` for the highest-end result quality."
+      },
+      {
+        "question": "How does `generate_type` work?",
+        "answer": "Use `frame` when you provide two images for first/last frame control. Use `reference` when you provide three reference images. Do not send `generate_type` or `image_urls` to `veo3.1-lite`."
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "veo3.1-fast",
+        "description": "Target Veo 3.1 variant: `veo3.1-fast`, `veo3.1-lite`, or `veo3.1-quality`."
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "Optional webhook callback URL for terminal task updates."
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "Container for Veo 3.1 generation parameters."
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "Main prompt describing scene, motion, audio intent, and target aesthetic."
+      },
+      {
+        "name": "input.duration",
+        "type": "number",
+        "required": false,
+        "defaultValue": "8",
+        "description": "Requested duration in seconds. Veo 3.1 is fixed at 8 seconds."
+      },
+      {
+        "name": "input.aspect_ratio",
+        "type": "string",
+        "required": false,
+        "defaultValue": "16:9",
+        "description": "Supported values are `16:9` and `9:16`."
+      },
+      {
+        "name": "input.resolution",
+        "type": "string",
+        "required": false,
+        "defaultValue": "720p",
+        "description": "Supported values are `720p`, `1080p`, and `4k`."
+      },
+      {
+        "name": "input.generate_type",
+        "type": "string",
+        "required": false,
+        "defaultValue": "frame",
+        "description": "Optional image-guided generation mode. Use `frame` for two images or `reference` for three images."
+      },
+      {
+        "name": "input.image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Optional image inputs for image-guided runs. Use up to 3 images, each publicly accessible and under 10MB."
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP-style status code. Successful submits return `200`."
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "Async task identifier returned immediately after submission."
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "Initial task status, typically `not_started`."
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "ISO 8601 timestamp for task creation."
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "Missing fields, unsupported generate mode, or invalid image input combinations."
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Missing, expired, or invalid Bearer API key."
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "The current prepaid balance cannot cover the Veo 3.1 request."
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "The API key is temporarily above the allowed submission rate."
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"veo3.1-fast\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A cinematic nighttime city drive with synchronized ambient audio\",\n    \"duration\": 8,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"veo3.1-fast\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A cinematic nighttime city drive with synchronized ambient audio\",\n    duration: 8,\n    aspect_ratio: \"16:9\",\n    resolution: \"720p\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"veo3.1-fast\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A cinematic nighttime city drive with synchronized ambient audio\",\n        \"duration\": 8,\n        \"aspect_ratio\": \"16:9\",\n        \"resolution\": \"720p\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+    },
+    "exampleVariants": [
+      {
+        "id": "veo3.1-fast",
+        "label": "veo3.1-fast",
+        "payloadTemplate": {
+          "model": "veo3.1-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A cinematic nighttime city drive with synchronized ambient audio",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "720p"
+          }
+        }
+      },
+      {
+        "id": "veo3.1-lite",
+        "label": "veo3.1-lite",
+        "payloadTemplate": {
+          "model": "veo3.1-lite",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A miniature city waking up at sunrise, cinematic light, smooth camera motion",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "720p"
+          }
+        }
+      },
+      {
+        "id": "veo3.1-quality",
+        "label": "veo3.1-quality",
+        "payloadTemplate": {
+          "model": "veo3.1-quality",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A high-detail aerial shot of a coastal city at dusk with cinematic motion and native ambient sound",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "4k"
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "veo3.1-fast",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "A cinematic nighttime city drive with synchronized ambient audio",
+        "duration": 8,
+        "aspect_ratio": "16:9",
+        "resolution": "720p"
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"veo3.1-lite does not support image_urls\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+  }
+}

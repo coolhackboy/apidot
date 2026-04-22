@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "Seedance 2 API | APIDot",
+    "description": "Access ByteDance Seedance 2 instantly on APIDot with text, image, video, and audio inputs, native audio-video generation, and up to 1080p output."
+  },
+  "hero": {
+    "title": "Seedance 2 API Playground",
+    "description": "Test ByteDance Seedance 2 and seedance-2-fast instantly. Use text, image, video, and audio references with native audio-video generation, multi-shot storytelling, and director-level camera control, then move the same setup into APIDot's async production workflow."
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "Overview",
+      "title": "Why teams choose {modelName}",
+      "paragraphs": [
+        "{modelName} is ByteDance's multimodal video model for production-grade generation. It combines text, image, video, and audio inputs in one workflow, with native audio-video synthesis, multi-shot storytelling, stronger character consistency, and cinematic control over motion, lighting, and pacing.",
+        "On APIDot, call the active variant with model=\"{activeModelId}\". {activeModelName} uses the same async submit, polling, and webhook lifecycle as the rest of the platform, so validated playground settings can move directly into production."
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "title": "Key capabilities of {modelName}",
+      "items": [
+        {
+          "title": "Native audio-video joint generation",
+          "description": "Generate visuals, dialogue, ambience, and timing cues in a single pass, reducing the need for separate lip-sync and post-production audio alignment."
+        },
+        {
+          "title": "Multimodal references with stronger consistency",
+          "description": "Combine text, image, video, and audio references to lock identity, product appearance, visual style, motion language, and rhythm for complex creative briefs."
+        },
+        {
+          "title": "Multi-shot storytelling and continuity",
+          "description": "Produce multi-shot clips from one request while keeping characters, style, and narrative continuity stable across cuts and transitions."
+        },
+        {
+          "title": "Standard and Fast variants",
+          "description": "Use the standard model for higher-end delivery and 1080p output, or switch to the Fast variant for lower-cost iteration while keeping the same APIDot workflow."
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "Use Cases",
+      "title": "What can you build with {modelName}?",
+      "description": "Teams typically use {activeModelName} in the following production scenarios:",
+      "items": [
+        "Advertising concepts, product films, and social-first short video",
+        "Film pre-visualization, shot planning, and storyboard validation",
+        "Multilingual localization with native lip-sync variants",
+        "Game cutscenes and interactive media sequences",
+        "Training content with consistent presenters and narration",
+        "Music videos, dance clips, and cinematic b-roll"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "Quickstart",
+      "title": "How to use {modelName} with APIDot",
+      "steps": [
+        {
+          "eyebrow": "Step 01",
+          "title": "Create your API key",
+          "description": "Generate an API key in your dashboard and get immediate access to Seedance 2 through APIDot without waitlists or manual approval.",
+          "actionText": "Open API Keys",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "Step 02",
+          "title": "Top up credits",
+          "description": "Billing is usage-based per second. Add credits based on the model, resolution, and whether your request includes video input.",
+          "actionText": "Top Up Credits",
+          "actionHref": "/dashboard/billing"
+        },
+        {
+          "eyebrow": "Step 03",
+          "title": "Integrate the async workflow",
+          "description": "Submit model=\"{activeModelId}\" requests to {endpoint}, then poll status or consume webhook callbacks to retrieve the final media output in your app."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "What is {modelName}?",
+          "answer": "{modelName} is ByteDance's multimodal video generation model. It supports text, image, video, and audio inputs with native audio-video generation, director-level control, stronger character consistency, and multi-shot storytelling."
+        },
+        {
+          "question": "What inputs does {modelName} support?",
+          "answer": "In APIDot's Seedance 2 workflow, you can start with a text prompt and optionally attach image, video, and audio references. The playground supports first/last frames, reference images, reference video, and reference audio."
+        },
+        {
+          "question": "What are the duration and resolution limits?",
+          "answer": "This page supports 4 to 15 second generations. seedance-2 supports 480p, 720p, and 1080p, while seedance-2-fast supports 480p and 720p. 1080p is available on seedance-2 only."
+        },
+        {
+          "question": "Does {modelName} support native audio and lip-sync?",
+          "answer": "Yes. Native audio-video generation is one of Seedance 2's core strengths, letting the model produce dialogue, ambience, rhythm, and lip-sync together during generation."
+        },
+        {
+          "question": "How is it different from Seedance 1.0 or 1.5?",
+          "answer": "Seedance 2 pushes further on multimodal references, native audio, continuity across shots, and director-level control. It is better suited for complex commercial, narrative, and reference-driven video workflows."
+        },
+        {
+          "question": "Is {modelName} suitable for commercial or production use?",
+          "answer": "Yes. APIDot exposes Seedance 2 through a production-ready async API with usage-based billing and a workflow that fits creative tools, automation systems, and commercial content pipelines. Commercial rights still depend on your platform terms."
+        },
+        {
+          "question": "How quickly can I start using {modelName}?",
+          "answer": "Usually within minutes. Create an API key, top up credits, submit a request with model=\"{activeModelId}\", and retrieve results through the async APIDot flow."
+        }
+      ]
+    }
+  }
+}

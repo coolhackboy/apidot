@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "API Updates | PoYo",
+    "description": "Discover the latest improvements, new features, and enhancements across our powerful AI APIs."
+  },
+  "hero": {
+    "title": "API Updates",
+    "description": "Discover the latest improvements, new features, and enhancements across our powerful AI APIs. Stay ahead with cutting-edge technology that drives innovation."
+  },
+  "stats": {
+    "developers": "1,000+ Developers",
+    "uptime": "99.9% Uptime",
+    "enterprise": "Enterprise-ready"
+  },
+  "search": {
+    "placeholder": "Search for updates... (Press Enter to search)"
+  },
+  "filter": {
+    "all": "All APIs",
+    "general": "General API",
+    "image": "Image API",
+    "video": "Video API",
+    "audio": "Audio API"
+  },
+  "items": [
+    {
+      "id": "16",
+      "date": "2026-04-17",
+      "category": "general",
+      "title": "Claude Opus 4.7 Is Now Live on Poyo.ai",
+      "content": "Hey everyone!\n\nClaude Opus 4.7 is now live on Poyo.ai.\n\nKey capabilities of Claude Opus 4.7:\n- 1M token context window for repositories, long documents, and multi-step tasks\n- Up to 128K output tokens for long-form generation and analysis\n- High-resolution vision up to 2576px / 3.75MP for screenshots, charts, and document understanding\n- Hybrid reasoning with adjustable effort levels, including X-High for the hardest tasks\n- Stronger agentic coding, self-verification, and long-horizon task execution\n- Enhanced tool use, multi-agent coordination, and computer use workflows\n\nTry Claude Opus 4.7:\nhttps://poyo.ai/models/claude-opus-4-7\n\nThank you for your continued support of Poyo.ai."
+    },
+    {
+      "id": "15",
+      "date": "2026-04-10",
+      "category": "video",
+      "title": "Seedance 2.0 API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nSeedance 2.0 API is now available on Poyo.ai!\n\n📌 Available Models:\n• seedance-2\n• seedance-2-fast\n\n💰 Pricing:\n\n📌 seedance-2:\n• 480p (with video input): 10 cr/s ($0.05)\n• 480p (no video input): 20 cr/s ($0.10)\n• 720p (with video input): 20 cr/s ($0.10)\n• 720p (no video input): 40 cr/s ($0.20)\n\n📌 seedance-2-fast:\n• 480p (with video input): 8 cr/s ($0.04)\n• 480p (no video input): 14 cr/s ($0.07)\n• 720p (with video input): 16 cr/s ($0.08)\n• 720p (no video input): 28 cr/s ($0.14)\n\n👉 https://poyo.ai/models/seedance-2\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "14",
+      "date": "2026-04-07",
+      "category": "image",
+      "title": "Wan 2.7 Image API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone!\n\nWan 2.7 Image API is now available on Poyo.ai.\n\nWan 2.7 Image API is Alibaba's latest unified image model, built for text-to-image generation, image editing, stronger prompt fidelity, text rendering, and multi-reference workflows.\n\nAvailable models:\n- wan-2.7-image\n- wan-2.7-image-pro\n\nPricing:\n- wan-2.7-image: 4.2 credits ($0.021) per generation\n- wan-2.7-image-pro: 10.5 credits ($0.0525) per generation\n- About 30% cheaper than fal.ai\n\nTry Wan 2.7 Image API:\nhttps://poyo.ai/models/wan-2-7-image\n\nThank you for your continued support of Poyo.ai."
+    },
+    {
+      "id": "13",
+      "date": "2026-04-02",
+      "category": "image",
+      "title": "Nano Banana Pro - Stable Release Now Available!",
+      "content": "Hey everyone 👋\n\nWe're excited to announce the release of Nano Banana Pro — our production-grade image generation model!\n\n🍌 Nano Banana Pro\n\nNano Banana Pro is the stable, production-ready version of our Nano Banana image generation model. Built for reliability and performance at scale.\n\n✨ Key Highlights:\n• Guaranteed 99.9% uptime — highest stability\n• Recommended for production environments and mission-critical workflows\n• Supports 1K / 2K / 4K resolution output\n• Text-to-image and image editing modes\n\n📌 Available Models:\n• nano-banana-pro (Text to Image)\n• nano-banana-pro-edit (Image Edit)\n\n💰 Pricing:\n• 1K / 2K: 18 credits ($0.09)\n• 4K: 35 credits ($0.175)\n\n🔧 Nano Banana 2 — Still Available\n\nIf your use case allows for occasional retries or you're in a development/testing environment, Nano Banana 2 remains available at a lower cost:\n• 8 credits per generation ($0.04) — 4K same price\n• 95% cheaper than fal.ai\n• May experience occasional downtime\n• Ideal for development and testing\n\n👉 https://poyo.ai/models/nano-banana-2-api\n\n❤️ Thank you for your continued support of Poyo.ai. If you have any questions, please contact us."
+    },
+    {
+      "id": "12",
+      "date": "2026-03-20",
+      "category": "general",
+      "title": "New Model Launches & Price Updates on Poyo.ai",
+      "content": "Hey everyone 👋\n\nA new batch of models is now live on Poyo.ai, along with fresh price updates.\n\n💡 Higher top-ups can unlock up to an additional 10% discount on the prices below.\n\n✨ New Model Launches\n\n🎬 Sora-2\n4s: 48 credits ($0.24)\n8s: 96 credits ($0.48)\n12s: 144 credits ($0.72)\n16s: 192 credits ($0.96)\n20s: 240 credits ($1.20)\n$0.06/sec - 40% cheaper than fal.ai\n👉 https://poyo.ai/models/sora-2-official\n\n🎮 Kling 3.0 Motion Control\n720p: 9 credits/sec ($0.045/sec)\n1080p: 15 credits/sec ($0.075/sec)\n65% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-3-0-motion-control\n\n🍌 Nano Banana 2\n5 credits/generation ($0.025)\n1K: 5 credits ($0.025)\n2K: 8 credits ($0.04)\n4K: 12 credits ($0.06)\n👉 https://poyo.ai/models/nano-banana-2\n\n🎥 Hailuo 2.3\n6s (768p): 35 credits ($0.175)\n10s (768p): 70 credits ($0.35)\n6s (1080p): 60 credits ($0.30)\n37.5% cheaper than fal.ai\n👉 https://poyo.ai/models/hailuo-2-3\n\n⚡ Kling 2.1\nStandard 5s: 30 credits ($0.15)\nPro: starts at 55 credits ($0.275)\n50% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-2-1\n\n🚀 Kling 2.5 Turbo Pro\n5s: 42 credits ($0.21)\n10s: 84 credits ($0.42)\n40% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-2-5-turbo-pro\n\n🌀 Wan 2.2 Fast\n480p: 6 credits ($0.03)\n720p: 12 credits ($0.06)\n40% cheaper than official pricing\n👉 https://poyo.ai/models/wan-2-2-fast\n\n🎞️ Runway Gen-4.5\n5s: 75 credits ($0.375)\n10s: 150 credits ($0.75)\n30% cheaper than official pricing\n👉 https://poyo.ai/models/runway-gen-4-5\n\n🎬 Wan 2.5\n5s: starting at 30 credits ($0.15)\n10s: tiered pricing available\n40% cheaper than fal.ai\n👉 https://poyo.ai/models/wan-2-5\n\n🔻 Price Updates\n\n📌 Nano Banana Pro (Price Drop)\nNow: 8 credits ($0.04) (previously 10 credits)\n1K / 2K / 4K: same pricing\n👉 https://poyo.ai/models/nano-banana-2-api\n\n📌 Veo 3.1 (Price Drop)\nNow: 20 credits ($0.10) (previously 24 credits)\n👉 https://poyo.ai/models/veo-3-1\n\n📩 Support\n\nIf you encounter any issues, feel free to contact us via Discord, Telegram, or Email.\n\n⚠️ For faster support, please include:\n• task_id\n• error_message\n\n❤️ Thank you for your continued support of Poyo.ai. If you have any questions, please contact us."
+    },
+    {
+      "id": "11",
+      "date": "2026-02-27",
+      "category": "image",
+      "title": "Nano Banana 2 API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nNano Banana 2 API is now available on Poyo.ai!\n\n🖼️ Nano Banana 2\n\nNano Banana 2 (gemini-3.1-flash-image-preview) is Google's next-gen image generation model powered by Gemini 3.1 Flash. It delivers a major leap in quality, reasoning, and editing capabilities over the original Nano Banana.\n\n✨ Key Features:\n• Native 2K and 4K resolution output\n• Chain-of-thought reasoning — understands physical relationships and spatial logic\n• Precise multi-language text rendering\n• Support for up to 14 reference images per request\n• Advanced image editing with nano-banana-2-new-edit model\n• Self-correction workflow for higher consistency\n\n📌 Available Models:\n• nano-banana-2-new (Text to Image)\n• nano-banana-2-new-edit (Image Edit)\n\n💰 Pricing:\n• 5 credits per generation ($0.025)\n\n👉 https://poyo.ai/models/nano-banana-2\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "10",
+      "date": "2026-02-15",
+      "category": "video",
+      "title": "Kling 3.0 API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nKling 3.0 API is now available on Poyo.ai!\n\n🎬 Kling 3.0\n\nKling 3.0 is Kuaishou's most advanced video generation model — a major leap from Kling 2.6. It features up to 1080p output, multi-shot storyboarding (AI Director) with up to 6 shots per clip, synchronized multilingual audio, and character consistency for up to 3 people across scenes.\n\n✨ Key Features:\n• Up to 1080p output (Pro) with enhanced photorealism\n• Multi-shot storyboarding — define up to 6 shots in a single 15s clip\n• Native audio in 6+ languages (EN, CN, JP, KR, ES) with accent control\n• Character consistency for up to 3 people across scene changes\n• Text-to-video, image-to-video, and video-to-video input modes\n• Flexible 3–15 second duration with per-second billing\n\n📌 Available Models:\n• kling-3.0/standard (720p)\n• kling-3.0/pro (1080p)\n\n💰 Pricing (10–20% cheaper than fal.ai):\n\n📌 kling-3.0/standard (720p):\n• Without audio: 27 credits/s\n• With audio: 39 credits/s\n\n📌 kling-3.0/pro (1080p):\n• Without audio: 39 credits/s\n• With audio: 49 credits/s\n\n👉 https://poyo.ai/models/kling-3-api\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "9",
+      "date": "2026-01-20",
+      "category": "image",
+      "title": "Grok Imagine Image Now Supports Image Editing!",
+      "content": "Hey everyone 👋\n\nExciting update for Grok Imagine on Poyo.ai!\n\n🖼️ Grok Imagine Image Update\n\nThe grok-imagine-image model now supports image editing and variation! Upload a reference image along with your prompt to edit or create variations of existing images.\n\n✨ What's New:\n• Image-to-image editing: Upload a reference image to guide the generation\n• Create variations of existing images with text prompts\n• Same great quality with Aurora engine technology\n• Multiple size options: 2:3, 3:2, 1:1\n\n💰 Pricing:\n• grok-imagine-image: 6 credits per image (unchanged)\n• grok-imagine (video): 30 credits per video (unchanged)\n\n👉 https://poyo.ai/models/grok-imagine\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "8",
+      "date": "2026-01-19",
+      "category": "video",
+      "title": "Veo 3.1 Now Supports veo3.1-quality Model & 4K Video!",
+      "content": "Hey everyone 👋\n\nExciting updates for Veo 3.1 on Poyo.ai!\n\n🎬 Veo 3.1 Updates\n\nWe've expanded Veo 3.1 with a new quality model and 4K video support! Google DeepMind's powerful video model now offers more options for your creative projects.\n\n✨ What's New:\n• New veo3.1-quality model for premium video generation\n• 4K resolution support for ultra-high-definition output\n• Frame mode (first/last frame control) and Reference mode (up to 3 reference images)\n• Native audio generation with cinematic storytelling\n\n💰 Pricing (PoYo vs fal.ai):\n\n📌 veo3.1-fast:\n• 720p / 1080p: $0.12 vs $0.75 (Save 84%)\n• 4K: $0.30 vs $2.80 (Save 89%)\n\n📌 veo3.1-quality:\n• 720p / 1080p: $1.00 vs $3.20 (Save 69%)\n• 4K: $2.50 vs $4.80 (Save 48%)\n\n👉 https://poyo.ai/models/veo-3-1\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "7",
+      "date": "2026-01-07",
+      "category": "video",
+      "title": "Kling 2.6 Motion Control API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nKling 2.6 Motion Control API is now available on Poyo.ai!\n\n🎭 Kling 2.6 Motion Control\n\nKling 2.6 Motion Control is Kuaishou's advanced motion transfer model that enables you to transfer motion from reference videos to character images while maintaining character identity and adapting environments.\n\n✨ Key Features:\n• Transfer dance moves, gestures, and actions from reference videos\n• Maintain character identity throughout the generation\n• Adapt environments to match the motion context\n• Support for 720p and 1080p output resolution\n• Reference video duration: 3-30 seconds\n\n💰 Pricing:\n• 720p: 8 credits per second\n• 1080p: 12 credits per second\n\n👉 https://poyo.ai/models/kling-2-6-motion-control\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "6",
+      "date": "2025-12-30",
+      "category": "general",
+      "title": "Happy Holidays! Auto Recharge & New Login Options",
+      "content": "Hey everyone 👋\n\nWe have some exciting updates to share:\n\n1. Auto Recharge Support: Never run out of credits again! Automatically purchase credits when your balance falls below a threshold you set.\n\n👉 https://poyo.ai/dashboard/billing\n\n2. New Login Methods: We've expanded our login options to include Email and GitHub, giving you more flexibility and security.\n\nThank you for being part of our journey this year!"
+    },
+    {
+      "id": "5",
+      "date": "2025-12-25",
+      "category": "video",
+      "title": "Seedance 1.5 Pro API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nSeedance 1.5 Pro API is now available on Poyo.ai!\n\n🎬 Seedance 1.5 Pro\n\nSeedance 1.5 Pro is ByteDance's latest video generation model with native audio-visual joint generation. It features multilingual and dialect lip-sync, cinematic camera control (long takes, dolly zooms), and enhanced narrative coherence. The model supports both Text-to-Video and Image-to-Video workflows with 10x faster inference.\n\n✨ Key Features:\n• Native audio-video joint generation\n• Multilingual and dialect lip-sync\n• Cinematic camera control and color grading\n• 480p/720p resolution with 4s/8s/12s duration options\n• Optional synchronized audio generation\n\n💰 Pricing (24-30% cheaper than Replicate or fal.ai):\n• 480p: 4s 9cr / 8s 18cr / 12s 21cr (audio doubles the cost)\n• 720p: 4s 16cr / 8s 32cr / 12s 42cr (audio doubles the cost)\n\n👉 https://poyo.ai/models/seedance-1-5-pro\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "4",
+      "date": "2025-12-23",
+      "category": "video",
+      "title": "Wan 2.6 API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nWan 2.6 API is now available on Poyo.ai!\n\n🎬 Wan 2.6\n\nWan 2.6 is Alibaba's latest video generation model family. It supports text-to-video, image-to-video, and video-to-video workflows with multi-shot composition and 1080p output.\n\n👉 https://poyo.ai/models/wan-2-6\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "3",
+      "date": "2025-12-17",
+      "category": "general",
+      "title": "GPT Image 1.5 API Is Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nGPT Image 1.5 API is now available on Poyo.ai!\n\n🖼️ GPT Image 1.5\n\nGPT Image 1.5 is OpenAI's fastest image generation model, delivering high-quality images with exceptional speed. Perfect for rapid prototyping and production workflows.\n\n👉 https://poyo.ai/models/gpt-image-1-5-api\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "2",
+      "date": "2025-12-10",
+      "category": "general",
+      "title": "Grok Imagine, Hailuo 02, and Seedance 1.0 Pro Are Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nThree powerful new models - Grok Imagine, Hailuo 02, and Seedance 1.0 Pro - are now available on Poyo.ai!\n\n🚀 Grok Imagine\n\nGrok Imagine is xAI's Aurora-powered visual AI for image generation and video creation. It offers three creative modes - Fun, Normal, and Spicy - allowing you to explore different styles and tones for your visual content.\n\n👉 https://poyo.ai/models/grok-imagine\n\n🎬 Hailuo 02\n\nHailuo 02 is MiniMax's #2 globally-ranked video model featuring NCR architecture, ultra-realistic physics simulation, and stunning 1080p cinematic output. Perfect for creating professional-grade video content with exceptional quality.\n\n👉 https://poyo.ai/models/hailuo-02\n\n🎥 Seedance 1.0 Pro\n\nSeedance 1.0 Pro is ByteDance's #1 ranked video model with multi-shot storytelling capabilities, cinema-grade motion, and bilingual text-to-video generation. Ideal for creating compelling narrative video content.\n\n👉 https://poyo.ai/models/seedance-1-pro\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    },
+    {
+      "id": "1",
+      "date": "2025-12-05",
+      "category": "general",
+      "title": "Seedream 4.5, Kling 2.6, and Z-Image Are Now Live on Poyo.ai!",
+      "content": "Hey everyone 👋\n\nThree new models - Seedream 4.5, Kling 2.6, and Z-Image - are now available on Poyo.ai!\n\n💎 Seedream 4.5\n\nSeedream 4.5 is Bytedance's refined image model, designed for 4K generation, precise editing, and consistent multi-image output. Whether you need high-quality images or detailed edits, this model delivers impressive results with precision and speed.\n\n👉 https://poyo.ai/models/seedream-4-5-api\n\n🎬 Kling 2.6\n\nKling 2.6 is an advanced audio-visual generation model by Kling AI. It creates synchronized video, speech, ambient sound, and sound effects from either text or image inputs. Perfect for bringing your ideas to life with immersive media.\n\n👉 https://poyo.ai/models/kling-2-6\n\n⚡ Z-Image\n\nZ-Image is Tongyi-MAI's efficient and powerful image generation model. Known for its photorealistic output, fast Turbo performance, and highly accurate bilingual text rendering, Z-Image is perfect for projects requiring top-quality visuals.\n\n👉 https://poyo.ai/models/z-image\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
+    }
+  ]
+}

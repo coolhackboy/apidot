@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "title": "GPT Image 2 API | APIDot",
+    "description": "通过 APIDot 即时接入 GPT Image 2，用于高写实图像生成、清晰文本渲染、UI 截图风格画面与单图编辑，固定 15 积分/次。"
+  },
+  "hero": {
+    "title": "GPT Image 2 API Playground",
+    "description": "在 APIDot 即时体验 `gpt-image-2` 与 `gpt-image-2-edit`。既可以生成高写实图片、UI 风格截图与营销视觉，也可以在同一套异步工作流下完成单图编辑并直接接入生产。"
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "概览",
+      "title": "在 APIDot 上使用 GPT Image 2 做高保真生成与编辑",
+      "paragraphs": [
+        "GPT Image 2 是 OpenAI 新一代原生图像模型，重点提升了指令遵循、图中文字清晰度，以及整体画面的真实感。在 APIDot 上，你可以通过同一个异步图片端点调用 `gpt-image-2` 做文生图，也可以调用 `gpt-image-2-edit` 做单图编辑。",
+        "这个模型家族尤其适合需要清晰文字和稳定版式的场景，例如 UI 截图、Dashboard mockup、产品营销图、社媒素材，以及保留原图结构的局部编辑。结合知识库内容和 Poyo 当前页面的卖点，GPT Image 2 的核心优势在于更自然的颜色表现、更少的 AI 痕迹，以及更强的截图与界面保真度。",
+        "当前页面故意把参数面收敛到最小集：prompt、size、图片数量，以及 edit 模式下的一张源图。这与 Poyo 当前 GPT Image 2 playground 保持一致，也更利于后续生产集成。"
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "能力",
+      "title": "GPT Image 2 最值得用的几个方向",
+      "items": [
+        {
+          "title": "更接近可用级别的文本渲染",
+          "description": "更适合生成带有标题、按钮、标签、菜单、说明文字的图片，相比上一代更容易得到可读、完整、布局合理的图中文字。"
+        },
+        {
+          "title": "更真实的光影、颜色与材质",
+          "description": "在人物肤色、产品质感、环境光线和细节层次上更自然，也更少出现偏黄偏暖和过度风格化的问题，适合商品图、广告图和写实视觉。"
+        },
+        {
+          "title": "更强的 UI 与截图风格生成",
+          "description": "适合生成应用界面、数据面板、官网截图、产品演示图等需要版式感和清晰文字的画面，对于设计验证和视觉原型很有价值。"
+        },
+        {
+          "title": "单图编辑与局部变换",
+          "description": "使用 `gpt-image-2-edit` 可以在一张上传图片基础上做更智能的局部修改，比如替换背景、调整产品摆放语境、更新文案区域或优化细节，而不是整张重画。"
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "适用场景",
+      "title": "谁适合接入 GPT Image 2 API",
+      "description": "如果你的工作流同时需要清晰文字、较强真实感，以及统一的异步图片接口，GPT Image 2 会比通用图像模型更合适。",
+      "items": [
+        "产品设计与 UI/UX 原型图生成",
+        "带品牌文案的营销广告创意图",
+        "电商品牌商品主图与生活方式场景图",
+        "社交媒体图文素材与教育类配图",
+        "信息图、示意图和出版类内容",
+        "单张图片精修、替换与局部编辑"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "快速开始",
+      "title": "三步接入 GPT Image 2",
+      "steps": [
+        {
+          "eyebrow": "Step 1",
+          "title": "创建 API Key",
+          "description": "先在 APIDot 后台创建 API Key，并将其保存在服务端。后续图片、视频、音频和聊天模型都可以共用这套认证方式。",
+          "actionText": "获取 API Key",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "Step 2",
+          "title": "充值积分",
+          "description": "`gpt-image-2` 与 `gpt-image-2-edit` 都是固定 15 积分/次生成，没有分档价格，成本估算更直接。",
+          "actionText": "打开 Billing",
+          "actionHref": "/dashboard/billing"
+        },
+        {
+          "eyebrow": "Step 3",
+          "title": "提交异步图片任务",
+          "description": "把 prompt、size、数量，以及 edit 模式下的源图提交到异步图片端点，然后通过轮询或 webhook 获取最终结果。"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "GPT Image 2 API 常见问题",
+      "items": [
+        {
+          "question": "`gpt-image-2` 和 `gpt-image-2-edit` 有什么区别？",
+          "answer": "`gpt-image-2` 用于根据 prompt 直接生成新图片；`gpt-image-2-edit` 用于单图编辑，需要上传一张源图并描述你想修改的内容。"
+        },
+        {
+          "question": "GPT Image 2 在 APIDot 上怎么收费？",
+          "answer": "当前页面固定为 15 积分/次生成，两个变体同价，按 APIDot 的积分换算约为 $0.075/次。"
+        },
+        {
+          "question": "这个页面支持哪些尺寸？",
+          "answer": "当前 playground 仅提供 `1024x1024`、`1536x1024` 和 `1024x1536` 三个尺寸，优先与 Poyo 当前 GPT Image 2 页面保持一致，而不是提前暴露更宽泛的推测性尺寸。"
+        },
+        {
+          "question": "GPT Image 2 支持图片编辑吗？",
+          "answer": "支持。使用 `gpt-image-2-edit` 并上传一张源图，就可以在保留原始构图的前提下完成更局部、更上下文感知的修改。"
+        },
+        {
+          "question": "什么时候扣积分？",
+          "answer": "只有成功完成的生成任务才会扣积分。失败任务通常不会消耗积分，你也可以通过轮询结果或 webhook 回调确认最终状态。"
+        },
+        {
+          "question": "GPT Image 2 现在算完全稳定了吗？",
+          "answer": "从公开知识和行业资料来看，这个模型家族仍常被描述为预发布或预览阶段，因此后续能力边界和支持尺寸仍可能变化。当前页面按照 APIDot 与 Poyo 风格的实际可用参数面来提供接入。"
+        },
+        {
+          "question": "如何在生产环境里接入 GPT Image 2？",
+          "answer": "沿用 APIDot 的异步图片工作流即可：先提交生成请求，保存返回的 task id，再轮询 `/api/generate/status/{task_id}` 或接收 webhook，最后读取任务完成后的图片 URL。"
+        }
+      ]
+    }
+  }
+}

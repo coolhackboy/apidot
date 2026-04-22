@@ -1,0 +1,1709 @@
+{
+  "Global": {
+    "Header": {
+      "brand": {
+        "title": "PoYo",
+        "logo": {
+          "src": "/logo.webp",
+          "alt": "PoYo"
+        },
+        "url": "/"
+      },
+      "nav": {
+        "items": [
+          {
+            "title": "Market",
+            "url": "/models",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "Experience liftoff"
+          },
+          {
+            "title": "Pricing",
+            "url": "/pricing",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "Experience liftoff"
+          },
+          {
+            "title": "AI Image API",
+            "url": "/ai-image-api",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "Generate images with AI",
+            "children": [
+              {
+                "title": "Nano Banana 2 API",
+                "url": "/models/nano-banana-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "gemini-3.1-flash-image-preview"
+              },
+              {
+                "title": "Seedream 5.0 Lite API",
+                "url": "/models/seedream-5-0-lite-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "ByteDance's Web-Search-Powered Image Generator"
+              },
+              {
+                "title": "GPT Image 1.5 API",
+                "url": "/models/gpt-image-1-5-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "GPT Image 1.5 - OpenAI's Fastest Image Generator"
+              },
+              {
+                "title": "Grok Imagine API",
+                "url": "/models/grok-imagine",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "xAI Aurora-powered Visual AI Generator"
+              },
+              {
+                "title": "Nano Banana Pro API",
+                "url": "/models/nano-banana-2-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Google's advanced Gemini 3 Pro image model"
+              },
+              {
+                "title": "Seedream 4.5 API",
+                "url": "/models/seedream-4-5-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "ByteDance's unified 4K image generation model"
+              },
+              {
+                "title": "FLUX.2 API",
+                "url": "/models/flux-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Black Forest Labs' production-grade image model"
+              },
+              {
+                "title": "4o Image API",
+                "url": "/models/gpt-4o-image-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "OpenAI's native multimodal image generator"
+              },
+              {
+                "title": "GPT Image 2 API",
+                "url": "/models/gpt-image-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "OpenAI's next-gen image model for photorealism, text rendering, and image editing"
+              },
+              {
+                "title": "Z-Image API",
+                "url": "/models/z-image",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Alibaba's efficient 6B-parameter image model"
+              },
+              {
+                "title": "Nano Banana API",
+                "url": "/models/nano-banana-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Google's Gemini 2.5 Flash image model"
+              }
+            ]
+          },
+          {
+            "title": "AI Video API",
+            "url": "/ai-video-api",
+            "target": "_self",
+            "icon": "Video",
+            "description": "Generate videos with AI",
+            "children": [
+              {
+                "title": "Kling 3.0 API",
+                "url": "/models/kling-3-api",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "Kuaishou's most advanced video model with native 4K/60fps"
+              },
+              {
+                "title": "Seedance 1.5 Pro API",
+                "url": "/models/seedance-1-5-pro",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "ByteDance's latest video model with synchronized audio"
+              },
+              {
+                "title": "Wan 2.6 API",
+                "url": "/models/wan-2-6",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "Alibaba's Wan 2.6 video generation family"
+              },
+              {
+                "title": "Hailuo 02 API",
+                "url": "/models/hailuo-02",
+                "target": "_self",
+                "icon": "Video",
+                "description": "MiniMax's #2 globally-ranked video model"
+              },
+              {
+                "title": "Sora-2 API",
+                "url": "/models/sora-2",
+                "target": "_self",
+                "icon": "Video",
+                "description": "OpenAI's advanced video model with realistic physics"
+              },
+              {
+                "title": "Sora-2-Pro API",
+                "url": "/models/sora-2-pro",
+                "target": "_self",
+                "icon": "Video",
+                "description": "Premium Sora 2 with professional-grade 1024p video"
+              },
+              {
+                "title": "Seedance 1.0 Pro API",
+                "url": "/models/seedance-1-pro",
+                "target": "_self",
+                "icon": "Video",
+                "description": "ByteDance's #1 ranked video model"
+              },
+              {
+                "title": "Kling 2.6 API",
+                "url": "/models/kling-2-6",
+                "target": "_self",
+                "icon": "Video",
+                "description": "Kuaishou's video model with synchronized audio"
+              },
+              {
+                "title": "Veo3.1-fast API",
+                "url": "/models/veo-3-1",
+                "target": "_self",
+                "icon": "Video",
+                "description": "Google DeepMind's 1080p video model"
+              },
+              {
+                "title": "Wan Animate API",
+                "url": "/models/wan-animate",
+                "target": "_self",
+                "icon": "Video",
+                "description": "Alibaba's character animation model"
+              }
+            ]
+          },
+          {
+            "title": "AI Music API",
+            "url": "/ai-music-api",
+            "target": "_self",
+            "icon": "Music"
+          },
+          {
+            "title": "Updates",
+            "url": "/changelog",
+            "target": "_self",
+            "icon": "Bell"
+          }
+        ]
+      },
+      "buttons": [
+        {
+          "title": "Sign In",
+          "url": "/",
+          "icon": "HiOutlineSparkles",
+          "show_sidebar": false
+        }
+      ],
+      "show_sign": true,
+      "show_locale": true,
+      "language": "Language"
+    },
+    "Footer": {
+      "brand": {
+        "title": "PoYo API",
+        "description": "Built for developers",
+        "logo": {
+          "src": "/logo.webp",
+          "alt": "poyo.ai"
+        },
+        "url": "/"
+      },
+      "copyright": "© 2025 PoYo API. All rights reserved.",
+      "nav": {
+        "items": [
+          {
+            "title": "Image API",
+            "children": [
+              {
+                "title": "Nano Banana Pro",
+                "url": "/models/nano-banana-2-api",
+                "target": "_self"
+              },
+              {
+                "title": "Nano Banana",
+                "url": "/models/nano-banana-api",
+                "target": "_self"
+              },
+              {
+                "title": "Nano Banana 2",
+                "url": "/models/nano-banana-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "GPT Image 1.5",
+                "url": "/models/gpt-image-1-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "GPT-4o Image",
+                "url": "/models/gpt-4o-image-api",
+                "target": "_self"
+              },
+              {
+                "title": "GPT Image 2",
+                "url": "/models/gpt-image-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Kling O3 Image",
+                "url": "/models/kling-o3-image",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Kling O1 Image",
+                "url": "/models/kling-o1-image",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedream 4.5",
+                "url": "/models/seedream-4-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "Seedream 5.0 Lite",
+                "url": "/models/seedream-5-0-lite-api",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedream 4",
+                "url": "/models/seedream-4",
+                "target": "_self"
+              },
+              {
+                "title": "Z-Image",
+                "url": "/models/z-image",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.7 Image",
+                "url": "/models/wan-2-7-image",
+                "target": "_self"
+              },
+              {
+                "title": "FLUX.2",
+                "url": "/models/flux-2",
+                "target": "_self"
+              },
+              {
+                "title": "Flux Kontext",
+                "url": "/models/flux-kontext",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "Video API",
+            "children": [
+              {
+                "title": "Seedance 2",
+                "url": "/models/seedance-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Sora 2",
+                "url": "/models/sora-2",
+                "target": "_self"
+              },
+              {
+                "title": "Sora 2 Pro",
+                "url": "/models/sora-2-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Sora 2 Official",
+                "url": "/models/sora-2-official",
+                "target": "_self"
+              },
+              {
+                "title": "Veo 3.1",
+                "url": "/models/veo-3-1",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.1",
+                "url": "/models/kling-2-1",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.6",
+                "url": "/models/kling-2-6",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.5 Turbo Pro",
+                "url": "/models/kling-2-5-turbo-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 3.0",
+                "url": "/models/kling-3-api",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.6 Motion Control",
+                "url": "/models/kling-2-6-motion-control",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 3.0 Motion Control",
+                "url": "/models/kling-3-0-motion-control",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedance 1.0 Pro",
+                "url": "/models/seedance-1-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Seedance 1.5 Pro",
+                "url": "/models/seedance-1-5-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.2 Fast",
+                "url": "/models/wan-2-2-fast",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.5",
+                "url": "/models/wan-2-5",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.6",
+                "url": "/models/wan-2-6",
+                "target": "_self"
+              },
+              {
+                "title": "Wan Animate",
+                "url": "/models/wan-animate",
+                "target": "_self"
+              },
+              {
+                "title": "Hailuo 02",
+                "url": "/models/hailuo-02",
+                "target": "_self"
+              },
+              {
+                "title": "Hailuo 2.3",
+                "url": "/models/hailuo-2-3",
+                "target": "_self"
+              },
+              {
+                "title": "Grok Imagine",
+                "url": "/models/grok-imagine",
+                "target": "_self"
+              },
+              {
+                "title": "Runway Gen-4.5",
+                "url": "/models/runway-gen-4-5",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "Chat API",
+            "children": [
+              {
+                "title": "Gemini 3 Series",
+                "url": "/models/gemini-3-api",
+                "target": "_self"
+              },
+              {
+                "title": "Claude 4.5 Series",
+                "url": "/models/claude-4-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "Claude Opus 4.7",
+                "url": "/models/claude-opus-4-7",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "Music API",
+            "children": [
+              {
+                "title": "AI Music",
+                "url": "/models/generate-music",
+                "target": "_self"
+              },
+              {
+                "title": "Extend Music",
+                "url": "/models/extend-music",
+                "target": "_self"
+              },
+              {
+                "title": "Upload and Cover Audio",
+                "url": "/models/upload-and-cover-audio",
+                "target": "_self"
+              },
+              {
+                "title": "Upload and Extend Audio",
+                "url": "/models/upload-and-extend-audio",
+                "target": "_self"
+              },
+              {
+                "title": "Add Instrumental",
+                "url": "/models/add-instrumental",
+                "target": "_self"
+              },
+              {
+                "title": "Add Vocals",
+                "url": "/models/add-vocals",
+                "target": "_self"
+              },
+              {
+                "title": "Get Timestamped Lyrics",
+                "url": "/models/get-timestamped-lyrics",
+                "target": "_self"
+              },
+              {
+                "title": "Boost Music Style",
+                "url": "/models/boost-music-style",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Music Cover",
+                "url": "/models/generate-music-cover",
+                "target": "_self"
+              },
+              {
+                "title": "Replace Section",
+                "url": "/models/replace-section",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Persona",
+                "url": "/models/generate-persona",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Lyrics",
+                "url": "/models/generate-lyrics",
+                "target": "_self"
+              },
+              {
+                "title": "Convert to WAV",
+                "url": "/models/convert-to-wav",
+                "target": "_self"
+              },
+              {
+                "title": "Vocal Remover",
+                "url": "/models/vocal-remover-api",
+                "target": "_self"
+              },
+              {
+                "title": "AI Music Video",
+                "url": "/models/create-music-video",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "children": [
+              {
+                "title": "Alternative Hub",
+                "url": "/alternative",
+                "target": "_self"
+              },
+              {
+                "title": "Comparison Hub",
+                "url": "/comparison",
+                "target": "_self"
+              },
+              {
+                "title": "Blog",
+                "url": "/hub",
+                "target": "_self"
+              },
+              {
+                "title": "Sitemap",
+                "url": "/sitemap.xml",
+                "target": "_self"
+              },
+              {
+                "title": "GPT Image 2",
+                "url": "/models/gpt-image-2",
+                "target": "_self"
+              },
+              {
+                "title": "GPT-6",
+                "url": "/features/gpt-6",
+                "target": "_self"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Common": {
+      "theme": "Theme",
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "system": "System Auto",
+      "buttons": {
+        "generate": "Generate",
+        "generating": "Generating...",
+        "download": "Download",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "upgrade": "Upgrade",
+        "logout": "Logout"
+      },
+      "modals": {
+        "login": {
+          "title": "Login",
+          "message": "Please login to continue",
+          "deviceNotSupported": "Device initialization failed. Please refresh the page and try again.",
+          "affiliateCode": {
+            "label": "Referral Code",
+            "placeholder": "Enter referral code (optional)",
+            "checking": "Checking referral code...",
+            "valid": "Referral code is valid",
+            "errors": {
+              "affiliate_code_invalid": "Referral code not found. Please check and try again.",
+              "affiliate_code_inactive": "This referral code has expired. Please use another code.",
+              "affiliate_code_vendor_mismatch": "This referral code is not valid for this site.",
+              "affiliate_code_not_allowed": "This referral code is temporarily unavailable. Please use another code.",
+              "vendor_not_found": "Site information is unavailable. Please refresh and try again."
+            }
+          },
+          "buttons": {
+            "cancel": "Cancel",
+            "login": "Login"
+          }
+        },
+        "upgrade": {
+          "title": "Upgrade Required",
+          "message": "Please upgrade to continue",
+          "buttons": {
+            "cancel": "Cancel",
+            "upgrade": "Upgrade"
+          }
+        }
+      }
+    },
+    "MarketingHeader": {
+      "nav": {
+        "home": "Home",
+        "models": "Models",
+        "docs": "Docs",
+        "pricing": "Pricing",
+        "blog": "Blog"
+      },
+      "actions": {
+        "signIn": "Sign in",
+        "signOut": "Sign out",
+        "dashboard": "Dashboard"
+      }
+    },
+    "MarketingFooter": {
+      "description": "One API for production-ready image, video, chat, and music models. Test in the playground, then ship with usage-based pricing.",
+      "status": "All systems operational",
+      "copyright": "© {year} {brand} Inc. All rights reserved.",
+      "comingSoon": "Coming soon",
+      "columns": {
+        "imageApi": {
+          "title": "Image API",
+          "gptImage2": "GPT Image 2"
+        },
+        "videoApi": {
+          "title": "Video API",
+          "seedance2": "Seedance 2",
+          "veo31": "Veo 3.1"
+        },
+        "chatApi": {
+          "title": "Chat API"
+        },
+        "musicApi": {
+          "title": "Music API"
+        },
+        "resources": {
+          "title": "Resources",
+          "models": "Models",
+          "docs": "Docs",
+          "pricing": "Pricing",
+          "blog": "Blog",
+          "changelog": "Changelog",
+          "comparisonHub": "Comparison Hub",
+          "alternativeHub": "Alternative Hub",
+          "sitemap": "Sitemap"
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "apiKey": "API Key",
+    "history": "History",
+    "apiUsage": "API Usage",
+    "billing": "Billing",
+    "pricing": "Pricing",
+    "contactUs": "Support",
+    "email": "Email Management",
+    "userManagement": "User Management",
+    "affiliate": "Affiliate Program",
+    "affiliateManagement": "Affiliate Admin"
+  },
+  "Dashboard": {
+    "Overview": {
+      "title": "Dashboard Overview",
+      "welcome_back": "Welcome back, {name}!",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to access your dashboard.",
+      "go_home": "Go to Home",
+      "error_fetch_user_info": "Failed to fetch user information",
+      "available_credits": "Available Credits",
+      "credits_description": "Credits you can use for AI generation",
+      "buy_credits": "Buy Credits",
+      "account_type": "Account Type",
+      "free": "Free",
+      "free_plan": "Free Plan",
+      "premium_plan": "Premium",
+      "plan_description": "Your current subscription plan",
+      "upgrade_plan": "Upgrade Plan",
+      "account_status": "Account Status",
+      "active": "Active",
+      "status_description": "Your account is in good standing",
+      "view_account": "View Account",
+      "profile_title": "Your Profile",
+      "profile_description": "View your account information",
+      "quick_actions": "Quick Actions",
+      "quick_actions_description": "Common tasks and operations",
+      "view_history": "View History",
+      "view_history_desc": "See your generation history",
+      "manage_billing": "Manage Billing",
+      "manage_billing_desc": "View plans and purchase credits",
+      "manage_api_keys": "Manage API Keys",
+      "manage_api_keys_desc": "Create and manage API keys"
+    },
+    "ApiKey": {
+      "title": "API Key Management",
+      "description": "Create and manage your API keys for programmatic access",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to manage API keys.",
+      "go_home": "Go to Home",
+      "error_fetch": "Failed to fetch API keys",
+      "error_create": "Failed to create API key",
+      "error_update": "Failed to update API key",
+      "error_delete": "Failed to delete API key",
+      "error_name_required": "Name is required",
+      "success_create": "API key created successfully",
+      "success_update": "API key updated successfully",
+      "success_delete": "API key deleted successfully",
+      "success_copy": "API key copied to clipboard",
+      "create_key": "Create API Key",
+      "api_keys": "Your API Keys",
+      "api_keys_description": "Manage your API keys for accessing our services",
+      "no_keys": "No API Keys",
+      "no_keys_description": "You haven't created any API keys yet. Create your first key to get started.",
+      "create_first_key": "Create First API Key",
+      "table_name": "Name",
+      "table_api_key": "API Key",
+      "table_rate_limit": "Rate Limit",
+      "table_last_used": "Last Used",
+      "table_created": "Created",
+      "table_ip_whitelist": "IP Whitelist",
+      "table_security_limits": "Security Limits",
+      "table_actions": "Actions",
+      "never_used": "Never used",
+      "dialog_create_title": "Create New API Key",
+      "dialog_create_description": "Enter a name for your new API key",
+      "dialog_edit_title": "Edit API Key",
+      "dialog_edit_description": "Update the name of your API key",
+      "dialog_delete_title": "Delete API Key",
+      "dialog_delete_description": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+      "label_name": "Name",
+      "placeholder_name": "My API Key",
+      "label_rate_limit": "Rate Limit (per hour)",
+      "rate_limit_hint": "Maximum requests per hour for this API key",
+      "button_cancel": "Cancel",
+      "button_create": "Create",
+      "button_creating": "Creating...",
+      "button_update": "Update",
+      "button_updating": "Updating...",
+      "button_delete": "Delete",
+      "button_deleting": "Deleting...",
+      "button_save": "Save",
+      "button_saving": "Saving...",
+      "button_save_limits": "Save Limits",
+      "button_saving_limits": "Saving...",
+      "add_ip": "Add IP",
+      "security_limits": "Security Limits",
+      "view": "View",
+      "no_ip_whitelist": "No IP restrictions",
+      "label_ip_whitelist": "IP Whitelist",
+      "hourly_credit_limit": "Hourly Credit Limit",
+      "daily_credit_limit": "Daily Credit Limit",
+      "hourly_limit_hint": "Set 0 for no limit",
+      "daily_limit_hint": "Set 0 for no limit",
+      "info_icon": "ⓘ",
+      "create_ip_empty_info": "No IP restrictions - allows access from all IP addresses",
+      "add_ip_address": "Add IP Address",
+      "ip_placeholder": "Enter IP address (e.g., 192.168.1.100)",
+      "dialog_ip_whitelist_title": "Manage IP Whitelist",
+      "dialog_ip_whitelist_description": "Control which IP addresses can access this API key. Max 10 IPs allowed.",
+      "ip_whitelist_empty_warning": "No IP addresses added to whitelist. All IPs are currently allowed.",
+      "dialog_security_limits_title": "Security Limits",
+      "dialog_security_limits_description": "Set hourly and daily credit consumption limits for this API key",
+      "success_update_ip": "IP whitelist updated successfully",
+      "error_update_ip": "Failed to update IP whitelist",
+      "success_update_limits": "Security limits updated successfully",
+      "error_update_limits": "Failed to update security limits"
+    },
+    "History": {
+      "title": "Generation History",
+      "description": "View and manage all your AI-generated content",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to view your history.",
+      "go_home": "Go to Home",
+      "error_fetch": "Failed to fetch generation history",
+      "error_download": "Failed to download file",
+      "success_download": "Download started",
+      "no_history": "No Generation History",
+      "no_history_description": "You haven't generated any content yet. Start creating now!",
+      "start_generating": "Start Generating",
+      "filter_status": "Status",
+      "status_all": "All Status",
+      "status_completed": "Completed",
+      "status_processing": "Processing",
+      "status_failed": "Failed",
+      "status_not_started": "Not Started",
+      "credits": "credits",
+      "download": "Download",
+      "preview": "Preview",
+      "generation_history": "Your Generation History",
+      "view_all_generations": "View and download all your AI-generated content",
+      "table_model": "Model",
+      "table_task_id": "Task ID",
+      "table_status": "Status",
+      "table_input": "Input",
+      "table_output": "Output",
+      "table_credits": "Credits",
+      "table_duration": "Duration",
+      "table_created": "Created",
+      "table_third_party_status": "Third Party Status",
+      "search_placeholder": "Search by Task ID...",
+      "search_button": "Search",
+      "clear_search": "Clear",
+      "view_full_json": "Click to view full JSON",
+      "button_view_input": "Input",
+      "button_view_output": "Output",
+      "modal_input_title": "Input Data",
+      "modal_output_title": "Output Data",
+      "table_actions": "Actions",
+      "table_progress": "Progress",
+      "table_logs": "Logs",
+      "button_view_logs": "View Logs",
+      "modal_logs_title": "Task Logs",
+      "error_fetch_logs": "Failed to fetch logs",
+      "no_logs": "No logs found",
+      "log_type": "Log Type",
+      "log_data": "Log Data",
+      "created_time": "Created Time",
+      "copy_log": "Copy",
+      "callback_url": "Callback URL",
+      "callback_status": "Response Status",
+      "retry_callback": "Retry Callback",
+      "retry_callback_success": "Callback retry successful! Task ID: {taskId}",
+      "retry_callback_failed": "Callback retry failed",
+      "retry_callback_error": "Callback retry failed, please try again later",
+      "compact_mode": "Compact Mode",
+      "refresh_data": "Refresh Data",
+      "filter_model": "Model",
+      "model_all": "All Models",
+      "page_size_unit": "/ page",
+      "tab_generation": "Generation History",
+      "tab_chat": "Chat History",
+      "chat_history_title": "Your Chat History",
+      "chat_view_all": "View all your AI chat interactions",
+      "chat_no_history": "No Chat History",
+      "chat_no_history_description": "You haven't made any chat requests yet.",
+      "chat_error_fetch": "Failed to fetch chat history",
+      "chat_table_model": "Model",
+      "chat_table_input_tokens": "Input Tokens",
+      "chat_table_output_tokens": "Output Tokens",
+      "chat_table_total_tokens": "Total Tokens",
+      "chat_table_credits": "Credits",
+      "chat_table_credits_return": "Credits Return",
+      "chat_table_status": "Status",
+      "chat_table_error": "Error Message",
+      "chat_table_created": "Created Time",
+      "chat_table_duration": "Duration",
+      "chat_date_start": "Start Date",
+      "chat_date_end": "End Date",
+      "chat_date_apply": "Apply",
+      "chat_date_clear": "Clear",
+      "generation_time_start": "Start Time",
+      "generation_time_end": "End Time",
+      "generation_time_apply": "Apply",
+      "generation_time_clear": "Clear",
+      "generation_time_today": "Today",
+      "generation_time_invalid_range": "Start time cannot be later than end time.",
+      "generation_date_placeholder": "Select date",
+      "generation_time_any": "Any time",
+      "generation_time_optional": "Optional HH:mm:ss",
+      "generation_time_invalid_format": "Time must use HH:mm or HH:mm:ss.",
+      "generation_time_requires_date": "Please select a date before entering a time.",
+      "table_preview": "Preview",
+      "retention_notice_title": "Retention Policy",
+      "retention_media_files": "Generated media files: stored for 3 days, then automatically deleted.",
+      "retention_log_records": "Log records (text / metadata): stored for 2 months, then automatically deleted.",
+      "task_id_label": "Task ID"
+    },
+    "Billing": {
+      "title": "Billing",
+      "save": "OFF",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to view billing",
+      "current_credits": "Current Credits",
+      "credits_label": "Credits",
+      "pricing_plans": "Pricing Plans",
+      "pricing_plans_subtitle": "Select the perfect plan and enjoy more benefits",
+      "faq": "FAQ",
+      "faq_q1": "Can I use credits for all models?",
+      "faq_a1": "Yes, credits can be used for all AI models on this site, including image and video generation.",
+      "faq_q2": "Do credits expire?",
+      "faq_a2": "Your credits never expire and remain valid permanently.",
+      "faq_q3": "Can I get bulk purchase discounts?",
+      "faq_a3": "Large volume users can contact support for better pricing and exclusive services.",
+      "most_popular": "Most Popular",
+      "selected": "Selected",
+      "payment_method": "Payment Method",
+      "payment_method_stripe": "Credit Card",
+      "payment_method_alipay": "Alipay",
+      "payment_method_wxpay": "WeChat Pay",
+      "pay_with_stripe": "Pay ${amount} with Stripe",
+      "pay_now": "Pay Now",
+      "select_plan_to_continue": "Select a plan to continue",
+      "processing": "Processing...",
+      "secure_payment_note": "Secure payment powered by Stripe",
+      "scan_to_pay": "Scan to Pay",
+      "waiting_for_payment": "Waiting for payment...",
+      "payment_timeout": "Payment timeout, please try again",
+      "payment_method_paypal": "PayPal",
+      "payment_method_crypto": "Cryptocurrency",
+      "crypto_supported": "Supported",
+      "select_crypto": "Select cryptocurrency to pay",
+      "pay_address": "Payment Address",
+      "equivalent_to": "Equivalent to",
+      "copied": "Copied!",
+      "crypto_min_amount_error": "Cryptocurrency payment is not available for this plan. Please select a higher plan.",
+      "transaction_history_title": "Transaction History",
+      "transaction_history_description": "View all your purchase records",
+      "no_transactions": "No transaction records yet",
+      "table_order_no": "Order No",
+      "table_plan_name": "Plan Name",
+      "table_amount": "Amount",
+      "table_status": "Status",
+      "table_created_time": "Created Time",
+      "table_receipt": "Receipt",
+      "download_receipt": "Download",
+      "pagination_showing": "Showing {from} - {to} of {total} records",
+      "pagination_page": "Page {current} / {total}",
+      "pagination_previous": "Previous",
+      "pagination_next": "Next",
+      "CreditAlert": {
+        "title": "Credit Alert Settings",
+        "description": "Set up to 3 credit thresholds for email notifications",
+        "sub_description": "When credits fall below each threshold, you'll receive an email reminder",
+        "alert_label": "Alert #{number}",
+        "input_placeholder": "Enter credit amount (e.g.: 10000)",
+        "email_enabled": "Email notification enabled",
+        "add_alert": "Add Alert ({current}/{max})",
+        "save": "Save Settings",
+        "saving": "Saving...",
+        "cancel": "Cancel",
+        "save_success": "Credit alert settings saved",
+        "save_error": "Failed to save credit alert settings",
+        "delete_error": "Failed to delete alert",
+        "load_error": "Failed to load alert settings"
+      },
+      "AutoRecharge": {
+        "title": "Auto Recharge",
+        "description": "Automatically add credits when your balance falls below a threshold",
+        "enable": "Enable Auto Recharge",
+        "enable_description": "Automatically purchase credits when balance is low",
+        "threshold_label": "When credits fall below",
+        "threshold_unit": "credits",
+        "purchase_label": "Automatically purchase",
+        "select_plan": "Select a plan",
+        "payment_method": "Payment Method",
+        "saved_for_auto": "Saved for auto recharge",
+        "add_payment_method": "Add Payment Method",
+        "last_recharge": "Last recharge",
+        "save_settings": "Save Settings",
+        "saving": "Saving...",
+        "add_payment_first": "Add a payment method to enable auto recharge",
+        "dialog_title": "Add Payment Method",
+        "dialog_description": "Add a card to enable automatic recharge when your credits are low",
+        "save_card": "Save Card",
+        "cancel": "Cancel",
+        "remove_title": "Remove Payment Method",
+        "remove_description": "Are you sure you want to remove this payment method? Auto recharge will be disabled.",
+        "remove": "Remove",
+        "removing": "Removing...",
+        "cardholder_name": "Cardholder Name",
+        "cardholder_name_placeholder": "Name as shown on card",
+        "billing_country": "Billing Country",
+        "billing_country_placeholder": "Select country",
+        "name_required": "Cardholder name is required",
+        "country_required": "Billing country is required",
+        "billing_update_required": "Payment information update required",
+        "billing_update_description": "Please re-add your card with cardholder name and billing country to continue using auto recharge.",
+        "update_payment_method": "Update Payment Method"
+      }
+    },
+    "ApiUsage": {
+      "title": "API Usage",
+      "total_spend": "Total Spend",
+      "total_credits": "Total Credits",
+      "api_keys": "API Keys",
+      "api_keys_description": "Key usage statistics with actual consumption in the selected time period",
+      "top_models": "Top Models",
+      "top_models_description": "Top 10 models by credit usage in selected period",
+      "export": "Export",
+      "quick_select": "Quick Select",
+      "week": "Week to date",
+      "month": "Month to date",
+      "last7": "Last 7 days",
+      "last14": "Last 14 days",
+      "last30": "Last 30 days",
+      "custom": "Custom Range",
+      "max_range": "Max range: 30 days",
+      "select_custom_range": "Select a custom range to choose specific dates",
+      "created": "Created",
+      "last_used": "Last used",
+      "no_data": "No usage data available",
+      "loading": "Loading...",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to view API usage."
+    },
+    "Analytics": {
+      "title": "Conversion Analytics",
+      "description": "Track your conversion funnel from visits to registrations to payments",
+      "please_login": "Please log in",
+      "login_required": "You need to be logged in to view analytics. Admin access required.",
+      "export": "Export CSV",
+      "quick_select": "Quick Select",
+      "week": "Week to date",
+      "month": "Month to date",
+      "last7": "Last 7 days",
+      "last14": "Last 14 days",
+      "last30": "Last 30 days",
+      "custom": "Custom Range",
+      "max_range": "Max range: 90 days",
+      "no_data": "No data available",
+      "ga4_not_configured": "GA4 API is not configured. UV/PV data will not be available. Configure GA4_PROPERTY_ID and GOOGLE_APPLICATION_CREDENTIALS environment variables to enable.",
+      "ads_not_configured": "Google Ads API is not configured",
+      "uv": "UV",
+      "pv": "PV",
+      "unique_visitors": "Unique visitors",
+      "registrations": "Registrations",
+      "paid_users": "Paid Users",
+      "total_revenue": "Total Revenue",
+      "conversion": "conversion",
+      "funnel_title": "Conversion Funnel",
+      "funnel_description": "User journey from visit to registration to payment",
+      "trend_title": "Conversion Trends",
+      "trend_description": "Daily metrics over the selected time period",
+      "source_title": "Traffic Source Analysis",
+      "source_description": "Conversion metrics broken down by traffic source",
+      "source": "Source",
+      "registration_rate": "Reg. Rate",
+      "payment_rate": "Pay Rate",
+      "revenue": "Revenue",
+      "roi_title": "Campaign ROI Analysis",
+      "roi_description": "Return on investment for your advertising campaigns",
+      "campaign_name": "Campaign",
+      "spend": "Spend",
+      "roi": "ROI",
+      "roas": "ROAS",
+      "clicks": "Clicks",
+      "conversions": "Conversions",
+      "total_spend": "Total Spend",
+      "overall_roi": "Overall ROI",
+      "overall_roas": "Overall ROAS"
+    },
+    "Affiliate": {
+      "title": "Affiliate Program",
+      "description": "View your referral performance, commission progress, and payout readiness from one page.",
+      "banner": {
+        "title": "About current settlement coverage",
+        "description": "Due to payment channel limits, some order types may be temporarily excluded from affiliate settlement. We will announce expanded coverage as soon as it becomes available."
+      },
+      "profile": {
+        "loadErrorTitle": "Unable to load your affiliate status",
+        "loadErrorDescription": "Application-related actions are hidden until your affiliate profile is loaded successfully."
+      },
+      "dashboard": {
+        "loading": "Loading affiliate data...",
+        "empty": "Affiliate data will appear here once it is ready.",
+        "loadError": "Failed to load the affiliate dashboard.",
+        "loadErrorTitle": "Unable to load affiliate data",
+        "demoTitle": "Preview the dashboard before applying",
+        "demoDescription": "This is demo data to help you understand the affiliate page structure and metrics. After you apply and get approved, it will switch to your real data automatically; if you have no commission yet, it will show 0 accurately.",
+        "retry": "Retry"
+      },
+      "tabs": {
+        "dashboard": "Dashboard",
+        "invites": "Invites",
+        "orders": "Orders",
+        "withdrawals": "Withdrawals",
+        "faq": "FAQ"
+      },
+      "hero": {
+        "badge": "Affiliate Growth",
+        "title": "Join the affiliate program and turn traffic into recurring revenue",
+        "description": "Share PoYo with developers, creators, and AI teams. After approval, you can unlock your dedicated referral link and earn commission from qualified orders.",
+        "actions": {
+          "apply": "Apply Now",
+          "resubmit": "Reapply",
+          "reviewing": "Under Review",
+          "startSharing": "Copy Referral Link",
+          "approved": "Application Approved"
+        }
+      },
+      "metrics": {
+        "demoBadge": "Demo Data",
+        "items": {
+          "totalEarnings": {
+            "label": "Total Earnings",
+            "hint": "Lifetime commission generated by all attributed orders."
+          },
+          "pending": {
+            "label": "Pending Settlement",
+            "hint": "Commission still within the safety review period."
+          },
+          "available": {
+            "label": "Available",
+            "hint": "Commission balance that already meets withdrawal requirements."
+          },
+          "paid": {
+            "label": "Paid Out",
+            "hint": "Commission that has already been settled and paid."
+          }
+        }
+      },
+      "link": {
+        "title": "Invite Friends Link",
+        "lockedBadge": "Unlocks after approval",
+        "descriptionApproved": "Share this link with friends to earn rewards.",
+        "descriptionNotApplied": "You have not joined the affiliate program yet. After you apply and get approved, your dedicated referral link will appear here.",
+        "descriptionPending": "Your referral assets and dedicated share link will be generated automatically after approval.",
+        "descriptionSuspended": "Your affiliate access is currently suspended, so your referral link and share copy are temporarily unavailable.",
+        "descriptionBanned": "Your affiliate access is currently banned, so your referral link and share copy are unavailable.",
+        "applyValue": "Submit your application first. After approval, your dedicated referral link will appear here.",
+        "pendingValue": "Awaiting approval. Your dedicated referral link will appear here once your application is approved.",
+        "suspendedValue": "Affiliate access is suspended. Your dedicated referral link is currently unavailable.",
+        "bannedValue": "Affiliate access is banned. Your dedicated referral link is currently unavailable.",
+        "copy": "Copy Link",
+        "copyCode": "Copy Referral Code",
+        "copyShare": "Copy Share Copy",
+        "codeLabel": "Referral code",
+        "shareCopyTitle": "Share copy",
+        "helper": "The referral code can be used in direct messages, communities, or manual entry.",
+        "codeLockedValue": "Your dedicated referral code will appear after approval.",
+        "shareCopyLockedValue": "Copyable share copy will be generated automatically after approval.",
+        "shareCopyFallback": "I have been testing AI products and workflows lately, and PoYo.ai feels pretty useful for quickly trying models ✨ It supports 500+ popular models, including OpenAI, Claude, Gemini, DeepSeek, Kling, Runway, Sora, Nano Banana, and more, with image, video, music, and multimodal models available through one place; one account and one API reduce the need to register, recharge, and integrate across many platforms, while pay-as-you-go usage is flexible for demos, integrations, and model comparisons. If you are also building AI workflows, you can check it out here: {shareUrl}",
+        "shareCopyText": "I have been testing AI products and workflows lately, and PoYo.ai feels pretty useful for quickly trying models ✨ It supports 500+ popular models, including OpenAI, Claude, Gemini, DeepSeek, Kling, Runway, Sora, Nano Banana, and more, with image, video, music, and multimodal models available through one place; one account and one API reduce the need to register, recharge, and integrate across many platforms, while pay-as-you-go usage is flexible for demos, integrations, and model comparisons. If you are also building AI workflows, you can check it out here: {shareUrl}",
+        "copySuccess": "Referral link copied to clipboard.",
+        "copyCodeSuccess": "Referral code copied to clipboard.",
+        "copyShareSuccess": "Share copy copied to clipboard.",
+        "copyError": "Failed to copy to clipboard.",
+        "lockedToast": "Referral links and share copy can be used after approval.",
+        "lockedToastSuspended": "Your affiliate access is currently suspended, so referral assets are temporarily unavailable.",
+        "lockedToastBanned": "Your affiliate access is currently banned, so referral assets are unavailable.",
+        "lockedBadgeSuspended": "Affiliate access suspended",
+        "lockedBadgeBanned": "Affiliate access banned"
+      },
+      "rules": {
+        "title": "Program Rules",
+        "description": "Review the core settlement and compliance rules before applying to avoid misunderstandings later.",
+        "items": {
+          "commission": {
+            "title": "15% commission rate",
+            "description": "Qualified first-party orders attributed through your dedicated referral link are currently settled at a 15% commission rate."
+          },
+          "safetyPeriod": {
+            "title": "45-day safety period",
+            "description": "Commission first enters a pending state and becomes withdrawable only after the anti-fraud and refund review window is complete."
+          },
+          "minimumPayout": {
+            "title": "$100 minimum payout",
+            "description": "Once your withdrawable balance reaches the minimum threshold, you can request a payout in the next settlement cycle."
+          },
+          "fraudPolicy": {
+            "title": "Anti-fraud protection",
+            "description": "Self-referrals, repeated payment identities, and abnormal traffic may invalidate commission and can lead to rejection or removal in severe cases."
+          }
+        },
+        "disclaimer": "PoYo.ai reserves the final interpretation rights for affiliate program rules, commission calculation, and payout review standards."
+      },
+      "status": {
+        "not_applied": {
+          "title": "Not Applied",
+          "description": "You have not joined the affiliate program yet.",
+          "details": "Submit your channel information, promotion plan, and contact details so the team can evaluate whether your content scenario is a good fit."
+        },
+        "pending": {
+          "title": "Application Under Review",
+          "description": "Your application has been submitted successfully.",
+          "details": "Review is usually completed within 1 to 3 business days. Demo data remains visible during review, but referral assets stay locked."
+        },
+        "approved": {
+          "title": "Affiliate Access Approved",
+          "description": "Your affiliate workspace is fully active.",
+          "details": "You can now use your referral link in content, communities, emails, or onboarding flows and start accumulating commission."
+        },
+        "suspended": {
+          "title": "Affiliate access suspended",
+          "description": "Your application remains approved, but your affiliate access is currently suspended.",
+          "details": "During suspension, new referral bindings and new commission will not continue. Historical orders, commission, and payout records remain visible."
+        },
+        "banned": {
+          "title": "Affiliate access banned",
+          "description": "Your application remains approved, but your affiliate access is currently banned.",
+          "details": "During the ban, referral links and share copy are unavailable, and new referral bindings or new commission will not continue. Historical records remain visible."
+        },
+        "rejected": {
+          "title": "Application Needs More Information",
+          "description": "Your last submission did not pass review.",
+          "details": "Please provide clearer channel information or a more specific promotion plan, then submit again.",
+          "reasonLabel": "Review note:",
+          "reasonValue": "The current submission lacks enough public channel proof or a specific enough promotion plan."
+        },
+        "timeline": {
+          "submittedAt": "Submitted at",
+          "reviewedAt": "Reviewed at",
+          "approvedAt": "Approved at"
+        }
+      },
+      "application": {
+        "channels": {
+          "youtube": "YouTube",
+          "x": "X / Twitter",
+          "tiktok": "TikTok",
+          "instagram": "Instagram",
+          "blog": "Blog / Website",
+          "discord": "Discord",
+          "newsletter": "Newsletter",
+          "other": "Other"
+        },
+        "form": {
+          "title": "Apply to Join the Affiliate Program",
+          "description": "Fill in your promotion channels, account proof, and promotion plan so we can complete the review.",
+          "open": "Apply Now",
+          "submit": "Submit Application",
+          "resubmit": "Reapply",
+          "submitting": "Submitting...",
+          "cancel": "Cancel",
+          "channelLabel": "Promotion channels",
+          "accountLinksLabel": "Account links",
+          "accountLinksDescription": "Provide URLs for your social media accounts or website.",
+          "accountLinksPlaceholder": "https://youtube.com/@channel",
+          "addAccountLink": "Add another link",
+          "proofLabel": "Account proof screenshot",
+          "proofAction": "Click to upload screenshot",
+          "proofHint": "PNG or JPG, up to 5MB",
+          "replaceProof": "Replace screenshot",
+          "removeProof": "Remove",
+          "uploadSuccess": "Screenshot uploaded successfully.",
+          "uploadFailed": "Failed to upload screenshot.",
+          "contactLabel": "Contact information",
+          "contactDescription": "Email or Telegram for quick communication.",
+          "contactPlaceholder": "email@example.com or @telegram_username",
+          "planLabel": "Promotion plan",
+          "planDescription": "Describe how you plan to promote our product. Recommended length: 100-500 characters.",
+          "planPlaceholder": "Example: I will publish a detailed YouTube review, share highlights on X, and add a comparison article on my blog...",
+          "notesLabel": "Additional notes",
+          "notesPlaceholder": "Add any information that may help the review.",
+          "proofDescription": "Upload a screenshot proving you own the social account or website, such as a channel dashboard, analytics page, or settings page.",
+          "validationChannels": "Select at least one promotion channel.",
+          "validationAccountLinks": "Add at least one account link.",
+          "validationAccountLinkInvalid": "All account links must be valid http or https URLs.",
+          "validationProof": "Upload a proof screenshot before submitting.",
+          "validationProofType": "Please upload a PNG or JPG screenshot only.",
+          "validationProofSize": "Proof screenshots must be 5MB or smaller.",
+          "validationPromotionPlan": "Enter your promotion plan before submitting.",
+          "validationContact": "Enter your contact information before submitting.",
+          "validationUploadInProgress": "Please wait until the screenshot upload finishes.",
+          "submitSuccess": "Application submitted and is now under review.",
+          "submitError": "Failed to submit your application."
+        }
+      },
+      "invites": {
+        "title": "Invite Activity",
+        "description": "Track new signups and early conversion quality from your referred users.",
+        "searchPlaceholder": "Search by email...",
+        "loading": "Loading invite records...",
+        "loadError": "Failed to load invite records.",
+        "loadErrorTitle": "Unable to load invite records",
+        "retry": "Retry",
+        "columns": {
+          "email": "User Email",
+          "joinedAt": "Joined At",
+          "status": "Status",
+          "commission": "Attributed Commission"
+        },
+        "statuses": {
+          "registered": "Registered",
+          "converted": "Converted",
+          "high_value": "High Value User",
+          "powerUser": "High Value User"
+        },
+        "emptyTitle": "No invited users yet",
+        "emptyDescription": "Users who sign up through your referral link will appear here."
+      },
+      "orders": {
+        "title": "Commission Orders",
+        "description": "View attributed orders and how commission moves from pending to withdrawable and finally paid.",
+        "loading": "Loading commission orders...",
+        "loadError": "Failed to load commission orders.",
+        "loadErrorTitle": "Unable to load commission orders",
+        "retry": "Retry",
+        "filters": {
+          "all": "All statuses"
+        },
+        "columns": {
+          "orderId": "Order ID",
+          "customer": "User",
+          "orderAmount": "Order Amount",
+          "commission": "Commission Earnings",
+          "confirmedAt": "Confirmed At",
+          "status": "Status"
+        },
+        "statuses": {
+          "pending_hold": "Pending Settlement",
+          "pending": "Pending Review",
+          "available": "Withdrawable",
+          "locked": "Withdrawal Processing",
+          "paid": "Settled",
+          "reversed": "Reversed"
+        },
+        "emptyTitle": "No orders yet",
+        "emptyDescription": "Attributed orders will appear here after referred users complete payment."
+      },
+      "withdrawals": {
+        "title": "Withdrawals",
+        "description": "View withdrawable balance, payout rules, and transfer history in one place.",
+        "historyDescription": "View payout request records and the processing progress of manual admin transfers.",
+        "loading": "Loading withdrawal records...",
+        "loadError": "Failed to load withdrawal records.",
+        "loadErrorTitle": "Unable to load withdrawal records",
+        "retry": "Retry",
+        "summary": {
+          "availableBalance": "Withdrawable Balance",
+          "minimumPayout": "Minimum Payout",
+          "payoutSchedule": "Payout Schedule",
+          "supportedMethods": "Supported Methods"
+        },
+        "supportedMethodsValue": "Stripe / WeChat",
+        "scheduleValues": {
+          "monthly": "Monthly settlement",
+          "weekly": "Weekly settlement"
+        },
+        "methodValues": {
+          "stripe": "Stripe",
+          "wechat": "WeChat",
+          "paypal": "PayPal",
+          "usdt": "USDT",
+          "bank": "Bank transfer"
+        },
+        "requestAction": "Request Withdrawal",
+        "requestDisabled": "Available after approval",
+        "disabledReasonLabel": "Currently unavailable:",
+        "helper": "Commission can be requested for withdrawal only after the safety period ends and the balance reaches the minimum threshold.",
+        "filters": {
+          "all": "All statuses"
+        },
+        "columns": {
+          "amount": "Amount",
+          "method": "Method",
+          "requestedAt": "Requested At",
+          "status": "Status"
+        },
+        "statuses": {
+          "submitted": "Submitted",
+          "scheduled": "Scheduled",
+          "processing": "Processing",
+          "paid": "Paid",
+          "rejected": "Rejected",
+          "cancelled": "Cancelled"
+        },
+        "emptyTitle": "No withdrawal records yet",
+        "emptyDescription": "Processing records will appear here after you submit a withdrawal request.",
+        "requestDialog": {
+          "title": "Request Withdrawal",
+          "description": "Choose a withdrawal method and enter the receiving account used for manual admin transfer.",
+          "fullAmountNotice": "This request will withdraw the full current withdrawable amount: {amount}",
+          "manualTransferNote": "Withdrawals are reviewed and transferred manually by an admin, not paid automatically.",
+          "methodLabel": "Withdrawal method",
+          "accountLabel": "Receiving account",
+          "accountPlaceholders": {
+            "stripe": "email@example.com",
+            "wechat": "WeChat ID or phone number"
+          },
+          "validationAccount": "Please enter the receiving account first.",
+          "cancel": "Cancel",
+          "submit": "Submit Request",
+          "submitting": "Submitting...",
+          "submitSuccess": "Withdrawal request submitted.",
+          "submitError": "Failed to submit withdrawal request."
+        }
+      },
+      "pagination": {
+        "summary": "{total} records, page {page} / {totalPages}",
+        "perPage": "Per page",
+        "previous": "Previous",
+        "next": "Next",
+        "pageSizeOption": "{size} / page"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "description": "These answers cover common questions new affiliate partners ask before and after applying.",
+        "items": {
+          "commission": {
+            "question": "What is the commission rate?",
+            "answer": "Qualified orders attributed through your dedicated referral link are currently settled at a 15% commission rate."
+          },
+          "payout": {
+            "question": "When can I withdraw commission?",
+            "answer": "Commission becomes withdrawable after the safety period ends and your available balance reaches the minimum threshold."
+          },
+          "fraud": {
+            "question": "What counts as invalid promotion?",
+            "answer": "Self-referrals, repeated payment identities, abnormal traffic, or fabricated conversions may invalidate commission."
+          },
+          "review": {
+            "question": "How long does application review usually take?",
+            "answer": "Most applications are reviewed within 1 to 3 business days, depending on queue volume and material completeness."
+          }
+        },
+        "supportTitle": "Need help before you apply?",
+        "supportDescription": "If you are not sure whether your channel is suitable, contact support with a short audience summary first.",
+        "supportAction": "Contact Support"
+      },
+      "login": {
+        "title": "Affiliate Program",
+        "heading": "Please sign in first",
+        "description": "You need to sign in before entering the affiliate workspace.",
+        "action": "Sign In"
+      }
+    }
+  },
+  "PromptLibrary": {
+    "subtitle": "Nano Banana Pro",
+    "title": "Prompt Library",
+    "descriptionSuffix": " prompts in one place. Browse cards, search tags, link to sources. Cover is the scene, inspiration at a glance.",
+    "searchPlaceholder": "Search title or tag...",
+    "clearFilters": "Clear Filters",
+    "clickToViewPrompt": "Click to view full prompt",
+    "expandDetails": "Expand →",
+    "noMatchingPrompts": "No matching prompts. Try different keywords or tags.",
+    "loadMore": "Loading more...",
+    "prompts": "Prompts",
+    "viewSource": "View Source",
+    "copyPrompt": "Copy prompt",
+    "english": "English",
+    "chinese": "中文"
+  },
+  "modelDetail": {
+    "tabs": {
+      "playground": "Playground",
+      "introduction": "Introduction",
+      "introductionSubtitle": "Complete guide to using {modelName}",
+      "api": "API",
+      "pricing": "Pricing",
+      "resources": "Resources"
+    },
+    "pricing": {
+      "rateLabel": "Rate",
+      "successOnlyNote": "Pay only for successful requests. Billed at the end of each request and deducted from your prepaid balance.",
+      "perVideo": "per video",
+      "perImage": "per image",
+      "perGeneration": "per generation",
+      "perSecond": "per second",
+      "withVideoInput": "with video input",
+      "textImageToVideo": "text/image-to-video",
+      "textToImage": "text-to-image",
+      "imageEditing": "image editing",
+      "unitsByModel": {
+        "seedance-2": "per second | 480p: 10 cr/s ($0.05, with video input), 20 cr/s ($0.10, text/image-to-video); 720p: 20 cr/s ($0.10, with video input), 40 cr/s ($0.20, text/image-to-video); 1080p: 45 cr/s ($0.225, with video input), 90 cr/s ($0.45, text/image-to-video)",
+        "seedance-2-fast": "per second | 480p: 8 cr/s ($0.04, with video input), 14 cr/s ($0.07, text/image-to-video); 720p: 16 cr/s ($0.08, with video input), 28 cr/s ($0.14, text/image-to-video)",
+        "veo3.1-fast": "per video | 720p/1080p: 20 credits ($0.10), 4K: 60 credits ($0.30)",
+        "veo3.1-lite": "per video | 720p/1080p: 10 credits ($0.05), 4K: 30 credits ($0.15)",
+        "veo3.1-quality": "per video | 720p/1080p: 120 credits ($0.60), 4K: 400 credits ($2.00)",
+        "gpt-image-2": "per generation | fixed 15 credits ($0.075)",
+        "gpt-image-2-edit": "per generation | fixed 15 credits ($0.075)"
+      }
+    },
+    "model": {
+      "model": "Model",
+      "prompt": "Prompt",
+      "size": "Size",
+      "aspectRatio": "Aspect Ratio",
+      "numberOfImages": "Number of Images",
+      "duration": "Duration",
+      "referenceImage": "Reference Image",
+      "maskImage": "Mask Image",
+      "resolution": "Resolution",
+      "getApiKey": "Get APIKey",
+      "apiDoc": "API Doc",
+      "systemPrompt": "System Prompt",
+      "temperature": "Temperature",
+      "maxTokens": "Max Tokens",
+      "topP": "Top P",
+      "sendMessage": "Send",
+      "clearChat": "Clear",
+      "configuration": "Configuration",
+      "tokenUsage": "Token Usage",
+      "inputTokens": "Input Tokens",
+      "outputTokens": "Output Tokens",
+      "totalTokens": "Total Tokens",
+      "creditsUsed": "Credits Used",
+      "typeMessage": "Type a message...",
+      "streaming": "Generating...",
+      "playgroundNotice": "This Playground is for demo purposes. Data is only valid in the current window and will be cleared on refresh.",
+      "newConversation": "New Conversation",
+      "endpoint": "API Endpoint"
+    },
+    "market": {
+      "allModels": "All Models",
+      "filters": "Filters",
+      "clear": "Clear",
+      "task": "Task",
+      "tasks": "Tasks",
+      "provider": "Provider",
+      "providers": "Providers",
+      "card": "Card",
+      "list": "List",
+      "searchModels": "Search models...",
+      "clearAllFilters": "Clear all filters",
+      "modelsFound": "{count} models found",
+      "noModelsFound": "No models found",
+      "noModelsFoundDesc": "Try adjusting your filters or search query to find what you're looking for.",
+      "learnMore": "Learn More",
+      "tryUse": "Try Now",
+      "perRequest": "Per Req",
+      "per1kInput": "Per 1K Input",
+      "copyIdentifierSuccess": "Model identifier copied to clipboard",
+      "copyTitle": "Copy Model ID",
+      "groups": {
+        "video": "Video Generation",
+        "image": "Image Generation",
+        "music": "Music & Audio",
+        "chat": "Chat & Code",
+        "others": "Others"
+      },
+      "table": {
+        "modelName": "Model Name",
+        "provider": "Provider",
+        "tasks": "Tasks",
+        "description": "Description",
+        "pricing": "Pricing"
+      },
+      "pricing": {
+        "credits": "{credits} credits",
+        "per": "/ {unit}"
+      }
+    }
+  },
+  "DashboardShell": {
+    "titles": {
+      "dashboard": "Dashboard",
+      "history": "History",
+      "apiKey": "API Keys",
+      "billing": "Billing"
+    },
+    "nav": {
+      "home": "Home",
+      "models": "Models",
+      "dashboard": "Dashboard",
+      "history": "History",
+      "apiKeys": "API Keys",
+      "billing": "Billing"
+    },
+    "groups": {
+      "platform": "Platform",
+      "account": "Account"
+    },
+    "credits": {
+      "title": "Credits",
+      "available": "Available balance",
+      "topUp": "Top up"
+    },
+    "user": {
+      "account": "Account",
+      "guest": "Guest",
+      "signedIn": "Signed in",
+      "signInHint": "Sign in to view your workspace info"
+    },
+    "toggleTheme": "Toggle theme",
+    "currentPage": "Current page",
+    "mobileShell": "Console"
+  },
+  "ModelHero": {
+    "breadcrumbs": {
+      "home": "Home",
+      "models": "Models"
+    },
+    "notFound": "Model not found:",
+    "copySuccess": "Model ID copied to clipboard",
+    "copyLabel": "Copy model ID",
+    "modelLabel": "Model:",
+    "models": {
+      "seedance-2": {
+        "name": "seedance-2",
+        "description": "ByteDance's Seedance 2 family for cinematic multimodal video generation with native audio-video joint synthesis, multi-shot storytelling, lip-sync across 8+ languages, and director-level control from text, image, video, and audio inputs."
+      },
+      "seedance-2-fast": {
+        "name": "seedance-2-fast",
+        "description": "ByteDance's Seedance 2 family for cinematic multimodal video generation with native audio-video joint synthesis, multi-shot storytelling, lip-sync across 8+ languages, and director-level control from text, image, video, and audio inputs."
+      },
+      "gpt-image-2": {
+        "name": "gpt-image-2",
+        "description": "OpenAI's GPT Image 2 text-to-image model for photorealistic visuals, near-perfect text rendering, strong UI fidelity, and prompt-driven marketing, product, and screenshot-style image generation."
+      },
+      "gpt-image-2-edit": {
+        "name": "gpt-image-2-edit",
+        "description": "OpenAI's GPT Image 2 single-image editing model for localized, context-aware transformations that preserve composition while updating backgrounds, copy regions, and visual details."
+      },
+      "veo-3-1": {
+        "name": "veo-3-1"
+      },
+      "veo3.1-fast": {
+        "name": "veo3.1-fast",
+        "description": "The fastest Veo 3.1 tier for rapid 8-second iteration with native audio, reference-image control, and lower-latency testing before moving ideas into production."
+      },
+      "veo3.1-lite": {
+        "name": "veo3.1-lite",
+        "description": "The most cost-efficient Veo 3.1 tier for higher-volume 720p, 1080p, and 4K generation while preserving native audio and the same reference-guided workflow."
+      },
+      "veo3.1-quality": {
+        "name": "veo3.1-quality",
+        "description": "The highest-fidelity Veo 3.1 tier for premium cinematic shots, richer detail, stronger polish, and top-end 4K delivery when output quality matters most."
+      }
+    },
+    "actions": {
+      "getApiKey": "Get API Key",
+      "apiDocs": "API Docs"
+    }
+  },
+  "Auth": {
+    "Login": {
+      "social": {
+        "loginFailedTitle": "Login Failed",
+        "googleError": "Unable to log in with Google. Please try again.",
+        "providerError": "Unable to log in with {provider}. Please try again.",
+        "githubNotConfigured": "GitHub login is not configured",
+        "continueWithGithub": "Continue with GitHub",
+        "signInWithGithub": "Sign in with GitHub",
+        "accountNotVerified": "This social account email is not verified. Please verify it first.",
+        "accountConflict": "This social account is already linked to another account."
+      },
+      "divider": "or continue with email",
+      "viewTitles": {
+        "login": "Login",
+        "createAccount": "Create Account",
+        "forgotPassword": "Forgot Password",
+        "resetPassword": "Reset Password"
+      },
+      "actions": {
+        "forgotPassword": "Forgot password?",
+        "signIn": "Sign In",
+        "signUp": "Sign up",
+        "createAccount": "Create Account",
+        "sendCode": "Send Code",
+        "sendResetCode": "Send Reset Code",
+        "resetPassword": "Reset Password",
+        "backToLogin": "Back to login",
+        "resend": "Resend"
+      },
+      "hints": {
+        "noAccount": "Don't have an account?"
+      },
+      "descriptions": {
+        "forgotPassword": "Enter your email address and we'll send you a verification code to reset your password."
+      },
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password",
+          "minPlaceholder": "At least 8 characters"
+        },
+        "verificationCode": {
+          "label": "Verification Code",
+          "placeholder": "Enter 6-digit code"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "Enter your username"
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "Confirm your password"
+        },
+        "newPassword": {
+          "label": "New Password"
+        },
+        "confirmNewPassword": {
+          "label": "Confirm New Password"
+        }
+      },
+      "errors": {
+        "enterEmail": "Please enter your email",
+        "codeSent": "Verification code sent to your email",
+        "sendCodeFailed": "Failed to send verification code",
+        "enterEmailAndPassword": "Please enter email and password",
+        "loginFailed": "Login failed",
+        "fillAllFields": "Please fill in all fields",
+        "passwordMinLength": "Password must be at least 8 characters",
+        "passwordsMismatch": "Passwords do not match",
+        "registrationFailed": "Registration failed",
+        "sendResetCodeFailed": "Failed to send reset code",
+        "passwordResetFailed": "Password reset failed"
+      },
+      "success": {
+        "passwordReset": "Password reset successfully"
+      }
+    }
+  }
+}

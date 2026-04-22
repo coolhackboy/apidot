@@ -1,0 +1,1709 @@
+{
+  "Global": {
+    "Header": {
+      "brand": {
+        "title": "PoYo",
+        "logo": {
+          "src": "/logo.webp",
+          "alt": "PoYo"
+        },
+        "url": "/"
+      },
+      "nav": {
+        "items": [
+          {
+            "title": "API 市场",
+            "url": "/models",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "探索 AI 模型"
+          },
+          {
+            "title": "定价",
+            "url": "/pricing",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "探索 AI 模型"
+          },
+          {
+            "title": "AI 图像 API",
+            "url": "/ai-image-api",
+            "target": "_self",
+            "icon": "ImagePlus",
+            "description": "AI 图像生成",
+            "children": [
+              {
+                "title": "Nano Banana 2 API",
+                "url": "/models/nano-banana-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "gemini-3.1-flash-image-preview"
+              },
+              {
+                "title": "Seedream 5.0 Lite API",
+                "url": "/models/seedream-5-0-lite-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "字节跳动联网搜索图像生成模型"
+              },
+              {
+                "title": "GPT Image 1.5 API",
+                "url": "/models/gpt-image-1-5-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "OpenAI 最快的图像生成器"
+              },
+              {
+                "title": "Grok Imagine API",
+                "url": "/models/grok-imagine",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "xAI Aurora 视觉 AI 生成器"
+              },
+              {
+                "title": "Nano Banana Pro API",
+                "url": "/models/nano-banana-2-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Google Gemini 3 Pro 图像模型"
+              },
+              {
+                "title": "Seedream 4.5 API",
+                "url": "/models/seedream-4-5-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "字节跳动 4K 统一图像生成模型"
+              },
+              {
+                "title": "FLUX.2 API",
+                "url": "/models/flux-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Black Forest Labs 生产级图像模型"
+              },
+              {
+                "title": "4o Image API",
+                "url": "/models/gpt-4o-image-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "OpenAI 原生多模态图像生成器"
+              },
+              {
+                "title": "GPT Image 2 API",
+                "url": "/models/gpt-image-2",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "isNew": true,
+                "description": "OpenAI ?????????????????????????"
+              },
+              {
+                "title": "Z-Image API",
+                "url": "/models/z-image",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "阿里巴巴高效 6B 参数图像模型"
+              },
+              {
+                "title": "Nano Banana API",
+                "url": "/models/nano-banana-api",
+                "target": "_self",
+                "icon": "ImagePlus",
+                "description": "Google Gemini 2.5 Flash 图像模型"
+              }
+            ]
+          },
+          {
+            "title": "AI 视频 API",
+            "url": "/ai-video-api",
+            "target": "_self",
+            "icon": "Video",
+            "description": "AI 视频生成",
+            "children": [
+              {
+                "title": "Kling 3.0 API",
+                "url": "/models/kling-3-api",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "快手最先进的4K/60fps视频生成模型"
+              },
+              {
+                "title": "Seedance 1.5 Pro API",
+                "url": "/models/seedance-1-5-pro",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "字节跳动最新视频模型，支持音画同步"
+              },
+              {
+                "title": "Wan 2.6 API",
+                "url": "/models/wan-2-6",
+                "target": "_self",
+                "icon": "Video",
+                "isNew": true,
+                "description": "阿里巴巴 Wan 2.6 视频生成系列"
+              },
+              {
+                "title": "Hailuo 02 API",
+                "url": "/models/hailuo-02",
+                "target": "_self",
+                "icon": "Video",
+                "description": "MiniMax 全球排名第二的视频模型"
+              },
+              {
+                "title": "Sora-2 API",
+                "url": "/models/sora-2",
+                "target": "_self",
+                "icon": "Video",
+                "description": "OpenAI 先进视频模型，物理真实感"
+              },
+              {
+                "title": "Sora-2-Pro API",
+                "url": "/models/sora-2-pro",
+                "target": "_self",
+                "icon": "Video",
+                "description": "专业级 Sora 2，1024p 高清视频"
+              },
+              {
+                "title": "Seedance 1.0 Pro API",
+                "url": "/models/seedance-1-pro",
+                "target": "_self",
+                "icon": "Video",
+                "description": "字节跳动排名第一的视频模型"
+              },
+              {
+                "title": "Kling 2.6 API",
+                "url": "/models/kling-2-6",
+                "target": "_self",
+                "icon": "Video",
+                "description": "快手视频模型，支持音画同步"
+              },
+              {
+                "title": "Veo3.1-fast API",
+                "url": "/models/veo-3-1",
+                "target": "_self",
+                "icon": "Video",
+                "description": "Google DeepMind 1080p 视频模型"
+              },
+              {
+                "title": "Wan Animate API",
+                "url": "/models/wan-animate",
+                "target": "_self",
+                "icon": "Video",
+                "description": "阿里巴巴角色动画模型"
+              }
+            ]
+          },
+          {
+            "title": "AI 音乐 API",
+            "url": "/ai-music-api",
+            "target": "_self",
+            "icon": "Music"
+          },
+          {
+            "title": "更新日志",
+            "url": "/changelog",
+            "target": "_self",
+            "icon": "Bell"
+          }
+        ]
+      },
+      "buttons": [
+        {
+          "title": "登录",
+          "url": "/",
+          "icon": "HiOutlineSparkles",
+          "show_sidebar": false
+        }
+      ],
+      "show_sign": true,
+      "show_locale": true,
+      "language": "语言"
+    },
+    "Footer": {
+      "brand": {
+        "title": "PoYo API",
+        "description": "为开发者而生",
+        "logo": {
+          "src": "/logo.webp",
+          "alt": "poyo.ai"
+        },
+        "url": "/"
+      },
+      "copyright": "© 2025 PoYo API. 保留所有权利。",
+      "nav": {
+        "items": [
+          {
+            "title": "图片 API",
+            "children": [
+              {
+                "title": "Nano Banana Pro",
+                "url": "/models/nano-banana-2-api",
+                "target": "_self"
+              },
+              {
+                "title": "Nano Banana",
+                "url": "/models/nano-banana-api",
+                "target": "_self"
+              },
+              {
+                "title": "Nano Banana 2",
+                "url": "/models/nano-banana-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "GPT Image 1.5",
+                "url": "/models/gpt-image-1-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "GPT-4o Image",
+                "url": "/models/gpt-4o-image-api",
+                "target": "_self"
+              },
+              {
+                "title": "GPT Image 2",
+                "url": "/models/gpt-image-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Kling O3 Image",
+                "url": "/models/kling-o3-image",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Kling O1 Image",
+                "url": "/models/kling-o1-image",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedream 4.5",
+                "url": "/models/seedream-4-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "Seedream 5.0 Lite",
+                "url": "/models/seedream-5-0-lite-api",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedream 4",
+                "url": "/models/seedream-4",
+                "target": "_self"
+              },
+              {
+                "title": "Z-Image",
+                "url": "/models/z-image",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.7 Image",
+                "url": "/models/wan-2-7-image",
+                "target": "_self"
+              },
+              {
+                "title": "FLUX.2",
+                "url": "/models/flux-2",
+                "target": "_self"
+              },
+              {
+                "title": "Flux Kontext",
+                "url": "/models/flux-kontext",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "视频 API",
+            "children": [
+              {
+                "title": "Seedance 2",
+                "url": "/models/seedance-2",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Sora 2",
+                "url": "/models/sora-2",
+                "target": "_self"
+              },
+              {
+                "title": "Sora 2 Pro",
+                "url": "/models/sora-2-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Sora 2 Official",
+                "url": "/models/sora-2-official",
+                "target": "_self"
+              },
+              {
+                "title": "Veo 3.1",
+                "url": "/models/veo-3-1",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.1",
+                "url": "/models/kling-2-1",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.6",
+                "url": "/models/kling-2-6",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.5 Turbo Pro",
+                "url": "/models/kling-2-5-turbo-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 3.0",
+                "url": "/models/kling-3-api",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 2.6 Motion Control",
+                "url": "/models/kling-2-6-motion-control",
+                "target": "_self"
+              },
+              {
+                "title": "Kling 3.0 Motion Control",
+                "url": "/models/kling-3-0-motion-control",
+                "target": "_self",
+                "isNew": true
+              },
+              {
+                "title": "Seedance 1.0 Pro",
+                "url": "/models/seedance-1-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Seedance 1.5 Pro",
+                "url": "/models/seedance-1-5-pro",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.2 Fast",
+                "url": "/models/wan-2-2-fast",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.5",
+                "url": "/models/wan-2-5",
+                "target": "_self"
+              },
+              {
+                "title": "Wan 2.6",
+                "url": "/models/wan-2-6",
+                "target": "_self"
+              },
+              {
+                "title": "Wan Animate",
+                "url": "/models/wan-animate",
+                "target": "_self"
+              },
+              {
+                "title": "Hailuo 02",
+                "url": "/models/hailuo-02",
+                "target": "_self"
+              },
+              {
+                "title": "Hailuo 2.3",
+                "url": "/models/hailuo-2-3",
+                "target": "_self"
+              },
+              {
+                "title": "Grok Imagine",
+                "url": "/models/grok-imagine",
+                "target": "_self"
+              },
+              {
+                "title": "Runway Gen-4.5",
+                "url": "/models/runway-gen-4-5",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "聊天 API",
+            "children": [
+              {
+                "title": "Gemini 3 Series",
+                "url": "/models/gemini-3-api",
+                "target": "_self"
+              },
+              {
+                "title": "Claude 4.5 Series",
+                "url": "/models/claude-4-5-api",
+                "target": "_self"
+              },
+              {
+                "title": "Claude Opus 4.7",
+                "url": "/models/claude-opus-4-7",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "音乐 API",
+            "children": [
+              {
+                "title": "AI Music",
+                "url": "/models/generate-music",
+                "target": "_self"
+              },
+              {
+                "title": "Extend Music",
+                "url": "/models/extend-music",
+                "target": "_self"
+              },
+              {
+                "title": "Upload and Cover Audio",
+                "url": "/models/upload-and-cover-audio",
+                "target": "_self"
+              },
+              {
+                "title": "Upload and Extend Audio",
+                "url": "/models/upload-and-extend-audio",
+                "target": "_self"
+              },
+              {
+                "title": "Add Instrumental",
+                "url": "/models/add-instrumental",
+                "target": "_self"
+              },
+              {
+                "title": "Add Vocals",
+                "url": "/models/add-vocals",
+                "target": "_self"
+              },
+              {
+                "title": "Get Timestamped Lyrics",
+                "url": "/models/get-timestamped-lyrics",
+                "target": "_self"
+              },
+              {
+                "title": "Boost Music Style",
+                "url": "/models/boost-music-style",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Music Cover",
+                "url": "/models/generate-music-cover",
+                "target": "_self"
+              },
+              {
+                "title": "Replace Section",
+                "url": "/models/replace-section",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Persona",
+                "url": "/models/generate-persona",
+                "target": "_self"
+              },
+              {
+                "title": "Generate Lyrics",
+                "url": "/models/generate-lyrics",
+                "target": "_self"
+              },
+              {
+                "title": "Convert to WAV",
+                "url": "/models/convert-to-wav",
+                "target": "_self"
+              },
+              {
+                "title": "Vocal Remover",
+                "url": "/models/vocal-remover-api",
+                "target": "_self"
+              },
+              {
+                "title": "AI Music Video",
+                "url": "/models/create-music-video",
+                "target": "_self"
+              }
+            ]
+          },
+          {
+            "title": "资源",
+            "children": [
+              {
+                "title": "替代方案中心",
+                "url": "/alternative",
+                "target": "_self"
+              },
+              {
+                "title": "对比中心",
+                "url": "/comparison",
+                "target": "_self"
+              },
+              {
+                "title": "博客",
+                "url": "/hub",
+                "target": "_self"
+              },
+              {
+                "title": "站点地图",
+                "url": "/sitemap.xml",
+                "target": "_self"
+              },
+              {
+                "title": "GPT Image 2",
+                "url": "/models/gpt-image-2",
+                "target": "_self"
+              },
+              {
+                "title": "GPT-6",
+                "url": "/features/gpt-6",
+                "target": "_self"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Common": {
+      "theme": "主题",
+      "light": "浅色模式",
+      "dark": "深色模式",
+      "system": "跟随系统",
+      "buttons": {
+        "generate": "生成",
+        "generating": "生成中...",
+        "download": "下载",
+        "cancel": "取消",
+        "confirm": "确认",
+        "upgrade": "升级",
+        "logout": "退出登录"
+      },
+      "modals": {
+        "login": {
+          "title": "登录",
+          "message": "请登录以继续",
+          "deviceNotSupported": "设备初始化失败，请刷新页面后重试。",
+          "affiliateCode": {
+            "label": "推荐码",
+            "placeholder": "请输入推荐码（选填）",
+            "checking": "校验中",
+            "valid": "推荐码有效",
+            "errors": {
+              "affiliate_code_invalid": "推荐码不存在，请检查后重试",
+              "affiliate_code_inactive": "推荐码已失效，请更换推荐码",
+              "affiliate_code_vendor_mismatch": "当前推荐码不适用于本站点",
+              "affiliate_code_not_allowed": "当前推荐码暂不可用，请更换推荐码",
+              "vendor_not_found": "站点信息异常，请刷新后重试"
+            }
+          },
+          "buttons": {
+            "cancel": "取消",
+            "login": "登录"
+          }
+        },
+        "upgrade": {
+          "title": "需要升级",
+          "message": "请升级以继续使用",
+          "buttons": {
+            "cancel": "取消",
+            "upgrade": "升级"
+          }
+        }
+      }
+    },
+    "MarketingHeader": {
+      "nav": {
+        "home": "首页",
+        "models": "模型",
+        "docs": "文档",
+        "pricing": "价格",
+        "blog": "博客"
+      },
+      "actions": {
+        "signIn": "登录",
+        "signOut": "退出登录",
+        "dashboard": "控制台"
+      }
+    },
+    "MarketingFooter": {
+      "description": "统一接入图像、视频、对话和音乐模型。先在 Playground 验证效果，再按量计费接入生产环境。",
+      "status": "所有系统运行正常",
+      "copyright": "© {year} {brand} Inc. 保留所有权利。",
+      "comingSoon": "即将上线",
+      "columns": {
+        "imageApi": {
+          "title": "图像 API",
+          "gptImage2": "GPT Image 2"
+        },
+        "videoApi": {
+          "title": "视频 API",
+          "seedance2": "Seedance 2",
+          "veo31": "Veo 3.1"
+        },
+        "chatApi": {
+          "title": "对话 API"
+        },
+        "musicApi": {
+          "title": "音乐 API"
+        },
+        "resources": {
+          "title": "资源",
+          "models": "模型",
+          "docs": "文档",
+          "pricing": "定价",
+          "blog": "博客",
+          "changelog": "更新日志",
+          "comparisonHub": "对比中心",
+          "alternativeHub": "替代方案中心",
+          "sitemap": "站点地图"
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "apiKey": "API 密钥",
+    "history": "历史记录",
+    "apiUsage": "API 用量",
+    "billing": "账单",
+    "pricing": "定价",
+    "contactUs": "支持",
+    "email": "邮箱管理",
+    "userManagement": "用户管理",
+    "affiliate": "推广合作",
+    "affiliateManagement": "推广管理"
+  },
+  "Dashboard": {
+    "Overview": {
+      "title": "控制台概览",
+      "welcome_back": "欢迎回来，{name}！",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能访问控制台。",
+      "go_home": "返回首页",
+      "error_fetch_user_info": "获取用户信息失败",
+      "available_credits": "可用积分",
+      "credits_description": "可用于 AI 生成的积分",
+      "buy_credits": "购买积分",
+      "account_type": "账户类型",
+      "free": "免费",
+      "free_plan": "免费版",
+      "premium_plan": "高级版",
+      "plan_description": "您当前的订阅计划",
+      "upgrade_plan": "升级计划",
+      "account_status": "账户状态",
+      "active": "正常",
+      "status_description": "您的账户状态良好",
+      "view_account": "查看账户",
+      "profile_title": "个人资料",
+      "profile_description": "查看您的账户信息",
+      "quick_actions": "快捷操作",
+      "quick_actions_description": "常用任务和操作",
+      "view_history": "查看历史",
+      "view_history_desc": "查看生成历史记录",
+      "manage_billing": "管理账单",
+      "manage_billing_desc": "查看套餐和购买积分",
+      "manage_api_keys": "管理 API 密钥",
+      "manage_api_keys_desc": "创建和管理 API 密钥"
+    },
+    "ApiKey": {
+      "title": "API 密钥管理",
+      "description": "创建和管理您的 API 密钥以进行程序化访问",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能管理 API 密钥。",
+      "go_home": "返回首页",
+      "error_fetch": "获取 API 密钥失败",
+      "error_create": "创建 API 密钥失败",
+      "error_update": "更新 API 密钥失败",
+      "error_delete": "删除 API 密钥失败",
+      "error_name_required": "名称为必填项",
+      "success_create": "API 密钥创建成功",
+      "success_update": "API 密钥更新成功",
+      "success_delete": "API 密钥删除成功",
+      "success_copy": "API 密钥已复制到剪贴板",
+      "create_key": "创建 API 密钥",
+      "api_keys": "您的 API 密钥",
+      "api_keys_description": "管理您访问服务的 API 密钥",
+      "no_keys": "暂无 API 密钥",
+      "no_keys_description": "您还没有创建任何 API 密钥。创建您的第一个密钥开始使用。",
+      "create_first_key": "创建第一个 API 密钥",
+      "table_name": "名称",
+      "table_api_key": "API 密钥",
+      "table_rate_limit": "速率限制",
+      "table_last_used": "最后使用",
+      "table_created": "创建时间",
+      "table_ip_whitelist": "IP 白名单",
+      "table_security_limits": "安全限制",
+      "table_actions": "操作",
+      "never_used": "从未使用",
+      "dialog_create_title": "创建新 API 密钥",
+      "dialog_create_description": "为您的新 API 密钥输入一个名称",
+      "dialog_edit_title": "编辑 API 密钥",
+      "dialog_edit_description": "更新 API 密钥的名称",
+      "dialog_delete_title": "删除 API 密钥",
+      "dialog_delete_description": "确定要删除「{name}」吗？此操作无法撤销。",
+      "label_name": "名称",
+      "placeholder_name": "我的 API 密钥",
+      "label_rate_limit": "速率限制（每小时）",
+      "rate_limit_hint": "此 API 密钥每小时的最大请求数",
+      "button_cancel": "取消",
+      "button_create": "创建",
+      "button_creating": "创建中...",
+      "button_update": "更新",
+      "button_updating": "更新中...",
+      "button_delete": "删除",
+      "button_deleting": "删除中...",
+      "button_save": "保存",
+      "button_saving": "保存中...",
+      "button_save_limits": "保存限制",
+      "button_saving_limits": "保存中...",
+      "add_ip": "添加 IP",
+      "security_limits": "安全限制",
+      "view": "查看",
+      "no_ip_whitelist": "无 IP 限制",
+      "label_ip_whitelist": "IP 白名单",
+      "hourly_credit_limit": "每小时积分限制",
+      "daily_credit_limit": "每日积分限制",
+      "hourly_limit_hint": "设置 0 表示无限制",
+      "daily_limit_hint": "设置 0 表示无限制",
+      "info_icon": "ⓘ",
+      "create_ip_empty_info": "无 IP 限制 - 允许所有 IP 地址访问",
+      "add_ip_address": "添加 IP 地址",
+      "ip_placeholder": "输入 IP 地址（例如：192.168.1.100）",
+      "dialog_ip_whitelist_title": "管理 IP 白名单",
+      "dialog_ip_whitelist_description": "控制哪些 IP 地址可以访问此 API 密钥。最多允许 10 个 IP。",
+      "ip_whitelist_empty_warning": "未添加 IP 白名单地址。当前允许所有 IP 访问。",
+      "dialog_security_limits_title": "安全限制",
+      "dialog_security_limits_description": "设置此 API 密钥的每小时和每日积分消耗限制",
+      "success_update_ip": "IP 白名单更新成功",
+      "error_update_ip": "IP 白名单更新失败",
+      "success_update_limits": "安全限制更新成功",
+      "error_update_limits": "安全限制更新失败"
+    },
+    "History": {
+      "title": "生成历史",
+      "description": "查看和管理所有 AI 生成的内容",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能查看历史记录。",
+      "go_home": "返回首页",
+      "error_fetch": "获取生成历史失败",
+      "error_download": "下载文件失败",
+      "success_download": "下载已开始",
+      "no_history": "暂无生成历史",
+      "no_history_description": "您还没有生成任何内容。立即开始创作！",
+      "start_generating": "开始生成",
+      "filter_status": "状态",
+      "status_all": "全部状态",
+      "status_completed": "已完成",
+      "status_processing": "处理中",
+      "status_failed": "失败",
+      "status_not_started": "未开始",
+      "credits": "积分",
+      "download": "下载",
+      "preview": "预览",
+      "generation_history": "您的生成历史",
+      "view_all_generations": "查看和下载所有 AI 生成的内容",
+      "table_model": "模型",
+      "table_task_id": "任务 ID",
+      "table_status": "状态",
+      "table_input": "输入",
+      "table_output": "输出",
+      "table_credits": "积分",
+      "table_duration": "耗时",
+      "table_created": "创建时间",
+      "table_third_party_status": "第三方状态",
+      "search_placeholder": "搜索任务 ID...",
+      "search_button": "搜索",
+      "clear_search": "清除",
+      "view_full_json": "点击查看完整 JSON",
+      "button_view_input": "输入",
+      "button_view_output": "输出",
+      "modal_input_title": "输入数据",
+      "modal_output_title": "输出数据",
+      "table_actions": "操作",
+      "table_progress": "进度",
+      "table_logs": "日志",
+      "button_view_logs": "查看日志",
+      "modal_logs_title": "任务日志",
+      "error_fetch_logs": "获取日志失败",
+      "no_logs": "未找到日志",
+      "log_type": "日志类型",
+      "log_data": "日志数据",
+      "created_time": "创建时间",
+      "copy_log": "复制",
+      "callback_url": "回调 URL",
+      "callback_status": "响应状态",
+      "retry_callback": "重试回调",
+      "retry_callback_success": "回调重试成功！任务 ID：{taskId}",
+      "retry_callback_failed": "回调重试失败",
+      "retry_callback_error": "回调重试失败，请稍后重试",
+      "compact_mode": "紧凑模式",
+      "refresh_data": "刷新数据",
+      "filter_model": "模型",
+      "model_all": "全部模型",
+      "page_size_unit": "条/页",
+      "tab_generation": "生成历史",
+      "tab_chat": "对话历史",
+      "chat_history_title": "您的对话历史",
+      "chat_view_all": "查看所有 AI 对话记录",
+      "chat_no_history": "暂无对话历史",
+      "chat_no_history_description": "您还没有发起过任何对话请求。",
+      "chat_error_fetch": "获取对话历史失败",
+      "chat_table_model": "模型",
+      "chat_table_input_tokens": "输入令牌",
+      "chat_table_output_tokens": "输出令牌",
+      "chat_table_total_tokens": "总令牌",
+      "chat_table_credits": "积分",
+      "chat_table_credits_return": "积分返还",
+      "chat_table_status": "状态",
+      "chat_table_error": "错误信息",
+      "chat_table_created": "创建时间",
+      "chat_table_duration": "耗时",
+      "chat_date_start": "开始日期",
+      "chat_date_end": "结束日期",
+      "chat_date_apply": "应用",
+      "chat_date_clear": "清除",
+      "generation_time_start": "开始时间",
+      "generation_time_end": "结束时间",
+      "generation_time_apply": "应用",
+      "generation_time_clear": "清除",
+      "generation_time_today": "今天",
+      "generation_time_invalid_range": "开始时间不能晚于结束时间",
+      "generation_date_placeholder": "选择日期",
+      "generation_time_any": "不限时间",
+      "generation_time_optional": "可选 HH:mm:ss",
+      "generation_time_invalid_format": "时间格式必须是 HH:mm 或 HH:mm:ss",
+      "generation_time_requires_date": "填写时间前请先选择日期",
+      "table_preview": "预览",
+      "retention_notice_title": "保留说明",
+      "retention_media_files": "已生成的媒体文件：保留 3 天，之后自动删除。",
+      "retention_log_records": "日志记录（文本 / 元数据）：保留 2 个月，之后自动删除。",
+      "task_id_label": "任务ID"
+    },
+    "Billing": {
+      "title": "账单",
+      "save": "折扣",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能查看账单",
+      "current_credits": "当前积分",
+      "credits_label": "积分",
+      "pricing_plans": "定价套餐",
+      "pricing_plans_subtitle": "选择合适的套餐，享受更多优惠",
+      "faq": "常见问题",
+      "faq_q1": "积分可以用于所有模型吗？",
+      "faq_a1": "是的，积分可用于本站所有 AI 模型，包括图像和视频生成。",
+      "faq_q2": "积分会过期吗？",
+      "faq_a2": "您的积分永不过期，永久有效。",
+      "faq_q3": "可以获得批量购买折扣吗？",
+      "faq_a3": "大批量用户可以联系客服获取更优惠的价格和专属服务。",
+      "most_popular": "最受欢迎",
+      "selected": "已选择",
+      "payment_method": "支付方式",
+      "payment_method_stripe": "信用卡",
+      "payment_method_alipay": "支付宝",
+      "payment_method_wxpay": "微信支付",
+      "pay_with_stripe": "使用 Stripe 支付 ${amount}",
+      "pay_now": "立即支付",
+      "select_plan_to_continue": "请选择套餐以继续",
+      "processing": "处理中...",
+      "secure_payment_note": "安全支付由 Stripe 提供",
+      "scan_to_pay": "扫码支付",
+      "waiting_for_payment": "等待支付...",
+      "payment_timeout": "支付超时，请重试",
+      "payment_method_paypal": "PayPal",
+      "payment_method_crypto": "加密货币",
+      "crypto_supported": "支持",
+      "select_crypto": "选择加密货币进行支付",
+      "pay_address": "支付地址",
+      "equivalent_to": "等价于",
+      "copied": "已复制！",
+      "crypto_min_amount_error": "此套餐不支持加密货币支付。请选择更高档位的套餐。",
+      "transaction_history_title": "交易记录",
+      "transaction_history_description": "查看所有购买记录",
+      "no_transactions": "暂无交易记录",
+      "table_order_no": "订单号",
+      "table_plan_name": "套餐名称",
+      "table_amount": "金额",
+      "table_status": "状态",
+      "table_created_time": "创建时间",
+      "table_receipt": "收据",
+      "download_receipt": "下载",
+      "pagination_showing": "显示第 {from} - {to} 条，共 {total} 条记录",
+      "pagination_page": "第 {current} / {total} 页",
+      "pagination_previous": "上一页",
+      "pagination_next": "下一页",
+      "CreditAlert": {
+        "title": "积分提醒设置",
+        "description": "设置最多3个积分阈值用于邮件通知",
+        "sub_description": "当积分低于每个阈值时，您将收到邮件提醒",
+        "alert_label": "提醒 #{number}",
+        "input_placeholder": "输入积分数量 (例如: 10000)",
+        "email_enabled": "邮件通知已启用",
+        "add_alert": "添加提醒 ({current}/{max})",
+        "save": "保存设置",
+        "saving": "保存中...",
+        "cancel": "取消",
+        "save_success": "积分提醒设置已保存",
+        "save_error": "保存积分提醒设置失败",
+        "delete_error": "删除提醒失败",
+        "load_error": "加载提醒设置失败"
+      },
+      "AutoRecharge": {
+        "title": "自动充值",
+        "description": "当余额低于阈值时自动充值积分",
+        "enable": "启用自动充值",
+        "enable_description": "余额不足时自动购买积分",
+        "threshold_label": "当积分低于",
+        "threshold_unit": "积分",
+        "purchase_label": "自动购买",
+        "select_plan": "选择套餐",
+        "payment_method": "支付方式",
+        "saved_for_auto": "已保存用于自动充值",
+        "add_payment_method": "添加支付方式",
+        "last_recharge": "上次充值",
+        "save_settings": "保存设置",
+        "saving": "保存中...",
+        "add_payment_first": "添加支付方式以启用自动充值",
+        "dialog_title": "添加支付方式",
+        "dialog_description": "添加银行卡以在积分不足时自动充值",
+        "save_card": "保存银行卡",
+        "cancel": "取消",
+        "remove_title": "移除支付方式",
+        "remove_description": "确定要移除此支付方式吗？自动充值将被禁用。",
+        "remove": "移除",
+        "removing": "移除中...",
+        "cardholder_name": "持卡人姓名",
+        "cardholder_name_placeholder": "请输入银行卡上的姓名",
+        "billing_country": "账单国家",
+        "billing_country_placeholder": "选择国家",
+        "name_required": "请输入持卡人姓名",
+        "country_required": "请选择账单国家",
+        "billing_update_required": "需要更新支付信息",
+        "billing_update_description": "请重新添加银行卡并填写持卡人姓名和账单国家，以继续使用自动充值。",
+        "update_payment_method": "更新支付方式"
+      }
+    },
+    "ApiUsage": {
+      "title": "API 用量",
+      "total_spend": "总消费",
+      "total_credits": "总积分",
+      "api_keys": "API 密钥",
+      "api_keys_description": "所选时间段内的密钥使用统计和实际消耗",
+      "top_models": "热门模型",
+      "top_models_description": "所选时间段内积分使用量前 10 的模型",
+      "export": "导出",
+      "quick_select": "快速选择",
+      "week": "本周至今",
+      "month": "本月至今",
+      "last7": "最近 7 天",
+      "last14": "最近 14 天",
+      "last30": "最近 30 天",
+      "custom": "自定义范围",
+      "max_range": "最大范围：30 天",
+      "select_custom_range": "选择自定义范围以选择特定日期",
+      "created": "创建时间",
+      "last_used": "最后使用",
+      "no_data": "暂无用量数据",
+      "loading": "加载中...",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能查看 API 用量。"
+    },
+    "Analytics": {
+      "title": "转化率分析",
+      "description": "追踪从访问到注册到付费的转化漏斗",
+      "please_login": "请登录",
+      "login_required": "您需要登录才能查看分析数据。需要管理员权限。",
+      "export": "导出CSV",
+      "quick_select": "快速选择",
+      "week": "本周至今",
+      "month": "本月至今",
+      "last7": "最近 7 天",
+      "last14": "最近 14 天",
+      "last30": "最近 30 天",
+      "custom": "自定义范围",
+      "max_range": "最大范围：90 天",
+      "no_data": "暂无数据",
+      "ga4_not_configured": "GA4 API 未配置。UV/PV 数据将不可用。请配置 GA4_PROPERTY_ID 和 GOOGLE_APPLICATION_CREDENTIALS 环境变量以启用。",
+      "ads_not_configured": "Google Ads API 未配置",
+      "uv": "UV",
+      "pv": "PV",
+      "unique_visitors": "独立访客",
+      "registrations": "注册数",
+      "paid_users": "付费用户",
+      "total_revenue": "总收入",
+      "conversion": "转化率",
+      "funnel_title": "转化漏斗",
+      "funnel_description": "用户从访问到注册到付费的转化路径",
+      "trend_title": "转化趋势",
+      "trend_description": "所选时间段内的每日指标",
+      "source_title": "流量来源分析",
+      "source_description": "按流量来源分组的转化指标",
+      "source": "来源",
+      "registration_rate": "注册率",
+      "payment_rate": "付费率",
+      "revenue": "收入",
+      "roi_title": "广告投放ROI分析",
+      "roi_description": "广告活动的投资回报率",
+      "campaign_name": "活动名称",
+      "spend": "花费",
+      "roi": "ROI",
+      "roas": "ROAS",
+      "clicks": "点击",
+      "conversions": "转化",
+      "total_spend": "总花费",
+      "overall_roi": "总体ROI",
+      "overall_roas": "总体ROAS"
+    },
+    "Affiliate": {
+      "title": "推广合作计划",
+      "description": "在一个页面中查看推广表现、佣金进度和提现准备情况。",
+      "banner": {
+        "title": "关于当前结算范围",
+        "description": "受支付渠道限制，部分订单类型可能暂时不计入推广结算。后续范围扩大后会第一时间公告。"
+      },
+      "profile": {
+        "loadErrorTitle": "暂时无法读取您的推广状态",
+        "loadErrorDescription": "在成功读取推广档案之前，申请相关操作会暂时隐藏。"
+      },
+      "dashboard": {
+        "loading": "正在加载推广数据...",
+        "empty": "推广数据准备完成后会显示在这里。",
+        "loadError": "读取推广仪表盘失败。",
+        "loadErrorTitle": "暂时无法加载推广数据",
+        "demoTitle": "申请前先预览仪表盘效果",
+        "demoDescription": "当前显示的是演示数据，用于帮助您了解推广合作页的结构和指标。提交申请并审核通过后，这里会自动切换为您的真实数据；如果暂时没有佣金，也会如实显示为 0。",
+        "retry": "重试"
+      },
+      "tabs": {
+        "dashboard": "仪表盘",
+        "invites": "邀请",
+        "orders": "订单",
+        "withdrawals": "提现",
+        "faq": "常见问题"
+      },
+      "hero": {
+        "badge": "推广增长",
+        "title": "加入合作计划，把流量转化为持续收益",
+        "description": "向开发者、创作者和 AI 团队分享 PoYo。审核通过后即可解锁专属推广链接，并从有效订单中获得佣金。",
+        "actions": {
+          "apply": "立即申请",
+          "resubmit": "重新申请",
+          "reviewing": "审核中",
+          "startSharing": "复制推广链接",
+          "approved": "已通过申请"
+        }
+      },
+      "metrics": {
+        "demoBadge": "演示数据",
+        "items": {
+          "totalEarnings": {
+            "label": "总收入",
+            "hint": "所有被归因订单带来的累计佣金。"
+          },
+          "pending": {
+            "label": "待结算",
+            "hint": "仍处于安全审核期内的佣金。"
+          },
+          "available": {
+            "label": "可提现",
+            "hint": "已经满足提现条件的佣金余额。"
+          },
+          "paid": {
+            "label": "已提现",
+            "hint": "已经完成结算打款的佣金。"
+          }
+        }
+      },
+      "link": {
+        "title": "邀请好友链接",
+        "lockedBadge": "审核通过后解锁",
+        "descriptionApproved": "与朋友分享此链接以获得奖励。",
+        "descriptionNotApplied": "您还没有加入推广计划。提交申请并审核通过后，这里会展示您的专属推广链接。",
+        "descriptionPending": "审核通过后会自动生成您的推广资产和专属分享链接。",
+        "descriptionSuspended": "您的推广资格当前已被暂停，专属推广链接和分享文案暂不可用。",
+        "descriptionBanned": "您的推广资格当前已被封禁，专属推广链接和分享文案不可用。",
+        "applyValue": "请先提交申请。审核通过后，这里会显示您的专属推广链接。",
+        "pendingValue": "等待审核中。申请通过后，这里会显示您的专属推广链接。",
+        "suspendedValue": "推广资格已暂停，当前无法使用专属推广链接。",
+        "bannedValue": "推广资格已封禁，当前无法使用专属推广链接。",
+        "copy": "复制链接",
+        "copyCode": "复制推荐码",
+        "copyShare": "复制分享文案",
+        "codeLabel": "推荐码",
+        "shareCopyTitle": "推广文案",
+        "helper": "推荐码可用于私信、社群沟通或手动填写。",
+        "codeLockedValue": "审核通过后会显示您的专属推荐码。",
+        "shareCopyLockedValue": "审核通过后会自动生成可复制的推广文案。",
+        "shareCopyFallback": "最近在试 AI 产品和工作流，发现 PoYo.ai 还挺适合快速测模型 ✨ 支持 500+ 热门模型，包括 OpenAI、Claude、Gemini、DeepSeek、Kling、Runway、Sora、Nano Banana 等，图像、视频、音乐、多模态都能统一调用；一个账号、一套 API，少掉很多注册、充值和对接成本，按量使用也更适合试 Demo、做集成和模型对比。如果你也在折腾 AI 工作流，可以从这里看看：{shareUrl}",
+        "shareCopyText": "最近在试 AI 产品和工作流，发现 PoYo.ai 还挺适合快速测模型 ✨ 支持 500+ 热门模型，包括 OpenAI、Claude、Gemini、DeepSeek、Kling、Runway、Sora、Nano Banana 等，图像、视频、音乐、多模态都能统一调用；一个账号、一套 API，少掉很多注册、充值和对接成本，按量使用也更适合试 Demo、做集成和模型对比。如果你也在折腾 AI 工作流，可以从这里看看：{shareUrl}",
+        "copySuccess": "推广链接已复制到剪贴板。",
+        "copyCodeSuccess": "推荐码已复制到剪贴板。",
+        "copyShareSuccess": "分享文案已复制到剪贴板。",
+        "lockedToast": "审核通过后才能使用推广链接和分享文案。",
+        "lockedToastSuspended": "您的推广资格当前已暂停，暂时无法使用推广链接和分享文案。",
+        "lockedToastBanned": "您的推广资格当前已封禁，无法使用推广链接和分享文案。",
+        "lockedBadgeSuspended": "推广资格已暂停",
+        "lockedBadgeBanned": "推广资格已封禁",
+        "copyError": "复制失败，请稍后重试。"
+      },
+      "rules": {
+        "title": "合作规则",
+        "description": "申请前先确认核心结算和合规规则，避免后续理解偏差。",
+        "items": {
+          "commission": {
+            "title": "15% 佣金比例",
+            "description": "通过您的专属推广链接归因的有效首方订单，当前按 15% 比例结算佣金。"
+          },
+          "safetyPeriod": {
+            "title": "45 天安全期",
+            "description": "佣金会先进入待处理状态，经过反作弊和退款审核窗口后才会转为可提现。"
+          },
+          "minimumPayout": {
+            "title": "$100 起提门槛",
+            "description": "当可提现余额达到最低门槛后，您可以在下一个结算周期申请提现。"
+          },
+          "fraudPolicy": {
+            "title": "反作弊保护",
+            "description": "自买自推、重复支付身份、异常流量等行为会导致佣金失效，严重时可能被拒绝或清退。"
+          }
+        },
+        "disclaimer": "推广合作计划的活动规则、佣金计算与提现审核标准，最终解释权归 PoYo.ai 所有。"
+      },
+      "status": {
+        "not_applied": {
+          "title": "尚未申请",
+          "description": "您还没有加入推广合作计划。",
+          "details": "提交渠道信息、推广计划和联系方式后，团队会评估您的内容场景是否适合加入该计划。"
+        },
+        "pending": {
+          "title": "申请审核中",
+          "description": "您的申请已经提交成功。",
+          "details": "通常会在 1 到 3 个工作日内完成审核。审核期间仍会展示演示数据，但推广资产会保持锁定。"
+        },
+        "approved": {
+          "title": "已获得推广权限",
+          "description": "您的推广工作区已经完全解锁。",
+          "details": "现在可以在内容、社群、邮件或 onboarding 流程中使用您的推广链接，开始累计佣金。"
+        },
+        "suspended": {
+          "title": "推广资格已暂停",
+          "description": "您的申请仍然通过，但当前推广资格已被暂停。",
+          "details": "暂停期间，新的推广绑定和新佣金不会继续生效。历史订单、佣金和提现记录仍可查看。"
+        },
+        "banned": {
+          "title": "推广资格已封禁",
+          "description": "您的申请仍然通过，但当前推广资格已被封禁。",
+          "details": "封禁期间，推广链接和分享文案不可用，新的推广绑定和新佣金不会继续生效。历史记录仍可查看。"
+        },
+        "rejected": {
+          "title": "申请需要补充",
+          "description": "您上一次提交暂未通过审核。",
+          "details": "请补充更清晰的渠道信息或更具体的推广计划，然后重新提交。",
+          "reasonLabel": "审核备注：",
+          "reasonValue": "当前提交缺少足够的公开渠道证明，或者推广方案不够具体。"
+        },
+        "timeline": {
+          "submittedAt": "提交时间",
+          "reviewedAt": "审核时间",
+          "approvedAt": "通过时间"
+        }
+      },
+      "application": {
+        "channels": {
+          "youtube": "YouTube",
+          "x": "X / Twitter",
+          "tiktok": "TikTok",
+          "instagram": "Instagram",
+          "blog": "博客 / 网站",
+          "discord": "Discord",
+          "newsletter": "通讯刊物 (Newsletter)",
+          "other": "其他"
+        },
+        "form": {
+          "title": "申请加入推广计划",
+          "description": "请填写您的推广渠道、账号证明和推广计划，方便我们完成审核。",
+          "open": "立即申请",
+          "submit": "提交申请",
+          "resubmit": "重新申请",
+          "submitting": "提交中...",
+          "cancel": "取消",
+          "channelLabel": "推广渠道",
+          "accountLinksLabel": "账号链接",
+          "accountLinksDescription": "提供您的社交媒体账号或网站的 URL。",
+          "accountLinksPlaceholder": "https://youtube.com/@channel",
+          "addAccountLink": "添加另一个链接",
+          "proofLabel": "账号证明截图",
+          "proofAction": "点击上传截图",
+          "proofHint": "PNG、JPG，最大 5MB",
+          "replaceProof": "更换截图",
+          "removeProof": "移除",
+          "uploadSuccess": "截图上传成功。",
+          "uploadFailed": "截图上传失败。",
+          "contactLabel": "联系方式",
+          "contactDescription": "用于快速沟通的邮箱或 Telegram。",
+          "contactPlaceholder": "email@example.com 或 @telegram_username",
+          "planLabel": "推广计划",
+          "planDescription": "描述您计划如何推广我们的产品，建议 100-500 字。",
+          "planPlaceholder": "示例：我将在 YouTube 发布详细评测视频，在 Twitter 上分享亮点，并在博客中补充对比文章……",
+          "notesLabel": "补充说明",
+          "notesPlaceholder": "补充任何有助于审核的信息。",
+          "proofDescription": "上传能够证明您拥有该社交账号或网站的截图，例如频道仪表盘、分析页或设置页。",
+          "validationChannels": "请至少选择一个推广渠道。",
+          "validationAccountLinks": "请至少填写一个账号链接。",
+          "validationAccountLinkInvalid": "账号链接必须是有效的 http 或 https URL。",
+          "validationProof": "请先上传账号证明截图。",
+          "validationProofType": "请上传 PNG 或 JPG 格式截图。",
+          "validationProofSize": "截图大小不能超过 5MB。",
+          "validationPromotionPlan": "请先填写推广计划。",
+          "validationContact": "请先填写联系方式。",
+          "validationUploadInProgress": "截图仍在上传中，请稍后再提交。",
+          "submitSuccess": "申请已提交，当前已进入审核中状态。",
+          "submitError": "提交申请失败。"
+        }
+      },
+      "invites": {
+        "title": "邀请记录",
+        "description": "查看被邀请用户的注册情况和早期转化质量。",
+        "searchPlaceholder": "按邮箱搜索...",
+        "loading": "正在加载邀请记录...",
+        "loadError": "读取邀请记录失败。",
+        "loadErrorTitle": "暂时无法加载邀请记录",
+        "retry": "重试",
+        "columns": {
+          "email": "用户邮箱",
+          "joinedAt": "加入时间",
+          "status": "状态",
+          "commission": "归因佣金"
+        },
+        "statuses": {
+          "registered": "已注册",
+          "converted": "已转化",
+          "high_value": "高价值用户",
+          "powerUser": "高价值用户"
+        },
+        "emptyTitle": "还没有被邀请人",
+        "emptyDescription": "通过您的推广链接注册的用户，会显示在这里。"
+      },
+      "orders": {
+        "title": "佣金订单",
+        "description": "查看归因订单，以及佣金如何从待处理进入可提现，最终完成打款。",
+        "loading": "正在加载佣金订单...",
+        "loadError": "读取佣金订单失败。",
+        "loadErrorTitle": "暂时无法加载佣金订单",
+        "retry": "重试",
+        "filters": {
+          "all": "全部状态"
+        },
+        "columns": {
+          "orderId": "订单号",
+          "customer": "用户",
+          "orderAmount": "订单金额",
+          "commission": "佣金收益",
+          "confirmedAt": "确认时间",
+          "status": "状态"
+        },
+        "statuses": {
+          "pending_hold": "待结算",
+          "pending": "待审核",
+          "available": "可提现",
+          "locked": "提现处理中",
+          "paid": "已结算",
+          "reversed": "已冲正"
+        },
+        "emptyTitle": "暂无订单",
+        "emptyDescription": "当被邀请用户完成支付后，归因订单会显示在这里。"
+      },
+      "withdrawals": {
+        "title": "提现",
+        "description": "在一个区域内查看可提现余额、提现规则和历史转账记录。",
+        "historyDescription": "查看提现申请记录，以及管理员人工转账的处理进度。",
+        "loading": "正在加载提现记录...",
+        "loadError": "读取提现记录失败。",
+        "loadErrorTitle": "暂时无法加载提现记录",
+        "retry": "重试",
+        "summary": {
+          "availableBalance": "可提现余额",
+          "minimumPayout": "最低提现门槛",
+          "payoutSchedule": "打款周期",
+          "supportedMethods": "支持方式"
+        },
+        "supportedMethodsValue": "Stripe / 微信",
+        "scheduleValues": {
+          "monthly": "按月结算",
+          "weekly": "按周结算"
+        },
+        "methodValues": {
+          "stripe": "Stripe",
+          "wechat": "微信",
+          "paypal": "PayPal",
+          "usdt": "USDT",
+          "bank": "银行转账"
+        },
+        "requestAction": "申请提现",
+        "requestDisabled": "审核通过后可用",
+        "disabledReasonLabel": "当前不可申请：",
+        "helper": "佣金只有在安全期结束且余额达到最低门槛后，才会进入可申请提现状态。",
+        "filters": {
+          "all": "全部状态"
+        },
+        "columns": {
+          "amount": "金额",
+          "method": "方式",
+          "requestedAt": "申请时间",
+          "status": "状态"
+        },
+        "statuses": {
+          "submitted": "已提交",
+          "scheduled": "待处理",
+          "processing": "处理中",
+          "paid": "已打款",
+          "rejected": "已驳回",
+          "cancelled": "已取消"
+        },
+        "emptyTitle": "暂无提现记录",
+        "emptyDescription": "提交提现申请后，处理记录会显示在这里。",
+        "requestDialog": {
+          "title": "申请提现",
+          "description": "选择提现方式，并填写管理员打款时使用的收款账号。",
+          "fullAmountNotice": "本次会申请提取当前全部可提现金额：{amount}",
+          "manualTransferNote": "提现由管理员人工审核并转账，不会自动打款。",
+          "methodLabel": "提现方式",
+          "accountLabel": "收款账号",
+          "accountPlaceholders": {
+            "stripe": "email@example.com",
+            "wechat": "微信号或手机号"
+          },
+          "validationAccount": "请先填写收款账号。",
+          "cancel": "取消",
+          "submit": "提交申请",
+          "submitting": "提交中...",
+          "submitSuccess": "提现申请已提交。",
+          "submitError": "提交提现申请失败。"
+        }
+      },
+      "pagination": {
+        "summary": "共 {total} 条，第 {page} / {totalPages} 页",
+        "perPage": "每页",
+        "previous": "上一页",
+        "next": "下一页",
+        "pageSizeOption": "{size} / 页"
+      },
+      "faq": {
+        "title": "常见问题",
+        "description": "这些内容回答了新推广合作伙伴在申请前后最常见的问题。",
+        "items": {
+          "commission": {
+            "question": "佣金比例是多少？",
+            "answer": "当前通过您的专属推广链接归因的有效订单，按 15% 比例结算佣金。"
+          },
+          "payout": {
+            "question": "什么时候可以提现？",
+            "answer": "佣金在安全期结束后转为可提现余额，达到最低门槛即可申请结算。"
+          },
+          "fraud": {
+            "question": "哪些情况会被判定为无效推广？",
+            "answer": "自买自推、重复支付身份、异常流量或伪造转化都可能导致佣金失效。"
+          },
+          "review": {
+            "question": "申请审核一般要多久？",
+            "answer": "大多数申请会在 1 到 3 个工作日内完成审核，具体取决于队列量和材料完整度。"
+          }
+        },
+        "supportTitle": "申请前有疑问？",
+        "supportDescription": "如果您不确定自己的渠道是否适合加入，可以先联系支持团队并附上受众简介。",
+        "supportAction": "联系支持"
+      },
+      "login": {
+        "title": "推广合作计划",
+        "heading": "请先登录",
+        "description": "登录后才能进入推广合作工作区。",
+        "action": "登录"
+      }
+    }
+  },
+  "PromptLibrary": {
+    "subtitle": "Nano Banana Pro",
+    "title": "提示词库",
+    "descriptionSuffix": " 个提示词集合。浏览卡片、搜索标签、链接来源。封面即场景，灵感一目了然。",
+    "searchPlaceholder": "搜索标题或标签...",
+    "clearFilters": "清除筛选",
+    "clickToViewPrompt": "点击查看完整提示词",
+    "expandDetails": "展开 →",
+    "noMatchingPrompts": "没有匹配的提示词。请尝试其他关键词或标签。",
+    "loadMore": "加载更多...",
+    "prompts": "提示词",
+    "viewSource": "查看来源",
+    "copyPrompt": "复制提示词",
+    "english": "English",
+    "chinese": "中文"
+  },
+  "modelDetail": {
+    "tabs": {
+      "playground": "在线体验",
+      "introduction": "介绍",
+      "introductionSubtitle": "使用 {modelName} 的完整指南",
+      "api": "API",
+      "pricing": "定价",
+      "resources": "资源"
+    },
+    "pricing": {
+      "rateLabel": "定价",
+      "successOnlyNote": "仅成功请求计费。每次请求完成后结算，并从您的预付余额中扣除。",
+      "perVideo": "每个视频",
+      "perImage": "每张图片",
+      "perGeneration": "每次生成",
+      "perSecond": "每秒",
+      "withVideoInput": "含视频输入",
+      "textImageToVideo": "文/图生视频",
+      "textToImage": "文生图",
+      "imageEditing": "图片编辑",
+      "unitsByModel": {
+        "seedance-2": "每秒 | 480p：含视频输入 10 积分 ($0.05)，文/图生视频 20 积分 ($0.10)；720p：含视频输入 20 积分 ($0.10)，文/图生视频 40 积分 ($0.20)；1080p：含视频输入 45 积分 ($0.225)，文/图生视频 90 积分 ($0.45)",
+        "seedance-2-fast": "每秒 | 480p：含视频输入 8 积分 ($0.04)，文/图生视频 14 积分 ($0.07)；720p：含视频输入 16 积分 ($0.08)，文/图生视频 28 积分 ($0.14)",
+        "veo3.1-fast": "每个视频 | 720p/1080p：20 积分 ($0.10)，4K：60 积分 ($0.30)",
+        "veo3.1-lite": "每个视频 | 720p/1080p：10 积分 ($0.05)，4K：30 积分 ($0.15)",
+        "veo3.1-quality": "每个视频 | 720p/1080p：120 积分 ($0.60)，4K：400 积分 ($2.00)",
+        "gpt-image-2": "每次生成 | 固定 15 积分 ($0.075)",
+        "gpt-image-2-edit": "每次生成 | 固定 15 积分 ($0.075)"
+      }
+    },
+    "model": {
+      "model": "模型",
+      "prompt": "提示词",
+      "size": "尺寸",
+      "aspectRatio": "宽高比",
+      "numberOfImages": "图片数量",
+      "duration": "时长",
+      "referenceImage": "参考图",
+      "maskImage": "蒙版图",
+      "resolution": "分辨率",
+      "getApiKey": "获取 API 密钥",
+      "apiDoc": "API 文档",
+      "systemPrompt": "系统提示词",
+      "temperature": "温度",
+      "maxTokens": "最大 Tokens",
+      "topP": "Top P",
+      "sendMessage": "发送",
+      "clearChat": "清空",
+      "configuration": "配置",
+      "tokenUsage": "Token 用量",
+      "inputTokens": "输入 Tokens",
+      "outputTokens": "输出 Tokens",
+      "totalTokens": "总 Tokens",
+      "creditsUsed": "已消耗积分",
+      "typeMessage": "输入消息...",
+      "streaming": "生成中...",
+      "playgroundNotice": "该 Playground 仅用于演示，数据只在当前窗口内有效，刷新页面后会被清空。",
+      "newConversation": "新建对话",
+      "endpoint": "API 端点"
+    },
+    "market": {
+      "allModels": "全部模型",
+      "filters": "筛选",
+      "clear": "清除",
+      "task": "任务",
+      "tasks": "任务类型",
+      "provider": "提供商",
+      "providers": "模型厂商",
+      "card": "卡片",
+      "list": "列表",
+      "searchModels": "搜索模型...",
+      "clearAllFilters": "清除所有筛选",
+      "modelsFound": "找到 {count} 个模型",
+      "noModelsFound": "未找到模型",
+      "noModelsFoundDesc": "尝试调整您的筛选条件或搜索词以找到您想要的内容。",
+      "learnMore": "了解更多",
+      "tryUse": "立即使用",
+      "perRequest": "每次请求",
+      "per1kInput": "每 1K 输入",
+      "copyIdentifierSuccess": "模型标识符已复制到剪贴板",
+      "copyTitle": "复制模型 ID",
+      "groups": {
+        "video": "视频生成",
+        "image": "图像生成",
+        "music": "音乐音效",
+        "chat": "文本对话",
+        "others": "其他类型"
+      },
+      "table": {
+        "modelName": "模型名称",
+        "provider": "提供商",
+        "tasks": "任务",
+        "description": "描述",
+        "pricing": "定价"
+      },
+      "pricing": {
+        "credits": "{credits} 积分",
+        "per": "/ {unit}"
+      }
+    }
+  },
+  "DashboardShell": {
+    "titles": {
+      "dashboard": "控制台",
+      "history": "历史记录",
+      "apiKey": "API Keys",
+      "billing": "账单"
+    },
+    "nav": {
+      "home": "首页",
+      "models": "模型",
+      "dashboard": "控制台",
+      "history": "历史记录",
+      "apiKeys": "API Keys",
+      "billing": "账单"
+    },
+    "groups": {
+      "platform": "平台",
+      "account": "账户"
+    },
+    "credits": {
+      "title": "积分",
+      "available": "可用积分",
+      "topUp": "充值"
+    },
+    "user": {
+      "account": "账户",
+      "guest": "游客",
+      "signedIn": "已登录",
+      "signInHint": "登录后查看账户信息"
+    },
+    "toggleTheme": "切换主题",
+    "currentPage": "当前页面",
+    "mobileShell": "导航菜单"
+  },
+  "ModelHero": {
+    "breadcrumbs": {
+      "home": "首页",
+      "models": "模型"
+    },
+    "notFound": "未找到模型：",
+    "copySuccess": "模型 ID 已复制到剪贴板",
+    "copyLabel": "复制模型 ID",
+    "modelLabel": "模型：",
+    "models": {
+      "seedance-2": {
+        "name": "seedance-2",
+        "description": "ByteDance 的 Seedance 2 系列支持电影级多模态视频生成，具备原生音视频联合生成、多镜头叙事、8+ 语言 lip-sync，以及基于文本、图片、视频、音频输入的导演级控制能力。"
+      },
+      "seedance-2-fast": {
+        "name": "seedance-2-fast",
+        "description": "ByteDance 的 Seedance 2 系列支持电影级多模态视频生成，具备原生音视频联合生成、多镜头叙事、8+ 语言 lip-sync，以及基于文本、图片、视频、音频输入的导演级控制能力。"
+      },
+      "veo-3-1": {
+        "name": "veo-3-1"
+      },
+      "veo3.1-fast": {
+        "name": "veo3.1-fast",
+        "description": "Veo 3.1 中速度最快的档位，适合做 8 秒原生音频视频的快速迭代、参考图控制测试，以及创意进入生产前的低延迟试跑。"
+      },
+      "veo3.1-lite": {
+        "name": "veo3.1-lite",
+        "description": "Veo 3.1 中成本效率最高的档位，适合更高吞吐的 720p、1080p 和 4K 生成，同时保留原生音频能力和相同的参考驱动工作流。"
+      },
+      "veo3.1-quality": {
+        "name": "veo3.1-quality",
+        "description": "Veo 3.1 中保真度最高的档位，适合更高级的电影感镜头、更丰富的细节表现，以及对成片质量要求更高的 4K 输出。"
+      },
+      "gpt-image-2": {
+        "name": "gpt-image-2",
+        "description": "OpenAI 的 GPT Image 2 文生图模型，适合高写实图片、清晰图中文字、UI 风格画面，以及由 prompt 驱动的营销图、产品图和截图式视觉生成。"
+      },
+      "gpt-image-2-edit": {
+        "name": "gpt-image-2-edit",
+        "description": "OpenAI 的 GPT Image 2 单图编辑模型，适合在保留原始构图的前提下做局部、上下文感知的修改，例如替换背景、调整文案区域与优化视觉细节。"
+      }
+    },
+    "actions": {
+      "getApiKey": "获取 API Key",
+      "apiDocs": "API 文档"
+    }
+  },
+  "Auth": {
+    "Login": {
+      "social": {
+        "loginFailedTitle": "登录失败",
+        "googleError": "无法使用 Google 登录，请重试。",
+        "providerError": "无法使用 {provider} 登录，请重试。",
+        "githubNotConfigured": "GitHub 登录尚未配置",
+        "continueWithGithub": "使用 GitHub 继续",
+        "signInWithGithub": "使用 GitHub 登录",
+        "accountNotVerified": "该社交账号邮箱尚未验证，请先完成验证。",
+        "accountConflict": "该社交账号已关联到其他账户。"
+      },
+      "divider": "或使用邮箱继续",
+      "viewTitles": {
+        "login": "登录",
+        "createAccount": "创建账户",
+        "forgotPassword": "忘记密码",
+        "resetPassword": "重置密码"
+      },
+      "actions": {
+        "forgotPassword": "忘记密码？",
+        "signIn": "登录",
+        "signUp": "注册",
+        "createAccount": "创建账户",
+        "sendCode": "发送验证码",
+        "sendResetCode": "发送重置码",
+        "resetPassword": "重置密码",
+        "backToLogin": "返回登录",
+        "resend": "重新发送"
+      },
+      "hints": {
+        "noAccount": "还没有账户？"
+      },
+      "descriptions": {
+        "forgotPassword": "输入你的邮箱地址，我们会发送验证码来重置密码。"
+      },
+      "fields": {
+        "email": {
+          "label": "邮箱",
+          "placeholder": "请输入邮箱"
+        },
+        "password": {
+          "label": "密码",
+          "placeholder": "请输入密码",
+          "minPlaceholder": "至少 8 个字符"
+        },
+        "verificationCode": {
+          "label": "验证码",
+          "placeholder": "请输入 6 位验证码"
+        },
+        "username": {
+          "label": "用户名",
+          "placeholder": "请输入用户名"
+        },
+        "confirmPassword": {
+          "label": "确认密码",
+          "placeholder": "请再次输入密码"
+        },
+        "newPassword": {
+          "label": "新密码"
+        },
+        "confirmNewPassword": {
+          "label": "确认新密码"
+        }
+      },
+      "errors": {
+        "enterEmail": "请输入邮箱",
+        "codeSent": "验证码已发送至你的邮箱",
+        "sendCodeFailed": "发送验证码失败",
+        "enterEmailAndPassword": "请输入邮箱和密码",
+        "loginFailed": "登录失败",
+        "fillAllFields": "请填写所有字段",
+        "passwordMinLength": "密码长度至少为 8 个字符",
+        "passwordsMismatch": "两次输入的密码不一致",
+        "registrationFailed": "注册失败",
+        "sendResetCodeFailed": "发送重置码失败",
+        "passwordResetFailed": "密码重置失败"
+      },
+      "success": {
+        "passwordReset": "密码重置成功"
+      }
+    }
+  }
+}

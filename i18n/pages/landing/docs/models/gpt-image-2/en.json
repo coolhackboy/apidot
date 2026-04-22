@@ -1,0 +1,184 @@
+{
+  "id": "gpt-image-2",
+  "groupKey": "image",
+  "navLabel": "GPT Image 2",
+  "method": "POST",
+  "endpoint": {
+    "label": "GPT Image 2",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "Generate new images or edit one uploaded image with GPT Image 2 through APIDot's unified async submit endpoint.",
+    "about": "GPT Image 2 follows the same APIDot async workflow as other media models: submit one request, receive a task id immediately, then poll shared status or wait for a webhook callback. Use `gpt-image-2` for text-to-image generation and `gpt-image-2-edit` for single-image editing with exactly one source image.",
+    "bestPractices": [
+      "Be explicit about composition, typography, and product framing when you need reliable marketing visuals or legible in-image text.",
+      "Use `gpt-image-2-edit` only when you already have one source image and want a localized transformation instead of a full regeneration.",
+      "Store the returned task id immediately so polling, retries, and webhook updates stay idempotent."
+    ],
+    "faq": [
+      {
+        "question": "Which GPT Image 2 model id should I send?",
+        "answer": "Use `gpt-image-2` for text-to-image generation and `gpt-image-2-edit` for one-image editing. The edit variant requires exactly one `input.image_urls` entry."
+      },
+      {
+        "question": "Do both variants use the same endpoint?",
+        "answer": "Yes. Both variants submit to `/api/generate/submit`. You switch behavior with the top-level `model` field and the presence of `input.image_urls` for edit requests."
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "gpt-image-2",
+        "description": "Target model id. Use `gpt-image-2` or `gpt-image-2-edit`."
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "Optional webhook callback URL for terminal task updates."
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "Container for GPT Image 2 generation or editing parameters."
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "Main instruction describing the target image, edit intent, composition, and text requirements."
+      },
+      {
+        "name": "input.size",
+        "type": "string",
+        "required": false,
+        "defaultValue": "1024x1024",
+        "description": "Output size preset. Current APIDot support includes `1024x1024`, `1536x1024`, and `1024x1536`."
+      },
+      {
+        "name": "input.n",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "Number of images to generate. Current APIDot support allows 1 through 4."
+      },
+      {
+        "name": "input.image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "Exactly one uploaded source image URL when using `gpt-image-2-edit`. Omit this field for text-to-image requests."
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP-style status code. Successful submits return `200`."
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "Async task identifier returned immediately after submission."
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "Initial task status, typically `not_started`."
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "ISO 8601 timestamp for task creation."
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "Missing prompt, unsupported size, or an invalid edit payload such as a missing source image."
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Missing, expired, or invalid Bearer API key."
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "The current prepaid balance cannot cover the image generation cost."
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "The API key is temporarily above the allowed submit rate."
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    \"size\": \"1024x1024\",\n    \"n\": 1\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    size: \"1024x1024\",\n    n: 1\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n        \"size\": \"1024x1024\",\n        \"n\": 1\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+    },
+    "exampleVariants": [
+      {
+        "id": "gpt-image-2",
+        "label": "gpt-image-2",
+        "payloadTemplate": {
+          "model": "gpt-image-2",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail",
+            "size": "1024x1024",
+            "n": 1
+          }
+        }
+      },
+      {
+        "id": "gpt-image-2-edit",
+        "label": "gpt-image-2-edit",
+        "payloadTemplate": {
+          "model": "gpt-image-2-edit",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "Keep the product centered, replace the background with a clean white studio backdrop, add a soft natural shadow, and improve catalog-photo clarity",
+            "size": "1024x1024",
+            "n": 1,
+            "image_urls": [
+              "https://your-domain.com/source-image.png"
+            ]
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "gpt-image-2",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail",
+        "size": "1024x1024",
+        "n": 1
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"image_urls is required for gpt-image-2-edit\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+  }
+}

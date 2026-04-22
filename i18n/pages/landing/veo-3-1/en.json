@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Veo 3.1 API | APIDot",
+    "description": "Access Google DeepMind Veo 3.1 on APIDot for 8-second video generation with native audio, reference images, start/end frame control, and Fast, Lite, or Quality pricing tiers."
+  },
+  "hero": {
+    "title": "Veo 3.1 Playground",
+    "description": "Test Veo 3.1 Fast, Lite, and Quality on APIDot with native audio, reference-guided video generation, and the same async API flow you can ship directly into production."
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "Overview",
+      "title": "What is {modelName}?",
+      "paragraphs": [
+        "{modelName} is Google DeepMind's video generation family built for cinematic short-form clips with synchronized native audio, stronger prompt adherence, and more deliberate control over motion, framing, and scene continuity.",
+        "On APIDot, Veo 3.1 is available through Fast, Lite, and Quality variants for 8-second jobs with 16:9 or 9:16 output, reference-image workflows, and async delivery. The currently selected variant is {activeModelId}, billed at {priceLabel}."
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "title": "Why teams use {modelName}",
+      "items": [
+        {
+          "title": "Native audio with scene-aware sync",
+          "description": "Generate dialogue, ambient sound, and effects together with the video instead of stitching audio later. {modelName} is designed for short clips that already feel finished when they come out of the model."
+        },
+        {
+          "title": "Text, ingredients, and frames-to-video workflows",
+          "description": "Start from a pure text prompt, upload reference images for character and style consistency, or use first and last frames to guide transitions. This mirrors the multi-input workflows that made Veo 3.1 stand out on PoYo."
+        },
+        {
+          "title": "Director-style camera and motion control",
+          "description": "Use film language such as dolly, tracking, overhead, portrait framing, lighting cues, and shot composition to push the model toward more intentional results instead of generic motion."
+        },
+        {
+          "title": "Fast, Lite, and Quality tiers",
+          "description": "Choose Fast for quick iteration, Lite for the lowest per-video cost, or Quality when fidelity matters most. The broader Veo 3.1 family also carries production-oriented safeguards such as SynthID watermarking in Google's ecosystem."
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "Use Cases",
+      "title": "Where {modelName} fits best",
+      "description": "Teams use Veo 3.1 when they need native audio, faster iteration, and stronger control than prompt-only video tools usually provide. Common production patterns include:",
+      "items": [
+        "Localized ad and campaign video generation",
+        "Film pre-visualization and storyboard validation",
+        "Educational explainers with narration-ready visuals",
+        "E-commerce product demos from reference images",
+        "Game trailers, cutscenes, and virtual world concept clips",
+        "Enterprise training and internal communications"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "Quickstart",
+      "title": "How to use {modelName} with APIDot",
+      "steps": [
+        {
+          "eyebrow": "Step 01",
+          "title": "Create your API key",
+          "description": "Generate an APIDot API key once and use it as the Bearer token for all Veo 3.1 Fast, Lite, and Quality requests.",
+          "actionText": "Open API Keys",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "Step 02",
+          "title": "Add credits for the tier you want",
+          "description": "Top up credits based on the Veo 3.1 variant and resolution you plan to run. Fast is optimized for iteration, Lite for cost efficiency, and Quality for premium output."
+        },
+        {
+          "eyebrow": "Step 03",
+          "title": "Submit async jobs and retrieve results",
+          "description": "POST to {endpoint} with model=\"{activeModelId}\", get a task ID back, then poll status or use callbacks to collect the finished video when the job completes."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "What is Veo 3.1 on APIDot?",
+          "answer": "It is APIDot's unified access point for Google DeepMind Veo 3.1 Fast, Lite, and Quality. You can submit 8-second generation jobs with text prompts, reference images, or frame-guided inputs through one async API flow."
+        },
+        {
+          "question": "Which inputs and generation modes are supported?",
+          "answer": "This page supports prompt-only generation plus image-guided workflows. In practice that means text-to-video, reference-image generation, and first-frame or first-and-last-frame guided video generation for more controlled scene transitions."
+        },
+        {
+          "question": "What output settings are available on this page?",
+          "answer": "The current APIDot Veo 3.1 page is built around 8-second videos, 16:9 or 9:16 aspect ratios, and 720p, 1080p, or 4K output depending on the variant you select."
+        },
+        {
+          "question": "Does Veo 3.1 generate native audio, and do failed jobs get charged?",
+          "answer": "Yes. Native audio is one of the headline strengths of the Veo 3.1 family. On APIDot, credits are intended for successful generations rather than failed jobs."
+        },
+        {
+          "question": "Does the API use an async job pattern?",
+          "answer": "Yes. You submit a job, receive a task ID, then poll the status endpoint or handle a callback when generation finishes. That keeps the integration practical for queue-based video workloads."
+        },
+        {
+          "question": "How does Veo 3.1 compare with Veo 3 or Sora 2?",
+          "answer": "Veo 3.1 is generally chosen for native audio, stronger reference control, and more structured cinematic prompting. Sora 2 is often favored for single-shot realism, while Veo 3.1 is especially compelling when audio, ingredients, and frame guidance matter."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<svg width="240" height="24" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="24" fill="none"/>
+  <g>
+    <polygon points="20,4 10,19 30,19" fill="#2E7D32"/>
+    <polygon points="20,7 13,19 27,19" fill="#388E3C"/>
+    <rect x="18" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g>
+    <polygon points="60,4 50,19 70,19" fill="#2E7D32"/>
+    <polygon points="60,7 53,19 67,19" fill="#388E3C"/>
+    <rect x="58" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g>
+    <polygon points="100,4 90,19 110,19" fill="#2E7D32"/>
+    <polygon points="100,7 93,19 107,19" fill="#388E3C"/>
+    <rect x="98" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g>
+    <polygon points="140,4 130,19 150,19" fill="#2E7D32"/>
+    <polygon points="140,7 133,19 147,19" fill="#388E3C"/>
+    <rect x="138" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g>
+    <polygon points="180,4 170,19 190,19" fill="#2E7D32"/>
+    <polygon points="180,7 173,19 187,19" fill="#388E3C"/>
+    <rect x="178" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g>
+    <polygon points="220,4 210,19 230,19" fill="#2E7D32"/>
+    <polygon points="220,7 213,19 227,19" fill="#388E3C"/>
+    <rect x="218" y="19" width="4" height="4" fill="#6D4C41"/>
+  </g>
+  <g fill="#C62828">
+    <circle cx="40" cy="12" r="2"/>
+    <circle cx="80" cy="10" r="2"/>
+    <circle cx="120" cy="13" r="2"/>
+    <circle cx="160" cy="10" r="2"/>
+    <circle cx="200" cy="12" r="2"/>
+  </g>
+</svg>

@@ -1,0 +1,797 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import {
+  gptImage2Service,
+  GptImage2ModelId,
+  GptImage2Size,
+  GptImage2SubmitRequest,
+  GptImage2StatusResponse,
+} from "@/services/gptImage2Service";
+import { apiService } from "@/services/api";
+import { appConfig } from "@/data/config";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
+import { Upload, Loader2, Trash2, Download, Coins } from "lucide-react";
+import { uploadToR2 } from "@/utils/r2";
+import LoginForm from "@/components/auth/LoginForm";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+
+interface GptImage2Props {
+  title?: string;
+  description?: string;
+  locale?: string;
+  selectedModel?: GptImage2ModelId;
+}
+
+type ConfigMode = "form" | "json";
+type ResultMode = "preview" | "json";
+type GptImage2StatusData = NonNullable<GptImage2StatusResponse["data"]>;
+
+type UploadedFile = {
+  file?: File;
+  url: string;
+  uploadedUrl?: string;
+  uploading?: boolean;
+};
+
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const SIZE_OPTIONS: GptImage2Size[] = ["1024x1024", "1536x1024", "1024x1536"];
+const FIXED_CREDITS = 15;
+
+const DEFAULT_PROMPT =
+  "A photorealistic launch poster for an AI design tool, clean sans-serif headline, crisp UI mockup on a laptop screen, natural studio lighting, balanced shadows, premium product photography.";
+
+const EXAMPLE_OUTPUT: GptImage2StatusData = {
+  task_id: "IMG2EXAMPLE123456",
+  status: "finished",
+  files: [
+    {
+      file_url: "https://storage.poyo.ai/models/gpt-4o-image.webp",
+      file_type: "image",
+    },
+  ],
+  created_time: "2026-04-21T09:30:00",
+  progress: 100,
+  error_message: null,
+};
+
+const formatUsd = (value: number) => value.toFixed(3).replace(/\.?0+$/, "");
+
+const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  const [configMode, setConfigMode] = useState<ConfigMode>("form");
+  const [resultMode, setResultMode] = useState<ResultMode>("preview");
+
+  const [model, setModel] = useState<GptImage2ModelId>(selectedModel);
+  const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
+  const [size, setSize] = useState<GptImage2Size>("1024x1024");
+  const [imageCount, setImageCount] = useState<1 | 2 | 3 | 4>(1);
+  const [sourceImage, setSourceImage] = useState<UploadedFile | null>(null);
+  const [jsonConfig, setJsonConfig] = useState("");
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isProcessingImage, setIsProcessingImage] = useState(false);
+  const [displayResult, setDisplayResult] = useState<GptImage2StatusData | null>(null);
+  const [downloadingIndex, setDownloadingIndex] = useState<number | null>(null);
+  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    setModel(selectedModel);
+  }, [selectedModel]);
+
+  useEffect(() => {
+    setIsLoggedIn(apiService.isLoggedInToApp(appConfig.appName));
+  }, []);
+
+  useEffect(() => {
+    if (configMode !== "json") return;
+
+    const input: GptImage2SubmitRequest["input"] = {
+      prompt,
+      size,
+      n: imageCount,
+    };
+
+    if (model === "gpt-image-2-edit" && sourceImage?.uploadedUrl) {
+      input.image_urls = [sourceImage.uploadedUrl];
+    }
+
+    setJsonConfig(JSON.stringify({ model, input }, null, 2));
+  }, [configMode, imageCount, model, prompt, size, sourceImage]);
+
+  useEffect(() => {
+    return () => {
+      if (intervalIdRef.current) {
+        clearInterval(intervalIdRef.current);
+      }
+      if (sourceImage?.url.startsWith("blob:")) {
+        URL.revokeObjectURL(sourceImage.url);
+      }
+    };
+  }, [sourceImage]);
+
+  const isAnyFileUploading = !!sourceImage?.uploading;
+  const needsSourceImage = model === "gpt-image-2-edit";
+
+  const handleError = (error: any, defaultMessage: string) => {
+    console.error(error);
+    toast.error(error?.message || defaultMessage);
+    setIsProcessingImage(false);
+    setIsSubmitting(false);
+  };
+
+  const stopPolling = () => {
+    if (intervalIdRef.current) {
+      clearInterval(intervalIdRef.current);
+      intervalIdRef.current = null;
+    }
+  };
+
+  const startPollingStatus = async (taskId: string) => {
+    const pollStatus = async () => {
+      try {
+        const result = await gptImage2Service.checkStatus(taskId);
+        if (!result.data) {
+          return;
+        }
+
+        setDisplayResult(result.data);
+
+        if (result.data.status === "finished" || result.data.status === "failed") {
+          stopPolling();
+          setIsProcessingImage(false);
+
+          if (result.data.status === "finished") {
+            toast.success("Image generated successfully!");
+          } else {
+            toast.error(result.data.error_message || "Image generation failed");
+          }
+          return;
+        }
+
+        if (
+          result.data.status === "not_started" ||
+          result.data.status === "running" ||
+          result.data.status === "processing"
+        ) {
+          setIsProcessingImage(true);
+        }
+      } catch (error) {
+        console.error("Error polling GPT Image 2 status:", error);
+      }
+    };
+
+    await pollStatus();
+    intervalIdRef.current = setInterval(pollStatus, 10000);
+  };
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      if (file.size > MAX_IMAGE_SIZE) {
+        throw new Error("Image exceeds 10MB limit");
+      }
+
+      if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        throw new Error("Please upload JPEG, PNG, or WebP images only");
+      }
+
+      const url = URL.createObjectURL(file);
+      setSourceImage({ file, url, uploading: true });
+
+      try {
+        const fileName = `gpt-image-2-edit-${Date.now()}-${Math.random()
+          .toString(36)
+          .slice(2)}-${file.name}`;
+        const result = await uploadToR2(file, fileName);
+        setSourceImage({ file, url, uploadedUrl: result.url, uploading: false });
+        toast.success("Image uploaded successfully");
+      } catch (uploadError) {
+        setSourceImage(null);
+        URL.revokeObjectURL(url);
+        throw uploadError;
+      }
+
+      event.target.value = "";
+    } catch (error: any) {
+      handleError(error, "Failed to upload image");
+    }
+  };
+
+  const handleRemoveImage = () => {
+    if (sourceImage?.url.startsWith("blob:")) {
+      URL.revokeObjectURL(sourceImage.url);
+    }
+    setSourceImage(null);
+  };
+
+  const validateForm = (): string | null => {
+    if (!prompt.trim()) return "Please enter a prompt";
+    if (!SIZE_OPTIONS.includes(size)) return "Please choose a supported size";
+    if (!Number.isInteger(imageCount) || imageCount < 1 || imageCount > 4) {
+      return "Number of images must be an integer between 1 and 4";
+    }
+    if (needsSourceImage && !sourceImage?.uploadedUrl) {
+      return "Please upload one source image for gpt-image-2-edit";
+    }
+    return null;
+  };
+
+  const buildRequestFromForm = (): GptImage2SubmitRequest => {
+    const input: GptImage2SubmitRequest["input"] = {
+      prompt: prompt.trim(),
+      size,
+      n: imageCount,
+    };
+
+    if (needsSourceImage && sourceImage?.uploadedUrl) {
+      input.image_urls = [sourceImage.uploadedUrl];
+    }
+
+    return {
+      model,
+      input,
+    };
+  };
+
+  const parseJsonRequest = (): GptImage2SubmitRequest | null => {
+    try {
+      const parsed = JSON.parse(jsonConfig);
+      const parsedModel = parsed?.model as GptImage2ModelId | undefined;
+      const parsedInput = parsed?.input;
+
+      if (!parsedModel || !parsedInput?.prompt) {
+        toast.error("JSON must include model and input.prompt");
+        return null;
+      }
+
+      if (!["gpt-image-2", "gpt-image-2-edit"].includes(parsedModel)) {
+        toast.error("Model must be gpt-image-2 or gpt-image-2-edit");
+        return null;
+      }
+
+      if (parsedInput.size && !SIZE_OPTIONS.includes(parsedInput.size as GptImage2Size)) {
+        toast.error("Size must be 1024x1024, 1536x1024, or 1024x1536");
+        return null;
+      }
+
+      if (
+        parsedInput.n !== undefined &&
+        (!Number.isInteger(parsedInput.n) || parsedInput.n < 1 || parsedInput.n > 4)
+      ) {
+        toast.error("input.n must be an integer between 1 and 4");
+        return null;
+      }
+
+      if (parsedModel === "gpt-image-2-edit") {
+        if (!Array.isArray(parsedInput.image_urls) || parsedInput.image_urls.length !== 1) {
+          toast.error("gpt-image-2-edit requires exactly one image_urls entry");
+          return null;
+        }
+      }
+
+      if (parsedModel === "gpt-image-2" && parsedInput.image_urls?.length) {
+        toast.error("image_urls are only supported for gpt-image-2-edit");
+        return null;
+      }
+
+      return parsed as GptImage2SubmitRequest;
+    } catch {
+      toast.error("Invalid JSON configuration");
+      return null;
+    }
+  };
+
+  const handleGenerateImage = async () => {
+    if (!isLoggedIn) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    if (isAnyFileUploading) {
+      toast.error("Please wait for the upload to finish");
+      return;
+    }
+
+    const request = configMode === "json" ? parseJsonRequest() : buildRequestFromForm();
+    if (!request) {
+      return;
+    }
+
+    if (configMode === "form") {
+      const error = validateForm();
+      if (error) {
+        toast.error(error);
+        return;
+      }
+    }
+
+    if (isSubmitting) return;
+
+    try {
+      setIsSubmitting(true);
+      setIsProcessingImage(true);
+      setDisplayResult(null);
+      stopPolling();
+
+      try {
+        const userInfo = await apiService.getUserInfo(appConfig.appName);
+        if (userInfo.data.credits_amount < FIXED_CREDITS) {
+          setShowUpgradeModal(true);
+          setIsSubmitting(false);
+          setIsProcessingImage(false);
+          return;
+        }
+      } catch (creditError) {
+        console.error("Failed to check credits:", creditError);
+      }
+
+      const response = await gptImage2Service.submit(request);
+      if (!response.data?.task_id) {
+        throw new Error("Failed to start GPT Image 2 generation");
+      }
+
+      setDisplayResult({
+        task_id: response.data.task_id,
+        status: "not_started",
+        files: [],
+        created_time: response.data.created_time,
+        progress: 0,
+        error_message: null,
+      });
+
+      toast.success("Image generation started!");
+      await startPollingStatus(response.data.task_id);
+    } catch (error: any) {
+      handleError(error, "Failed to generate image. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const renderUploadSlot = () => (
+    <div className="space-y-2">
+      <Label className="text-sm font-medium">
+        Source Image <span className="text-red-500">*</span>
+      </Label>
+      <div className="relative w-full rounded-lg border border-border bg-background p-3">
+        {sourceImage ? (
+          <div className="space-y-3">
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-muted/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={sourceImage.url}
+                alt="Source"
+                className={`h-full w-full object-contain ${sourceImage.uploading ? "opacity-50" : ""}`}
+              />
+              {sourceImage.uploading ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <Loader2 className="h-6 w-6 animate-spin text-white" />
+                </div>
+              ) : null}
+              <button
+                type="button"
+                onClick={handleRemoveImage}
+                disabled={sourceImage.uploading}
+                className="absolute right-2 top-2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70 disabled:opacity-50"
+                aria-label="Remove source image"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              One JPEG, PNG, or WebP image. Required for gpt-image-2-edit.
+            </p>
+          </div>
+        ) : (
+          <label className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-border/60 px-4 py-8 text-center transition-colors hover:border-primary/40 hover:bg-muted/20">
+            <Upload className="h-8 w-8 text-muted-foreground" />
+            <div className="space-y-1">
+              <p className="text-sm font-medium">Upload source image</p>
+              <p className="text-xs text-muted-foreground">JPEG, PNG, or WebP up to 10MB</p>
+            </div>
+            <Input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              className="hidden"
+              onChange={handleFileUpload}
+              disabled={isSubmitting}
+            />
+          </label>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderConfigPanel = () => {
+    if (configMode === "json") {
+      return (
+        <div className="space-y-3">
+          <Label className="text-sm font-medium">JSON Configuration</Label>
+          <Textarea
+            value={jsonConfig}
+            onChange={(e) => setJsonConfig(e.target.value)}
+            className="min-h-[500px] font-mono text-sm"
+            placeholder={`{\n  "model": "gpt-image-2",\n  "input": {\n    "prompt": "A polished product hero shot",\n    "size": "1024x1024",\n    "n": 1\n  }\n}`}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">
+            Prompt <span className="text-red-500">*</span>
+          </Label>
+          <Textarea
+            placeholder="Describe the image you want to generate..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="min-h-[120px] max-h-[320px] resize-y"
+            disabled={isSubmitting}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">Size</Label>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {SIZE_OPTIONS.map((option) => (
+              <Button
+                key={option}
+                type="button"
+                variant={size === option ? "default" : "outline"}
+                onClick={() => setSize(option)}
+                disabled={isSubmitting}
+              >
+                {option}
+              </Button>
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Poyo-aligned presets: square, landscape, and portrait.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">Number of Images</Label>
+          <Input
+            type="number"
+            min={1}
+            max={4}
+            step={1}
+            value={imageCount}
+            onChange={(e) => {
+              const nextValue = Number(e.target.value);
+              if (Number.isInteger(nextValue) && nextValue >= 1 && nextValue <= 4) {
+                setImageCount(nextValue as 1 | 2 | 3 | 4);
+              }
+            }}
+            disabled={isSubmitting}
+          />
+        </div>
+
+        {needsSourceImage ? renderUploadSlot() : null}
+      </div>
+    );
+  };
+
+  const renderResultsPanel = () => {
+    if (resultMode === "json") {
+      const jsonData = displayResult || EXAMPLE_OUTPUT;
+      const isExample = !displayResult;
+      return (
+        <div className="space-y-4">
+          {isExample ? (
+            <div className="rounded-lg border border-blue-500/20 bg-blue-500/10 p-3">
+              <p className="text-sm font-medium text-blue-500">Example Output</p>
+              <p className="text-xs text-blue-400">
+                Generate your own image to replace this sample JSON.
+              </p>
+            </div>
+          ) : null}
+          <Label className="text-sm font-medium">Response Data</Label>
+          <Textarea
+            value={JSON.stringify(jsonData, null, 2)}
+            readOnly
+            className="min-h-[500px] bg-muted font-mono text-sm"
+          />
+        </div>
+      );
+    }
+
+    const dataToDisplay = displayResult || EXAMPLE_OUTPUT;
+    const isExample = !displayResult;
+    const imageFiles = (dataToDisplay.files || []).filter((file) => file.file_type === "image");
+
+    return (
+      <div className="space-y-4">
+        {isExample ? (
+          <div className="rounded-lg border border-blue-500/20 bg-blue-500/10 p-3">
+            <p className="text-sm font-medium text-blue-500">Example Output</p>
+            <p className="text-xs text-blue-400">
+              Generate your own image to replace this sample preview.
+            </p>
+          </div>
+        ) : null}
+
+        <div className="space-y-3 rounded-lg bg-background/50 p-4">
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <div>
+              <span className="text-muted-foreground">Task ID:</span>
+              <p className="mt-1 break-all font-mono text-xs">{dataToDisplay.task_id}</p>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Status:</span>
+              <p
+                className={`mt-1 font-medium ${
+                  dataToDisplay.status === "finished"
+                    ? "text-green-500"
+                    : dataToDisplay.status === "failed"
+                      ? "text-red-500"
+                      : "text-yellow-500"
+                }`}
+              >
+                {dataToDisplay.status}
+              </p>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Created:</span>
+              <p className="mt-1 text-xs">{dataToDisplay.created_time}</p>
+            </div>
+            {dataToDisplay.progress !== undefined ? (
+              <div>
+                <span className="text-muted-foreground">Progress:</span>
+                <p className="mt-1">{dataToDisplay.progress}%</p>
+              </div>
+            ) : null}
+          </div>
+
+          {dataToDisplay.error_message ? (
+            <div className="rounded-lg border border-red-500/20 bg-red-500/10 p-3">
+              <p className="mb-1 text-sm font-medium text-red-500">Error</p>
+              <p className="text-xs text-red-400">{dataToDisplay.error_message}</p>
+            </div>
+          ) : null}
+
+          {!isExample &&
+          (dataToDisplay.status === "not_started" ||
+            dataToDisplay.status === "running" ||
+            dataToDisplay.status === "processing") ? (
+            <div className="rounded-lg border border-blue-500/20 bg-blue-500/10 p-3">
+              <div className="flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+                <p className="text-sm text-blue-500">Generating image...</p>
+              </div>
+            </div>
+          ) : null}
+        </div>
+
+        {imageFiles.length > 0 ? (
+          <div className="space-y-4">
+            {imageFiles.map((file, index) => (
+              <div key={`${file.file_url}-${index}`} className="space-y-2">
+                <div className="overflow-hidden rounded-lg bg-muted/30">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={file.file_url}
+                    alt={isExample ? "Example output" : "Generated output"}
+                    className="h-auto w-full rounded-lg object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs text-muted-foreground">
+                    {isExample ? "Example image" : "Image generated successfully"}
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={downloadingIndex === index}
+                    onClick={async () => {
+                      try {
+                        setDownloadingIndex(index);
+                        const downloadUrl = `/api/download?url=${encodeURIComponent(file.file_url)}`;
+                        const response = await fetch(downloadUrl);
+                        if (!response.ok) {
+                          throw new Error("Download failed");
+                        }
+
+                        const blob = await response.blob();
+                        const blobUrl = URL.createObjectURL(blob);
+                        const link = document.createElement("a");
+                        link.href = blobUrl;
+                        link.download = `gpt-image-2_${dataToDisplay.task_id}_${index}.png`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(blobUrl);
+                        toast.success("Image downloaded successfully!");
+                      } catch (error) {
+                        console.error("Download failed:", error);
+                        toast.error("Failed to download image");
+                      } finally {
+                        setDownloadingIndex(null);
+                      }
+                    }}
+                  >
+                    {downloadingIndex === index ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Downloading...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <LoginForm
+        app_name={appConfig.appName}
+        onLoginSuccess={() => {
+          setShowLoginModal(false);
+          window.location.reload();
+        }}
+        open={showLoginModal}
+        onOpenChange={setShowLoginModal}
+      />
+
+      <Dialog open={showUpgradeModal} onOpenChange={setShowUpgradeModal}>
+        <DialogContent className="sm:max-w-[425px]">
+          <div className="space-y-4 py-4">
+            <div className="space-y-2 text-center">
+              <Coins className="mx-auto h-12 w-12 text-orange-500" />
+              <h3 className="text-lg font-semibold">Insufficient Credits</h3>
+              <p className="text-sm text-muted-foreground">
+                GPT Image 2 requires 15 credits per generation.
+              </p>
+            </div>
+            <div className="flex gap-3 pt-2">
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => setShowUpgradeModal(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="flex-1 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 text-white hover:from-orange-600 hover:via-pink-600 hover:to-rose-600"
+                onClick={() => {
+                  window.open("/dashboard/billing", "_blank");
+                }}
+              >
+                Recharge Now
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <div>
+        <div className="container mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-8">
+          <div className="grid items-stretch gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-6 xl:gap-8">
+            <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+              <Card className="h-full rounded-3xl border bg-muted/50 shadow-none">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b pb-3">
+                      <div className="text-lg font-semibold">Input</div>
+                      <div className="flex gap-1 rounded-lg bg-muted p-1">
+                        <Button
+                          size="sm"
+                          variant={configMode === "form" ? "default" : "ghost"}
+                          onClick={() => setConfigMode("form")}
+                          className="h-8"
+                        >
+                          Form
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant={configMode === "json" ? "default" : "ghost"}
+                          onClick={() => setConfigMode("json")}
+                          className="h-8"
+                        >
+                          JSON
+                        </Button>
+                      </div>
+                    </div>
+
+                    {renderConfigPanel()}
+
+                    <div className="space-y-2">
+                      <Button
+                        onClick={handleGenerateImage}
+                        disabled={
+                          isSubmitting ||
+                          (configMode === "form" && !prompt.trim()) ||
+                          isAnyFileUploading
+                        }
+                        className="w-full"
+                        size="lg"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Generating...
+                          </>
+                        ) : (
+                          <>
+                            <span>Generate Image</span>
+                            <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-white/20 px-1.5 py-0.5 text-xs sm:ml-2 sm:px-2">
+                              <Coins className="h-3 w-3" />
+                              {FIXED_CREDITS}
+                            </span>
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-center text-xs text-muted-foreground">
+                        {FIXED_CREDITS} credits (${formatUsd(FIXED_CREDITS * 0.005)}) per
+                        generation
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="space-y-3 sm:space-y-4">
+              <Card className="h-full rounded-3xl border bg-muted/50 shadow-none">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b pb-3">
+                      <div className="text-lg font-semibold">Output</div>
+                      <div className="flex gap-1 rounded-lg bg-muted p-1">
+                        <Button
+                          size="sm"
+                          variant={resultMode === "preview" ? "default" : "ghost"}
+                          onClick={() => setResultMode("preview")}
+                          className="h-8"
+                        >
+                          Preview
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant={resultMode === "json" ? "default" : "ghost"}
+                          onClick={() => setResultMode("json")}
+                          className="h-8"
+                        >
+                          JSON
+                        </Button>
+                      </div>
+                    </div>
+
+                    {renderResultsPanel()}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default GptImage2;

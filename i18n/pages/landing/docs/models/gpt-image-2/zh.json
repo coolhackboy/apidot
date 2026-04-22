@@ -1,0 +1,184 @@
+{
+  "id": "gpt-image-2",
+  "groupKey": "image",
+  "navLabel": "GPT Image 2",
+  "method": "POST",
+  "endpoint": {
+    "label": "GPT Image 2",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "通过 APIDot 统一的异步 submit 端点调用 GPT Image 2 做文生图或单图编辑。",
+    "about": "GPT Image 2 遵循与 APIDot 其他媒体模型相同的异步工作流：提交一次请求，立即拿到 task id，然后通过共享状态接口轮询或等待 webhook 回调。使用 `gpt-image-2` 做文生图，使用 `gpt-image-2-edit` 基于一张源图做编辑。",
+    "bestPractices": [
+      "当你需要更稳定的营销视觉、商品图或图中文字时，prompt 里要明确写清构图、版式和文案重点。",
+      "只有在你已经有一张源图且希望做局部修改时，才使用 `gpt-image-2-edit`，避免把编辑需求误做成整图重生成。",
+      "提交成功后立刻保存 task id，方便后续轮询、重试和 webhook 状态对齐。"
+    ],
+    "faq": [
+      {
+        "question": "GPT Image 2 应该传哪个 model id？",
+        "answer": "文生图使用 `gpt-image-2`，单图编辑使用 `gpt-image-2-edit`。编辑模式要求 `input.image_urls` 中恰好有一张源图。"
+      },
+      {
+        "question": "两个变体是否共用同一个端点？",
+        "answer": "是的。它们都提交到 `/api/generate/submit`，只是通过顶层 `model` 字段区分，并且 edit 模式需要额外传 `input.image_urls`。"
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "gpt-image-2",
+        "description": "目标模型 id，可选 `gpt-image-2` 或 `gpt-image-2-edit`。"
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "可选的 webhook 回调地址，用于接收任务终态通知。"
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "GPT Image 2 生成或编辑参数容器。"
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "描述目标图片、编辑意图、构图和文字要求的主提示词。"
+      },
+      {
+        "name": "input.size",
+        "type": "string",
+        "required": false,
+        "defaultValue": "1024x1024",
+        "description": "输出尺寸预设。当前 APIDot 支持 `1024x1024`、`1536x1024`、`1024x1536`。"
+      },
+      {
+        "name": "input.n",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "生成图片数量。当前 APIDot 支持 1 到 4。"
+      },
+      {
+        "name": "input.image_urls",
+        "type": "string[]",
+        "required": false,
+        "description": "仅在 `gpt-image-2-edit` 下使用，且必须传一张已上传的源图 URL。文生图时不要传这个字段。"
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP 风格状态码，提交成功时返回 `200`。"
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "提交成功后立即返回的异步任务标识。"
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "任务初始状态，通常为 `not_started`。"
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "任务创建时间，ISO 8601 格式。"
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "缺少 prompt、size 不支持，或 edit 请求缺少源图等无效 payload。"
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Bearer API Key 缺失、失效或无效。"
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "当前预付余额不足以覆盖本次图片生成成本。"
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "当前 API Key 的提交频率暂时超过限制。"
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n    \"size\": \"1024x1024\",\n    \"n\": 1\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n    size: \"1024x1024\",\n    n: 1\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n        \"size\": \"1024x1024\",\n        \"n\": 1\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+    },
+    "exampleVariants": [
+      {
+        "id": "gpt-image-2",
+        "label": "gpt-image-2",
+        "payloadTemplate": {
+          "model": "gpt-image-2",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰",
+            "size": "1024x1024",
+            "n": 1
+          }
+        }
+      },
+      {
+        "id": "gpt-image-2-edit",
+        "label": "gpt-image-2-edit",
+        "payloadTemplate": {
+          "model": "gpt-image-2-edit",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "保留产品主体，把背景替换成纯白棚拍环境，增加柔和阴影，并增强电商主图质感",
+            "size": "1024x1024",
+            "n": 1,
+            "image_urls": [
+              "https://your-domain.com/source-image.png"
+            ]
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "gpt-image-2",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰",
+        "size": "1024x1024",
+        "n": 1
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"image_urls is required for gpt-image-2-edit\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-unified-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-19T21:19:42\"\n  }\n}"
+  }
+}

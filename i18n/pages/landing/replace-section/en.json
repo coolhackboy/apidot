@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Replace Section API - AI Music Section Replacement & Editing | PoYo",
+    "description": "Replace specific sections of music tracks with PoYo's AI-powered Replace Section API. Precise time-based editing, seamless transitions, and style-consistent segment replacement. "
+  },
+  "modelLandingContent": {
+    "hero": {
+      "title": "Replace Section API - AI Music Segment Editor on PoYo",
+      "description": "Replace and edit specific time segments within existing music tracks using PoYo's Replace Section API. Perform precise music inpainting with seamless transitions, style-consistent replacements, and natural audio blending. Perfect for fixing sections, changing lyrics, or modifying specific musical passages while maintaining overall coherence.",
+      "cta": {
+        "text": "Get API Key",
+        "href": "/dashboard/api-key"
+      }
+    },
+    "features": {
+      "title": "Features",
+      "items": [
+        {
+          "icon": "Scissors",
+          "title": "Precise Time-Based Editing",
+          "description": "Replace exact time segments with 2-decimal precision (infill_start_s, infill_end_s). Specify start and end points down to hundredths of a second for surgical music editing and segment replacement."
+        },
+        {
+          "icon": "Wand2",
+          "title": "AI Music Inpainting",
+          "description": "Generate new content that seamlessly blends with existing audio. Replace Section API analyzes surrounding context to create natural-sounding transitions and maintain musical coherence across edits."
+        },
+        {
+          "icon": "Music",
+          "title": "Style-Consistent Replacement",
+          "description": "Maintain the original track's musical style, genre, and production quality. Use style tags to ensure replaced sections match the overall aesthetic and sonic characteristics of your music."
+        },
+        {
+          "icon": "FileText",
+          "title": "Lyrics Modification",
+          "description": "Update lyrics for specific sections using full_lyrics parameter. Change words, phrases, or entire verses while preserving the musical arrangement and vocal style of the original track."
+        },
+        {
+          "icon": "Settings",
+          "title": "Flexible Style Control",
+          "description": "Apply custom style tags to guide the AI's generation within replaced sections. Control genre, mood, instrumentation, and creative direction for the new segment while maintaining overall coherence."
+        },
+        {
+          "icon": "Workflow",
+          "title": "Seamless Audio Blending",
+          "description": "Advanced algorithms ensure smooth transitions between original and replaced sections. No audible clicks, pops, or jarring changes - just natural-sounding edited music."
+        }
+      ]
+    },
+    "useCase": {
+      "title": "Use Cases",
+      "items": [
+        {
+          "icon": "Music",
+          "title": "Music Production & Editing",
+          "description": "Fix problematic sections in AI-generated music, replace unwanted segments, or experiment with different musical ideas within a track. Perfect for post-production refinement."
+        },
+        {
+          "icon": "Mic",
+          "title": "Lyric Corrections & Updates",
+          "description": "Change specific lyrics without regenerating the entire song. Fix mistakes, update words for different versions, or localize lyrics for different markets while keeping the music intact."
+        },
+        {
+          "icon": "Film",
+          "title": "Video Soundtrack Customization",
+          "description": "Adjust music tracks to fit video timing requirements. Replace sections to match scene changes, extend or shorten passages, or modify musical emphasis for specific visual moments."
+        },
+        {
+          "icon": "Layers",
+          "title": "A/B Testing for Music",
+          "description": "Create variations of the same track by replacing specific sections. Test different choruses, bridges, or musical arrangements to find the most effective version for your audience."
+        },
+        {
+          "icon": "Radio",
+          "title": "Content Adaptation",
+          "description": "Modify music for different contexts or platforms. Replace sections to create clean versions, adjust for time constraints, or adapt tracks for specific content requirements."
+        },
+        {
+          "icon": "Sparkles",
+          "title": "Creative Experimentation",
+          "description": "Explore musical variations by replacing sections with different styles or moods. Mix genres, test alternative arrangements, or create unique remixes while maintaining the core track structure."
+        }
+      ]
+    },
+    "howToUse": {
+      "title": "How to Use Replace Section API on PoYo",
+      "description": "<p><strong>1. Get Your API Key:</strong> Create a free PoYo account and generate your API key from the dashboard. <a href='/dashboard/api-key' style='color: #3b82f6; text-decoration: underline;'>Get API Key →</a></p><p><strong>2. Prepare Source Audio:</strong> Upload your base music track using the Upload Audio API or use an existing track ID from previous music generation tasks.</p><p><strong>3. Define Replacement Section:</strong> Specify the exact time range to replace using infill_start_s and infill_end_s parameters (supports 2 decimal precision). Add style tags and full_lyrics if modifying lyrics. <a href='https://docs.poyo.ai/api-manual/music-series/replace-section' style='color: #3b82f6; text-decoration: underline;'>View API Docs →</a></p><p><strong>4. Get Results:</strong> Receive a task_id and poll for results, or set up a webhook callback URL to be notified when the section replacement completes. <a href='https://docs.poyo.ai/api-manual/music-series/query-music-detail' style='color: #3b82f6; text-decoration: underline;'>Query Results →</a></p>"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "<p><strong>Replace Section API:</strong> <span style='color: #10b981; font-weight: bold;'>$0.05</span> per replacement (10 credits) - Edit music sections with AI precision</p><p><strong>Features Included:</strong> Precise time-based editing (2 decimal precision), lyrics modification, style tag control, seamless blending, webhook callbacks, commercial usage rights</p><p><strong>Enterprise:</strong> Volume discounts available for high-volume music editing. Priority processing and dedicated support. <a href='/support' style='color: #3b82f6; text-decoration: underline;'>Contact sales →</a></p>"
+    },
+    "faq": {
+      "title": "Replace Section API FAQ",
+      "items": [
+        {
+          "question": "How precise can I be with section replacement timing?",
+          "answer": "Replace Section API supports 2 decimal precision for both infill_start_s and infill_end_s parameters. This means you can specify timing down to hundredths of a second (e.g., 15.25s to 23.78s) for extremely precise section editing and replacement."
+        },
+        {
+          "question": "Can I replace multiple sections in the same track?",
+          "answer": "Each API call replaces one continuous section defined by your start and end times. To replace multiple non-contiguous sections, you'll need to make separate API calls or chain multiple replacements, using the output of one as input for the next."
+        },
+        {
+          "question": "How do I ensure the replaced section matches the original style?",
+          "answer": "Use the 'tags' parameter to specify style characteristics that match your original track's genre, mood, and instrumentation. The AI analyzes surrounding audio context to create seamless transitions and maintain stylistic consistency automatically."
+        },
+        {
+          "question": "What happens to lyrics when I replace a section?",
+          "answer": "If you don't provide full_lyrics, the AI generates appropriate vocals that fit the musical context. To change specific lyrics, use the full_lyrics parameter with the complete lyrics (including unchanged portions), and the replaced section will feature your new lyrics while maintaining vocal style."
+        },
+        {
+          "question": "What are the limitations on section length I can replace?",
+          "answer": "You can replace sections of any length within your track, from fractions of a second to the majority of the song. However, very long replacement sections (over 60s) may be better suited for using the Generate Music API and manually combining segments."
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "title": "Why Choose PoYo for Replace Section API",
+      "items": [
+        {
+          "icon": "BadgeDollarSign",
+          "title": "Affordable Precision Editing",
+          "description": "Replace music sections at just $0.05 per edit. Cost-effective solution for music refinement and post-production without expensive subscriptions or per-minute charges."
+        },
+        {
+          "icon": "Cpu",
+          "title": "Powered by Suno",
+          "description": "Access Suno's advanced music inpainting technology through PoYo's unified API. Industry-leading AI ensures natural-sounding edits with seamless transitions and style consistency."
+        },
+        {
+          "icon": "Target",
+          "title": "Surgical Precision",
+          "description": "2-decimal time precision lets you target exact moments in your music. Replace sections as small as fractions of a second or as large as entire verses with pinpoint accuracy."
+        },
+        {
+          "icon": "Workflow",
+          "title": "Seamless Integration",
+          "description": "Replaced sections blend naturally with original audio. Advanced blending algorithms eliminate audible artifacts, ensuring professional-quality edited tracks ready for immediate use."
+        },
+        {
+          "icon": "Key",
+          "title": "Unified API Access",
+          "description": "One API key connects you to Replace Section and 15+ other music APIs plus 500+ AI models. Simplify billing and reduce integration complexity across your entire AI workflow."
+        },
+        {
+          "icon": "Code",
+          "title": "Developer-Friendly",
+          "description": "Clean RESTful API with comprehensive documentation and code examples. Simple integration with any programming language. Webhook support for async operations and workflow automation."
+        }
+      ]
+    }
+  }
+}

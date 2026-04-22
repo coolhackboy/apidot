@@ -1,0 +1,2845 @@
+[
+  {
+    "id": "claude-opus-4-7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "icon": "https://storage.poyo.ai/provider/claude.svg",
+    "thumbnail": "https://storage.poyo.ai/claude-opus-4-7/thumbnail.png",
+    "description": "Anthropic's most capable generally available model for frontier coding, deep reasoning, and high-resolution vision.",
+    "models": [
+      "claude-opus-4-7"
+    ],
+    "tasks": [
+      "Chat",
+      "Code"
+    ],
+    "category": "Chat",
+    "pricing": {
+      "credits": 1,
+      "unit": "per 1K input tokens ($4/$20 per 1M input/output)"
+    },
+    "pricingTiers": [
+      {
+        "description": "Input tokens",
+        "model": "claude-opus-4-7",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.004,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Output tokens",
+        "model": "claude-opus-4-7",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.02,
+        "falPriceUSD": null
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/chat-series/claude-messages"
+  },
+  {
+    "id": "seedance-2",
+    "name": "Seedance 2",
+    "provider": "Seedance",
+    "providerOrder": 4,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnailVideo": "https://storage.poyo.ai/seedance-2/demo.mp4",
+    "description": "ByteDance's director-level multimodal video model with native audio-video generation, multi-shot storytelling, and text, image, video, and audio reference inputs.",
+    "catalogBadge": "New",
+    "catalogPreviewLabel": "SEEDANCE 2 PREVIEW",
+    "catalogVendorLabel": "ByteDance",
+    "catalogPriceLabel": "Starting at $0.04 / second",
+    "catalogLatencyLabel": "~18s",
+    "catalogPopularity": 100,
+    "models": [
+      "seedance-2",
+      "seedance-2-fast"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 8,
+      "unit": "per second | starting at $0.04/s across seedance-2 and seedance-2-fast"
+    },
+    "pricingByModel": {
+      "seedance-2": {
+        "credits": 10,
+        "unit": "per second | 480p: 10 cr/s ($0.05, with video input), 20 cr/s ($0.10, text/image-to-video); 720p: 20 cr/s ($0.10, with video input), 40 cr/s ($0.20, text/image-to-video); 1080p: 45 cr/s ($0.225, with video input), 90 cr/s ($0.45, text/image-to-video)"
+      },
+      "seedance-2-fast": {
+        "credits": 8,
+        "unit": "per second | 480p: 8 cr/s ($0.04, with video input), 14 cr/s ($0.07, text/image-to-video); 720p: 16 cr/s ($0.08, with video input), 28 cr/s ($0.14, text/image-to-video)"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "seedance-2 | 480p | with video input",
+        "model": "seedance-2",
+        "resolution": "480p",
+        "creditsPerUnit": "per second",
+        "credits": 10,
+        "priceUSD": 0.05,
+        "falPriceUSD": 0.0907
+      },
+      {
+        "description": "seedance-2 | 480p | text/image-to-video",
+        "model": "seedance-2",
+        "resolution": "480p",
+        "creditsPerUnit": "per second",
+        "credits": 20,
+        "priceUSD": 0.1,
+        "falPriceUSD": 0.1512
+      },
+      {
+        "description": "seedance-2 | 720p | with video input",
+        "model": "seedance-2",
+        "resolution": "720p",
+        "creditsPerUnit": "per second",
+        "credits": 20,
+        "priceUSD": 0.1,
+        "falPriceUSD": 0.1814
+      },
+      {
+        "description": "seedance-2 | 720p | text/image-to-video",
+        "model": "seedance-2",
+        "resolution": "720p",
+        "creditsPerUnit": "per second",
+        "credits": 40,
+        "priceUSD": 0.2,
+        "falPriceUSD": 0.3024
+      },
+      {
+        "description": "seedance-2 | 1080p | with video input",
+        "model": "seedance-2",
+        "resolution": "1080p",
+        "creditsPerUnit": "per second",
+        "credits": 45,
+        "priceUSD": 0.225,
+        "falPriceUSD": null
+      },
+      {
+        "description": "seedance-2 | 1080p | text/image-to-video",
+        "model": "seedance-2",
+        "resolution": "1080p",
+        "creditsPerUnit": "per second",
+        "credits": 90,
+        "priceUSD": 0.45,
+        "falPriceUSD": null
+      },
+      {
+        "description": "seedance-2-fast | 480p | with video input",
+        "model": "seedance-2-fast",
+        "resolution": "480p",
+        "creditsPerUnit": "per second",
+        "credits": 8,
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.072575
+      },
+      {
+        "description": "seedance-2-fast | 480p | text/image-to-video",
+        "model": "seedance-2-fast",
+        "resolution": "480p",
+        "creditsPerUnit": "per second",
+        "credits": 14,
+        "priceUSD": 0.07,
+        "falPriceUSD": 0.12095
+      },
+      {
+        "description": "seedance-2-fast | 720p | with video input",
+        "model": "seedance-2-fast",
+        "resolution": "720p",
+        "creditsPerUnit": "per second",
+        "credits": 16,
+        "priceUSD": 0.08,
+        "falPriceUSD": 0.14515
+      },
+      {
+        "description": "seedance-2-fast | 720p | text/image-to-video",
+        "model": "seedance-2-fast",
+        "resolution": "720p",
+        "creditsPerUnit": "per second",
+        "credits": 28,
+        "priceUSD": 0.14,
+        "falPriceUSD": 0.2419
+      }
+    ],
+    "discount": 40,
+    "isNew": true,
+    "featured": true,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/seedance-2"
+  },
+  {
+    "id": "kling-o3-image",
+    "name": "Kling O3 Image",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnail": "https://storage.poyo.ai/kling-o3-image/mnsmw1su_uekmnqq0zr.webp",
+    "description": "Kling's O3 image family supports prompt-only generation, multi-reference editing, single outputs, and connected series generation with 1K to 4K resolution tiers.",
+    "models": [
+      "kling-o3-image",
+      "kling-o3-image-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 5,
+    "pricing": {
+      "credits": 3.5,
+      "unit": "per 1K/2K image | 4K: 7 credits per image"
+    },
+    "pricingByModel": {
+      "kling-o3-image": {
+        "credits": 3.5,
+        "unit": "per 1K/2K image | 4K: 7 credits per image"
+      },
+      "kling-o3-image-edit": {
+        "credits": 3.5,
+        "unit": "per 1K/2K image | 4K: 7 credits per image"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "1K / 2K",
+        "model": "kling-o3-image",
+        "credits": 3.5,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.0175,
+        "falPriceUSD": 0.028
+      },
+      {
+        "description": "4K",
+        "model": "kling-o3-image",
+        "credits": 7,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.056
+      },
+      {
+        "description": "1K / 2K Edit",
+        "model": "kling-o3-image-edit",
+        "credits": 3.5,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.0175,
+        "falPriceUSD": 0.028
+      },
+      {
+        "description": "4K Edit",
+        "model": "kling-o3-image-edit",
+        "credits": 7,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.056
+      }
+    ],
+    "featured": false,
+    "isNew": true,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/kling-o3"
+  },
+  {
+    "id": "kling-o1-image",
+    "name": "Kling O1 Image",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnail": "https://storage.poyo.ai/kling-o1-image/mnr7ufmh_1zviambi3gu.webp",
+    "description": "Kling O1 Image Edit focuses on reference-based image transformation with optional elements guidance, flexible aspect ratios, and 1K or 2K output tiers.",
+    "models": [
+      "kling-o1-image-edit"
+    ],
+    "tasks": [
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 6,
+    "pricing": {
+      "credits": 3.5,
+      "unit": "per 1K/2K image edit"
+    },
+    "pricingByModel": {
+      "kling-o1-image-edit": {
+        "credits": 3.5,
+        "unit": "per 1K/2K image edit"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "1K / 2K Edit",
+        "model": "kling-o1-image-edit",
+        "credits": 3.5,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.0175,
+        "falPriceUSD": 0.028
+      }
+    ],
+    "featured": false,
+    "isNew": true,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/kling-o1"
+  },
+  {
+    "id": "wan-2-7-image",
+    "name": "Wan 2.7 Image",
+    "provider": "Wan",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "thumbnail": "https://storage.poyo.ai/wan-2-7-image/wan-2-7-image-api-facial-control.webp",
+    "description": "Alibaba's unified Wan 2.7 image family for text-to-image generation and reference-based image editing with standard and pro quality tiers.",
+    "models": [
+      "wan-2.7-image",
+      "wan-2.7-image-pro"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 4.2,
+      "unit": "generation ($0.021) | about 30% cheaper than fal.ai"
+    },
+    "pricingByModel": {
+      "wan-2.7-image": {
+        "credits": 4.2,
+        "unit": "generation ($0.021) | about 30% cheaper than fal.ai"
+      },
+      "wan-2.7-image-pro": {
+        "credits": 10.5,
+        "unit": "generation ($0.0525) | about 30% cheaper than fal.ai"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "Wan 2.7 Image",
+        "model": "wan-2.7-image",
+        "credits": 4.2,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.021,
+        "falPriceUSD": 0.03
+      },
+      {
+        "description": "Wan 2.7 Image Pro",
+        "model": "wan-2.7-image-pro",
+        "credits": 10.5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.0525,
+        "falPriceUSD": 0.075
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/image-series/wan-2-7-image"
+  },
+  {
+    "id": "sora-2-official",
+    "name": "Sora 2 Official",
+    "provider": "OpenAI",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/sora.svg",
+    "thumbnailVideo": "https://storage.poyo.ai/sora-2-official/feature-3.mp4",
+    "description": "OpenAI Sora 2 on PoYo with synced audio, improved physics, optional reference image input, and fixed 4-second, 8-second, 12-second, 16-second, and 20-second tiers.",
+    "models": [
+      "sora-2-official"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 48,
+      "unit": "per 4s | 8s: 96 credits | 12s: 144 credits | 16s: 192 credits | 20s: 240 credits | $0.06 per second, 40% cheaper than fal.ai."
+    },
+    "pricingTiers": [
+      {
+        "description": "4 seconds",
+        "duration": 4,
+        "credits": 48,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.24,
+        "falPriceUSD": 0.4
+      },
+      {
+        "description": "8 seconds",
+        "duration": 8,
+        "credits": 96,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.48,
+        "falPriceUSD": 0.8
+      },
+      {
+        "description": "12 seconds",
+        "duration": 12,
+        "credits": 144,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.72,
+        "falPriceUSD": 1.2
+      },
+      {
+        "description": "16 seconds",
+        "duration": 16,
+        "credits": 192,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.96,
+        "falPriceUSD": 1.6
+      },
+      {
+        "description": "20 seconds",
+        "duration": 20,
+        "credits": 240,
+        "creditsPerUnit": "per video",
+        "priceUSD": 1.2,
+        "falPriceUSD": 2
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/sora-2-official"
+  },
+  {
+    "id": "kling-3-0-motion-control",
+    "name": "Kling 3.0 Motion Control",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnailVideo": "https://storage.poyo.ai/kling-3.0-motion-control/poyo-kling3.0-motion-control-demo.mp4",
+    "description": "Kling 3.0 Motion Control is a reference-driven motion transfer model that combines one character image and one source video with transparent per-second pricing.",
+    "models": [
+      "kling-3.0-motion-control"
+    ],
+    "tasks": [
+      "Motion Control",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 6,
+    "pricing": {
+      "credits": 9,
+      "unit": "per second at 720p | 1080p: 15 credits per second | 65% cheaper than fal.ai."
+    },
+    "pricingTiers": [
+      {
+        "description": "720p",
+        "resolution": "720p",
+        "credits": 9,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.045,
+        "falPriceUSD": 0.126
+      },
+      {
+        "description": "1080p",
+        "resolution": "1080p",
+        "credits": 15,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.075,
+        "falPriceUSD": 0.168
+      }
+    ],
+    "featured": false,
+    "isNew": true,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-3-0-motion-control"
+  },
+  {
+    "id": "hailuo-2-3",
+    "name": "Hailuo 2.3",
+    "provider": "Hailuo",
+    "providerOrder": 6,
+    "icon": "https://storage.poyo.ai/provider/minimax.svg",
+    "thumbnailVideo": "https://cdn.doculator.org/hailuo-2.3/feature-2.mp4",
+    "description": "MiniMax's Hailuo 2.3 video model for realistic human motion, expressive characters, and text-to-video or first-frame guided generation at 768p and 1080p.",
+    "models": [
+      "hailuo-2.3"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 35,
+      "unit": "per 6s at 768p | 10s at 768p: 70 credits | 6s at 1080p: 60 credits | 37.5% cheaper than fal.ai."
+    },
+    "pricingTiers": [
+      {
+        "description": "768p, 6 seconds",
+        "resolution": "768p",
+        "duration": 6,
+        "credits": 35,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.175,
+        "falPriceUSD": 0.28
+      },
+      {
+        "description": "768p, 10 seconds",
+        "resolution": "768p",
+        "duration": 10,
+        "credits": 70,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.35,
+        "falPriceUSD": 0.56
+      },
+      {
+        "description": "1080p, 6 seconds",
+        "resolution": "1080p",
+        "duration": 6,
+        "credits": 60,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.3,
+        "falPriceUSD": 0.49
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/hailuo-2-3"
+  },
+  {
+    "id": "kling-2-1",
+    "name": "Kling 2.1",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "description": "Kling 2.1 on PoYo provides Standard and Pro image-to-video modes with 5-second and 10-second clips, start-frame control, and optional end-frame control in Pro.",
+    "thumbnailVideo": "https://cdn.doculator.org/kling-2.1/example-output-1.mp4",
+    "models": [
+      "kling-2.1/standard",
+      "kling-2.1/pro"
+    ],
+    "tasks": [
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 30,
+      "unit": "per 5s standard | pro starts at 55 credits | 50% cheaper than fal.ai."
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard, 5 seconds",
+        "model": "kling-2.1/standard",
+        "duration": 5,
+        "credits": 30,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.15,
+        "falPriceUSD": 0.28
+      },
+      {
+        "description": "Standard, 10 seconds",
+        "model": "kling-2.1/standard",
+        "duration": 10,
+        "credits": 60,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.3,
+        "falPriceUSD": 0.56
+      },
+      {
+        "description": "Pro, 5 seconds",
+        "model": "kling-2.1/pro",
+        "duration": 5,
+        "credits": 55,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.275,
+        "falPriceUSD": 0.49
+      },
+      {
+        "description": "Pro, 10 seconds",
+        "model": "kling-2.1/pro",
+        "duration": 10,
+        "credits": 110,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.55,
+        "falPriceUSD": 0.98
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-2-1"
+  },
+  {
+    "id": "kling-2-5-turbo-pro",
+    "name": "Kling 2.5 Turbo Pro",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnailVideo": "https://cdn.doculator.org/kling-2.5-turbo-pro/feature-1.mp4",
+    "description": "Kling 2.5 Turbo Pro is a flexible short-form video model with text-to-video, optional frame guidance, smooth motion, cinematic depth, and fixed 5-second and 10-second tiers.",
+    "models": [
+      "kling-2.5-turbo-pro"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 4,
+    "pricing": {
+      "credits": 42,
+      "unit": "per 5s | 10s: 84 credits | 40% cheaper than fal.ai."
+    },
+    "pricingTiers": [
+      {
+        "description": "5 seconds",
+        "duration": 5,
+        "credits": 42,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.21,
+        "falPriceUSD": 0.35
+      },
+      {
+        "description": "10 seconds",
+        "duration": 10,
+        "credits": 84,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.42,
+        "falPriceUSD": 0.7
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-2-5-turbo-pro"
+  },
+  {
+    "id": "wan-2-2-fast",
+    "name": "Wan 2.2 Fast",
+    "provider": "Wan",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "thumbnailVideo": "https://cdn.doculator.org/wan-2-2-fast/feature-1.mp4",
+    "description": "Wan 2.2 Fast provides fast text-to-video and image-to-video generation with low-cost 480p and 720p tiers for quick iteration.",
+    "models": [
+      "wan2.2-image-to-video-fast",
+      "wan2.2-text-to-video-fast"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 6,
+      "unit": "per generation at 480p | 720p: 12 credits | 40% cheaper than official"
+    },
+    "pricingTiers": [
+      {
+        "description": "480p",
+        "resolution": "480p",
+        "credits": 6,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.03,
+        "falPriceUSD": null
+      },
+      {
+        "description": "720p",
+        "resolution": "720p",
+        "credits": 12,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.06,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/wan2.2-text-to-video-fast"
+  },
+  {
+    "id": "wan-2-5",
+    "name": "Wan 2.5",
+    "provider": "Wan",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "thumbnailVideo": "https://storage.poyo.ai/wan-2-5/example-output-text-to-video.mp4",
+    "description": "Wan 2.5 combines text-to-video and image-to-video generation with 5-second and 10-second output, synchronized audio support, and multiple size and resolution tiers.",
+    "models": [
+      "wan2.5-image-to-video",
+      "wan2.5-text-to-video"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 30,
+      "unit": "starts at 30 credits for 5s | 10s tiers available | 40% cheaper than fal.ai"
+    },
+    "pricingTiers": [
+      {
+        "description": "480p or 832x480, 5 seconds",
+        "credits": 30,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.15,
+        "falPriceUSD": 0.25
+      },
+      {
+        "description": "720p or 1280x720, 5 seconds",
+        "credits": 60,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.3,
+        "falPriceUSD": 0.5
+      },
+      {
+        "description": "1080p or 1920x1080, 5 seconds",
+        "credits": 90,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.45,
+        "falPriceUSD": 0.75
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/wan2.5-text-to-video"
+  },
+  {
+    "id": "runway-gen-4-5",
+    "name": "Runway Gen-4.5",
+    "provider": "Runway",
+    "providerOrder": 8,
+    "icon": "https://storage.poyo.ai/provider/runway.svg",
+    "thumbnailVideo": "https://cdn.doculator.org/runway-gen-4-5/example-output.mp4",
+    "description": "Runway Gen-4.5 is a high-fidelity video model focused on prompt adherence, cinematic motion, visual fidelity, and optional reference image guidance.",
+    "models": [
+      "runway-gen-4.5"
+    ],
+    "tasks": [
+      "Text to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 75,
+      "unit": "per 5s | 10s: 150 credits | 30% cheaper than official"
+    },
+    "pricingTiers": [
+      {
+        "description": "5 seconds",
+        "duration": 5,
+        "credits": 75,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.375,
+        "falPriceUSD": null
+      },
+      {
+        "description": "10 seconds",
+        "duration": 10,
+        "credits": 150,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.75,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/runway-gen-4-5"
+  },
+  {
+    "id": "nano-banana-2",
+    "name": "Nano Banana 2",
+    "provider": "Google",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.poyo.ai/nano-banana-2/mm4xg8lg_tcl1yvpqm4.webp",
+    "description": "Google's next-gen image model powered by Gemini 3.1 Flash with native 2K/4K resolution, chain-of-thought reasoning, precise multi-language text rendering, and up to 14 reference images.",
+    "models": [
+      "nano-banana-2-new",
+      "nano-banana-2-new-edit",
+      "nano-banana-2-official",
+      "nano-banana-2-official-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation | 1 K for 5 credits ($0.025)、2 K for 8 credits ($0.04)、4 K for 12 credits ($0.06)"
+    },
+    "pricingByModel": {
+      "nano-banana-2-new": {
+        "credits": 5,
+        "unit": "per generation | 1K for 5 credits ($0.025)、2K for 8 credits ($0.04)、4K for 12 credits ($0.06)"
+      },
+      "nano-banana-2-new-edit": {
+        "credits": 5,
+        "unit": "per generation | 1K for 5 credits ($0.025)、2K for 8 credits ($0.04)、4K for 12 credits ($0.06)"
+      },
+      "nano-banana-2-official": {
+        "credits": 7,
+        "unit": "per generation | 0.5K for 7 credits ($0.035)、1K for 10 credits ($0.05)、2K for 15 credits ($0.075)、4K for 20 credits ($0.10)  [Highest stability with guaranteed 99.9% uptime. Recommended for production environments.]"
+      },
+      "nano-banana-2-official-edit": {
+        "credits": 7,
+        "unit": "per generation | 0.5K for 7 credits ($0.035)、1K for 10 credits ($0.05)、2K for 15 credits ($0.075)、4K for 20 credits ($0.10)  [Highest stability with guaranteed 99.9% uptime. Recommended for production environments.]"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "Text to Image",
+        "model": "nano-banana-2-new",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Image Edit",
+        "model": "nano-banana-2-new-edit",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Text to Image (Official 0.5K)",
+        "model": "nano-banana-2-official",
+        "credits": 7,
+        "resolution": "0.5k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Text to Image (Official 1K)",
+        "model": "nano-banana-2-official",
+        "credits": 10,
+        "resolution": "1k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.05,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Text to Image (Official 2K)",
+        "model": "nano-banana-2-official",
+        "credits": 15,
+        "resolution": "2k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": 0.15
+      },
+      {
+        "description": "Text to Image (Official 4K)",
+        "model": "nano-banana-2-official",
+        "credits": 20,
+        "resolution": "4k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": 0.3
+      },
+      {
+        "description": "Image Edit (Official 0.5K)",
+        "model": "nano-banana-2-official-edit",
+        "credits": 7,
+        "resolution": "0.5k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Image Edit (Official 1K)",
+        "model": "nano-banana-2-official-edit",
+        "credits": 10,
+        "resolution": "1k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.05,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "Image Edit (Official 2K)",
+        "model": "nano-banana-2-official-edit",
+        "credits": 15,
+        "resolution": "2k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": 0.15
+      },
+      {
+        "description": "Image Edit (Official 4K)",
+        "model": "nano-banana-2-official-edit",
+        "credits": 20,
+        "resolution": "4k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": 0.3
+      }
+    ],
+    "isNew": true,
+    "featured": true,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/nano-banana-2-new"
+  },
+  {
+    "id": "seedream-5-0-lite-api",
+    "name": "Seedream 5.0 Lite",
+    "provider": "Seedream",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.poyo.ai/seedream-5-0-lite-api/mm4mwb0o_s5lu1jx5ws9.webp",
+    "description": "ByteDance's efficient multimodal image model with native 2K/3K resolution, deep thinking, bilingual text rendering, and smart editing.",
+    "models": [
+      "seedream-5.0-lite",
+      "seedream-5.0-lite-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation | about 29% cheaper than fal.ai"
+    },
+    "pricingTiers": [
+      {
+        "description": "Text to Image",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.035
+      },
+      {
+        "description": "Image Edit",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.035
+      }
+    ],
+    "isNew": true,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/seedream-5-0-lite"
+  },
+  {
+    "id": "seedream-4",
+    "name": "Seedream 4",
+    "provider": "Seedream",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.poyo.ai/models/seedream-4.5.webp",
+    "description": "ByteDance's multimodal image model for native 1K to 4K generation, reference-guided editing, and batch outputs up to 15 images.",
+    "models": [
+      "seedream-4",
+      "seedream-4-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 4,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation | supports 1K / 2K / 4K and batch n up to 15"
+    },
+    "pricingTiers": [
+      {
+        "description": "Text to Image",
+        "model": "seedream-4",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Image Edit",
+        "model": "seedream-4-edit",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/seedream-4"
+  },
+  {
+    "id": "kling-3-api",
+    "name": "Kling 3.0",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnailVideo": "https://storage.poyo.ai/kling-3.0-api/example-1.mp4",
+    "description": "Kuaishou's most advanced video model with native 4K/60fps output, multi-shot storyboarding, multilingual audio, and character consistency for up to 3 people.",
+    "models": [
+      "kling-3.0/standard",
+      "kling-3.0/pro"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 4,
+    "pricing": {
+      "credits": 27,
+      "unit": " | kling-3.0/standard no audio: 27 credit/s , with audio: 39 credit/s |  kling-3.0/pro no audio: 39 credit/s , with audio: 49 credit/s | 10-20 % cheaper than Fal.ai"
+    },
+    "pricingTiers": [
+      {
+        "description": "No audio (per second)",
+        "model": "kling-3.0/standard",
+        "resolution": "720p",
+        "hasAudio": false,
+        "credits": 27,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.135,
+        "falPriceUSD": 0.168
+      },
+      {
+        "description": "With audio (per second)",
+        "model": "kling-3.0/standard",
+        "resolution": "720p",
+        "hasAudio": true,
+        "credits": 39,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.195,
+        "falPriceUSD": 0.224
+      },
+      {
+        "description": "No audio (per second)",
+        "model": "kling-3.0/pro",
+        "resolution": "1080p",
+        "hasAudio": false,
+        "credits": 39,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.195,
+        "falPriceUSD": 0.224
+      },
+      {
+        "description": "With audio (per second)",
+        "model": "kling-3.0/pro",
+        "resolution": "1080p",
+        "hasAudio": true,
+        "credits": 49,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.245,
+        "falPriceUSD": 0.28
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-3-0"
+  },
+  {
+    "id": "gemini-3-api",
+    "name": "Gemini 3 Series",
+    "provider": "Google",
+    "icon": "https://storage.poyo.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.poyo.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp",
+    "description": "Google's Gemini 3 series model — Flash Preview & Pro Preview",
+    "models": [
+      "gemini-3-flash-preview",
+      "gemini-3-pro-preview"
+    ],
+    "tasks": [
+      "Chat",
+      "Code"
+    ],
+    "category": "Chat",
+    "pricing": {
+      "credits": 1,
+      "unit": "per 1K input tokens (Flash: $0.4/$2.4, Pro: $0.8/$4.8 per 1M input/output)"
+    },
+    "pricingTiers": [
+      {
+        "description": "Flash input tokens",
+        "model": "gemini-3-flash-preview",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0004,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Flash output tokens",
+        "model": "gemini-3-flash-preview",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0024,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Pro input tokens",
+        "model": "gemini-3-pro-preview",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0008,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Pro output tokens",
+        "model": "gemini-3-pro-preview",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0048,
+        "falPriceUSD": null
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/chat-series/gemini-native-format"
+  },
+  {
+    "id": "claude-4-5-api",
+    "name": "Claude 4.5 Series",
+    "provider": "Anthropic",
+    "icon": "https://storage.poyo.ai/provider/claude.svg",
+    "thumbnail": "https://storage.poyo.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp",
+    "description": "Anthropic's Claude 4.5 series model — Opus, Sonnet & Haiku",
+    "models": [
+      "claude-opus-4-5-20251101",
+      "claude-sonnet-4-5-20250929",
+      "claude-haiku-4-5-20251001"
+    ],
+    "tasks": [
+      "Chat",
+      "Code"
+    ],
+    "category": "Chat",
+    "pricing": {
+      "credits": 1,
+      "unit": "per 1K input tokens (Opus: $4/$20, Sonnet: $2.4/$12, Haiku: $0.8/$4 per 1M input/output)"
+    },
+    "pricingTiers": [
+      {
+        "description": "Opus input tokens",
+        "model": "claude-opus-4-5-20251101",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.004,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Opus output tokens",
+        "model": "claude-opus-4-5-20251101",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.02,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Sonnet input tokens",
+        "model": "claude-sonnet-4-5-20250929",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0024,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Sonnet output tokens",
+        "model": "claude-sonnet-4-5-20250929",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.012,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Haiku input tokens",
+        "model": "claude-haiku-4-5-20251001",
+        "credits": 1,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.0008,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Haiku output tokens",
+        "model": "claude-haiku-4-5-20251001",
+        "credits": 5,
+        "creditsPerUnit": "per 1K tokens",
+        "priceUSD": 0.004,
+        "falPriceUSD": null
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/chat-series/claude-messages"
+  },
+  {
+    "id": "kling-2-6-motion-control",
+    "name": "Kling 2.6 Motion Control",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnail": "https://storage.poyo.ai/upload/mk1975gv_zrcx6zhadz.webp",
+    "description": "Kuaishou's motion control model that transfers motion from reference videos to character images while maintaining identity and adapting environments.",
+    "models": [
+      "kling-2.6-motion-control"
+    ],
+    "tasks": [
+      "Image to Video",
+      "Motion Control"
+    ],
+    "category": "Video",
+    "headerOrder": 5,
+    "pricing": {
+      "credits": 8,
+      "unit": "per second (720p), 12 credits per second (1080p)"
+    },
+    "pricingTiers": [
+      {
+        "description": "720p (per second)",
+        "resolution": "720p",
+        "credits": 8,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.07
+      },
+      {
+        "description": "1080p (per second)",
+        "resolution": "1080p",
+        "credits": 12,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.06,
+        "falPriceUSD": 0.112
+      }
+    ],
+    "discount": 30,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-2.6-motion-control"
+  },
+  {
+    "id": "seedance-1-5-pro",
+    "name": "Seedance 1.5 Pro",
+    "provider": "Seedance",
+    "providerOrder": 4,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.poyo.ai/upload/mjlb3tgo_e9akkurd4n6.webp",
+    "description": "ByteDance's latest video model with synchronized audio generation, flexible aspect ratios, and enhanced motion control.",
+    "models": [
+      "seedance-1.5-pro"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 9,
+      "unit": "480p: 4s/9cr, 8s/18cr, 12s/21cr; 720p: 4s/16cr, 8s/32cr, 12s/42cr; with audio doubles; 24-30% cheaper than replicate or fal.ai"
+    },
+    "pricingTiers": [
+      {
+        "description": "480p, 4s, no audio",
+        "resolution": "480p",
+        "duration": 4,
+        "hasAudio": false,
+        "credits": 9,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.045,
+        "falPriceUSD": 0.08
+      },
+      {
+        "description": "480p, 8s, no audio",
+        "resolution": "480p",
+        "duration": 8,
+        "hasAudio": false,
+        "credits": 18,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.09,
+        "falPriceUSD": 0.16
+      },
+      {
+        "description": "480p, 12s, no audio",
+        "resolution": "480p",
+        "duration": 12,
+        "hasAudio": false,
+        "credits": 21,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.105,
+        "falPriceUSD": 0.21
+      },
+      {
+        "description": "720p, 4s, no audio",
+        "resolution": "720p",
+        "duration": 4,
+        "hasAudio": false,
+        "credits": 16,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.08,
+        "falPriceUSD": 0.12
+      },
+      {
+        "description": "720p, 8s, no audio",
+        "resolution": "720p",
+        "duration": 8,
+        "hasAudio": false,
+        "credits": 32,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.16,
+        "falPriceUSD": 0.24
+      },
+      {
+        "description": "720p, 12s, no audio",
+        "resolution": "720p",
+        "duration": 12,
+        "hasAudio": false,
+        "credits": 42,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.21,
+        "falPriceUSD": 0.32
+      },
+      {
+        "description": "480p, 4s, with audio",
+        "resolution": "480p",
+        "duration": 4,
+        "hasAudio": true,
+        "credits": 18,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.09,
+        "falPriceUSD": 0.19
+      },
+      {
+        "description": "480p, 8s, with audio",
+        "resolution": "480p",
+        "duration": 8,
+        "hasAudio": true,
+        "credits": 36,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.18,
+        "falPriceUSD": 0.38
+      },
+      {
+        "description": "480p, 12s, with audio",
+        "resolution": "480p",
+        "duration": 12,
+        "hasAudio": true,
+        "credits": 42,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.21,
+        "falPriceUSD": 0.48
+      },
+      {
+        "description": "720p, 4s, with audio",
+        "resolution": "720p",
+        "duration": 4,
+        "hasAudio": true,
+        "credits": 32,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.16,
+        "falPriceUSD": 0.26
+      },
+      {
+        "description": "720p, 8s, with audio",
+        "resolution": "720p",
+        "duration": 8,
+        "hasAudio": true,
+        "credits": 64,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.32,
+        "falPriceUSD": 0.52
+      },
+      {
+        "description": "720p, 12s, with audio",
+        "resolution": "720p",
+        "duration": 12,
+        "hasAudio": true,
+        "credits": 84,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.42,
+        "falPriceUSD": 0.68
+      }
+    ],
+    "discount": 24,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/seedance-1-5-pro"
+  },
+  {
+    "id": "wan-2-6",
+    "name": "Wan 2.6",
+    "provider": "Wan",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "thumbnail": "https://storage.poyo.ai/upload/mjicgb9y_80jrrkymdr6.webp",
+    "description": "Alibaba's Wan 2.6 video generation family for text-to-video, image-to-video, and video-to-video with multi-shot 1080p output.",
+    "models": [
+      "wan2.6-text-to-video",
+      "wan2.6-image-to-video",
+      "wan2.6-video-to-video"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video",
+      "Video to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 80,
+      "unit": "per 5s (720p), 10s/160, 15s/240, 1080p: 5s/120, 10s/240, 15s/360, 20% cheaper than fal"
+    },
+    "pricingTiers": [
+      {
+        "description": "720p, 5s",
+        "resolution": "720p",
+        "duration": 5,
+        "credits": 80,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.4,
+        "falPriceUSD": 0.5
+      },
+      {
+        "description": "720p, 10s",
+        "resolution": "720p",
+        "duration": 10,
+        "credits": 160,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.8,
+        "falPriceUSD": 0.8
+      },
+      {
+        "description": "720p, 15s",
+        "resolution": "720p",
+        "duration": 15,
+        "credits": 240,
+        "creditsPerUnit": "per video",
+        "priceUSD": 1.2,
+        "falPriceUSD": 1.5
+      },
+      {
+        "description": "1080p, 5s",
+        "resolution": "1080p",
+        "duration": 5,
+        "credits": 120,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.6,
+        "falPriceUSD": 0.75
+      },
+      {
+        "description": "1080p, 10s",
+        "resolution": "1080p",
+        "duration": 10,
+        "credits": 240,
+        "creditsPerUnit": "per video",
+        "priceUSD": 1.2,
+        "falPriceUSD": 1.5
+      },
+      {
+        "description": "1080p, 15s",
+        "resolution": "1080p",
+        "duration": 15,
+        "credits": 360,
+        "creditsPerUnit": "per video",
+        "priceUSD": 1.8,
+        "falPriceUSD": 2.25
+      }
+    ],
+    "discount": 20,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/wan-2-6"
+  },
+  {
+    "id": "gpt-image-1-5-api",
+    "name": "GPT Image 1.5",
+    "provider": "OpenAI",
+    "providerOrder": 2,
+    "icon": "https://storage.poyo.ai/provider/openai.svg",
+    "thumbnail": "https://storage.poyo.ai/uplaod/mj9hpmlg_qptxoug9bq.webp",
+    "description": "OpenAI's latest image model with 4x speed, precision editing, and superior text rendering.",
+    "models": [
+      "gpt-image-1.5",
+      "gpt-image-1.5-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 2,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 2,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.01,
+        "falPriceUSD": 0.013
+      }
+    ],
+    "discount": 23,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/gpt-image-1.5"
+  },
+  {
+    "id": "gpt-image-2",
+    "name": "GPT Image 2",
+    "provider": "OpenAI",
+    "providerOrder": 2,
+    "icon": "https://storage.poyo.ai/provider/openai.svg",
+    "description": "OpenAI's next-generation image model with near-perfect text rendering, stronger photorealism, UI screenshot fidelity, and precise single-image editing.",
+    "catalogBadge": "New",
+    "catalogPreviewLabel": "GPT IMAGE 2",
+    "catalogVendorLabel": "OpenAI",
+    "catalogPriceLabel": "$0.075 / generation",
+    "catalogLatencyLabel": "~3s",
+    "catalogPopularity": 98,
+    "models": [
+      "gpt-image-2",
+      "gpt-image-2-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 15,
+      "unit": "per generation"
+    },
+    "pricingByModel": {
+      "gpt-image-2": {
+        "credits": 15,
+        "unit": "per generation"
+      },
+      "gpt-image-2-edit": {
+        "credits": 15,
+        "unit": "per generation"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "gpt-image-2 | text-to-image",
+        "model": "gpt-image-2",
+        "credits": 15,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": null
+      },
+      {
+        "description": "gpt-image-2-edit | image editing",
+        "model": "gpt-image-2-edit",
+        "credits": 15,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": null
+      }
+    ],
+    "isNew": true,
+    "featured": true,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/gpt-image-2"
+  },
+  {
+    "id": "grok-imagine",
+    "name": "Grok Imagine",
+    "provider": "xAI",
+    "providerOrder": 7,
+    "icon": "https://storage.poyo.ai/provider/xai.svg",
+    "thumbnail": "https://storage.poyo.ai/uplaod/mj0254ps_piskwisalym.webp",
+    "description": "xAI's Aurora-powered visual AI for image generation and video creation with Fun, Normal, and Spicy creative modes.",
+    "models": [
+      "grok-imagine-image",
+      "grok-imagine"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 6,
+      "unit": "per image, grok-imagine 30 credits per video"
+    },
+    "pricingTiers": [
+      {
+        "description": "Image generation",
+        "credits": 6,
+        "creditsPerUnit": "per image",
+        "priceUSD": 0.03,
+        "falPriceUSD": null
+      },
+      {
+        "description": "Video generation",
+        "credits": 30,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.15,
+        "falPriceUSD": null
+      }
+    ],
+    "discount": 57,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/grok-imagine"
+  },
+  {
+    "id": "hailuo-02",
+    "name": "Hailuo 02",
+    "provider": "Hailuo",
+    "providerOrder": 6,
+    "icon": "https://storage.poyo.ai/provider/minimax.svg",
+    "thumbnail": "https://storage.poyo.ai/uplaod/mj01xltp_250qe91o8j6.webp",
+    "description": "MiniMax's #2 globally-ranked video model with NCR architecture, ultra-realistic physics, and 1080p cinematic output.",
+    "models": [
+      "hailuo-02",
+      "hailuo-02-pro"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 7,
+      "unit": "per second (768p), hailuo-02-pro 65 credits fixed"
+    },
+    "pricingTiers": [
+      {
+        "description": "hailuo-02 (per second, 768p)",
+        "resolution": "768p",
+        "credits": 7,
+        "creditsPerUnit": "per second",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.045
+      },
+      {
+        "description": "hailuo-02-pro (fixed price)",
+        "credits": 65,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.325,
+        "falPriceUSD": 0.48
+      }
+    ],
+    "discount": 22,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/hailuo-02"
+  },
+  {
+    "id": "seedance-1-pro",
+    "name": "Seedance 1.0 Pro",
+    "provider": "Seedance",
+    "providerOrder": 4,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.poyo.ai/uplaod/mj01xlt8_xih3qpqvndq.webp",
+    "description": "ByteDance's #1 ranked video model with multi-shot storytelling, cinema-grade motion, and bilingual text-to-video generation.",
+    "models": [
+      "seedance-1.0-pro"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 21,
+      "unit": "per 5s (720p), 43cr (1080p), 10s doubles"
+    },
+    "pricingTiers": [
+      {
+        "description": "720p, 5s",
+        "resolution": "720p",
+        "duration": 5,
+        "credits": 21,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.105,
+        "falPriceUSD": null
+      },
+      {
+        "description": "720p, 10s",
+        "resolution": "720p",
+        "duration": 10,
+        "credits": 42,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.21,
+        "falPriceUSD": null
+      },
+      {
+        "description": "1080p, 5s",
+        "resolution": "1080p",
+        "duration": 5,
+        "credits": 43,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.215,
+        "falPriceUSD": 0.62
+      },
+      {
+        "description": "1080p, 10s",
+        "resolution": "1080p",
+        "duration": 10,
+        "credits": 86,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.43,
+        "falPriceUSD": null
+      }
+    ],
+    "discount": 83,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/seedance-1.0-pro"
+  },
+  {
+    "id": "z-image",
+    "name": "Z-Image",
+    "provider": "Wan",
+    "providerOrder": 4,
+    "icon": "https://storage.poyo.ai/provider/alibaba.svg",
+    "thumbnail": "https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp",
+    "description": "Alibaba's efficient 6B-parameter image model with sub-second generation and exceptional Chinese-English bilingual text rendering capabilities.",
+    "models": [
+      "z-image"
+    ],
+    "tasks": [
+      "Text to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 2,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 2,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.01,
+        "falPriceUSD": 0.005
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/image-series/z-image"
+  },
+  {
+    "id": "kling-2-6",
+    "name": "Kling 2.6",
+    "provider": "Kling",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "thumbnail": "https://storage.poyo.ai/models/kling-2.6.webp",
+    "description": "Kuaishou's revolutionary video model that simultaneously generates visuals with synchronized dialogue, sound effects, and ambient audio in one pass.",
+    "models": [
+      "kling-2.6"
+    ],
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 3,
+    "pricing": {
+      "credits": 65,
+      "unit": "and 10s/130 credits, 5s+audio/120 credits, 10s+audio/240 credits . 15% cheaper than Fal.ai "
+    },
+    "pricingTiers": [
+      {
+        "description": "5s, no audio",
+        "duration": 5,
+        "hasAudio": false,
+        "credits": 65,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.325,
+        "falPriceUSD": 0.35
+      },
+      {
+        "description": "10s, no audio",
+        "duration": 10,
+        "hasAudio": false,
+        "credits": 130,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.65,
+        "falPriceUSD": 0.7
+      },
+      {
+        "description": "5s, with audio",
+        "duration": 5,
+        "hasAudio": true,
+        "credits": 120,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.6,
+        "falPriceUSD": 0.7
+      },
+      {
+        "description": "10s, with audio",
+        "duration": 10,
+        "hasAudio": true,
+        "credits": 240,
+        "creditsPerUnit": "per video",
+        "priceUSD": 1.2,
+        "falPriceUSD": 1.4
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/video-series/kling-2-6"
+  },
+  {
+    "id": "seedream-4-5-api",
+    "name": "Seedream 4.5",
+    "provider": "Seedream",
+    "providerOrder": 3,
+    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.poyo.ai/models/seedream-4.5.webp",
+    "description": "ByteDance's unified 4K image generation and editing model with professional-grade text rendering and commercial photography quality.",
+    "models": [
+      "seedream-4.5",
+      "seedream-4.5-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.04
+      }
+    ],
+    "discount": 37.5,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/seedream-4-5"
+  },
+  {
+    "id": "flux-kontext",
+    "name": "Flux Kontext",
+    "provider": "Black Forest Labs",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/flux.webp",
+    "thumbnail": "https://cdn.doculator.org/flux-kontext/flux-kontext-4.webp",
+    "description": "Black Forest Labs' in-context image generation and editing family for scene-preserving edits, text replacement, and prompt-driven visual changes.",
+    "models": [
+      "flux-kontext-pro",
+      "flux-kontext-pro-edit",
+      "flux-kontext-max",
+      "flux-kontext-max-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 8,
+      "unit": "per generation | Pro/Edit: 8 credits ($0.04) | Max/Edit: 16 credits ($0.08)"
+    },
+    "pricingTiers": [
+      {
+        "description": "flux-kontext-pro",
+        "model": "flux-kontext-pro",
+        "credits": 8,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-kontext-pro-edit",
+        "model": "flux-kontext-pro-edit",
+        "credits": 8,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-kontext-max",
+        "model": "flux-kontext-max",
+        "credits": 16,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.08,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-kontext-max-edit",
+        "model": "flux-kontext-max-edit",
+        "credits": 16,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.08,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/flux-kontext"
+  },
+  {
+    "id": "flux-2",
+    "name": "FLUX.2",
+    "provider": "Black Forest Labs",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/flux.webp",
+    "thumbnail": "https://storage.poyo.ai/upload/mivtnvff_cyqanj4l71q.webp",
+    "description": "Black Forest Labs' production-grade model combining 4MP image generation and editing with multi-reference support, precise typography, and hex color control.",
+    "models": [
+      "flux-2-pro",
+      "flux-2-pro-edit",
+      "flux-2-flex",
+      "flux-2-flex-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 6,
+      "unit": "per generation, flux-2-pro、flux-2-pro 2k/9 credits ，flux-2-flex、flux-2-flex-edit 1k/18 credits 2k/27 credits"
+    },
+    "pricingTiers": [
+      {
+        "description": "flux-2-pro (1k)",
+        "model": "flux-2-pro",
+        "resolution": "1k",
+        "credits": 6,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.03,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-pro (2k)",
+        "model": "flux-2-pro",
+        "resolution": "2k",
+        "credits": 9,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.045,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-pro-edit (1k)",
+        "model": "flux-2-pro-edit",
+        "resolution": "1k",
+        "credits": 6,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.03,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-pro-edit (2k)",
+        "model": "flux-2-pro-edit",
+        "resolution": "2k",
+        "credits": 9,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.045,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-flex (1k)",
+        "model": "flux-2-flex",
+        "resolution": "1k",
+        "credits": 18,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.09,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-flex (2k)",
+        "model": "flux-2-flex",
+        "resolution": "2k",
+        "credits": 27,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.135,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-flex-edit (1k)",
+        "model": "flux-2-flex-edit",
+        "resolution": "1k",
+        "credits": 18,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.09,
+        "falPriceUSD": null
+      },
+      {
+        "description": "flux-2-flex-edit (2k)",
+        "model": "flux-2-flex-edit",
+        "resolution": "2k",
+        "credits": 27,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.135,
+        "falPriceUSD": null
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/image-series/flux-2"
+  },
+  {
+    "id": "wan-animate",
+    "name": "Wan Animate",
+    "provider": "Wan",
+    "providerOrder": 5,
+    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "thumbnail": "https://storage.poyo.ai/upload/mivtkcgz_240zko0ou1z.webp",
+    "description": "Alibaba's 14B-parameter character animation model that transfers motion from reference videos to static characters with exceptional identity preservation.",
+    "models": [
+      "wan-animate-move",
+      "wan-animate-replace"
+    ],
+    "tasks": [
+      "Image to Video",
+      "Character Animation"
+    ],
+    "category": "Video",
+    "headerOrder": 4,
+    "pricing": {
+      "credits": 7,
+      "unit": "per generation, 480p/7 credits, 580p/12 credits, 720p/15 credits"
+    },
+    "pricingTiers": [
+      {
+        "description": "480p",
+        "resolution": "480p",
+        "credits": 7,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.035,
+        "falPriceUSD": 0.04
+      },
+      {
+        "description": "580p",
+        "resolution": "580p",
+        "credits": 12,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.06,
+        "falPriceUSD": 0.06
+      },
+      {
+        "description": "720p",
+        "resolution": "720p",
+        "credits": 15,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": 0.08
+      }
+    ],
+    "doc": "https://docs.poyo.ai/api-manual/video-series/wan-animate"
+  },
+  {
+    "id": "nano-banana-2-api",
+    "name": "Nano Banana Pro",
+    "provider": "Google",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.poyo.ai/models/nano-banana-pro.webp",
+    "description": "Google's advanced Gemini 3 Pro image model featuring 4K resolution, enhanced reasoning, real-time data integration, and multi-image composition capabilities.",
+    "models": [
+      "nano-banana-pro",
+      "nano-banana-pro-edit",
+      "nano-banana-2",
+      "nano-banana-2-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 18,
+      "unit": "per 1K/2K generation($0.09) | 4K: 35 credits($0.175)"
+    },
+    "pricingByModel": {
+      "nano-banana-2": {
+        "credits": 8,
+        "unit": "per generation($0.04) | 4K same price | 95% cheaper than fal.ai [May experience occasional downtime. Suitable for development and testing.]"
+      },
+      "nano-banana-2-edit": {
+        "credits": 8,
+        "unit": "per generation($0.04) | 4K same price | 95% cheaper than fal.ai [May experience occasional downtime. Suitable for development and testing.]"
+      },
+      "nano-banana-pro": {
+        "credits": 18,
+        "unit": "per 1K/2K generation($0.09) | 4K: 35 credits($0.175) [Highest stability with guaranteed 99.9% uptime. Recommended for production environments.]"
+      },
+      "nano-banana-pro-edit": {
+        "credits": 18,
+        "unit": "per 1K/2K generation($0.09) | 4K: 35 credits($0.175) [Highest stability with guaranteed 99.9% uptime. Recommended for production environments.]"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "default",
+        "credits": 8,
+        "resolution": "1k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.15
+      },
+      {
+        "description": "1K resolution",
+        "credits": 8,
+        "resolution": "1k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.15
+      },
+      {
+        "description": "2K resolution",
+        "credits": 8,
+        "resolution": "2k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.15
+      },
+      {
+        "description": "4K resolution",
+        "credits": 8,
+        "resolution": "4k",
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.04,
+        "falPriceUSD": 0.3
+      }
+    ],
+    "featured": true,
+    "discount": 95,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/nano-banana-2"
+  },
+  {
+    "id": "gpt-4o-image-api",
+    "name": "GPT-4o Image",
+    "provider": "OpenAI",
+    "providerOrder": 2,
+    "icon": "https://storage.poyo.ai/provider/openai.svg",
+    "thumbnail": "https://storage.poyo.ai/models/gpt-4o-image.webp",
+    "description": "OpenAI's native multimodal image generator with exceptional text rendering, precise prompt following, and conversational editing capabilities.",
+    "models": [
+      "gpt-4o-image",
+      "gpt-4o-image-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 4,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 4,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.02,
+        "falPriceUSD": null
+      }
+    ],
+    "discount": 80,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/gpt-4o-image"
+  },
+  {
+    "id": "nano-banana-api",
+    "name": "Nano Banana",
+    "provider": "Google",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.poyo.ai/models/nano-banana.webp",
+    "description": "Google's leaderboard-topping image model (Gemini 2.5 Flash) excelling in natural language editing, character consistency, and multi-image blending.",
+    "models": [
+      "nano-banana-2-new",
+      "nano-banana-2-new-edit",
+      "nano-banana-2",
+      "nano-banana-2-edit",
+      "nano-banana",
+      "nano-banana-edit"
+    ],
+    "tasks": [
+      "Text to Image",
+      "Image to Image"
+    ],
+    "category": "Image",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 5,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.025,
+        "falPriceUSD": 0.039
+      }
+    ],
+    "discount": 36,
+    "doc": "https://docs.poyo.ai/api-manual/image-series/nano-banana"
+  },
+  {
+    "id": "sora-2",
+    "name": "Sora 2",
+    "provider": "OpenAI",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/sora.svg",
+    "thumbnail": "https://storage.poyo.ai/models/sora-2.webp",
+    "models": [
+      "sora-2-stable",
+      "sora-2",
+      "sora-2-pro"
+    ],
+    "description": "OpenAI's advanced video model with realistic physics simulation, synchronized audio generation, and innovative Cameo feature for personalized content.",
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 5,
+      "unit": "per generation(0.025$) | sora-2: 0.025$ |  sora-2-stable: 0.15$"
+    },
+    "pricingTiers": [
+      {
+        "description": "10s, with audio",
+        "credits": 5,
+        "duration": 10,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.025,
+        "falPriceUSD": 1
+      },
+      {
+        "description": "10s, with audio , no watermark",
+        "credits": 5,
+        "duration": 10,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.025,
+        "falPriceUSD": 1
+      },
+      {
+        "description": "15s, with audio, no watermark",
+        "credits": 5,
+        "duration": 15,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.025,
+        "falPriceUSD": 1.5
+      },
+      {
+        "description": "stable",
+        "model": "sora-2-stable",
+        "credits": 30,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.15,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": true,
+    "discount": 95,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/sora-2"
+  },
+  {
+    "id": "sora-2-pro",
+    "name": "Sora 2 Pro",
+    "provider": "OpenAI",
+    "providerOrder": 1,
+    "icon": "https://storage.poyo.ai/provider/sora.svg",
+    "thumbnail": "https://storage.poyo.ai/models/sora-2-pro.webp",
+    "models": [
+      "sora-2-pro"
+    ],
+    "description": "Premium Sora 2 variant delivering professional-grade 1024p video with enhanced fidelity, extended duration, and sophisticated audio-visual coherence.",
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 2,
+    "pricing": {
+      "credits": 100,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 100,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.5,
+        "falPriceUSD": 4.5
+      },
+      {
+        "description": "15s, with audio , no watermark",
+        "credits": 100,
+        "duration": 15,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.5,
+        "falPriceUSD": 4.5
+      },
+      {
+        "description": "25s, with audio, no watermark",
+        "credits": 100,
+        "duration": 25,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.5,
+        "falPriceUSD": 7.5
+      }
+    ],
+    "featured": false,
+    "discount": 95,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/sora-2-pro"
+  },
+  {
+    "id": "veo-3-1",
+    "name": "Veo 3.1",
+    "provider": "Google",
+    "providerOrder": 2,
+    "icon": "https://storage.poyo.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.poyo.ai/models/veo-3.1.webp",
+    "models": [
+      "veo3.1-fast",
+      "veo3.1-lite",
+      "veo3.1-quality"
+    ],
+    "description": "Google DeepMind's Veo 3.1 family for native-audio video generation with text, reference-image, and frame-guided workflows across Fast, Lite, and Quality variants.",
+    "catalogBadge": "New",
+    "catalogPreviewLabel": "VEO 3.1 PREVIEW",
+    "catalogVendorLabel": "Google DeepMind",
+    "catalogPriceLabel": "Starting at $0.05 / video",
+    "catalogLatencyLabel": "~24s",
+    "catalogPopularity": 95,
+    "tasks": [
+      "Text to Video",
+      "Image to Video"
+    ],
+    "category": "Video",
+    "headerOrder": 1,
+    "pricing": {
+      "credits": 10,
+      "unit": "per video | starting at 10 credits ($0.05) across veo3.1-fast, veo3.1-lite, and veo3.1-quality"
+    },
+    "pricingByModel": {
+      "veo3.1-fast": {
+        "credits": 20,
+        "unit": "per video | 720p/1080p: 20 credits ($0.10), 4K: 60 credits ($0.30)"
+      },
+      "veo3.1-lite": {
+        "credits": 10,
+        "unit": "per video | 720p/1080p: 10 credits ($0.05), 4K: 30 credits ($0.15)"
+      },
+      "veo3.1-quality": {
+        "credits": 120,
+        "unit": "per video | 720p/1080p: 120 credits ($0.60), 4K: 400 credits ($2.00)"
+      }
+    },
+    "pricingTiers": [
+      {
+        "description": "veo3.1-fast, 720p/1080p",
+        "model": "veo3.1-fast",
+        "resolution": "720p/1080p",
+        "credits": 20,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.1,
+        "falPriceUSD": 0.75
+      },
+      {
+        "description": "veo3.1-fast, 4K",
+        "model": "veo3.1-fast",
+        "resolution": "4k",
+        "credits": 60,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.3,
+        "falPriceUSD": 2.8
+      },
+      {
+        "description": "veo3.1-lite, 720p/1080p",
+        "model": "veo3.1-lite",
+        "resolution": "720p/1080p",
+        "credits": 10,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.05,
+        "falPriceUSD": null
+      },
+      {
+        "description": "veo3.1-lite, 4K",
+        "model": "veo3.1-lite",
+        "resolution": "4k",
+        "credits": 30,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.15,
+        "falPriceUSD": null
+      },
+      {
+        "description": "veo3.1-quality, 720p/1080p",
+        "model": "veo3.1-quality",
+        "resolution": "720p/1080p",
+        "credits": 120,
+        "creditsPerUnit": "per video",
+        "priceUSD": 0.6,
+        "falPriceUSD": 3.2
+      },
+      {
+        "description": "veo3.1-quality, 4K",
+        "model": "veo3.1-quality",
+        "resolution": "4k",
+        "credits": 400,
+        "creditsPerUnit": "per video",
+        "priceUSD": 2,
+        "falPriceUSD": 4.8
+      }
+    ],
+    "featured": true,
+    "doc": "https://docs.poyo.ai/api-manual/video-series/veo-3-1"
+  },
+  {
+    "id": "generate-music",
+    "name": "AI Music",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/provider/suno.svg",
+    "thumbnail": "https://storage.poyo.ai/models/ai-music.webp",
+    "description": "AI music generator with customizable styles, vocals, and full creative control over musical characteristics and quality.",
+    "models": [
+      "generate-music"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "discount": 90,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/generate-music"
+  },
+  {
+    "id": "extend-music",
+    "name": "Extend Music",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/extend-music.webp",
+    "description": "Extend or modify existing music tracks by creating sequels based on source audio. Supports custom mode with full parameter control or simple mode inheriting original parameters. Specify continuation points and maintain style consistency across extensions up to 8 minutes.",
+    "models": [
+      "extend-music"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/extend-music"
+  },
+  {
+    "id": "upload-and-cover-audio",
+    "name": "Upload and Cover Audio",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/upload-and-cover-audio.webp",
+    "description": "Transform audio tracks into new styles while preserving original melodies. Upload your audio files (up to 2 minutes) and convert them with AI-powered style transfer. Supports custom and simplified modes with vocal/instrumental options and audio weight controls.",
+    "models": [
+      "upload-and-cover-audio"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/upload-and-cover-audio"
+  },
+  {
+    "id": "upload-and-extend-audio",
+    "name": "Upload and Extend Audio",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/upload-and-extend-audio.webp",
+    "description": "Upload audio files and extend them while maintaining the original style and characteristics. AI generates seamless continuations from specified time points. Supports multiple model versions with style weight and creative controls for natural extensions.",
+    "models": [
+      "upload-and-extend-audio"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/upload-and-extend-audio"
+  },
+  {
+    "id": "add-instrumental",
+    "name": "Add Instrumental",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/add-instrumental.webp",
+    "description": "Generate musical accompaniment for uploaded audio files containing vocals or melodies. AI creates matching instrumental backing tracks with customizable style tags, genre preferences, and quality controls. Perfect for adding professional-quality backing to vocal recordings.",
+    "models": [
+      "add-instrumental"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/add-instrumental"
+  },
+  {
+    "id": "add-vocals",
+    "name": "Add Vocals",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/add-vocals.webp",
+    "description": "Layer AI-generated vocals onto existing instrumental tracks. Provide lyrics or descriptions and the API generates matching vocal performances with customizable gender, style, and expression. Transform instrumental music into complete songs with professional AI singing.",
+    "models": [
+      "add-vocals"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/add-vocals"
+  },
+  {
+    "id": "get-timestamped-lyrics",
+    "name": "Get Timestamped Lyrics",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/get-timestamped-lyrics.webp",
+    "description": "Retrieve lyrics synchronized with precise timestamps from generated music. Returns word-by-word timing data, waveform visualization, and alignment accuracy scores. Essential for karaoke applications, lyric videos, and music synchronization projects.",
+    "models": [
+      "get-timestamped-lyrics"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/get-timestamped-lyrics"
+  },
+  {
+    "id": "boost-music-style",
+    "name": "Boost Music Style",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/boost-music-style.webp",
+    "description": "AI-enhanced music style description generator. Transform simple style inputs like 'pop, mysterious' into detailed, comprehensive musical descriptions. Optimize your prompts for better music generation results with enriched genre, mood, and instrumentation details.",
+    "models": [
+      "boost-music-style"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/boost-music-style"
+  },
+  {
+    "id": "generate-music-cover",
+    "name": "Generate Music Cover",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/generate-music-cover.webp",
+    "description": "Generate alternative cover versions of existing music tracks. Create variations with automatic style changes while maintaining the essence of the original composition. Perfect for producing multiple versions or exploring different interpretations of your generated music.",
+    "models": [
+      "generate-music-cover"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/generate-music-cover"
+  },
+  {
+    "id": "replace-section",
+    "name": "Replace Section",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/replace-section.webp",
+    "description": "Replace specific sections of generated music tracks with precision timing control. Modify choruses, verses, or any segment by specifying start and end times. Maintains overall coherence while allowing targeted changes to lyrics, style, or musical elements.",
+    "models": [
+      "replace-section"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 10,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 10,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.05,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/replace-section"
+  },
+  {
+    "id": "generate-persona",
+    "name": "Generate Persona",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/generate-persona.webp",
+    "description": "Create reusable music personas from existing audio tracks. Save distinctive vocal characteristics, musical styles, and personality traits for consistent use across multiple generations. Build your own AI artist profiles for brand consistency and style continuity.",
+    "models": [
+      "generate-persona"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/generate-persona"
+  },
+  {
+    "id": "generate-lyrics",
+    "name": "Generate Lyrics",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/generate-lyrics.webp",
+    "description": "AI-powered lyrics generation based on themes, moods, and descriptions. Create original song lyrics from simple prompts up to 200 characters. Generate creative, coherent lyrics for any genre or emotional tone with professional songwriting quality.",
+    "models": [
+      "generate-lyrics"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/generate-lyrics"
+  },
+  {
+    "id": "convert-to-wav",
+    "name": "Convert to WAV",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/convert-to-wav.webp",
+    "description": "Obtain high-quality WAV format files from your generated music. Convert any PoYo-generated audio to lossless WAV format for professional use, further editing, or high-fidelity playback. Essential for production workflows requiring uncompressed audio.",
+    "models": [
+      "convert-to-wav"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 1,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 1,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.005,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/convert-to-wav"
+  },
+  {
+    "id": "vocal-remover-api",
+    "name": "Vocal Remover",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/vocal-remover.webp",
+    "description": "Separate vocals from instrumentals or split audio into multiple stem tracks. Two modes available: vocal separation for isolating vocals and backing tracks, or stem splitting for extracting drums, bass, vocals, and other instruments individually. Professional-grade audio source separation.",
+    "models": [
+      "separate-vocals",
+      "stem-split",
+      "upload-and-separate-vocals"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 15,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 15,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.075,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/vocal-remover/separate-vocals"
+  },
+  {
+    "id": "create-music-video",
+    "name": "AI Music Video",
+    "provider": "PoYo",
+    "icon": "https://storage.poyo.ai/logo.webp",
+    "thumbnail": "https://storage.poyo.ai/models/create-music-video.webp",
+    "description": "Generate visualized music videos from audio tracks. Create engaging visual content automatically synchronized to your music with optional author attribution and brand watermarks. Perfect for social media content, promotional materials, and music distribution.",
+    "models": [
+      "create-music-video"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 4,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 4,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.02,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/create-music-video"
+  },
+  {
+    "id": "minimax-music-2-6",
+    "name": "MiniMax Music 2.6",
+    "provider": "MiniMax",
+    "icon": "https://storage.poyo.ai/provider/minimax.svg",
+    "thumbnail": "https://storage.poyo.ai/models/ai-music.webp",
+    "description": "Generate complete songs from style prompts and lyrics with MiniMax Music 2.6. Supports vocal tracks, instrumental generation, prompt-driven lyrics optimization, and configurable audio output settings.",
+    "models": [
+      "minimax-music-2.6"
+    ],
+    "tasks": [
+      "Music"
+    ],
+    "category": "Music",
+    "pricing": {
+      "credits": 20,
+      "unit": "per generation"
+    },
+    "pricingTiers": [
+      {
+        "description": "Standard generation",
+        "credits": 20,
+        "creditsPerUnit": "per generation",
+        "priceUSD": 0.1,
+        "falPriceUSD": null
+      }
+    ],
+    "featured": false,
+    "isNew": true,
+    "doc": "https://docs.poyo.ai/api-manual/music-series/minimax-music-2.6"
+  }
+]
