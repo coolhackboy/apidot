@@ -122,9 +122,6 @@ interface PricingPlan {
   savePercent?: number;
 }
 
-// Temporary: bypass dashboard login gate so the layout can be reviewed before re-enabling auth.
-const BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW = true;
-
 const EMPTY_WECHAT_FORM: WechatInvoiceApplyRequest = {
   invoice_title: '',
   tax_no: '',
@@ -254,13 +251,6 @@ export default function DashboardBillingPage() {
 
   useEffect(() => {
     const initialize = async () => {
-      if (BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
-        setIsLoggedIn(true);
-        setShowLoginModal(false);
-        setLoading(false);
-        return;
-      }
-
       try {
         if (!apiService.isLoggedInToApp(appConfig.appName)) {
           setIsLoggedIn(false);
@@ -290,7 +280,7 @@ export default function DashboardBillingPage() {
 
   // Fetch payment records when page changes
   useEffect(() => {
-    if (isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+    if (isLoggedIn) {
       fetchPaymentRecords(currentPage);
     }
   }, [currentPage, isLoggedIn]);
@@ -651,7 +641,7 @@ export default function DashboardBillingPage() {
     );
   }
 
-  if (!isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+  if (!isLoggedIn) {
     return (
       <>
         <div className="mx-auto w-full max-w-7xl px-4 py-6 md:px-8 md:py-8">
@@ -762,7 +752,6 @@ export default function DashboardBillingPage() {
 
             {/* Auto Recharge Settings - temporarily disabled */}
             <AutoRechargeSettings
-              layoutPreview={BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW}
               onConfigUpdate={async () => {
                 // Refresh user info when auto recharge config is updated
                 const response = await apiService.getUserInfo(appConfig.appName);

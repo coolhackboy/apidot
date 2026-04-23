@@ -19,9 +19,6 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 type TimeRange = 'week' | 'month' | 'last7' | 'last14' | 'last30' | 'custom';
 type ViewMode = 'spend' | 'credits';
 
-// Temporary: bypass dashboard login gate so the layout can be reviewed before re-enabling auth.
-const BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW = true;
-
 // Credits to USD conversion: 1000 credits = $5
 const creditsToUsd = (credits: number) => credits * 0.005;
 
@@ -309,13 +306,6 @@ export default function ApiUsagePage() {
   // Check authentication on mount
   useEffect(() => {
     const checkAuth = async () => {
-      if (BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
-        setIsLoggedIn(true);
-        setShowLoginModal(false);
-        setLoading(false);
-        return;
-      }
-
       if (!apiService.isLoggedInToApp(appConfig.appName)) {
         setIsLoggedIn(false);
         setShowLoginModal(true);
@@ -330,7 +320,7 @@ export default function ApiUsagePage() {
 
   // Fetch data when logged in or time range changes
   useEffect(() => {
-    if (isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+    if (isLoggedIn) {
       // For custom range, only fetch when both dates are set
       if (timeRange === 'custom' && (!customStartDate || !customEndDate)) {
         return;
@@ -381,7 +371,7 @@ export default function ApiUsagePage() {
     );
   }
 
-  if (!isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+  if (!isLoggedIn) {
     return (
       <>
         <div className="mx-auto w-full max-w-7xl px-4 py-6 md:px-8 md:py-8">

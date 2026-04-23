@@ -1545,7 +1545,8 @@
       "account": "账户",
       "guest": "游客",
       "signedIn": "已登录",
-      "signInHint": "登录后查看账户信息"
+      "signInHint": "登录后查看账户信息",
+      "signOut": "退出登录"
     },
     "toggleTheme": "切换主题",
     "currentPage": "当前页面",

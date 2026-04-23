@@ -9,16 +9,24 @@ import { apiService } from "@/services/api";
 import { appConfig } from "@/data/config";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import {
   Bell,
+  ChevronUp,
   CreditCard,
   Grid2x2,
   History,
   Home,
   KeyRound,
   LayoutDashboard,
+  LogOut,
   Menu,
   Moon,
   Sun,
@@ -112,6 +120,39 @@ function SidebarContent({
     { href: "/dashboard/api-key", label: t("nav.apiKeys"), icon: KeyRound },
     { href: "/dashboard/billing", label: t("nav.billing"), icon: CreditCard },
   ];
+  const handleSignOut = () => {
+    onNavigate?.();
+    apiService.logout(appConfig.appName);
+  };
+  const userIdentity = (
+    <>
+      <div className="relative shrink-0">
+        <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-foreground text-xs font-semibold text-background shadow-sm ring-1 ring-border/80">
+          {userInfo?.user_avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={userInfo.user_avatar}
+              alt={userInfo.user_name || userInfo.email || "User avatar"}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            getInitials(userInfo)
+          )}
+        </div>
+        {isLoggedIn ? (
+          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-background bg-emerald-500" />
+        ) : null}
+      </div>
+      <div className="min-w-0 flex-1 text-left">
+        <div className="truncate text-sm font-medium text-foreground">
+          {isLoggedIn ? userInfo?.user_name || t("user.account") : t("user.guest")}
+        </div>
+        <div className="truncate text-xs text-muted-foreground">
+          {isLoggedIn ? userInfo?.email || t("user.signedIn") : t("user.signInHint")}
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <div className={cn("flex h-full min-h-0 flex-col", isDesktop ? "bg-background" : "px-3 py-3")}>
@@ -274,28 +315,65 @@ function SidebarContent({
             </Button>
           </div>
 
-          <div className={cn("flex items-center gap-3 rounded-2xl px-1 py-1", isDesktop ? "mt-3" : "mt-4")}>
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted text-xs font-semibold text-foreground">
-              {userInfo?.user_avatar ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={userInfo.user_avatar}
-                  alt={userInfo.user_name || userInfo.email || "User avatar"}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                getInitials(userInfo)
-              )}
+          {isLoggedIn ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className={cn(
+                    "group flex w-full items-center gap-3 rounded-2xl border border-border/70 bg-gradient-to-br from-background via-muted/25 to-muted/50 p-2 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/15 hover:bg-muted/60 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    isDesktop ? "mt-3" : "mt-4",
+                  )}
+                  aria-label={t("user.account")}
+                >
+                  {userIdentity}
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/70 bg-background/80 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+                    <ChevronUp className="h-3.5 w-3.5" />
+                  </span>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="start"
+                side="top"
+                sideOffset={8}
+                className="w-64 rounded-2xl border-border/70 p-2 shadow-xl shadow-black/10"
+              >
+                <div className="flex items-center gap-3 rounded-xl bg-muted/45 px-3 py-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-foreground text-[11px] font-semibold text-background">
+                    {userInfo?.user_avatar ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={userInfo.user_avatar}
+                        alt={userInfo.user_name || userInfo.email || "User avatar"}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      getInitials(userInfo)
+                    )}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="truncate text-sm font-medium text-foreground">
+                      {userInfo?.user_name || t("user.account")}
+                    </div>
+                    <div className="truncate text-xs text-muted-foreground">
+                      {userInfo?.email || t("user.signedIn")}
+                    </div>
+                  </div>
+                </div>
+                <DropdownMenuItem
+                  onClick={handleSignOut}
+                  className="mt-2 cursor-pointer rounded-xl px-3 py-2.5 text-red-600 transition-colors focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-950/30"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  {t("user.signOut")}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className={cn("flex items-center gap-3 rounded-2xl px-1 py-1", isDesktop ? "mt-3" : "mt-4")}>
+              {userIdentity}
             </div>
-            <div className="min-w-0 flex-1">
-              <div className="truncate text-sm font-medium text-foreground">
-                {isLoggedIn ? userInfo?.user_name || t("user.account") : t("user.guest")}
-              </div>
-              <div className="truncate text-xs text-muted-foreground">
-                {isLoggedIn ? userInfo?.email || t("user.signedIn") : t("user.signInHint")}
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

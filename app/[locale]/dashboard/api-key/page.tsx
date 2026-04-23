@@ -38,11 +38,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Key, Copy, Edit, Trash2, Plus, User, Eye, EyeOff, Settings } from 'lucide-react';
+import { Key, Copy, Check, Edit, Trash2, Plus, User, Eye, EyeOff, Settings } from 'lucide-react';
 import { toast } from 'sonner';
-
-// Temporary: bypass dashboard login gate so the layout can be reviewed before re-enabling auth.
-const BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW = true;
 
 const formatSecurityLimitSummary = (key: ApiKey, hourlyLabel: string, dailyLabel: string) => {
   const hourlyValue = key.hourly_credit_limit && key.hourly_credit_limit > 0
@@ -69,6 +66,7 @@ export default function ApiKeyPage() {
   const [submitting, setSubmitting] = useState(false);
   const [visibleKeys, setVisibleKeys] = useState<Set<number>>(new Set());
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [copiedKeyId, setCopiedKeyId] = useState<number | null>(null);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -102,13 +100,6 @@ export default function ApiKeyPage() {
 
   useEffect(() => {
     const initialize = async () => {
-      if (BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
-        setIsLoggedIn(true);
-        setShowLoginModal(false);
-        setLoading(false);
-        return;
-      }
-
       try {
         if (!apiService.isLoggedInToApp(appConfig.appName)) {
           setIsLoggedIn(false);
@@ -213,9 +204,12 @@ export default function ApiKeyPage() {
     }
   };
 
-  const handleCopy = (apiKey: string) => {
+  const handleCopy = (keyId: number, apiKey: string) => {
     navigator.clipboard.writeText(apiKey);
-    toast.success(t('success_copy'));
+    setCopiedKeyId(keyId);
+    setTimeout(() => {
+      setCopiedKeyId((currentKeyId) => (currentKeyId === keyId ? null : currentKeyId));
+    }, 2000);
   };
 
   const toggleKeyVisibility = (keyId: number) => {
@@ -328,7 +322,7 @@ export default function ApiKeyPage() {
     );
   }
 
-  if (!isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+  if (!isLoggedIn) {
     return (
       <>
         <div className="mx-auto w-full max-w-7xl px-4 py-6 md:px-8 md:py-8">
@@ -471,9 +465,13 @@ export default function ApiKeyPage() {
                               variant="ghost"
                               size="icon"
                               className="h-8 w-8 rounded-lg text-muted-foreground"
-                              onClick={() => handleCopy(key.api_key)}
+                              onClick={() => handleCopy(key.id, key.api_key)}
                             >
-                              <Copy className="h-4 w-4" />
+                              {copiedKeyId === key.id ? (
+                                <Check className="h-4 w-4 text-green-600" />
+                              ) : (
+                                <Copy className="h-4 w-4" />
+                              )}
                             </Button>
                           </div>
                         </TableCell>

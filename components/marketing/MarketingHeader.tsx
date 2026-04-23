@@ -50,11 +50,6 @@ export default function MarketingHeader() {
     return "/";
   }, [pathname]);
 
-  const handleLogout = () => {
-    apiService.logout(appConfig.appName);
-    setIsLoggedIn(false);
-  };
-
   return (
     <>
       <header className="mk-header">
@@ -92,15 +87,10 @@ export default function MarketingHeader() {
           <div className="mk-header-actions">
             <LanguageSwitcher currentLanguage={locale} />
             {isLoggedIn ? (
-              <>
-                <button type="button" className="mk-header-ghost" onClick={handleLogout}>
-                  {t("actions.signOut")}
-                </button>
-                <Link href="/dashboard" className="mk-header-primary">
-                  {t("actions.dashboard")}
-                  <ArrowRight size={12} strokeWidth={2.1} />
-                </Link>
-              </>
+              <Link href="/dashboard" className="mk-header-primary">
+                {t("actions.dashboard")}
+                <ArrowRight size={12} strokeWidth={2.1} />
+              </Link>
             ) : (
               <>
                 <button
@@ -184,18 +174,7 @@ export default function MarketingHeader() {
                         {t("actions.dashboard")}
                         <ArrowRight size={12} strokeWidth={2.1} />
                       </Link>
-                      {isLoggedIn ? (
-                        <button
-                          type="button"
-                          className="mk-header-ghost h-11 rounded-2xl border border-border"
-                          onClick={() => {
-                            handleLogout();
-                            setMobileOpen(false);
-                          }}
-                        >
-                          {t("actions.signOut")}
-                        </button>
-                      ) : (
+                      {!isLoggedIn ? (
                         <button
                           type="button"
                           className="mk-header-ghost h-11 rounded-2xl border border-border"
@@ -206,28 +185,14 @@ export default function MarketingHeader() {
                         >
                           {t("actions.signIn")}
                         </button>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </div>
 
-                <div className="mk-mobile-footer">
-                  <div className="mk-mobile-card mk-mobile-footer-card">
-                    {isLoggedIn ? (
-                      <button
-                        type="button"
-                        className="mk-header-ghost mk-mobile-footer-action"
-                        onClick={() => {
-                          handleLogout();
-                          setMobileOpen(false);
-                        }}
-                      >
-                        <span>{t("actions.signOut")}</span>
-                        <span className="mk-mobile-footer-action-icon">
-                          <ArrowRight className="h-4 w-4" />
-                        </span>
-                      </button>
-                    ) : (
+                {!isLoggedIn ? (
+                  <div className="mk-mobile-footer">
+                    <div className="mk-mobile-card mk-mobile-footer-card">
                       <button
                         type="button"
                         className="mk-header-ghost mk-mobile-footer-action"
@@ -241,9 +206,9 @@ export default function MarketingHeader() {
                           <ArrowRight className="h-4 w-4" />
                         </span>
                       </button>
-                    )}
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </SheetContent>
           </Sheet>

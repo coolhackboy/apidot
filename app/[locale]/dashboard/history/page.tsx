@@ -492,9 +492,6 @@ interface PaginationData {
   items: HistoryItemV2[];
 }
 
-// Temporary: bypass dashboard login gate so the layout can be reviewed before re-enabling auth.
-const BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW = true;
-
 interface UserInfo {
   user_name: string;
   email: string;
@@ -651,13 +648,6 @@ export default function DashboardHistoryPage() {
 
   useEffect(() => {
     const initialize = async () => {
-      if (BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
-        setIsLoggedIn(true);
-        setShowLoginModal(false);
-        setLoading(false);
-        return;
-      }
-
       try {
         if (!apiService.isLoggedInToApp(appConfig.appName)) {
           setIsLoggedIn(false);
@@ -703,14 +693,14 @@ export default function DashboardHistoryPage() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+    if (isLoggedIn) {
       fetchData(currentPage, activeSearchTaskId, statusFilter, modelFilter);
     }
   }, [currentPage, pageSize, isLoggedIn, activeSearchTaskId, statusFilter, modelFilter, activeGenerationStartTime, activeGenerationEndTime]);
 
   // Fetch chat data when switching to chat tab or changing chat page
   useEffect(() => {
-    if (isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW && activeTab === 'chat') {
+    if (isLoggedIn && activeTab === 'chat') {
       const startTime = chatStartDate ? `${chatStartDate}T00:00:00` : undefined;
       const endTime = chatEndDate ? `${chatEndDate}T23:59:59` : undefined;
       fetchChatData(chatCurrentPage, startTime, endTime);
@@ -1207,7 +1197,7 @@ export default function DashboardHistoryPage() {
     );
   }
 
-  if (!isLoggedIn && !BYPASS_DASHBOARD_LOGIN_FOR_LAYOUT_REVIEW) {
+  if (!isLoggedIn) {
     return (
       <>
         <div className="mx-auto w-full max-w-7xl px-4 py-6 md:px-8 md:py-8">
