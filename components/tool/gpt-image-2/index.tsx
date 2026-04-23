@@ -20,6 +20,9 @@ import { Upload, Loader2, Trash2, Download, Coins } from "lucide-react";
 import { uploadToR2 } from "@/utils/r2";
 import LoginForm from "@/components/auth/LoginForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useTranslations } from "next-intl";
+import FloatingGenerateBar from "@/components/tool/FloatingGenerateBar";
+import ViewportFollowPanel from "@/components/tool/ViewportFollowPanel";
 
 interface GptImage2Props {
   title?: string;
@@ -39,20 +42,23 @@ type UploadedFile = {
   uploading?: boolean;
 };
 
+const revokeUploadedFileUrl = (file: UploadedFile | null) => {
+  if (file?.url.startsWith("blob:")) {
+    URL.revokeObjectURL(file.url);
+  }
+};
+
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const SIZE_OPTIONS: GptImage2Size[] = ["1024x1024", "1536x1024", "1024x1536"];
-const FIXED_CREDITS = 15;
-
-const DEFAULT_PROMPT =
-  "A photorealistic launch poster for an AI design tool, clean sans-serif headline, crisp UI mockup on a laptop screen, natural studio lighting, balanced shadows, premium product photography.";
+const FIXED_CREDITS = 2;
 
 const EXAMPLE_OUTPUT: GptImage2StatusData = {
   task_id: "IMG2EXAMPLE123456",
   status: "finished",
   files: [
     {
-      file_url: "https://storage.poyo.ai/models/gpt-4o-image.webp",
+      file_url: "https://storage.apidot.ai/models/gpt-image-2/moauzhju_98gixasw6un.webp",
       file_type: "image",
     },
   ],
@@ -64,6 +70,8 @@ const EXAMPLE_OUTPUT: GptImage2StatusData = {
 const formatUsd = (value: number) => value.toFixed(3).replace(/\.?0+$/, "");
 
 const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
+  const t = useTranslations("modelDetail.model");
+  const defaultPrompt = t("gptImage2DefaultPrompt");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -72,7 +80,7 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   const [resultMode, setResultMode] = useState<ResultMode>("preview");
 
   const [model, setModel] = useState<GptImage2ModelId>(selectedModel);
-  const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
+  const [prompt, setPrompt] = useState(defaultPrompt);
   const [size, setSize] = useState<GptImage2Size>("1024x1024");
   const [imageCount, setImageCount] = useState<1 | 2 | 3 | 4>(1);
   const [sourceImage, setSourceImage] = useState<UploadedFile | null>(null);
@@ -83,10 +91,18 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   const [displayResult, setDisplayResult] = useState<GptImage2StatusData | null>(null);
   const [downloadingIndex, setDownloadingIndex] = useState<number | null>(null);
   const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+  const defaultPromptRef = useRef(defaultPrompt);
 
   useEffect(() => {
     setModel(selectedModel);
   }, [selectedModel]);
+
+  useEffect(() => {
+    if (prompt === defaultPromptRef.current) {
+      setPrompt(defaultPrompt);
+    }
+    defaultPromptRef.current = defaultPrompt;
+  }, [defaultPrompt, prompt]);
 
   useEffect(() => {
     setIsLoggedIn(apiService.isLoggedInToApp(appConfig.appName));
@@ -210,10 +226,19 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   };
 
   const handleRemoveImage = () => {
-    if (sourceImage?.url.startsWith("blob:")) {
-      URL.revokeObjectURL(sourceImage.url);
-    }
+    revokeUploadedFileUrl(sourceImage);
     setSourceImage(null);
+  };
+
+  const handleReset = () => {
+    revokeUploadedFileUrl(sourceImage);
+    setConfigMode("form");
+    setModel(selectedModel);
+    setPrompt(defaultPrompt);
+    setSize("1024x1024");
+    setImageCount(1);
+    setSourceImage(null);
+    setJsonConfig("");
   };
 
   const validateForm = (): string | null => {
@@ -514,18 +539,8 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
     const dataToDisplay = displayResult || EXAMPLE_OUTPUT;
     const isExample = !displayResult;
     const imageFiles = (dataToDisplay.files || []).filter((file) => file.file_type === "image");
-
-    return (
+    const resultsBody = (
       <div className="space-y-4">
-        {isExample ? (
-          <div className="rounded-lg border border-blue-500/20 bg-blue-500/10 p-3">
-            <p className="text-sm font-medium text-blue-500">Example Output</p>
-            <p className="text-xs text-blue-400">
-              Generate your own image to replace this sample preview.
-            </p>
-          </div>
-        ) : null}
-
         <div className="space-y-3 rounded-lg bg-background/50 p-4">
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
@@ -644,6 +659,22 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
         ) : null}
       </div>
     );
+
+    return (
+      <div className="flex min-h-0 flex-1 flex-col gap-4">
+        {isExample ? (
+          <div className="rounded-lg border border-blue-500/20 bg-blue-500/10 p-3">
+            <p className="text-sm font-medium text-blue-500">Example Output</p>
+            <p className="text-xs text-blue-400">
+              Generate your own image to replace this sample preview.
+            </p>
+          </div>
+        ) : null}
+        <ViewportFollowPanel className="flex-1">
+          {resultsBody}
+        </ViewportFollowPanel>
+      </div>
+    );
   };
 
   return (
@@ -665,7 +696,7 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
               <Coins className="mx-auto h-12 w-12 text-orange-500" />
               <h3 className="text-lg font-semibold">Insufficient Credits</h3>
               <p className="text-sm text-muted-foreground">
-                GPT Image 2 requires 15 credits per generation.
+                GPT Image 2 requires {FIXED_CREDITS} credits per generation.
               </p>
             </div>
             <div className="flex gap-3 pt-2">
@@ -694,8 +725,8 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
           <div className="grid items-stretch gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-6 xl:gap-8">
             <div className="space-y-3 sm:space-y-4 lg:space-y-6">
               <Card className="h-full rounded-3xl border bg-muted/50 shadow-none">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Input</div>
                       <div className="flex gap-1 rounded-lg bg-muted p-1">
@@ -720,37 +751,21 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
 
                     {renderConfigPanel()}
 
-                    <div className="space-y-2">
-                      <Button
-                        onClick={handleGenerateImage}
-                        disabled={
-                          isSubmitting ||
-                          (configMode === "form" && !prompt.trim()) ||
-                          isAnyFileUploading
-                        }
-                        className="w-full"
-                        size="lg"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Generating...
-                          </>
-                        ) : (
-                          <>
-                            <span>Generate Image</span>
-                            <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-white/20 px-1.5 py-0.5 text-xs sm:ml-2 sm:px-2">
-                              <Coins className="h-3 w-3" />
-                              {FIXED_CREDITS}
-                            </span>
-                          </>
-                        )}
-                      </Button>
-                      <p className="text-center text-xs text-muted-foreground">
-                        {FIXED_CREDITS} credits (${formatUsd(FIXED_CREDITS * 0.005)}) per
-                        generation
-                      </p>
-                    </div>
+                    <FloatingGenerateBar
+                      className="mt-auto"
+                      secondaryLabel="Reset"
+                      actionLabel="Generate Image"
+                      loadingLabel="Generating..."
+                      onSecondaryClick={handleReset}
+                      onClick={handleGenerateImage}
+                      secondaryDisabled={isSubmitting || isAnyFileUploading}
+                      disabled={
+                        isSubmitting ||
+                        (configMode === "form" && !prompt.trim()) ||
+                        isAnyFileUploading
+                      }
+                      isLoading={isSubmitting}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -758,8 +773,8 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
 
             <div className="space-y-3 sm:space-y-4">
               <Card className="h-full rounded-3xl border bg-muted/50 shadow-none">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Output</div>
                       <div className="flex gap-1 rounded-lg bg-muted p-1">

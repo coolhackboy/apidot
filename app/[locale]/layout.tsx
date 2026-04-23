@@ -1,4 +1,4 @@
-import { Montserrat } from 'next/font/google';
+import { JetBrains_Mono, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
@@ -20,7 +20,17 @@ import AnnouncementModal from '@/components/common/AnnouncementModal';
 import { UserProvider } from '@/contexts/UserContext';
 import GoogleOneTap from '@/components/auth/GoogleOneTap';
 import { appConfig } from '@/data/config';
-const montserrat = Montserrat({ subsets: ['latin'], variable: "--font-montserrat" });
+const sora = Sora({
+  subsets: ['latin'],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(appConfig.webUrl),
@@ -63,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NHQH3RLS');`}
         </Script>
       </head>
-      <body className={montserrat.className}>
+      <body className={`${sora.variable} ${jetBrainsMono.variable}`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NHQH3RLS"

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Copy, Check } from 'lucide-react';
-import { toast } from 'sonner';
 import { formatModelCardPriceUSD, getModelCardPricing, type AIModel } from '@/services/modelService';
 
 export function SavingsBadge({ savings }: { savings: number }) {
@@ -43,7 +42,6 @@ export function ModelCard({ model, linkBase, translations }: ModelCardProps) {
         const copyValue = (model.models && model.models.length > 0) ? model.models[0] : model.id;
         navigator.clipboard.writeText(copyValue);
         setCopied(true);
-        toast.success(t.copyIdentifierSuccess);
         setTimeout(() => setCopied(false), 2000);
     };
 

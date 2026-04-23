@@ -3,7 +3,6 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, ShieldCheck, ChevronRight } from "lucide-react";
-import { toast } from "sonner";
 import { getModelById } from "@/services/modelService";
 import { Sparkles } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -40,6 +39,17 @@ interface HeroModelProps {
 type LocalizedModelCopy = {
   name?: string;
   description?: string;
+};
+
+const TASK_LABEL_MAP: Record<string, string> = {
+  "Text to Video": "textToVideo",
+  "Image to Video": "imageToVideo",
+  "Text to Image": "textToImage",
+  "Image to Image": "imageToImage",
+  Chat: "chat",
+  Code: "code",
+  Music: "music",
+  Audio: "audio",
 };
 
 const renderIcon = (iconPath: string | undefined, size: number = 56) => {
@@ -111,6 +121,20 @@ export default function HeroModel({
     localizedModels[currentModelId]?.name ||
     formatModelDisplayName(modelData.name, modelData.id, currentModelId);
 
+  const getLocalizedTaskLabel = (task: string) => {
+    const translationKey = TASK_LABEL_MAP[task];
+
+    if (!translationKey) {
+      return task;
+    }
+
+    try {
+      return t(`taskLabels.${translationKey}`);
+    } catch {
+      return task;
+    }
+  };
+
   const headerModelName = getModelDisplayName(resolvedHeaderModelId);
   const displayDescription =
     localizedModels[displayModelId]?.description || modelData.description;
@@ -120,7 +144,6 @@ export default function HeroModel({
     navigator.clipboard.writeText(displayModelId);
     setCopiedModelId(true);
     setTimeout(() => setCopiedModelId(false), 2000);
-    toast.success(t("copySuccess"));
   };
 
   return (
@@ -168,7 +191,7 @@ export default function HeroModel({
                 <div className="flex flex-wrap items-center gap-2">
                   {modelData.tasks.map((task) => (
                     <span key={task} className="mk-chip">
-                      {task}
+                      {getLocalizedTaskLabel(task)}
                     </span>
                   ))}
                 </div>

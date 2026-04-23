@@ -152,7 +152,6 @@ export function ModelAPI({ modelId, modelName, apiType }: ModelAPIProps) {
     navigator.clipboard.writeText(text);
     setCopiedCode(text);
     setTimeout(() => setCopiedCode(null), 2000);
-    toast.success('Copied to clipboard!');
   };
 
   // Initialize request body when opening Try API dialog

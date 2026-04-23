@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from "react";
-import { apiService } from '@/services/api';
-import { appConfig } from '@/data/config';
-import { Crown, Check, Loader2 } from "lucide-react";
-import LoginForm from '@/components/auth/LoginForm';
+import { apiService } from "@/services/api";
+import { appConfig } from "@/data/config";
+import { ArrowRight, Check, Crown, Loader2 } from "lucide-react";
+import LoginForm from "@/components/auth/LoginForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -27,18 +26,18 @@ interface PricingClientProps {
   compact?: boolean;
 }
 
-export default function PricingClient({ 
-  title, 
-  subtitle, 
+export default function PricingClient({
+  title,
+  subtitle,
   showFreePlan = false,
   translations,
   className,
-  compact = false
+  compact = false,
 }: PricingClientProps) {
   const [loading, setLoading] = useState<{ [key: string]: boolean }>({});
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [pendingPlan, setPendingPlan] = useState<any>(null);
-  const [paymentType, setPaymentType] = useState<'month' | 'year' | 'onetime'>('onetime');
+  const [paymentType, setPaymentType] = useState<"month" | "year" | "onetime">("onetime");
 
   const appName = appConfig.appName;
   const displayTitle = translations?.hero?.title || title;
@@ -51,42 +50,45 @@ export default function PricingClient({
       setShowLoginModal(true);
       return;
     }
-    
+
     setLoading({ ...loading, [plan.code]: true });
-    
+
     try {
-      const result = await apiService.createCheckoutSession({
-        plan_code: plan.code,
-        frontend_url: window.location.href
-      }, appName as string);
+      const result = await apiService.createCheckoutSession(
+        {
+          plan_code: plan.code,
+          frontend_url: window.location.href,
+        },
+        appName as string,
+      );
 
       if (result.code === 200) {
         const { url, order_no } = result.data;
-        const payWindow = window.open(url, '_blank');
-        
+        const payWindow = window.open(url, "_blank");
+
         const checkPaymentStatus = setInterval(async () => {
           if (payWindow?.closed) {
             clearInterval(checkPaymentStatus);
             setLoading({ ...loading, [plan.code]: false });
             return;
           }
-          
+
           try {
             const statusResult = await apiService.checkPaymentStatus(order_no, appName as string);
-            
-            if (statusResult.code === 200 && statusResult.data.status === 'completed') {
+
+            if (statusResult.code === 200 && statusResult.data.status === "completed") {
               clearInterval(checkPaymentStatus);
               payWindow?.close();
-              toast.success('Payment successful!');
+              toast.success("Payment successful!");
               setLoading({ ...loading, [plan.code]: false });
             }
           } catch (error) {
-            console.error('Check payment status error:', error);
+            console.error("Check payment status error:", error);
           }
         }, 2000);
       }
     } catch (error) {
-      console.error('Purchase error:', error);
+      console.error("Purchase error:", error);
       setLoading({ ...loading, [plan.code]: false });
     }
   };
@@ -100,142 +102,146 @@ export default function PricingClient({
   };
 
   return (
-    <div className={cn(
-      "min-h-screen",
-      compact && "min-h-0",
-      className
-    )}>
-      {/* Login Modal */}
+    <div className={cn("min-h-screen", compact && "min-h-0", className)}>
       <LoginForm
         app_name={appName}
         onLoginSuccess={handleLoginSuccess}
         open={showLoginModal}
         onOpenChange={setShowLoginModal}
       />
-      
 
-      {/* Pricing Section */}
-      <div className={cn(
-        "max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:px-6 lg:px-8",
-        compact && "py-8"
-      )}>
+      <div
+        className={cn(
+          "max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:px-6 lg:px-8",
+          compact && "py-8",
+        )}
+      >
         <div className="text-center">
-          <h1 className={cn(
-            "text-2xl sm:text-3xl font-extrabold tracking-tight sm:text-4xl px-2",
-            compact && "text-xl sm:text-2xl sm:text-3xl"
-          )}>
+          <h1
+            className={cn(
+              "text-2xl sm:text-3xl font-extrabold tracking-tight sm:text-4xl px-2",
+              compact && "text-xl sm:text-2xl sm:text-3xl",
+            )}
+          >
             {displayTitle}
           </h1>
           <div className="mt-4 flex flex-col items-center space-y-4 px-2">
-            <p className={cn(
-              "text-sm sm:text-lg text-muted-foreground",
-              compact && "text-sm sm:text-base"
-            )}>
+            <p
+              className={cn(
+                "text-sm sm:text-lg text-muted-foreground",
+                compact && "text-sm sm:text-base",
+              )}
+            >
               {displaySubtitle}
             </p>
           </div>
         </div>
 
-        {/* Pricing Cards */}
-        <div id="pricing-plans" className="mt-8 sm:mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:gap-6 lg:max-w-7xl lg:mx-auto px-2">
-          <div className={cn(
-            "grid gap-4 sm:gap-6",
-            plans.filter((plan: any) => {
-              // 排除免费计划，只显示一次性付款
-              if (plan.plan_interval === 'free' || plan.type === 'free') return false;
-              return plan.type === 'onepay';
-            }).length === 2
-              ? "grid-cols-1 sm:grid-cols-2 max-w-[900px] mx-auto"
-              : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
-          )}>
+        <div
+          id="pricing-plans"
+          className="mt-8 sm:mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:gap-6 lg:max-w-7xl lg:mx-auto px-2"
+        >
+          <div
+            className={cn(
+              "grid gap-4 sm:gap-6",
+              plans.filter((plan: any) => {
+                if (plan.plan_interval === "free" || plan.type === "free") return false;
+                return plan.type === "onepay";
+              }).length === 2
+                ? "grid-cols-1 sm:grid-cols-2 max-w-[900px] mx-auto"
+                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto",
+            )}
+          >
             {plans
               .filter((plan: any) => {
-                // 排除免费计划，只显示一次性付款
-                if (plan.plan_interval === 'free' || plan.type === 'free') return false;
-                return plan.type === 'onepay';
+                if (plan.plan_interval === "free" || plan.type === "free") return false;
+                return plan.type === "onepay";
               })
               .map((plan: any) => {
-              const displayPrice = paymentType === 'onetime' 
-                ? parseFloat(plan.price)
-                : plan.plan_interval === 'year' 
-                  ? (parseFloat(plan.price) / 12).toFixed(2)
-                  : parseFloat(plan.price);
+                const displayPrice =
+                  paymentType === "onetime"
+                    ? parseFloat(plan.price)
+                    : plan.plan_interval === "year"
+                      ? (parseFloat(plan.price) / 12).toFixed(2)
+                      : parseFloat(plan.price);
 
-              return (
-                <Card
-                  key={plan.code}
-                  className={cn(
-                    "relative transform transition-all duration-300 hover:scale-105",
-                    plan.popular && "border-2 border-primary shadow-xl shadow-primary/10",
-                    plan.plan_interval !== 'free' && "bg-muted/50"
-                  )}
-                >
-                  {plan.popular && (
-                    <div className="absolute -top-5 left-0 right-0 flex justify-center">
-                      <span className="bg-primary text-primary-foreground text-sm px-4 py-1 rounded-full font-medium shadow-lg">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-xl">
-                      {plan.name}
-                      {plan.popular && (
-                        <Badge variant="default" className="ml-2">
-                          <Crown className="h-4 w-4 mr-1" />
-                        </Badge>
-                      )}
-                    </CardTitle>
-                    <div className="mt-4">
-                      <span className="text-3xl font-bold">${displayPrice}</span>
-                      <span className="text-muted-foreground">
-                        {paymentType === 'onetime' ? '/one-time' : '/month'}
-                      </span>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    {plan.plan_interval !== 'free' && plan.type !== 'free' && (
-                      <Button
-                        className="w-full mb-6 bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))] hover:from-[hsl(var(--primary))] hover:to-[hsl(var(--gradient-end))] text-primary-foreground font-semibold rounded-full py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] border-0"
-                        onClick={() => handleSubscribe(plan)}
-                        disabled={loading[plan.code]}
-                      >
-                        {loading[plan.code] ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            <span className="mr-2">🔥</span>
-                            {paymentType === 'onetime' ? 'Buy Now' : 'Subscribe'}
-                          </>
-                        )}
-                      </Button>
+                return (
+                  <Card
+                    key={plan.code}
+                    className={cn(
+                      "relative transform transition-all duration-300 hover:scale-105",
+                      plan.popular && "border-2 border-primary shadow-xl shadow-primary/10",
+                      plan.plan_interval !== "free" && "bg-muted/50",
                     )}
-                    
-                    <ul className="space-y-4">
-                      {plan.features.map((feature: any, index: number) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                          <span className={cn(
-                            "ml-3 text-muted-foreground",
-                            feature.isBold && "font-medium text-foreground"
-                          )}>
-                            {feature.value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-5 left-0 right-0 flex justify-center">
+                        <span className="bg-primary text-primary-foreground text-sm px-4 py-1 rounded-full font-medium shadow-lg">
+                          Most Popular
+                        </span>
+                      </div>
+                    )}
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-xl">
+                        {plan.name}
+                        {plan.popular && (
+                          <Badge variant="default" className="ml-2">
+                            <Crown className="h-4 w-4 mr-1" />
+                          </Badge>
+                        )}
+                      </CardTitle>
+                      <div className="mt-4">
+                        <span className="text-3xl font-bold">${displayPrice}</span>
+                        <span className="text-muted-foreground">
+                          {paymentType === "onetime" ? "/one-time" : "/month"}
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {plan.plan_interval !== "free" && plan.type !== "free" && (
+                        <Button
+                          className="mk-front-cta mk-front-cta-soft mb-6 h-12 w-full rounded-full px-5 text-[15px] font-semibold"
+                          onClick={() => handleSubscribe(plan)}
+                          disabled={loading[plan.code]}
+                        >
+                          {loading[plan.code] ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <span>{paymentType === "onetime" ? "Buy Now" : "Subscribe"}</span>
+                              <span className="mk-front-cta-icon">
+                                <ArrowRight className="h-4 w-4" />
+                              </span>
+                            </>
+                          )}
+                        </Button>
+                      )}
+
+                      <ul className="space-y-4">
+                        {plan.features.map((feature: any, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                            <span
+                              className={cn(
+                                "ml-3 text-muted-foreground",
+                                feature.isBold && "font-medium text-foreground",
+                              )}
+                            >
+                              {feature.value}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                );
+              })}
           </div>
         </div>
- 
-        
-        {/* Payment Methods */}
+
         <div className="mt-12 sm:mt-16 text-center px-4">
           <div className="text-sm sm:text-base text-muted-foreground mb-4">Secure Payment:</div>
           <div className="flex justify-center items-center gap-2 sm:gap-4 flex-wrap">
@@ -250,4 +256,4 @@ export default function PricingClient({
       </div>
     </div>
   );
-} 
+}

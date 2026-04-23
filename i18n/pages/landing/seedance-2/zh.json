@@ -9,7 +9,7 @@
   },
   "seoContent": {
     "overview": {
-      "eyebrow": "Overview",
+      "eyebrow": "概览",
       "title": "为什么团队会选择 {modelName}?",
       "paragraphs": [
         "{modelName} 是 ByteDance 面向高质量视频生成推出的多模态模型，支持文本、图片、视频、音频联合输入，并在一次生成中完成画面与音频同步生成。它特别适合需要角色一致性、多镜头叙事、镜头运动控制与原生 lip-sync 的生产级视频工作流。",
@@ -17,7 +17,7 @@
       ]
     },
     "capabilities": {
-      "eyebrow": "Capabilities",
+      "eyebrow": "能力",
       "title": "{modelName} 的核心能力",
       "items": [
         {
@@ -39,7 +39,7 @@
       ]
     },
     "useCases": {
-      "eyebrow": "Use Cases",
+      "eyebrow": "应用场景",
       "title": "你可以用 {modelName} 做什么?",
       "description": "团队通常把 {activeModelName} 用在以下几类生产场景中：",
       "items": [
@@ -52,32 +52,32 @@
       ]
     },
     "quickstart": {
-      "eyebrow": "Quickstart",
+      "eyebrow": "快速开始",
       "title": "如何通过 APIDot 使用 {modelName}",
       "steps": [
         {
-          "eyebrow": "Step 01",
+          "eyebrow": "步骤 01",
           "title": "创建 API Key",
           "description": "在控制台创建 API Key，立即获得 Seedance 2 API 访问权限，无需排队或额外审批。",
           "actionText": "打开 API Keys",
           "actionHref": "/dashboard/api-key"
         },
         {
-          "eyebrow": "Step 02",
+          "eyebrow": "步骤 02",
           "title": "充值 Credits",
           "description": "按秒计费。根据所选模型、分辨率和是否包含视频输入充值余额，即可开始提交生成任务。",
           "actionText": "充值 Credits",
           "actionHref": "/dashboard/billing"
         },
         {
-          "eyebrow": "Step 03",
+          "eyebrow": "步骤 03",
           "title": "接入异步生成链路",
           "description": "向 {endpoint} 提交 model=\"{activeModelId}\" 的请求，再通过轮询或 webhook 获取最终媒体结果，直接接入生产系统。"
         }
       ]
     },
     "faq": {
-      "eyebrow": "FAQ",
+      "eyebrow": "常见问题",
       "title": "常见问题",
       "items": [
         {

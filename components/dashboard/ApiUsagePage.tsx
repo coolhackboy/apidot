@@ -526,7 +526,7 @@ export default function ApiUsagePage() {
             </Popover>
 
             {/* Export Button */}
-            <Button onClick={handleExport} className="h-11 rounded-xl bg-primary px-5">
+            <Button onClick={handleExport} className="h-11 rounded-xl px-5">
               <Download className="mr-2 h-4 w-4" />
               {t('export')}
             </Button>

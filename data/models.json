@@ -47,7 +47,6 @@
     "thumbnailVideo": "https://storage.poyo.ai/seedance-2/demo.mp4",
     "description": "ByteDance's director-level multimodal video model with native audio-video generation, multi-shot storytelling, and text, image, video, and audio reference inputs.",
     "catalogBadge": "New",
-    "catalogPreviewLabel": "SEEDANCE 2 PREVIEW",
     "catalogVendorLabel": "ByteDance",
     "catalogPriceLabel": "Starting at $0.04 / second",
     "catalogLatencyLabel": "~18s",
@@ -1461,9 +1460,8 @@
     "icon": "https://storage.poyo.ai/provider/openai.svg",
     "description": "OpenAI's next-generation image model with near-perfect text rendering, stronger photorealism, UI screenshot fidelity, and precise single-image editing.",
     "catalogBadge": "New",
-    "catalogPreviewLabel": "GPT IMAGE 2",
     "catalogVendorLabel": "OpenAI",
-    "catalogPriceLabel": "$0.075 / generation",
+    "catalogPriceLabel": "$0.01 / generation",
     "catalogLatencyLabel": "~3s",
     "catalogPopularity": 98,
     "models": [
@@ -1477,16 +1475,16 @@
     "category": "Image",
     "headerOrder": 3,
     "pricing": {
-      "credits": 15,
+      "credits": 2,
       "unit": "per generation"
     },
     "pricingByModel": {
       "gpt-image-2": {
-        "credits": 15,
+        "credits": 2,
         "unit": "per generation"
       },
       "gpt-image-2-edit": {
-        "credits": 15,
+        "credits": 2,
         "unit": "per generation"
       }
     },
@@ -1494,17 +1492,17 @@
       {
         "description": "gpt-image-2 | text-to-image",
         "model": "gpt-image-2",
-        "credits": 15,
+        "credits": 2,
         "creditsPerUnit": "per generation",
-        "priceUSD": 0.075,
+        "priceUSD": 0.01,
         "falPriceUSD": null
       },
       {
         "description": "gpt-image-2-edit | image editing",
         "model": "gpt-image-2-edit",
-        "credits": 15,
+        "credits": 2,
         "creditsPerUnit": "per generation",
-        "priceUSD": 0.075,
+        "priceUSD": 0.01,
         "falPriceUSD": null
       }
     ],
@@ -2271,7 +2269,6 @@
     ],
     "description": "Google DeepMind's Veo 3.1 family for native-audio video generation with text, reference-image, and frame-guided workflows across Fast, Lite, and Quality variants.",
     "catalogBadge": "New",
-    "catalogPreviewLabel": "VEO 3.1 PREVIEW",
     "catalogVendorLabel": "Google DeepMind",
     "catalogPriceLabel": "Starting at $0.05 / video",
     "catalogLatencyLabel": "~24s",

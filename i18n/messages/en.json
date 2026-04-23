@@ -1467,13 +1467,14 @@
         "veo3.1-fast": "per video | 720p/1080p: 20 credits ($0.10), 4K: 60 credits ($0.30)",
         "veo3.1-lite": "per video | 720p/1080p: 10 credits ($0.05), 4K: 30 credits ($0.15)",
         "veo3.1-quality": "per video | 720p/1080p: 120 credits ($0.60), 4K: 400 credits ($2.00)",
-        "gpt-image-2": "per generation | fixed 15 credits ($0.075)",
-        "gpt-image-2-edit": "per generation | fixed 15 credits ($0.075)"
+        "gpt-image-2": "per generation | fixed 2 credits ($0.01)",
+        "gpt-image-2-edit": "per generation | fixed 2 credits ($0.01)"
       }
     },
     "model": {
       "model": "Model",
       "prompt": "Prompt",
+      "gptImage2DefaultPrompt": "Draw a picture of OpenAI's founder introducing APIDot.ai",
       "size": "Size",
       "aspectRatio": "Aspect Ratio",
       "numberOfImages": "Number of Images",
@@ -1585,6 +1586,16 @@
     "copySuccess": "Model ID copied to clipboard",
     "copyLabel": "Copy model ID",
     "modelLabel": "Model:",
+    "taskLabels": {
+      "textToVideo": "Text to Video",
+      "imageToVideo": "Image to Video",
+      "textToImage": "Text to Image",
+      "imageToImage": "Image to Image",
+      "chat": "Chat",
+      "code": "Code",
+      "music": "Music",
+      "audio": "Audio"
+    },
     "models": {
       "seedance-2": {
         "name": "seedance-2",
@@ -1603,7 +1614,8 @@
         "description": "OpenAI's GPT Image 2 single-image editing model for localized, context-aware transformations that preserve composition while updating backgrounds, copy regions, and visual details."
       },
       "veo-3-1": {
-        "name": "veo-3-1"
+        "name": "veo-3-1",
+        "description": "Google DeepMind's Veo 3.1 family for native-audio video generation with text, reference-image, and frame-guided workflows across Fast, Lite, and Quality variants."
       },
       "veo3.1-fast": {
         "name": "veo3.1-fast",
@@ -1622,6 +1634,26 @@
       "getApiKey": "Get API Key",
       "apiDocs": "API Docs"
     }
+  },
+  "MarketingModelsCatalog": {
+    "catalogEyebrow": "Catalog",
+    "title": "Models",
+    "shownCount": "{count} of {total} shown",
+    "searchPlaceholder": "Search models...",
+    "categoriesAriaLabel": "Model categories",
+    "categories": {
+      "allModels": "All models",
+      "language": "Language",
+      "image": "Image",
+      "video": "Video",
+      "audio": "Audio"
+    },
+    "sortOptions": {
+      "popular": "Most popular",
+      "price": "Price: low to high",
+      "name": "Name A-Z"
+    },
+    "emptyState": "No models match the current selection."
   },
   "Auth": {
     "Login": {

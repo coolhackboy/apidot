@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Copy, Check, ArrowRight } from 'lucide-react';
-import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
 import { formatModelCardPriceUSD, getModelCardPricing, type AIModel } from '@/services/modelService';
 import { SavingsBadge } from './ModelCard';
@@ -25,7 +24,6 @@ export function MarketModelCard({ model, linkBase }: MarketModelCardProps) {
         const copyValue = (model.models && model.models.length > 0) ? model.models[0] : model.id;
         navigator.clipboard.writeText(copyValue);
         setCopied(true);
-        toast.success(t('copyIdentifierSuccess'));
         setTimeout(() => setCopied(false), 2000);
     };
 

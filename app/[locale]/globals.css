@@ -7,9 +7,22 @@
 
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
+  font-family:
+    var(--font-sans),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Noto Sans SC",
+    "Microsoft YaHei",
+    system-ui,
+    sans-serif;
+  font-feature-settings: "ss01" 1, "cv02" 1, "cv03" 1;
+  font-kerning: normal;
 }
 
 @layer base {
@@ -18,6 +31,21 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
   }
 }
 
@@ -120,12 +148,73 @@ body {
   }
 }
 
-.dashboard-button-theme,
+.dashboard-button-theme {
+  --button-solid-bg: 0 0% 8%;
+  --button-solid-fg: 0 0% 100%;
+  --button-solid-hover: 0 0% 14%;
+  --button-secondary-bg: 0 0% 96%;
+  --button-secondary-fg: 0 0% 12%;
+  --button-secondary-hover: 0 0% 92%;
+}
+
+.dark .dashboard-button-theme {
+  --button-solid-bg: 0 0% 96%;
+  --button-solid-fg: 0 0% 8%;
+  --button-solid-hover: 0 0% 88%;
+  --button-secondary-bg: 0 0% 16%;
+  --button-secondary-fg: 0 0% 96%;
+  --button-secondary-hover: 0 0% 22%;
+}
+
 .model-tool-button-theme {
-  --button-solid-bg: 0 0% 6%;
-  --button-solid-fg: 0 0% 98%;
-  --button-solid-hover: 0 0% 12%;
-  --button-secondary-bg: 0 0% 6%;
-  --button-secondary-fg: 0 0% 98%;
-  --button-secondary-hover: 0 0% 12%;
+  --button-solid-bg: 0 0% 8%;
+  --button-solid-fg: 0 0% 100%;
+  --button-solid-hover: 0 0% 14%;
+  --button-secondary-bg: 0 0% 96%;
+  --button-secondary-fg: 0 0% 12%;
+  --button-secondary-hover: 0 0% 92%;
+}
+
+.marketing-shell {
+  letter-spacing: -0.01em;
+}
+
+.marketing-shell p,
+.marketing-shell li,
+.marketing-shell label,
+.marketing-shell input,
+.marketing-shell textarea,
+.marketing-shell select,
+.dashboard-shell p,
+.dashboard-shell label,
+.dashboard-shell input,
+.dashboard-shell textarea,
+.dashboard-shell select,
+.dashboard-shell td {
+  letter-spacing: -0.01em;
+}
+
+.dashboard-shell h1,
+.dashboard-shell h2,
+.dashboard-shell h3 {
+  letter-spacing: -0.035em;
+  font-weight: 650;
+}
+
+.dashboard-shell button {
+  letter-spacing: -0.015em;
+}
+
+.dashboard-shell th {
+  letter-spacing: 0.08em;
+  font-weight: 650;
+}
+
+.dark .model-tool-button-theme {
+  --button-solid-bg: 0 0% 96%;
+  --button-solid-fg: 0 0% 8%;
+  --button-solid-hover: 0 0% 88%;
+  --button-secondary-bg: 0 0% 16%;
+  --button-secondary-fg: 0 0% 96%;
+  --button-secondary-hover: 0 0% 22%;
 }

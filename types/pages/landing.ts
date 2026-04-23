@@ -8,9 +8,17 @@ export type LandingJsonValue =
   | LandingJsonValue[]
   | { [key: string]: LandingJsonValue };
 
+export interface ModelCatalogPreview {
+  type: 'image' | 'video';
+  src: string;
+  poster?: string;
+  label?: string;
+}
+
 export interface LandingPage {
   feature_code?: string;
   credits_amount?: number;
+  catalogPreview?: ModelCatalogPreview;
   meta: {
     title: string;
     description: string;

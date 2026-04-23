@@ -19,6 +19,8 @@ import {
   DialogContent,
 } from "@/components/ui/dialog";
 import { useTranslations } from "next-intl";
+import FloatingGenerateBar from "@/components/tool/FloatingGenerateBar";
+import ViewportFollowPanel from "@/components/tool/ViewportFollowPanel";
 
 interface Veo3Props {
   title?: string;
@@ -41,6 +43,12 @@ interface SelectedImage {
   uploading?: boolean;
 }
 
+const revokeSelectedImageUrl = (image: SelectedImage | null | undefined) => {
+  if (image?.url.startsWith("blob:")) {
+    URL.revokeObjectURL(image.url);
+  }
+};
+
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const DEFAULT_INPUT_IMAGE_URL = "https://cdn.doculator.org/veo-3-1/example-input.jpg";
@@ -49,6 +57,15 @@ const DEFAULT_PROMPT = `A monkey and polar bear host a casual podcast about AI i
 Sample Dialogue:
 Monkey (Banana): "Welcome back to Bananas & Ice! I am Banana"
 Polar Bear (Ice): "And I'm Ice!"`;
+
+const createDefaultSelectedImages = (): SelectedImage[] => [
+  {
+    file: new File([], "example-input.jpg"),
+    url: DEFAULT_INPUT_IMAGE_URL,
+    uploadedUrl: DEFAULT_INPUT_IMAGE_URL,
+    uploading: false,
+  },
+];
 
 const MODEL_OPTIONS: ModelType[] = ["veo3.1-fast", "veo3.1-lite", "veo3.1-quality"];
 
@@ -78,8 +95,6 @@ const isResolutionType = (value: unknown): value is ResolutionType =>
 
 const getCreditsForSelection = (model: ModelType, resolution: ResolutionType) =>
   CREDITS_PER_VIDEO[model][resolution];
-
-const formatUsd = (credits: number) => (credits * 0.005).toFixed(3).replace(/\.?0+$/, "");
 
 const getPreviewSelection = (
   configMode: ConfigMode,
@@ -126,14 +141,7 @@ const Veo3 = ({
   const [aspectRatio, setAspectRatio] = useState<"16:9" | "9:16" | undefined>("16:9");
   const [resolution, setResolution] = useState<ResolutionType>("720p");
   const [generateType, setGenerateType] = useState<GenerateType>("frame");
-  const [selectedImages, setSelectedImages] = useState<SelectedImage[]>([
-    {
-      file: new File([], "example-input.jpg"),
-      url: DEFAULT_INPUT_IMAGE_URL,
-      uploadedUrl: DEFAULT_INPUT_IMAGE_URL,
-      uploading: false,
-    },
-  ]);
+  const [selectedImages, setSelectedImages] = useState<SelectedImage[]>(createDefaultSelectedImages);
 
   // Calculate max images based on generate type
   const maxImages = generateType === "frame" ? 2 : 3;
@@ -169,7 +177,6 @@ const Veo3 = ({
     previewSelection.model,
     previewSelection.resolution,
   );
-  const requiredUsd = formatUsd(requiredCredits);
 
   const handleModelChange = (nextModel: ModelType) => {
     setModel(nextModel);
@@ -326,19 +333,25 @@ const Veo3 = ({
 
   const handleRemoveImage = (index: number) => {
     const image = selectedImages[index];
-    if (image?.url.startsWith('blob:')) {
-      URL.revokeObjectURL(image.url);
-    }
+    revokeSelectedImageUrl(image);
     setSelectedImages(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleRemoveAllImages = () => {
-    selectedImages.forEach(img => {
-      if (img.url.startsWith('blob:')) {
-        URL.revokeObjectURL(img.url);
-      }
-    });
+    selectedImages.forEach(revokeSelectedImageUrl);
     setSelectedImages([]);
+  };
+
+  const handleReset = () => {
+    selectedImages.forEach(revokeSelectedImageUrl);
+    setConfigMode("form");
+    handleModelChange(selectedModel);
+    setPrompt(DEFAULT_PROMPT);
+    setAspectRatio("16:9");
+    setResolution("720p");
+    setGenerateType("frame");
+    setSelectedImages(createDefaultSelectedImages());
+    setJsonConfig("");
   };
 
   const handleGenerateVideo = async () => {
@@ -612,9 +625,6 @@ const Veo3 = ({
               veo3.1-quality
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">
-            Selected tier: {previewSelection.model} · {previewSelection.resolution} · {requiredCredits} credits (${requiredUsd}) per 8-second video
-          </p>
         </div>
 
         {/* Prompt Input */}
@@ -706,11 +716,7 @@ const Veo3 = ({
               // If switching to frame mode and have more than 2 images, keep only first 2
               if (newType === "frame" && selectedImages.length > 2) {
                 const removed = selectedImages.slice(2);
-                removed.forEach(img => {
-                  if (img.url.startsWith('blob:')) {
-                    URL.revokeObjectURL(img.url);
-                  }
-                });
+                removed.forEach(revokeSelectedImageUrl);
                 setSelectedImages(prev => prev.slice(0, 2));
                 toast.info("Extra images removed for frame mode (max 2)");
               }
@@ -1097,8 +1103,8 @@ const Veo3 = ({
             {/* Left side - Configuration */}
             <div className="space-y-3 sm:space-y-4 lg:space-y-6 h-full">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     {/* Header with toggle */}
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Input</div>
@@ -1125,32 +1131,38 @@ const Veo3 = ({
                     {/* Configuration content */}
                     {renderConfigPanel()}
 
-                    {/* Generate Button */}
-                    <Button
+                    <FloatingGenerateBar
+                      className="mt-auto"
+                      secondaryLabel="Reset"
+                      actionLabel="Generate Video"
+                      loadingLabel={
+                        selectedImages.some((img) => img.uploading)
+                          ? "Uploading images..."
+                          : isUploading
+                            ? "Uploading..."
+                            : "Generating..."
+                      }
+                      onSecondaryClick={handleReset}
                       onClick={handleGenerateVideo}
+                      secondaryDisabled={
+                        isSubmitting ||
+                        isUploading ||
+                        selectedImages.some((img) => img.uploading)
+                      }
                       disabled={
                         isSubmitting ||
                         isUploading ||
                         (configMode === "form" && !prompt.trim()) ||
-                        selectedImages.some(img => img.uploading) ||
-                        (configMode === "form" && generateType === "frame" && !selectedImages[0]?.uploadedUrl) ||
-                        (configMode === "form" && generateType === "reference" && selectedImages.filter(img => img.uploadedUrl).length < 1)
+                        selectedImages.some((img) => img.uploading) ||
+                        (configMode === "form" &&
+                          generateType === "frame" &&
+                          !selectedImages[0]?.uploadedUrl) ||
+                        (configMode === "form" &&
+                          generateType === "reference" &&
+                          selectedImages.filter((img) => img.uploadedUrl).length < 1)
                       }
-                      className="w-full"
-                      size="lg"
-                    >
-                      {isSubmitting || isUploading || selectedImages.some(img => img.uploading) ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          {selectedImages.some(img => img.uploading) ? "Uploading images..." : isUploading ? "Uploading..." : "Generating..."}
-                        </>
-                      ) : (
-                        <span>Generate Video · {requiredCredits} Credits</span>
-                      )}
-                    </Button>
-                    <p className="text-center text-xs text-muted-foreground">
-                      Current selection: {previewSelection.model} at {previewSelection.resolution} costs {requiredCredits} credits (${requiredUsd}) per video.
-                    </p>
+                      isLoading={isSubmitting || isUploading || selectedImages.some((img) => img.uploading)}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -1159,8 +1171,8 @@ const Veo3 = ({
             {/* Right side - Results */}
             <div className="space-y-3 sm:space-y-4 h-full">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     {/* Header with toggle */}
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Output</div>
@@ -1185,7 +1197,13 @@ const Veo3 = ({
                     </div>
 
                     {/* Results content */}
-                    {renderResultsPanel()}
+                    {resultMode === "preview" ? (
+                      <ViewportFollowPanel className="flex-1">
+                        {renderResultsPanel()}
+                      </ViewportFollowPanel>
+                    ) : (
+                      renderResultsPanel()
+                    )}
                   </div>
                 </CardContent>
               </Card>

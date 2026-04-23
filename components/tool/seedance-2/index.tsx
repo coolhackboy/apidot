@@ -24,6 +24,8 @@ import { uploadToR2 } from "@/utils/r2";
 import LoginForm from "@/components/auth/LoginForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslations } from "next-intl";
+import FloatingGenerateBar from "@/components/tool/FloatingGenerateBar";
+import ViewportFollowPanel from "@/components/tool/ViewportFollowPanel";
 
 interface Seedance2Props {
   title?: string;
@@ -40,6 +42,12 @@ type UploadedFile = {
   url: string;
   uploadedUrl?: string;
   uploading?: boolean;
+};
+
+const revokeUploadedFileUrl = (file: UploadedFile | null) => {
+  if (file?.url.startsWith("blob:")) {
+    URL.revokeObjectURL(file.url);
+  }
 };
 
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -101,7 +109,7 @@ const EXAMPLE_OUTPUT: Seedance2StatusData = {
   status: "finished",
   files: [
     {
-      file_url: "https://storage.poyo.ai/seedance-2/TJ61OM2GRJ9BWYWH.mp4",
+      file_url: "https://storage.apidot.ai/models/seedance-2/TJ61OM2GRJ9BWYWH.mp4",
       file_type: "video",
     },
   ],
@@ -111,8 +119,6 @@ const EXAMPLE_OUTPUT: Seedance2StatusData = {
 };
 
 const getSupportedResolutions = (model: Seedance2ModelId) => RESOLUTIONS_BY_MODEL[model];
-const formatUsdRate = (value: number) => value.toFixed(3).replace(/\.?0+$/, "");
-
 const getPriceTier = (
   model: Seedance2ModelId,
   resolution: Seedance2Resolution,
@@ -298,8 +304,33 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
   };
 
   const handleRemove = (file: UploadedFile | null, setter: (f: UploadedFile | null) => void) => {
-    if (file?.url.startsWith("blob:")) URL.revokeObjectURL(file.url);
+    revokeUploadedFileUrl(file);
     setter(null);
+  };
+
+  const handleReset = () => {
+    [
+      firstFrameImage,
+      lastFrameImage,
+      referenceImage,
+      referenceVideo,
+      referenceAudio,
+    ].forEach(revokeUploadedFileUrl);
+
+    setConfigMode("form");
+    setModel(selectedModel);
+    setPrompt(DEFAULT_PROMPT);
+    setResolution("720p");
+    setDuration(5);
+    setAspectRatio("16:9");
+    setGenerateAudio(true);
+    setSeedInput("");
+    setFirstFrameImage(null);
+    setLastFrameImage(null);
+    setReferenceImage(null);
+    setReferenceVideo(null);
+    setReferenceAudio(null);
+    setJsonConfig("");
   };
 
   const startPollingStatus = async (task_id: string) => {
@@ -798,18 +829,8 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
 
     const dataToDisplay = displayVideo || EXAMPLE_OUTPUT;
     const isExample = !displayVideo;
-
-    return (
+    const resultsBody = (
       <div className="space-y-4">
-        {isExample && (
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-            <p className="text-sm text-blue-500 font-medium">Example Output</p>
-            <p className="text-xs text-blue-400">
-              This is sample data. Generate your own video to see real results.
-            </p>
-          </div>
-        )}
-
         <div className="bg-background/50 rounded-lg p-4 space-y-3">
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
@@ -931,6 +952,22 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
         )}
       </div>
     );
+
+    return (
+      <div className="flex min-h-0 flex-1 flex-col gap-4">
+        {isExample && (
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+            <p className="text-sm text-blue-500 font-medium">Example Output</p>
+            <p className="text-xs text-blue-400">
+              This is sample data. Generate your own video to see real results.
+            </p>
+          </div>
+        )}
+        <ViewportFollowPanel className="flex-1">
+          {resultsBody}
+        </ViewportFollowPanel>
+      </div>
+    );
   };
 
   return (
@@ -978,8 +1015,8 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
           <div className="grid gap-3 sm:gap-4 lg:gap-6 xl:gap-8 lg:grid-cols-2 items-stretch">
             <div className="space-y-3 sm:space-y-4 lg:space-y-6">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Input</div>
                       <div className="flex gap-1 bg-muted rounded-lg p-1">
@@ -1004,43 +1041,21 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
 
                     {renderConfigPanel()}
 
-                    <div className="space-y-2">
-                      <Button
-                        onClick={handleGenerateVideo}
-                        disabled={
-                          isSubmitting ||
-                          (configMode === "form" && !prompt.trim()) ||
-                          !!isAnyFileUploading
-                        }
-                        className="w-full"
-                        size="lg"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Generating...
-                          </>
-                        ) : (
-                          <>
-                            <span>Generate Video</span>
-                            <span className="ml-1 sm:ml-2 inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 bg-white/20 rounded-full text-xs">
-                              <Coins className="h-3 w-3" />
-                              {totalCredits}
-                            </span>
-                          </>
-                        )}
-                      </Button>
-                      <p className="hidden">
-                        {priceTier.credits} credits/s (${priceTier.usd.toFixed(2)}/s,
-                        {hasVideoInput ? " with video input" : " no video input"}) ×{" "}
-                        {duration}s = {totalCredits} credits
-                      </p>
-                      <p className="text-xs text-muted-foreground text-center">
-                        {priceTier.credits} credits/s (${formatUsdRate(priceTier.usd)}/s,
-                        {hasVideoInput ? " with video input" : " no video input"}) x{" "}
-                        {duration}s = {totalCredits} credits
-                      </p>
-                    </div>
+                    <FloatingGenerateBar
+                      className="mt-auto"
+                      secondaryLabel="Reset"
+                      actionLabel="Generate Video"
+                      loadingLabel="Generating..."
+                      onSecondaryClick={handleReset}
+                      onClick={handleGenerateVideo}
+                      secondaryDisabled={isSubmitting || !!isAnyFileUploading}
+                      disabled={
+                        isSubmitting ||
+                        (configMode === "form" && !prompt.trim()) ||
+                        !!isAnyFileUploading
+                      }
+                      isLoading={isSubmitting}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -1048,8 +1063,8 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
 
             <div className="space-y-3 sm:space-y-4">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="space-y-4">
+                <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
+                  <div className="flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Output</div>
                       <div className="flex gap-1 bg-muted rounded-lg p-1">

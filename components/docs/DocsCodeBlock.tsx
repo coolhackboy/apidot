@@ -4,8 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { ApiExampleLanguage } from "@/lib/apiExamples";
 import DocsRequestCodeBlock from "@/components/docs/DocsRequestCodeBlock";
 import { cn } from "@/lib/utils";
-import { Copy } from "lucide-react";
-import { toast } from "sonner";
+import { Check, Copy } from "lucide-react";
 import type { LandingPage } from "@/types/pages/landing";
 
 type EndpointDoc = NonNullable<NonNullable<LandingPage["docsPage"]>["endpoints"]>[string];
@@ -35,6 +34,7 @@ export default function DocsCodeBlock({
     [endpoint.responseExamples, sampleResponse],
   );
   const [activeResponseCode, setActiveResponseCode] = useState<string>(responseOptions[0]?.code || "200");
+  const [copied, setCopied] = useState(false);
   const activeResponse =
     responseOptions.find((response) => response.code === activeResponseCode) || responseOptions[0];
 
@@ -45,9 +45,10 @@ export default function DocsCodeBlock({
     }
   }, [activeResponseCode, responseOptions]);
 
-  const handleCopy = async (value: string, successMessage: string) => {
+  const handleCopy = async (value: string) => {
     await navigator.clipboard.writeText(value);
-    toast.success(successMessage);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -84,10 +85,10 @@ export default function DocsCodeBlock({
             type="button"
             aria-label="Copy response example"
             title="Copy response example"
-            onClick={() => handleCopy(activeResponse?.body || sampleResponse, "Response example copied")}
+            onClick={() => handleCopy(activeResponse?.body || sampleResponse)}
             className={docsCopyButtonClassName}
           >
-            <Copy className="h-4 w-4 stroke-[1.9]" />
+            {copied ? <Check className="h-4 w-4 stroke-[1.9]" /> : <Copy className="h-4 w-4 stroke-[1.9]" />}
           </button>
         </div>
         <pre className={cn("mk-code-block text-zinc-300", docsCodePanelClassName)}>

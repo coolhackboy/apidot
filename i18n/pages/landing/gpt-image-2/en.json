@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "GPT Image 2 API | APIDot",
-    "description": "Access GPT Image 2 instantly on APIDot for photorealistic image generation, sharp text rendering, UI mockups, and single-image editing at 15 credits per generation."
+    "description": "Access GPT Image 2 instantly on APIDot for photorealistic image generation, sharp text rendering, UI mockups, and single-image editing at 2 credits per generation."
   },
   "hero": {
     "title": "GPT Image 2 API Playground",
@@ -66,7 +66,7 @@
         {
           "eyebrow": "Step 2",
           "title": "Top up credits",
-          "description": "Both `gpt-image-2` and `gpt-image-2-edit` are billed at 15 credits per generation, so you can estimate spend without model-specific pricing tiers.",
+          "description": "Both `gpt-image-2` and `gpt-image-2-edit` are billed at 2 credits per generation, so you can estimate spend without model-specific pricing tiers.",
           "actionText": "Open Billing",
           "actionHref": "/dashboard/billing"
         },
@@ -87,7 +87,7 @@
         },
         {
           "question": "How much does GPT Image 2 cost on APIDot?",
-          "answer": "Pricing on this page is fixed at 15 credits per generation for both variants, which equals $0.075 at APIDot's standard credit conversion."
+          "answer": "Pricing on this page is fixed at 2 credits per generation for both variants, which equals $0.01 at APIDot's standard credit conversion."
         },
         {
           "question": "What sizes are supported on this page?",

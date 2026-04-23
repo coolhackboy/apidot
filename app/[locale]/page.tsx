@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Blocks, Check, Clapperboard, ImageIcon, Languages, LucideIcon, MicVocal } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 import { appConfig } from "@/data/config";
 import { defaultLocale, locales } from "@/i18n/routing";
 import { LandingPageService } from "@/services/landingPageService";
@@ -12,6 +13,34 @@ const HOME_ICON_MAP: Record<string, LucideIcon> = {
   ImageIcon,
   Clapperboard,
   MicVocal,
+};
+
+type LocalizedModelCopy = {
+  name?: string;
+  description?: string;
+};
+
+const renderFeaturedPreview = (preview?: { type: "image" | "video"; src: string; poster?: string; label?: string }, name?: string) => {
+  if (preview?.type === "video") {
+    return (
+      <video
+        src={preview.src}
+        poster={preview.poster}
+        className="mk-models-card-preview-image"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    );
+  }
+
+  if (preview?.type === "image") {
+    return <img src={preview.src} alt="" className="mk-models-card-preview-image" />;
+  }
+
+  return <span>{preview?.label || `${name?.toUpperCase()} · PREVIEW`}</span>;
 };
 
 export async function generateMetadata({
@@ -86,6 +115,14 @@ export default async function HomePage({
 
   const docsPage = docsLandingPage.docsPage;
   const homeExampleEndpoint = docsPage?.endpoints[content.exampleDocId];
+  const heroTranslations = await getTranslations({ locale, namespace: "ModelHero" });
+  let localizedModels: Record<string, LocalizedModelCopy> = {};
+
+  try {
+    localizedModels = (heroTranslations.raw("models") as Record<string, LocalizedModelCopy>) || {};
+  } catch {
+    localizedModels = {};
+  }
 
   if (!homeExampleEndpoint) {
     throw new Error(`Missing docs endpoint "${content.exampleDocId}" for home example block`);
@@ -93,6 +130,8 @@ export default async function HomePage({
 
   const homeUrl = locale === defaultLocale ? `${appConfig.webUrl}` : `${appConfig.webUrl}/${locale}`;
   const featuredModels = getFeaturedModels();
+  const getLocalizedDescription = (modelId: string, fallback: string) =>
+    localizedModels[modelId]?.description || fallback;
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -189,21 +228,21 @@ export default async function HomePage({
             {featuredModels.map((model) => (
               <Link key={model.id} href={`/models/${model.id}`} className="mk-home-model-card is-link">
                 <div className="mk-home-model-preview">
-                  {model.catalogPreviewImage ? (
-                    <img src={model.catalogPreviewImage} alt="" className="mk-models-card-preview-image" />
-                  ) : (
-                    <span>{model.catalogPreviewLabel || `${model.name.toUpperCase()} · PREVIEW`}</span>
-                  )}
+                  {renderFeaturedPreview(model.catalogPreview, model.name)}
                 </div>
                 <div className="mk-home-model-meta">
                   <div className="mk-home-model-provider">
-                    <span className="mk-home-model-provider-icon" />
+                    <span className="mk-home-model-provider-icon" aria-hidden="true">
+                      {model.icon ? <img src={model.icon} alt="" className="mk-home-model-provider-icon-image" /> : null}
+                    </span>
                     {model.catalogVendorLabel || model.provider}
                   </div>
                   {model.catalogBadge ? <span className="mk-home-model-badge">{model.catalogBadge}</span> : null}
                 </div>
                 <h3 className="mk-home-model-title">{model.name}</h3>
-                <p className="mk-home-model-description">{model.description}</p>
+                <p className="mk-home-model-description">
+                  {getLocalizedDescription(model.id, model.description)}
+                </p>
                 <div className="mk-home-model-pricing">
                   <div>
                     <span className="mk-home-model-price">{model.catalogPriceLabel || "-"}</span>

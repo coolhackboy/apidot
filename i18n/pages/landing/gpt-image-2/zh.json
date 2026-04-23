@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "GPT Image 2 API | APIDot",
-    "description": "通过 APIDot 即时接入 GPT Image 2，用于高写实图像生成、清晰文本渲染、UI 截图风格画面与单图编辑，固定 15 积分/次。"
+    "description": "通过 APIDot 即时接入 GPT Image 2，用于高写实图像生成、清晰文本渲染、UI 截图风格画面与单图编辑，固定 2 积分/次。"
   },
   "hero": {
     "title": "GPT Image 2 API Playground",
@@ -57,28 +57,28 @@
       "title": "三步接入 GPT Image 2",
       "steps": [
         {
-          "eyebrow": "Step 1",
+          "eyebrow": "步骤 01",
           "title": "创建 API Key",
           "description": "先在 APIDot 后台创建 API Key，并将其保存在服务端。后续图片、视频、音频和聊天模型都可以共用这套认证方式。",
           "actionText": "获取 API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
-          "eyebrow": "Step 2",
+          "eyebrow": "步骤 02",
           "title": "充值积分",
-          "description": "`gpt-image-2` 与 `gpt-image-2-edit` 都是固定 15 积分/次生成，没有分档价格，成本估算更直接。",
+          "description": "`gpt-image-2` 与 `gpt-image-2-edit` 都是固定 2 积分/次生成，没有分档价格，成本估算更直接。",
           "actionText": "打开 Billing",
           "actionHref": "/dashboard/billing"
         },
         {
-          "eyebrow": "Step 3",
+          "eyebrow": "步骤 03",
           "title": "提交异步图片任务",
           "description": "把 prompt、size、数量，以及 edit 模式下的源图提交到异步图片端点，然后通过轮询或 webhook 获取最终结果。"
         }
       ]
     },
     "faq": {
-      "eyebrow": "FAQ",
+      "eyebrow": "常见问题",
       "title": "GPT Image 2 API 常见问题",
       "items": [
         {
@@ -87,7 +87,7 @@
         },
         {
           "question": "GPT Image 2 在 APIDot 上怎么收费？",
-          "answer": "当前页面固定为 15 积分/次生成，两个变体同价，按 APIDot 的积分换算约为 $0.075/次。"
+          "answer": "当前页面固定为 2 积分/次生成，两个变体同价，按 APIDot 的积分换算约为 $0.01/次。"
         },
         {
           "question": "这个页面支持哪些尺寸？",

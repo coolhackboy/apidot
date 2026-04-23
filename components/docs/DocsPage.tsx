@@ -180,11 +180,9 @@ function DocsIndex({
 function DocsArticle({
   article,
   docsTitle,
-  articleCta,
 }: {
   article: NonNullable<LandingPage["docsPage"]>["articles"][string];
   docsTitle: string;
-  articleCta: string;
 }) {
   return (
     <article className="max-w-4xl space-y-8">
@@ -205,12 +203,6 @@ function DocsArticle({
           ) : null}
         </section>
       ))}
-
-      <div className="mk-card p-6">
-        <Button asChild className="rounded-full">
-          <Link href="/dashboard">{articleCta}</Link>
-        </Button>
-      </div>
     </article>
   );
 }
@@ -415,7 +407,7 @@ function DocsDetail({
         {entry.kind === "endpoint" && entry.endpoint ? (
           <EndpointArticle docId={entry.id} endpoint={entry.endpoint} labels={docsPage} initialLang={initialLang} />
         ) : entry.article ? (
-          <DocsArticle article={entry.article} docsTitle={docsPage.title} articleCta={docsPage.articleCta} />
+          <DocsArticle article={entry.article} docsTitle={docsPage.title} />
         ) : null}
 
         {previous || next ? (

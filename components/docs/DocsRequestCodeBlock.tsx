@@ -8,8 +8,7 @@ import {
 } from "@/lib/apiExamples";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { Copy } from "lucide-react";
-import { toast } from "sonner";
+import { Check, Copy } from "lucide-react";
 import type { LandingPage } from "@/types/pages/landing";
 
 type EndpointDoc = NonNullable<NonNullable<LandingPage["docsPage"]>["endpoints"]>[string];
@@ -37,6 +36,7 @@ export default function DocsRequestCodeBlock({
   className?: string;
 }) {
   const [activeLang, setActiveLang] = useState<ApiExampleLanguage>(initialLang);
+  const [copied, setCopied] = useState(false);
   const variantOptions = useMemo(
     () =>
       endpoint.exampleVariants?.length
@@ -67,7 +67,8 @@ export default function DocsRequestCodeBlock({
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(sample[activeLang]);
-    toast.success("Request example copied");
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -111,7 +112,7 @@ export default function DocsRequestCodeBlock({
             onClick={handleCopy}
             className={docsCopyButtonClassName}
           >
-            <Copy className="h-4 w-4 stroke-[1.9]" />
+            {copied ? <Check className="h-4 w-4 stroke-[1.9]" /> : <Copy className="h-4 w-4 stroke-[1.9]" />}
           </button>
         </div>
       </div>
