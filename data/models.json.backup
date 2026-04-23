@@ -245,29 +245,6 @@
     "doc": "https://docs.poyo.ai/api-manual/video-series/wan-animate"
   },
   {
-    "id": "nano-banana-2-api",
-    "name": "Nano Banana Pro",
-    "provider": "Google",
-    "icon": "https://storage.poyo.ai/provider/gemini.svg",
-    "thumbnail": "https://storage.poyo.ai/upload/mivtkcg3_s3a64zhxplg.webp",
-    "description": "Google's advanced Gemini 3 Pro image model featuring 4K resolution, enhanced reasoning, real-time data integration, and multi-image composition capabilities.",
-    "models": [
-      "nano-banana-2",
-      "nano-banana-2-edit"
-    ],
-    "tasks": [
-      "Text to Image",
-      "Image to Image"
-    ],
-    "pricing": {
-      "credits": 6,
-      "unit": "per generation($0.03)"
-    },
-    "featured": true,
-    "discount": 90,
-    "doc": "https://docs.poyo.ai/api-manual/image-series/nano-banana-2"
-  },
-  {
     "id": "gpt-4o-image-api",
     "name": "GPT-4o Image",
     "provider": "OpenAI",

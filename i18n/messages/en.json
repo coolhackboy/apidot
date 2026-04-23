@@ -33,14 +33,6 @@
             "description": "Generate images with AI",
             "children": [
               {
-                "title": "Nano Banana 2 API",
-                "url": "/models/nano-banana-2",
-                "target": "_self",
-                "icon": "ImagePlus",
-                "isNew": true,
-                "description": "gemini-3.1-flash-image-preview"
-              },
-              {
                 "title": "Seedream 5.0 Lite API",
                 "url": "/models/seedream-5-0-lite-api",
                 "target": "_self",
@@ -61,13 +53,6 @@
                 "target": "_self",
                 "icon": "ImagePlus",
                 "description": "xAI Aurora-powered Visual AI Generator"
-              },
-              {
-                "title": "Nano Banana Pro API",
-                "url": "/models/nano-banana-2-api",
-                "target": "_self",
-                "icon": "ImagePlus",
-                "description": "Google's advanced Gemini 3 Pro image model"
               },
               {
                 "title": "Seedream 4.5 API",
@@ -239,20 +224,9 @@
             "title": "Image API",
             "children": [
               {
-                "title": "Nano Banana Pro",
-                "url": "/models/nano-banana-2-api",
-                "target": "_self"
-              },
-              {
                 "title": "Nano Banana",
                 "url": "/models/nano-banana-api",
                 "target": "_self"
-              },
-              {
-                "title": "Nano Banana 2",
-                "url": "/models/nano-banana-2",
-                "target": "_self",
-                "isNew": true
               },
               {
                 "title": "GPT Image 1.5",

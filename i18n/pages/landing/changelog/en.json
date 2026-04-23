@@ -45,27 +45,6 @@
       "content": "Hey everyone!\n\nWan 2.7 Image API is now available on Poyo.ai.\n\nWan 2.7 Image API is Alibaba's latest unified image model, built for text-to-image generation, image editing, stronger prompt fidelity, text rendering, and multi-reference workflows.\n\nAvailable models:\n- wan-2.7-image\n- wan-2.7-image-pro\n\nPricing:\n- wan-2.7-image: 4.2 credits ($0.021) per generation\n- wan-2.7-image-pro: 10.5 credits ($0.0525) per generation\n- About 30% cheaper than fal.ai\n\nTry Wan 2.7 Image API:\nhttps://poyo.ai/models/wan-2-7-image\n\nThank you for your continued support of Poyo.ai."
     },
     {
-      "id": "13",
-      "date": "2026-04-02",
-      "category": "image",
-      "title": "Nano Banana Pro - Stable Release Now Available!",
-      "content": "Hey everyone 👋\n\nWe're excited to announce the release of Nano Banana Pro — our production-grade image generation model!\n\n🍌 Nano Banana Pro\n\nNano Banana Pro is the stable, production-ready version of our Nano Banana image generation model. Built for reliability and performance at scale.\n\n✨ Key Highlights:\n• Guaranteed 99.9% uptime — highest stability\n• Recommended for production environments and mission-critical workflows\n• Supports 1K / 2K / 4K resolution output\n• Text-to-image and image editing modes\n\n📌 Available Models:\n• nano-banana-pro (Text to Image)\n• nano-banana-pro-edit (Image Edit)\n\n💰 Pricing:\n• 1K / 2K: 18 credits ($0.09)\n• 4K: 35 credits ($0.175)\n\n🔧 Nano Banana 2 — Still Available\n\nIf your use case allows for occasional retries or you're in a development/testing environment, Nano Banana 2 remains available at a lower cost:\n• 8 credits per generation ($0.04) — 4K same price\n• 95% cheaper than fal.ai\n• May experience occasional downtime\n• Ideal for development and testing\n\n👉 https://poyo.ai/models/nano-banana-2-api\n\n❤️ Thank you for your continued support of Poyo.ai. If you have any questions, please contact us."
-    },
-    {
-      "id": "12",
-      "date": "2026-03-20",
-      "category": "general",
-      "title": "New Model Launches & Price Updates on Poyo.ai",
-      "content": "Hey everyone 👋\n\nA new batch of models is now live on Poyo.ai, along with fresh price updates.\n\n💡 Higher top-ups can unlock up to an additional 10% discount on the prices below.\n\n✨ New Model Launches\n\n🎬 Sora-2\n4s: 48 credits ($0.24)\n8s: 96 credits ($0.48)\n12s: 144 credits ($0.72)\n16s: 192 credits ($0.96)\n20s: 240 credits ($1.20)\n$0.06/sec - 40% cheaper than fal.ai\n👉 https://poyo.ai/models/sora-2-official\n\n🎮 Kling 3.0 Motion Control\n720p: 9 credits/sec ($0.045/sec)\n1080p: 15 credits/sec ($0.075/sec)\n65% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-3-0-motion-control\n\n🍌 Nano Banana 2\n5 credits/generation ($0.025)\n1K: 5 credits ($0.025)\n2K: 8 credits ($0.04)\n4K: 12 credits ($0.06)\n👉 https://poyo.ai/models/nano-banana-2\n\n🎥 Hailuo 2.3\n6s (768p): 35 credits ($0.175)\n10s (768p): 70 credits ($0.35)\n6s (1080p): 60 credits ($0.30)\n37.5% cheaper than fal.ai\n👉 https://poyo.ai/models/hailuo-2-3\n\n⚡ Kling 2.1\nStandard 5s: 30 credits ($0.15)\nPro: starts at 55 credits ($0.275)\n50% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-2-1\n\n🚀 Kling 2.5 Turbo Pro\n5s: 42 credits ($0.21)\n10s: 84 credits ($0.42)\n40% cheaper than fal.ai\n👉 https://poyo.ai/models/kling-2-5-turbo-pro\n\n🌀 Wan 2.2 Fast\n480p: 6 credits ($0.03)\n720p: 12 credits ($0.06)\n40% cheaper than official pricing\n👉 https://poyo.ai/models/wan-2-2-fast\n\n🎞️ Runway Gen-4.5\n5s: 75 credits ($0.375)\n10s: 150 credits ($0.75)\n30% cheaper than official pricing\n👉 https://poyo.ai/models/runway-gen-4-5\n\n🎬 Wan 2.5\n5s: starting at 30 credits ($0.15)\n10s: tiered pricing available\n40% cheaper than fal.ai\n👉 https://poyo.ai/models/wan-2-5\n\n🔻 Price Updates\n\n📌 Nano Banana Pro (Price Drop)\nNow: 8 credits ($0.04) (previously 10 credits)\n1K / 2K / 4K: same pricing\n👉 https://poyo.ai/models/nano-banana-2-api\n\n📌 Veo 3.1 (Price Drop)\nNow: 20 credits ($0.10) (previously 24 credits)\n👉 https://poyo.ai/models/veo-3-1\n\n📩 Support\n\nIf you encounter any issues, feel free to contact us via Discord, Telegram, or Email.\n\n⚠️ For faster support, please include:\n• task_id\n• error_message\n\n❤️ Thank you for your continued support of Poyo.ai. If you have any questions, please contact us."
-    },
-    {
-      "id": "11",
-      "date": "2026-02-27",
-      "category": "image",
-      "title": "Nano Banana 2 API Is Now Live on Poyo.ai!",
-      "content": "Hey everyone 👋\n\nNano Banana 2 API is now available on Poyo.ai!\n\n🖼️ Nano Banana 2\n\nNano Banana 2 (gemini-3.1-flash-image-preview) is Google's next-gen image generation model powered by Gemini 3.1 Flash. It delivers a major leap in quality, reasoning, and editing capabilities over the original Nano Banana.\n\n✨ Key Features:\n• Native 2K and 4K resolution output\n• Chain-of-thought reasoning — understands physical relationships and spatial logic\n• Precise multi-language text rendering\n• Support for up to 14 reference images per request\n• Advanced image editing with nano-banana-2-new-edit model\n• Self-correction workflow for higher consistency\n\n📌 Available Models:\n• nano-banana-2-new (Text to Image)\n• nano-banana-2-new-edit (Image Edit)\n\n💰 Pricing:\n• 5 credits per generation ($0.025)\n\n👉 https://poyo.ai/models/nano-banana-2\n\n❤️ Thank you for your continued support of Poyo.ai. Welcome to try it out. If you have any questions, please contact us."
-    },
-    {
       "id": "10",
       "date": "2026-02-15",
       "category": "video",

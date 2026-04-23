@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "check:sitemap": "node scripts/check-sitemap.mjs",
     "content": "content-collections build",
     "content-collections:generate": "content-collections build"
   },

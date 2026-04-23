@@ -45,27 +45,6 @@
       "content": "大家好！\n\nWan 2.7 Image API 现已上线 Poyo.ai。\n\nWan 2.7 Image API 是阿里巴巴最新的统一图像模型，支持文生图、图像编辑、更强的提示词遵循、文本渲染以及多参考图工作流。\n\n可用模型：\n- wan-2.7-image\n- wan-2.7-image-pro\n\n价格：\n- wan-2.7-image：4.2 credits（$0.021）/ 次\n- wan-2.7-image-pro：10.5 credits（$0.0525）/ 次\n- 约比 fal.ai 便宜 30%\n\n立即体验 Wan 2.7 Image API：\nhttps://poyo.ai/models/wan-2-7-image\n\n感谢你一直以来对 Poyo.ai 的支持。"
     },
     {
-      "id": "13",
-      "date": "2026-04-02",
-      "category": "image",
-      "title": "Nano Banana Pro 稳定版正式发布！",
-      "content": "大家好 👋\n\n我们很高兴宣布 Nano Banana Pro 正式发布 —— 面向生产环境的图像生成模型！\n\n🍌 Nano Banana Pro\n\nNano Banana Pro 是 Nano Banana 图像生成模型的稳定版本，专为可靠性和大规模性能而打造。\n\n✨ 核心亮点：\n• 保证 99.9% 在线率 — 最高稳定性\n• 推荐用于生产环境和关键业务工作流\n• 支持 1K / 2K / 4K 分辨率输出\n• 支持文生图和图像编辑模式\n\n📌 可用模型：\n• nano-banana-pro（文生图）\n• nano-banana-pro-edit（图像编辑）\n\n💰 价格：\n• 1K / 2K：18 积分（$0.09）\n• 4K：35 积分（$0.175）\n\n🔧 Nano Banana 2 — 仍然可用\n\n如果你的使用场景允许偶尔重试，或者你处于开发/测试环境，Nano Banana 2 仍然以更低的价格提供：\n• 每次生成 8 积分（$0.04）— 4K 同价\n• 比 fal.ai 便宜 95%\n• 可能偶尔出现不可用\n• 适合开发和测试\n\n👉 https://poyo.ai/models/nano-banana-2-api\n\n❤️ 感谢您一直以来对 Poyo.ai 的支持。如有任何问题，欢迎随时联系我们。"
-    },
-    {
-      "id": "12",
-      "date": "2026-03-20",
-      "category": "general",
-      "title": "Poyo.ai 上线新模型并更新价格",
-      "content": "大家好 👋\n\nPoyo.ai 刚刚上线了一批新模型，同时也带来了最新价格调整。\n\n💡 更高档位的充值可在以下价格基础上额外享受最高 10% 折扣。\n\n✨ 新模型上线\n\n🎬 Sora-2\n4s: 48 credits ($0.24)\n8s: 96 credits ($0.48)\n12s: 144 credits ($0.72)\n16s: 192 credits ($0.96)\n20s: 240 credits ($1.20)\n$0.06/秒，比 fal.ai 便宜 40%\n👉 https://poyo.ai/models/sora-2-official\n\n🎮 Kling 3.0 Motion Control\n720p: 9 credits/秒 ($0.045/秒)\n1080p: 15 credits/秒 ($0.075/秒)\n比 fal.ai 便宜 65%\n👉 https://poyo.ai/models/kling-3-0-motion-control\n\n🍌 Nano Banana 2\n5 credits/次生成 ($0.025)\n1K: 5 credits ($0.025)\n2K: 8 credits ($0.04)\n4K: 12 credits ($0.06)\n👉 https://poyo.ai/models/nano-banana-2\n\n🎥 Hailuo 2.3\n6s (768p): 35 credits ($0.175)\n10s (768p): 70 credits ($0.35)\n6s (1080p): 60 credits ($0.30)\n比 fal.ai 便宜 37.5%\n👉 https://poyo.ai/models/hailuo-2-3\n\n⚡ Kling 2.1\nStandard 5s: 30 credits ($0.15)\nPro: 55 credits 起 ($0.275)\n比 fal.ai 便宜 50%\n👉 https://poyo.ai/models/kling-2-1\n\n🚀 Kling 2.5 Turbo Pro\n5s: 42 credits ($0.21)\n10s: 84 credits ($0.42)\n比 fal.ai 便宜 40%\n👉 https://poyo.ai/models/kling-2-5-turbo-pro\n\n🌀 Wan 2.2 Fast\n480p: 6 credits ($0.03)\n720p: 12 credits ($0.06)\n比官方定价便宜 40%\n👉 https://poyo.ai/models/wan-2-2-fast\n\n🎞️ Runway Gen-4.5\n5s: 75 credits ($0.375)\n10s: 150 credits ($0.75)\n比官方定价便宜 30%\n👉 https://poyo.ai/models/runway-gen-4-5\n\n🎬 Wan 2.5\n5s: 30 credits 起 ($0.15)\n10s: 提供阶梯定价\n比 fal.ai 便宜 40%\n👉 https://poyo.ai/models/wan-2-5\n\n🔻 价格更新\n\n📌 Nano Banana Pro（降价）\n现价: 8 credits ($0.04)（此前为 10 credits）\n1K / 2K / 4K: 价格不变\n👉 https://poyo.ai/models/nano-banana-2-api\n\n📌 Veo 3.1（降价）\n现价: 20 credits ($0.10)（此前为 24 credits）\n👉 https://poyo.ai/models/veo-3-1\n\n📩 支持\n\n如果您遇到任何问题，欢迎通过 Discord、Telegram 或 Email 联系我们。\n\n⚠️ 为了更快获得支持，请附上：\n• task_id\n• error_message\n\n❤️ 感谢您一直以来对 Poyo.ai 的支持。如有任何问题，欢迎随时联系我们。"
-    },
-    {
-      "id": "11",
-      "date": "2026-02-27",
-      "category": "image",
-      "title": "Nano Banana 2 API 现已在 Poyo.ai 上线！",
-      "content": "大家好 👋\n\nNano Banana 2 API 现已在 Poyo.ai 上线！\n\n🖼️ Nano Banana 2\n\nNano Banana 2（gemini-3.1-flash-image-preview）是 Google 基于 Gemini 3.1 Flash 打造的新一代图像生成模型。相比初代 Nano Banana，在画质、推理能力和编辑功能上实现了全面飞跃。\n\n✨ 核心功能：\n• 原生 2K 和 4K 分辨率输出\n• 思维链推理 — 理解物理关系与空间逻辑\n• 精准多语言文字渲染\n• 单次请求最多支持 14 张参考图片\n• 通过 nano-banana-2-new-edit 模型进行高级图像编辑\n• 自我纠错工作流，确保更高一致性\n\n📌 可用模型：\n• nano-banana-2-new（文生图）\n• nano-banana-2-new-edit（图像编辑）\n\n💰 价格：\n• 每次生成 5 积分（$0.025）\n\n👉 https://poyo.ai/models/nano-banana-2\n\n❤️ 感谢您一直以来对 Poyo.ai 的支持。欢迎试用，如有任何问题，请随时联系我们。"
-    },
-    {
       "id": "10",
       "date": "2026-02-15",
       "category": "video",
