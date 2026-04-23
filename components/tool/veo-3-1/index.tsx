@@ -34,6 +34,7 @@ type ConfigMode = "form" | "json";
 type ResultMode = "preview" | "json";
 type ModelType = "veo3.1-fast" | "veo3.1-lite" | "veo3.1-quality";
 type ResolutionType = "720p" | "1080p" | "4k";
+type GenerationMode = "text" | "image";
 type GenerateType = "frame" | "reference";
 
 interface SelectedImage {
@@ -51,23 +52,14 @@ const revokeSelectedImageUrl = (image: SelectedImage | null | undefined) => {
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
-const DEFAULT_INPUT_IMAGE_URL = "https://cdn.doculator.org/veo-3-1/example-input.jpg";
 const DEFAULT_OUTPUT_VIDEO_URL = "https://cdn.doculator.org/veo-3-1/example-output.mp4";
 const DEFAULT_PROMPT = `A monkey and polar bear host a casual podcast about AI inference, bringing their unique perspectives from different environments (tropical vs. arctic) to discuss how AI systems make decisions and process information.
 Sample Dialogue:
 Monkey (Banana): "Welcome back to Bananas & Ice! I am Banana"
 Polar Bear (Ice): "And I'm Ice!"`;
 
-const createDefaultSelectedImages = (): SelectedImage[] => [
-  {
-    file: new File([], "example-input.jpg"),
-    url: DEFAULT_INPUT_IMAGE_URL,
-    uploadedUrl: DEFAULT_INPUT_IMAGE_URL,
-    uploading: false,
-  },
-];
-
-const MODEL_OPTIONS: ModelType[] = ["veo3.1-fast", "veo3.1-lite", "veo3.1-quality"];
+const MODEL_OPTIONS: ModelType[] = ["veo3.1-lite", "veo3.1-fast", "veo3.1-quality"];
+const GENERATE_TYPE_OPTIONS: GenerateType[] = ["frame", "reference"];
 
 const CREDITS_PER_VIDEO: Record<ModelType, Record<ResolutionType, number>> = {
   "veo3.1-fast": {
@@ -92,6 +84,16 @@ const isModelType = (value: unknown): value is ModelType =>
 
 const isResolutionType = (value: unknown): value is ResolutionType =>
   value === "720p" || value === "1080p" || value === "4k";
+
+const isAspectRatioType = (value: unknown): value is "16:9" | "9:16" =>
+  value === "16:9" || value === "9:16";
+
+const isGenerateType = (value: unknown): value is GenerateType =>
+  typeof value === "string" && GENERATE_TYPE_OPTIONS.includes(value as GenerateType);
+
+const supportsImageMode = (model: ModelType) => model !== "veo3.1-lite";
+
+const supportsReferenceMode = (model: ModelType) => model === "veo3.1-fast";
 
 const getCreditsForSelection = (model: ModelType, resolution: ResolutionType) =>
   CREDITS_PER_VIDEO[model][resolution];
@@ -119,8 +121,65 @@ const getPreviewSelection = (
   }
 };
 
+const getImageInputError = (
+  model: ModelType,
+  imageUrls: unknown,
+  generateType?: unknown,
+): string | null => {
+  const urls = imageUrls === undefined ? [] : imageUrls;
+
+  if (urls !== undefined && !Array.isArray(urls)) {
+    return "image_urls must be an array";
+  }
+
+  const imageCount = Array.isArray(urls) ? urls.length : 0;
+  const hasGenerateType = generateType !== undefined && generateType !== null && generateType !== "";
+
+  if (hasGenerateType && !isGenerateType(generateType)) {
+    return "generate_type must be frame or reference";
+  }
+
+  if (model === "veo3.1-lite") {
+    if (hasGenerateType || imageCount > 0) {
+      return "veo3.1-lite only supports text-to-video; remove generate_type and image_urls";
+    }
+    return null;
+  }
+
+  if (model === "veo3.1-quality" && generateType === "reference") {
+    return "veo3.1-quality does not support reference mode";
+  }
+
+  if (imageCount === 0) {
+    if (hasGenerateType) {
+      return "generate_type requires image_urls";
+    }
+    return null;
+  }
+
+  if (imageCount > 3) {
+    return "image_urls supports up to 3 images";
+  }
+
+  const resolvedType = isGenerateType(generateType)
+    ? generateType
+    : imageCount === 3
+      ? "reference"
+      : "frame";
+
+  if (model === "veo3.1-quality" && resolvedType === "reference") {
+    return "veo3.1-quality does not support reference mode";
+  }
+
+  if (resolvedType === "frame" && imageCount > 2) {
+    return "frame mode supports up to 2 images";
+  }
+
+  return null;
+};
+
 const Veo3 = ({
-  selectedModel = "veo3.1-fast",
+  selectedModel = "veo3.1-lite",
   onModelChange,
 }: Veo3Props) => {
   const t = useTranslations('modelDetail.model');
@@ -140,11 +199,14 @@ const Veo3 = ({
   const [duration] = useState<8>(8); // Fixed at 8 seconds for VEO3
   const [aspectRatio, setAspectRatio] = useState<"16:9" | "9:16" | undefined>("16:9");
   const [resolution, setResolution] = useState<ResolutionType>("720p");
+  const [generationMode, setGenerationMode] = useState<GenerationMode>("text");
   const [generateType, setGenerateType] = useState<GenerateType>("frame");
-  const [selectedImages, setSelectedImages] = useState<SelectedImage[]>(createDefaultSelectedImages);
+  const [selectedImages, setSelectedImages] = useState<SelectedImage[]>([]);
 
-  // Calculate max images based on generate type
-  const maxImages = generateType === "frame" ? 2 : 3;
+  const imageModeEnabled = generationMode === "image" && supportsImageMode(model);
+  const referenceModeEnabled = imageModeEnabled && supportsReferenceMode(model) && generateType === "reference";
+  const effectiveGenerateType: GenerateType = referenceModeEnabled ? "reference" : "frame";
+  const maxImages = imageModeEnabled ? (effectiveGenerateType === "frame" ? 2 : 3) : 0;
 
   // JSON editor state
   const [jsonConfig, setJsonConfig] = useState("");
@@ -181,6 +243,20 @@ const Veo3 = ({
   const handleModelChange = (nextModel: ModelType) => {
     setModel(nextModel);
     onModelChange?.(nextModel);
+
+    if (!supportsImageMode(nextModel)) {
+      selectedImages.forEach(revokeSelectedImageUrl);
+      setSelectedImages([]);
+      setGenerationMode("text");
+      setGenerateType("frame");
+      return;
+    }
+
+    if (!supportsReferenceMode(nextModel) && generateType === "reference") {
+      selectedImages.slice(2).forEach(revokeSelectedImageUrl);
+      setSelectedImages((prev) => prev.slice(0, 2));
+      setGenerateType("frame");
+    }
   };
 
   // Check if user is logged in
@@ -190,9 +266,10 @@ const Veo3 = ({
 
   useEffect(() => {
     if (selectedModel !== model) {
-      setModel(selectedModel);
+      handleModelChange(selectedModel);
     }
-  }, [model, selectedModel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedModel]);
 
   useEffect(() => {
     selectedImagesRef.current = selectedImages;
@@ -204,6 +281,7 @@ const Veo3 = ({
       const uploadedUrls = selectedImages
         .filter(img => img.uploadedUrl)
         .map(img => img.uploadedUrl!);
+      const shouldIncludeImages = imageModeEnabled && uploadedUrls.length > 0;
 
       const config: any = {
         model,
@@ -212,13 +290,23 @@ const Veo3 = ({
           duration,
           ...(aspectRatio && { aspect_ratio: aspectRatio }),
           ...(resolution && { resolution }),
-          ...(generateType && { generate_type: generateType }),
-          ...(uploadedUrls.length > 0 && { image_urls: uploadedUrls }),
+          ...(shouldIncludeImages && { generate_type: effectiveGenerateType }),
+          ...(shouldIncludeImages && { image_urls: uploadedUrls }),
         }
       };
       setJsonConfig(JSON.stringify(config, null, 2));
     }
-  }, [configMode, model, prompt, duration, aspectRatio, resolution, generateType, selectedImages]);
+  }, [
+    configMode,
+    model,
+    prompt,
+    duration,
+    aspectRatio,
+    resolution,
+    imageModeEnabled,
+    effectiveGenerateType,
+    selectedImages,
+  ]);
 
   const handleError = (error: any, defaultMessage: string) => {
     console.error(error);
@@ -234,9 +322,14 @@ const Veo3 = ({
     if (!file) return;
 
     try {
+      if (!imageModeEnabled) {
+        toast.error("Image inputs are not available for this model or mode");
+        return;
+      }
+
       // Check if max images reached
       if (selectedImages.length >= maxImages) {
-        toast.error(`Maximum ${maxImages} images allowed for ${generateType || 'reference'} mode`);
+        toast.error(`Maximum ${maxImages} images allowed for ${effectiveGenerateType} mode`);
         return;
       }
 
@@ -285,6 +378,16 @@ const Veo3 = ({
     if (!file) return;
 
     try {
+      if (!imageModeEnabled) {
+        toast.error("Image inputs are not available for this model or mode");
+        return;
+      }
+
+      if (targetIndex >= maxImages) {
+        toast.error(`Maximum ${maxImages} images allowed for ${effectiveGenerateType} mode`);
+        return;
+      }
+
       if (file.size > MAX_FILE_SIZE) {
         throw new Error("File size exceeds 10MB limit");
       }
@@ -349,8 +452,9 @@ const Veo3 = ({
     setPrompt(DEFAULT_PROMPT);
     setAspectRatio("16:9");
     setResolution("720p");
+    setGenerationMode("text");
     setGenerateType("frame");
-    setSelectedImages(createDefaultSelectedImages());
+    setSelectedImages([]);
     setJsonConfig("");
   };
 
@@ -376,6 +480,7 @@ const Veo3 = ({
         if (parsedConfig.input) {
           config = {
             model: parsedConfig.model,
+            callback_url: parsedConfig.callback_url,
             prompt: parsedConfig.input.prompt,
             duration: parsedConfig.input.duration,
             aspect_ratio: parsedConfig.input.aspect_ratio,
@@ -400,6 +505,23 @@ const Veo3 = ({
           toast.error("Resolution must be 720p, 1080p, or 4k");
           return;
         }
+        if (config.duration !== undefined && config.duration !== 8) {
+          toast.error("Veo 3.1 duration is fixed at 8 seconds");
+          return;
+        }
+        if (config.aspect_ratio && !isAspectRatioType(config.aspect_ratio)) {
+          toast.error("Aspect ratio must be 16:9 or 9:16");
+          return;
+        }
+        const imageInputError = getImageInputError(
+          config.model,
+          config.image_urls,
+          config.generate_type,
+        );
+        if (imageInputError) {
+          toast.error(imageInputError);
+          return;
+        }
       } catch (error) {
         toast.error("Invalid JSON configuration");
         return;
@@ -410,29 +532,25 @@ const Veo3 = ({
         return;
       }
 
-      // Validate image requirements based on generation type
-      const uploadedImages = selectedImages.filter(img => img.uploadedUrl);
-
-      if (generateType === "frame") {
-        // Frame mode: first frame is required, last frame is optional
-        const hasFirstFrame = selectedImages[0]?.uploadedUrl;
-
-        if (!hasFirstFrame) {
-          toast.error("Frame mode requires a First Frame image");
-          return;
-        }
-      } else if (generateType === "reference") {
-        // Reference mode: at least 1 image required
-        if (uploadedImages.length < 1) {
-          toast.error("Reference mode requires at least 1 image");
-          return;
-        }
-      }
-
       // Get uploaded image URLs
       const imageUrls = selectedImages
         .filter(img => img.uploadedUrl)
         .map(img => img.uploadedUrl!);
+      const imageInputError = getImageInputError(
+        model,
+        imageModeEnabled ? imageUrls : undefined,
+        imageModeEnabled && imageUrls.length > 0 ? effectiveGenerateType : undefined,
+      );
+
+      if (imageModeEnabled && imageUrls.length < 1) {
+        toast.error("Image to Video requires at least one image");
+        return;
+      }
+
+      if (imageInputError) {
+        toast.error(imageInputError);
+        return;
+      }
 
       config = {
         model,
@@ -440,8 +558,8 @@ const Veo3 = ({
         duration,
         ...(aspectRatio && { aspect_ratio: aspectRatio }),
         ...(resolution && { resolution }),
-        ...(generateType && { generate_type: generateType }),
-        ...(imageUrls.length > 0 && { image_urls: imageUrls }),
+        ...(imageModeEnabled && imageUrls.length > 0 && { generate_type: effectiveGenerateType }),
+        ...(imageModeEnabled && imageUrls.length > 0 && { image_urls: imageUrls }),
       };
     }
 
@@ -486,9 +604,10 @@ const Veo3 = ({
       // Submit generation request
       const response = await veo3Api.submit({
         model: config.model,
+        callback_url: config.callback_url,
         prompt: config.prompt,
         image_urls: config.image_urls,
-        duration: config.duration,
+        duration: config.duration ?? 8,
         aspect_ratio: config.aspect_ratio,
         resolution: config.resolution,
         generate_type: config.generate_type,
@@ -583,7 +702,7 @@ const Veo3 = ({
             onChange={(e) => setJsonConfig(e.target.value)}
             className="min-h-[400px] font-mono text-sm"
             disabled={isSubmitting}
-            placeholder='{\n  "model": "veo3.1-fast",\n  "input": {\n    "prompt": "Your video description (max 1000 chars)",\n    "duration": 8,\n    "aspect_ratio": "16:9",\n    "resolution": "720p"\n  }\n}'
+            placeholder='{\n  "model": "veo3.1-lite",\n  "input": {\n    "prompt": "Your video description (max 1000 chars)",\n    "duration": 8,\n    "aspect_ratio": "16:9",\n    "resolution": "720p"\n  }\n}'
           />
         </div>
       );
@@ -599,28 +718,40 @@ const Veo3 = ({
           <div className="flex gap-2">
             <Button
               type="button"
-              variant={model === "veo3.1-fast" ? "default" : "outline"}
-              onClick={() => handleModelChange("veo3.1-fast")}
-              disabled={isSubmitting}
-              className="flex-1"
-            >
-              veo3.1-fast
-            </Button>
-            <Button
-              type="button"
               variant={model === "veo3.1-lite" ? "default" : "outline"}
               onClick={() => handleModelChange("veo3.1-lite")}
               disabled={isSubmitting}
-              className="flex-1"
+              className={
+                model === "veo3.1-lite"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
             >
               veo3.1-lite
+            </Button>
+            <Button
+              type="button"
+              variant={model === "veo3.1-fast" ? "default" : "outline"}
+              onClick={() => handleModelChange("veo3.1-fast")}
+              disabled={isSubmitting}
+              className={
+                model === "veo3.1-fast"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
+            >
+              veo3.1-fast
             </Button>
             <Button
               type="button"
               variant={model === "veo3.1-quality" ? "default" : "outline"}
               onClick={() => handleModelChange("veo3.1-quality")}
               disabled={isSubmitting}
-              className="flex-1"
+              className={
+                model === "veo3.1-quality"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
             >
               veo3.1-quality
             </Button>
@@ -680,7 +811,11 @@ const Veo3 = ({
               variant={resolution === "720p" ? "default" : "outline"}
               onClick={() => setResolution("720p")}
               disabled={isSubmitting}
-              className="flex-1"
+              className={
+                resolution === "720p"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
             >
               720p
             </Button>
@@ -689,7 +824,11 @@ const Veo3 = ({
               variant={resolution === "1080p" ? "default" : "outline"}
               onClick={() => setResolution("1080p")}
               disabled={isSubmitting}
-              className="flex-1"
+              className={
+                resolution === "1080p"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
             >
               1080p
             </Button>
@@ -698,47 +837,85 @@ const Veo3 = ({
               variant={resolution === "4k" ? "default" : "outline"}
               onClick={() => setResolution("4k")}
               disabled={isSubmitting}
-              className="flex-1"
+              className={
+                resolution === "4k"
+                  ? "flex-1"
+                  : "flex-1 hover:bg-muted hover:text-foreground"
+              }
             >
               4K
             </Button>
           </div>
         </div>
 
-        {/* Generation Type Selection */}
+        {/* Generation Mode Selection */}
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Generation Type</Label>
-          <Select
-            value={generateType}
-            onValueChange={(val) => {
-              const newType = val as GenerateType;
-              setGenerateType(newType);
-              // If switching to frame mode and have more than 2 images, keep only first 2
-              if (newType === "frame" && selectedImages.length > 2) {
-                const removed = selectedImages.slice(2);
-                removed.forEach(revokeSelectedImageUrl);
-                setSelectedImages(prev => prev.slice(0, 2));
-                toast.info("Extra images removed for frame mode (max 2)");
-              }
-            }}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Select generation type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="frame">Frame (First/Last frames, max 2 images)</SelectItem>
-              <SelectItem value="reference">Reference (max 3 images)</SelectItem>
-            </SelectContent>
-          </Select>
-          <p className="text-xs text-muted-foreground">
-            {generateType === "frame"
-              ? "First image = required first frame, second image = optional last frame"
-              : "Up to 3 reference images for style guidance"}
-          </p>
+          <Label className="text-sm font-medium">Generation Mode</Label>
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              type="button"
+              variant={generationMode === "text" ? "default" : "outline"}
+              className={generationMode === "text" ? undefined : "hover:bg-muted hover:text-foreground"}
+              onClick={() => {
+                handleRemoveAllImages();
+                setGenerationMode("text");
+              }}
+              disabled={isSubmitting}
+            >
+              Text to Video
+            </Button>
+            <Button
+              type="button"
+              variant={generationMode === "image" ? "default" : "outline"}
+              className={generationMode === "image" ? undefined : "hover:bg-muted hover:text-foreground"}
+              onClick={() => setGenerationMode("image")}
+              disabled={isSubmitting || !supportsImageMode(model)}
+            >
+              Image to Video
+            </Button>
+          </div>
+          {!supportsImageMode(model) ? (
+            <p className="text-xs text-muted-foreground">
+              veo3.1-lite supports text-to-video only.
+            </p>
+          ) : null}
         </div>
 
+        {imageModeEnabled && (
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Image Mode</Label>
+            <Select
+              value={effectiveGenerateType}
+              onValueChange={(val) => {
+                const newType = val as GenerateType;
+                setGenerateType(newType);
+                if (newType === "frame" && selectedImages.length > 2) {
+                  selectedImages.slice(2).forEach(revokeSelectedImageUrl);
+                  setSelectedImages((prev) => prev.slice(0, 2));
+                  toast.info("Extra images removed for frame mode (max 2)");
+                }
+              }}
+            >
+              <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+                <SelectValue placeholder="Select image mode" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="frame">Frame (first/last frames, max 2 images)</SelectItem>
+                {supportsReferenceMode(model) && (
+                  <SelectItem value="reference">Reference (max 3 images)</SelectItem>
+                )}
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-muted-foreground">
+              {effectiveGenerateType === "frame"
+                ? "First image is required, second image is optional."
+                : "Use up to 3 reference images for style and subject guidance."}
+            </p>
+          </div>
+        )}
+
         {/* Image Upload - Different layouts based on generation type */}
-        {generateType === "frame" && (
+        {imageModeEnabled && effectiveGenerateType === "frame" && (
           /* Frame Mode: First Frame and Last Frame vertically stacked */
           <div className="space-y-4">
             {/* First Frame Image */}
@@ -833,7 +1010,7 @@ const Veo3 = ({
           </div>
         )}
 
-        {generateType === "reference" && (
+        {imageModeEnabled && effectiveGenerateType === "reference" && (
           /* Reference Mode: 3 images side by side */
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -1104,7 +1281,7 @@ const Veo3 = ({
             <div className="space-y-3 sm:space-y-4 lg:space-y-6 h-full">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
                 <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
-                  <div className="flex min-h-0 flex-1 flex-col gap-4">
+                  <div data-tool-action-boundary className="relative flex min-h-0 flex-1 flex-col gap-4">
                     {/* Header with toggle */}
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Input</div>
@@ -1113,7 +1290,7 @@ const Veo3 = ({
                           size="sm"
                           variant={configMode === "form" ? "default" : "ghost"}
                           onClick={() => setConfigMode("form")}
-                          className="h-8"
+                          className={configMode === "form" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           Form
                         </Button>
@@ -1121,7 +1298,7 @@ const Veo3 = ({
                           size="sm"
                           variant={configMode === "json" ? "default" : "ghost"}
                           onClick={() => setConfigMode("json")}
-                          className="h-8"
+                          className={configMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>
@@ -1155,10 +1332,7 @@ const Veo3 = ({
                         (configMode === "form" && !prompt.trim()) ||
                         selectedImages.some((img) => img.uploading) ||
                         (configMode === "form" &&
-                          generateType === "frame" &&
-                          !selectedImages[0]?.uploadedUrl) ||
-                        (configMode === "form" &&
-                          generateType === "reference" &&
+                          imageModeEnabled &&
                           selectedImages.filter((img) => img.uploadedUrl).length < 1)
                       }
                       isLoading={isSubmitting || isUploading || selectedImages.some((img) => img.uploading)}
@@ -1181,7 +1355,7 @@ const Veo3 = ({
                           size="sm"
                           variant={resultMode === "preview" ? "default" : "ghost"}
                           onClick={() => setResultMode("preview")}
-                          className="h-8"
+                          className={resultMode === "preview" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           Preview
                         </Button>
@@ -1189,7 +1363,7 @@ const Veo3 = ({
                           size="sm"
                           variant={resultMode === "json" ? "default" : "ghost"}
                           onClick={() => setResultMode("json")}
-                          className="h-8"
+                          className={resultMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>

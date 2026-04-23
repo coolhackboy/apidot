@@ -3,6 +3,7 @@ import { appConfig } from '@/data/config';
 
 export interface Veo3SubmitRequest {
   model: "veo3.1-fast" | "veo3.1-lite" | "veo3.1-quality"; // Required: model selection
+  callback_url?: string;
   prompt: string; // Required
   duration?: 8; // Optional: Fixed at 8 seconds for VEO3
   aspect_ratio?: "16:9" | "9:16"; // Optional: Aspect ratio (supports both landscape and portrait)
@@ -51,9 +52,7 @@ export const veo3Api = {
     };
 
     // Add optional parameters
-    if (request.duration !== undefined) {
-      input.duration = request.duration;
-    }
+    input.duration = request.duration ?? 8;
 
     if (request.aspect_ratio) {
       input.aspect_ratio = request.aspect_ratio;
@@ -73,6 +72,7 @@ export const veo3Api = {
 
     const requestBody = {
       model: request.model,
+      ...(request.callback_url && { callback_url: request.callback_url }),
       input,
     };
 

@@ -719,7 +719,11 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                 variant={effectiveResolution === option ? "default" : "outline"}
                 onClick={() => setResolution(option)}
                 disabled={isSubmitting}
-                className="flex-1"
+                className={
+                  effectiveResolution === option
+                    ? "flex-1"
+                    : "flex-1 hover:bg-muted hover:text-foreground"
+                }
               >
                 {option}
               </Button>
@@ -762,6 +766,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                   key={ar}
                   type="button"
                   variant={aspectRatio === ar ? "default" : "outline"}
+                  className={aspectRatio === ar ? undefined : "hover:bg-muted hover:text-foreground"}
                   onClick={() => setAspectRatio(ar)}
                   disabled={isSubmitting}
                   size="sm"
@@ -1016,7 +1021,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
             <div className="space-y-3 sm:space-y-4 lg:space-y-6">
               <Card className="bg-muted/50 border rounded-3xl shadow-none h-full">
                 <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
-                  <div className="flex min-h-0 flex-1 flex-col gap-4">
+                  <div data-tool-action-boundary className="relative flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
                       <div className="text-lg font-semibold">Input</div>
                       <div className="flex gap-1 bg-muted rounded-lg p-1">
@@ -1024,7 +1029,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                           size="sm"
                           variant={configMode === "form" ? "default" : "ghost"}
                           onClick={() => setConfigMode("form")}
-                          className="h-8"
+                          className={configMode === "form" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           Form
                         </Button>
@@ -1032,7 +1037,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                           size="sm"
                           variant={configMode === "json" ? "default" : "ghost"}
                           onClick={() => setConfigMode("json")}
-                          className="h-8"
+                          className={configMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>
@@ -1072,7 +1077,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                           size="sm"
                           variant={resultMode === "preview" ? "default" : "ghost"}
                           onClick={() => setResultMode("preview")}
-                          className="h-8"
+                          className={resultMode === "preview" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           Preview
                         </Button>
@@ -1080,7 +1085,7 @@ const Seedance2 = ({ selectedModel = "seedance-2" }: Seedance2Props) => {
                           size="sm"
                           variant={resultMode === "json" ? "default" : "ghost"}
                           onClick={() => setResultMode("json")}
-                          className="h-8"
+                          className={resultMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>

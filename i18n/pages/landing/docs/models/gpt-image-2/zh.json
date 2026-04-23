@@ -8,21 +8,26 @@
     "method": "POST",
     "path": "/api/generate/submit",
     "endpoint": "/api/generate/submit",
-    "summary": "通过 APIDot 统一的异步 submit 端点调用 GPT Image 2 做文生图或单图编辑。",
-    "about": "GPT Image 2 遵循与 APIDot 其他媒体模型相同的异步工作流：提交一次请求，立即拿到 task id，然后通过共享状态接口轮询或等待 webhook 回调。使用 `gpt-image-2` 做文生图，使用 `gpt-image-2-edit` 基于一张源图做编辑。",
+    "summary": "通过 APIDot 统一异步 submit 端点调用 GPT Image 2 生成图片或编辑图片。",
+    "about": "GPT Image 2 遵循 APIDot 其他媒体模型相同的异步工作流：提交一次请求，立即获得 task id，然后轮询共享状态接口或等待 webhook 回调。使用 `gpt-image-2` 做文生图，不传参考图；使用 `gpt-image-2-edit` 时必须传参考图数组。",
     "bestPractices": [
-      "当你需要更稳定的营销视觉、商品图或图中文字时，prompt 里要明确写清构图、版式和文案重点。",
-      "只有在你已经有一张源图且希望做局部修改时，才使用 `gpt-image-2-edit`，避免把编辑需求误做成整图重生成。",
-      "提交成功后立刻保存 task id，方便后续轮询、重试和 webhook 状态对齐。"
+      "如果需要稳定的营销视觉、商品图或图中文字，请在 prompt 中明确写清构图、版式、产品主体和文字要求。",
+      "`input.image_urls` 仅用于 `gpt-image-2-edit`，并且必须传一张或多张参考图。",
+      "尺寸请使用与 Poyo 对齐的 `input.size` 值，例如 `auto`、`1:1`、`16:9` 或 `9:16`，不要再传像素尺寸。",
+      "提交成功后立即保存 task id，方便后续轮询、重试和 webhook 状态对齐。"
     ],
     "faq": [
       {
         "question": "GPT Image 2 应该传哪个 model id？",
-        "answer": "文生图使用 `gpt-image-2`，单图编辑使用 `gpt-image-2-edit`。编辑模式要求 `input.image_urls` 中恰好有一张源图。"
+        "answer": "文生图使用 `gpt-image-2`，不传参考图；需要基于参考图编辑时使用 `gpt-image-2-edit`，并且必须传一个或多个 `input.image_urls`。"
+      },
+      {
+        "question": "还能用 input.n 一次生成多张图吗？",
+        "answer": "不能。当前与 Poyo 对齐后的接口形态为一次请求返回 1 张图，因此不再支持 `input.n`。"
       },
       {
         "question": "两个变体是否共用同一个端点？",
-        "answer": "是的。它们都提交到 `/api/generate/submit`，只是通过顶层 `model` 字段区分，并且 edit 模式需要额外传 `input.image_urls`。"
+        "answer": "是的。它们都提交到 `/api/generate/submit`，通过顶层 `model` 字段区分行为。只有 `gpt-image-2-edit` 支持 `input.image_urls`。"
       }
     ],
     "request": [
@@ -56,21 +61,14 @@
         "name": "input.size",
         "type": "string",
         "required": false,
-        "defaultValue": "1024x1024",
-        "description": "输出尺寸预设。当前 APIDot 支持 `1024x1024`、`1536x1024`、`1024x1536`。"
-      },
-      {
-        "name": "input.n",
-        "type": "number",
-        "required": false,
-        "defaultValue": "1",
-        "description": "生成图片数量。当前 APIDot 支持 1 到 4。"
+        "defaultValue": "auto",
+        "description": "输出尺寸预设。支持：`auto`、`1:1`、`2:3`、`3:2`、`3:4`、`4:3`、`4:5`、`5:4`、`9:16`、`16:9`。"
       },
       {
         "name": "input.image_urls",
         "type": "string[]",
         "required": false,
-        "description": "仅在 `gpt-image-2-edit` 下使用，且必须传一张已上传的源图 URL。文生图时不要传这个字段。"
+        "description": "参考图片 URL 数组。仅 `gpt-image-2-edit` 支持，并且必填。"
       }
     ],
     "response": [
@@ -99,12 +97,12 @@
       {
         "code": "400",
         "name": "invalid_request",
-        "description": "缺少 prompt、size 不支持，或 edit 请求缺少源图等无效 payload。"
+        "description": "缺少 prompt、size 不受支持、传入了不支持的 `input.n`、给 `gpt-image-2` 传了 `image_urls`，或 `gpt-image-2-edit` 缺少 `image_urls` 数组。"
       },
       {
         "code": "401",
         "name": "authentication_error",
-        "description": "Bearer API Key 缺失、失效或无效。"
+        "description": "Bearer API Key 缺失、过期或无效。"
       },
       {
         "code": "402",
@@ -118,9 +116,9 @@
       }
     ],
     "sample": {
-      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n    \"size\": \"1024x1024\",\n    \"n\": 1\n  }\n}\n'",
-      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n    size: \"1024x1024\",\n    n: 1\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
-      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰\",\n        \"size\": \"1024x1024\",\n        \"n\": 1\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，真实光线，细节清晰\",\n    \"size\": \"auto\"\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，真实光线，细节清晰\",\n    size: \"auto\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"一张银色意式咖啡机的高端产品图，纯白棚拍背景，真实光线，细节清晰\",\n        \"size\": \"auto\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
     },
     "exampleVariants": [
       {
@@ -130,9 +128,8 @@
           "model": "gpt-image-2",
           "callback_url": "https://your-domain.com/callback",
           "input": {
-            "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰",
-            "size": "1024x1024",
-            "n": 1
+            "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，真实光线，细节清晰",
+            "size": "auto"
           }
         }
       },
@@ -144,8 +141,7 @@
           "callback_url": "https://your-domain.com/callback",
           "input": {
             "prompt": "保留产品主体，把背景替换成纯白棚拍环境，增加柔和阴影，并增强电商主图质感",
-            "size": "1024x1024",
-            "n": 1,
+            "size": "auto",
             "image_urls": [
               "https://your-domain.com/source-image.png"
             ]
@@ -157,9 +153,8 @@
       "model": "gpt-image-2",
       "callback_url": "https://your-domain.com/callback",
       "input": {
-        "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，光线真实，细节清晰",
-        "size": "1024x1024",
-        "n": 1
+        "prompt": "一张银色意式咖啡机的高端产品图，纯白棚拍背景，真实光线，细节清晰",
+        "size": "auto"
       }
     },
     "responseExamples": [

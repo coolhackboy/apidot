@@ -1513,13 +1513,16 @@
   position: absolute;
   left: 11px;
   top: 50%;
+  z-index: 1;
   transform: translateY(-50%);
   color: var(--mk-ink-soft);
   pointer-events: none;
 }
 
-.mk-models-search-input {
-  padding-left: 32px;
+.mk-models-search .mk-models-search-input {
+  padding-left: 36px;
+  padding-right: 14px;
+  line-height: 40px;
 }
 
 .mk-models-tabs {

@@ -2,7 +2,17 @@ import { apiService } from "./api";
 import { appConfig } from "@/data/config";
 
 export type GptImage2ModelId = "gpt-image-2" | "gpt-image-2-edit";
-export type GptImage2Size = "1024x1024" | "1536x1024" | "1024x1536";
+export type GptImage2Size =
+  | "auto"
+  | "1:1"
+  | "2:3"
+  | "3:2"
+  | "3:4"
+  | "4:3"
+  | "4:5"
+  | "5:4"
+  | "9:16"
+  | "16:9";
 
 export interface GptImage2SubmitRequest {
   model: GptImage2ModelId;
@@ -10,7 +20,6 @@ export interface GptImage2SubmitRequest {
   input: {
     prompt: string;
     size?: GptImage2Size;
-    n?: 1 | 2 | 3 | 4;
     image_urls?: string[];
   };
 }

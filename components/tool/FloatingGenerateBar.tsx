@@ -33,33 +33,45 @@ export default function FloatingGenerateBar({
   const [placeholderHeight, setPlaceholderHeight] = useState<number>(88);
 
   useEffect(() => {
+    const getBoundaryElement = () =>
+      (anchorRef.current?.closest("[data-tool-action-boundary]") as HTMLElement | null) ||
+      anchorRef.current;
+
     const updateFloatingLayout = () => {
       if (!anchorRef.current || !innerRef.current) {
         return;
       }
 
-      const rect = anchorRef.current.getBoundingClientRect();
+      const anchorRect = anchorRef.current.getBoundingClientRect();
+      const boundaryElement = getBoundaryElement();
+      const boundaryRect = boundaryElement?.getBoundingClientRect() || anchorRect;
       const dockHeight = innerRef.current.offsetHeight;
       const dockBottom = window.innerWidth < 640 ? 12 : 16;
       const fixedTop = window.innerHeight - dockBottom - dockHeight;
+      const fixedBottom = window.innerHeight - dockBottom;
 
       setPlaceholderHeight(dockHeight);
 
-      if (rect.top <= fixedTop) {
-        setFloatingStyle({
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-        });
+      if (
+        window.innerHeight < dockHeight + 220 ||
+        boundaryRect.height <= dockHeight + 4 ||
+        boundaryRect.top > fixedTop ||
+        boundaryRect.bottom <= 0
+      ) {
+        setFloatingStyle({});
         return;
       }
 
+      const clampedTop =
+        boundaryRect.bottom <= fixedBottom
+          ? Math.max(boundaryRect.top, boundaryRect.bottom - dockHeight)
+          : fixedTop;
+
       setFloatingStyle({
         position: "fixed",
-        left: rect.left,
-        width: rect.width,
-        bottom: dockBottom,
+        left: anchorRect.left,
+        width: anchorRect.width,
+        top: clampedTop,
       });
     };
 
@@ -73,6 +85,10 @@ export default function FloatingGenerateBar({
     if (resizeObserver) {
       if (anchorRef.current) {
         resizeObserver.observe(anchorRef.current);
+      }
+      const boundaryElement = getBoundaryElement();
+      if (boundaryElement && boundaryElement !== anchorRef.current) {
+        resizeObserver.observe(boundaryElement);
       }
       if (innerRef.current) {
         resizeObserver.observe(innerRef.current);

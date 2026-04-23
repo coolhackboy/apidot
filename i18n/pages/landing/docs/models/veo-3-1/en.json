@@ -9,20 +9,25 @@
     "path": "/api/generate/submit",
     "endpoint": "/api/generate/submit",
     "summary": "Submit Veo 3.1 fast, lite, and quality jobs through APIDot's unified async generation endpoint.",
-    "about": "Veo 3.1 keeps the same APIDot submit-and-track workflow as other generation models. All variants support text-to-video. `veo3.1-fast` and `veo3.1-quality` also support image-guided generation through `input.image_urls`, while `veo3.1-lite` should be treated as text-only.",
+    "about": "Veo 3.1 uses the shared APIDot submit-and-track workflow. `veo3.1-fast`, `veo3.1-lite`, and `veo3.1-quality` all support text-to-video. `veo3.1-fast` also supports frame and reference image-to-video, while `veo3.1-quality` supports frame image-to-video only. `veo3.1-lite` is text-to-video only.",
     "bestPractices": [
-      "Use `veo3.1-fast` or `veo3.1-lite` for iteration and move to `veo3.1-quality` when you need the most premium final output.",
-      "Keep prompts explicit about motion, camera perspective, sound intent, and visual continuity.",
-      "For image-guided requests, match `generate_type` to the number of uploaded images and avoid sending unsupported combinations to `veo3.1-lite`."
+      "Use `veo3.1-lite` for the lowest-cost text-only iteration, `veo3.1-fast` for fast text or image-guided runs, and `veo3.1-quality` for premium output.",
+      "Keep prompts explicit about motion, camera perspective, native audio intent, and visual continuity.",
+      "Do not send `input.generate_type` or `input.image_urls` to `veo3.1-lite`.",
+      "Use `input.generate_type: \"frame\"` for first/last-frame workflows. Use `reference` only with `veo3.1-fast`."
     ],
     "faq": [
       {
         "question": "Which Veo 3.1 model id should I use?",
-        "answer": "Use `veo3.1-fast` for faster turnaround, `veo3.1-lite` for lower-cost text-only generation, and `veo3.1-quality` for the highest-end result quality."
+        "answer": "`veo3.1-lite` is text-only and cost-efficient. `veo3.1-fast` supports text-to-video plus frame/reference image-to-video. `veo3.1-quality` supports text-to-video and frame image-to-video for the highest-quality output."
       },
       {
-        "question": "How does `generate_type` work?",
-        "answer": "Use `frame` when you provide two images for first/last frame control. Use `reference` when you provide three reference images. Do not send `generate_type` or `image_urls` to `veo3.1-lite`."
+        "question": "How does `input.generate_type` work?",
+        "answer": "Only include `input.generate_type` when sending images. Use `frame` for up to two images: first frame and optional last frame. Use `reference` for up to three reference images, and only with `veo3.1-fast`."
+      },
+      {
+        "question": "Can `veo3.1-lite` use images?",
+        "answer": "No. `veo3.1-lite` should not receive `input.generate_type` or `input.image_urls`; submit text prompts only."
       }
     ],
     "request": [
@@ -30,8 +35,8 @@
         "name": "model",
         "type": "string",
         "required": true,
-        "defaultValue": "veo3.1-fast",
-        "description": "Target Veo 3.1 variant: `veo3.1-fast`, `veo3.1-lite`, or `veo3.1-quality`."
+        "defaultValue": "veo3.1-lite",
+        "description": "Target Veo 3.1 variant: `veo3.1-lite`, `veo3.1-fast`, or `veo3.1-quality`."
       },
       {
         "name": "callback_url",
@@ -77,14 +82,13 @@
         "name": "input.generate_type",
         "type": "string",
         "required": false,
-        "defaultValue": "frame",
-        "description": "Optional image-guided generation mode. Use `frame` for two images or `reference` for three images."
+        "description": "Optional image-to-video mode. Use `frame` for first/last-frame control or `reference` for reference images. Do not send this field for text-to-video or `veo3.1-lite`; `reference` is only supported by `veo3.1-fast`."
       },
       {
         "name": "input.image_urls",
         "type": "string[]",
         "required": false,
-        "description": "Optional image inputs for image-guided runs. Use up to 3 images, each publicly accessible and under 10MB."
+        "description": "Optional image inputs for supported image-to-video runs. `frame` supports 1-2 images; `reference` supports 1-3 images. Do not send this field to `veo3.1-lite`."
       }
     ],
     "response": [
@@ -132,28 +136,14 @@
       }
     ],
     "sample": {
-      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"veo3.1-fast\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A cinematic nighttime city drive with synchronized ambient audio\",\n    \"duration\": 8,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'",
-      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"veo3.1-fast\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A cinematic nighttime city drive with synchronized ambient audio\",\n    duration: 8,\n    aspect_ratio: \"16:9\",\n    resolution: \"720p\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
-      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"veo3.1-fast\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A cinematic nighttime city drive with synchronized ambient audio\",\n        \"duration\": 8,\n        \"aspect_ratio\": \"16:9\",\n        \"resolution\": \"720p\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"veo3.1-lite\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A miniature city waking up at sunrise, cinematic light, smooth camera motion\",\n    \"duration\": 8,\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"veo3.1-lite\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A miniature city waking up at sunrise, cinematic light, smooth camera motion\",\n    duration: 8,\n    aspect_ratio: \"16:9\",\n    resolution: \"720p\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"veo3.1-lite\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A miniature city waking up at sunrise, cinematic light, smooth camera motion\",\n        \"duration\": 8,\n        \"aspect_ratio\": \"16:9\",\n        \"resolution\": \"720p\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
     },
     "exampleVariants": [
       {
-        "id": "veo3.1-fast",
-        "label": "veo3.1-fast",
-        "payloadTemplate": {
-          "model": "veo3.1-fast",
-          "callback_url": "https://your-domain.com/callback",
-          "input": {
-            "prompt": "A cinematic nighttime city drive with synchronized ambient audio",
-            "duration": 8,
-            "aspect_ratio": "16:9",
-            "resolution": "720p"
-          }
-        }
-      },
-      {
         "id": "veo3.1-lite",
-        "label": "veo3.1-lite",
+        "label": "veo3.1-lite text-to-video",
         "payloadTemplate": {
           "model": "veo3.1-lite",
           "callback_url": "https://your-domain.com/callback",
@@ -166,25 +156,96 @@
         }
       },
       {
+        "id": "veo3.1-fast",
+        "label": "veo3.1-fast text-to-video",
+        "payloadTemplate": {
+          "model": "veo3.1-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "Dolphins jumping in a bright blue ocean with native ambient sound",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "720p"
+          }
+        }
+      },
+      {
+        "id": "veo3.1-fast-frame",
+        "label": "veo3.1-fast frame image-to-video",
+        "payloadTemplate": {
+          "model": "veo3.1-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "Animate the subject from the first frame into a smooth final pose",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "1080p",
+            "generate_type": "frame",
+            "image_urls": [
+              "https://cdn.example.com/first-frame.webp",
+              "https://cdn.example.com/last-frame.webp"
+            ]
+          }
+        }
+      },
+      {
+        "id": "veo3.1-fast-reference",
+        "label": "veo3.1-fast reference image-to-video",
+        "payloadTemplate": {
+          "model": "veo3.1-fast",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "Create a dynamic product scene using the supplied visual references",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "1080p",
+            "generate_type": "reference",
+            "image_urls": [
+              "https://cdn.example.com/reference-1.webp",
+              "https://cdn.example.com/reference-2.webp",
+              "https://cdn.example.com/reference-3.webp"
+            ]
+          }
+        }
+      },
+      {
         "id": "veo3.1-quality",
-        "label": "veo3.1-quality",
+        "label": "veo3.1-quality text-to-video",
         "payloadTemplate": {
           "model": "veo3.1-quality",
           "callback_url": "https://your-domain.com/callback",
           "input": {
-            "prompt": "A high-detail aerial shot of a coastal city at dusk with cinematic motion and native ambient sound",
+            "prompt": "A premium cinematic landscape reveal with natural camera motion and native ambience",
             "duration": 8,
             "aspect_ratio": "16:9",
             "resolution": "4k"
           }
         }
+      },
+      {
+        "id": "veo3.1-quality-frame",
+        "label": "veo3.1-quality frame image-to-video",
+        "payloadTemplate": {
+          "model": "veo3.1-quality",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "Create a premium cinematic continuation from the supplied first frame",
+            "duration": 8,
+            "aspect_ratio": "16:9",
+            "resolution": "4k",
+            "generate_type": "frame",
+            "image_urls": [
+              "https://cdn.example.com/first-frame.webp"
+            ]
+          }
+        }
       }
     ],
     "payloadTemplate": {
-      "model": "veo3.1-fast",
+      "model": "veo3.1-lite",
       "callback_url": "https://your-domain.com/callback",
       "input": {
-        "prompt": "A cinematic nighttime city drive with synchronized ambient audio",
+        "prompt": "A miniature city waking up at sunrise, cinematic light, smooth camera motion",
         "duration": 8,
         "aspect_ratio": "16:9",
         "resolution": "720p"

@@ -8,21 +8,26 @@
     "method": "POST",
     "path": "/api/generate/submit",
     "endpoint": "/api/generate/submit",
-    "summary": "Generate new images or edit one uploaded image with GPT Image 2 through APIDot's unified async submit endpoint.",
-    "about": "GPT Image 2 follows the same APIDot async workflow as other media models: submit one request, receive a task id immediately, then poll shared status or wait for a webhook callback. Use `gpt-image-2` for text-to-image generation and `gpt-image-2-edit` for single-image editing with exactly one source image.",
+    "summary": "Generate new images or edit images with GPT Image 2 through APIDot's unified async submit endpoint.",
+    "about": "GPT Image 2 follows the same APIDot async workflow as other media models: submit one request, receive a task id immediately, then poll shared status or wait for a webhook callback. Use `gpt-image-2` for text-to-image generation without reference images, and `gpt-image-2-edit` when reference images are required for editing.",
     "bestPractices": [
-      "Be explicit about composition, typography, and product framing when you need reliable marketing visuals or legible in-image text.",
-      "Use `gpt-image-2-edit` only when you already have one source image and want a localized transformation instead of a full regeneration.",
+      "Be explicit about composition, typography, product framing, and any text that must appear in the final image.",
+      "Use `input.image_urls` only with `gpt-image-2-edit`, where one or more reference images are required.",
+      "Choose a Poyo-aligned `input.size` value such as `auto`, `1:1`, `16:9`, or `9:16` instead of pixel dimensions.",
       "Store the returned task id immediately so polling, retries, and webhook updates stay idempotent."
     ],
     "faq": [
       {
         "question": "Which GPT Image 2 model id should I send?",
-        "answer": "Use `gpt-image-2` for text-to-image generation and `gpt-image-2-edit` for one-image editing. The edit variant requires exactly one `input.image_urls` entry."
+        "answer": "Use `gpt-image-2` for text-to-image generation without reference images. Use `gpt-image-2-edit` when the request must include one or more `input.image_urls` reference images."
+      },
+      {
+        "question": "Can I request multiple images with input.n?",
+        "answer": "No. GPT Image 2 returns one image per request in this Poyo-aligned API shape, so `input.n` is not supported."
       },
       {
         "question": "Do both variants use the same endpoint?",
-        "answer": "Yes. Both variants submit to `/api/generate/submit`. You switch behavior with the top-level `model` field and the presence of `input.image_urls` for edit requests."
+        "answer": "Yes. Both variants submit to `/api/generate/submit`. You switch behavior with the top-level `model` field. Only `gpt-image-2-edit` accepts `input.image_urls`."
       }
     ],
     "request": [
@@ -56,21 +61,14 @@
         "name": "input.size",
         "type": "string",
         "required": false,
-        "defaultValue": "1024x1024",
-        "description": "Output size preset. Current APIDot support includes `1024x1024`, `1536x1024`, and `1024x1536`."
-      },
-      {
-        "name": "input.n",
-        "type": "number",
-        "required": false,
-        "defaultValue": "1",
-        "description": "Number of images to generate. Current APIDot support allows 1 through 4."
+        "defaultValue": "auto",
+        "description": "Output size preset. Supported values: `auto`, `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`."
       },
       {
         "name": "input.image_urls",
         "type": "string[]",
         "required": false,
-        "description": "Exactly one uploaded source image URL when using `gpt-image-2-edit`. Omit this field for text-to-image requests."
+        "description": "Reference image URLs. Only supported by `gpt-image-2-edit`, where this field is required."
       }
     ],
     "response": [
@@ -99,7 +97,7 @@
       {
         "code": "400",
         "name": "invalid_request",
-        "description": "Missing prompt, unsupported size, or an invalid edit payload such as a missing source image."
+        "description": "Missing prompt, unsupported size, unsupported `input.n`, passing `image_urls` to `gpt-image-2`, or a missing `image_urls` array for `gpt-image-2-edit`."
       },
       {
         "code": "401",
@@ -118,9 +116,9 @@
       }
     ],
     "sample": {
-      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    \"size\": \"1024x1024\",\n    \"n\": 1\n  }\n}\n'",
-      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    size: \"1024x1024\",\n    n: 1\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
-      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n        \"size\": \"1024x1024\",\n        \"n\": 1\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"gpt-image-2\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    \"size\": \"auto\"\n  }\n}\n'",
+      "node": "import APIDot from \"apidot\";\n\nconst client = new APIDot({\n  apiKey: process.env.APIDOT_API_KEY,\n});\n\nconst request = {\n  model: \"gpt-image-2\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n    size: \"auto\"\n  }\n};\n\nconst response = await client.generate({\n  endpoint: \"/api/generate/submit\",\n  ...request,\n});",
+      "python": "import os\nfrom apidot import APIDot\n\nclient = APIDot(api_key=os.environ[\"APIDOT_API_KEY\"])\n\nrequest = {\n    \"model\": \"gpt-image-2\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail\",\n        \"size\": \"auto\"\n    }\n}\n\nresponse = client.generate(\n    endpoint=\"/api/generate/submit\",\n    **request\n)"
     },
     "exampleVariants": [
       {
@@ -131,8 +129,7 @@
           "callback_url": "https://your-domain.com/callback",
           "input": {
             "prompt": "A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail",
-            "size": "1024x1024",
-            "n": 1
+            "size": "auto"
           }
         }
       },
@@ -144,8 +141,7 @@
           "callback_url": "https://your-domain.com/callback",
           "input": {
             "prompt": "Keep the product centered, replace the background with a clean white studio backdrop, add a soft natural shadow, and improve catalog-photo clarity",
-            "size": "1024x1024",
-            "n": 1,
+            "size": "auto",
             "image_urls": [
               "https://your-domain.com/source-image.png"
             ]
@@ -158,8 +154,7 @@
       "callback_url": "https://your-domain.com/callback",
       "input": {
         "prompt": "A premium product photo of a silver espresso machine on a clean white studio background, realistic lighting, high detail",
-        "size": "1024x1024",
-        "n": 1
+        "size": "auto"
       }
     },
     "responseExamples": [

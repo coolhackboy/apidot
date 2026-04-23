@@ -36,6 +36,7 @@ type ResultMode = "preview" | "json";
 type GptImage2StatusData = NonNullable<GptImage2StatusResponse["data"]>;
 
 type UploadedFile = {
+  id: string;
   file?: File;
   url: string;
   uploadedUrl?: string;
@@ -50,7 +51,18 @@ const revokeUploadedFileUrl = (file: UploadedFile | null) => {
 
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
-const SIZE_OPTIONS: GptImage2Size[] = ["1024x1024", "1536x1024", "1024x1536"];
+const SIZE_OPTIONS: GptImage2Size[] = [
+  "auto",
+  "1:1",
+  "2:3",
+  "3:2",
+  "3:4",
+  "4:3",
+  "4:5",
+  "5:4",
+  "9:16",
+  "16:9",
+];
 const FIXED_CREDITS = 2;
 
 const EXAMPLE_OUTPUT: GptImage2StatusData = {
@@ -67,8 +79,6 @@ const EXAMPLE_OUTPUT: GptImage2StatusData = {
   error_message: null,
 };
 
-const formatUsd = (value: number) => value.toFixed(3).replace(/\.?0+$/, "");
-
 const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   const t = useTranslations("modelDetail.model");
   const defaultPrompt = t("gptImage2DefaultPrompt");
@@ -81,9 +91,8 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
 
   const [model, setModel] = useState<GptImage2ModelId>(selectedModel);
   const [prompt, setPrompt] = useState(defaultPrompt);
-  const [size, setSize] = useState<GptImage2Size>("1024x1024");
-  const [imageCount, setImageCount] = useState<1 | 2 | 3 | 4>(1);
-  const [sourceImage, setSourceImage] = useState<UploadedFile | null>(null);
+  const [size, setSize] = useState<GptImage2Size>("auto");
+  const [referenceImages, setReferenceImages] = useState<UploadedFile[]>([]);
   const [jsonConfig, setJsonConfig] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -92,10 +101,18 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   const [downloadingIndex, setDownloadingIndex] = useState<number | null>(null);
   const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
   const defaultPromptRef = useRef(defaultPrompt);
+  const referenceImagesRef = useRef<UploadedFile[]>([]);
 
   useEffect(() => {
     setModel(selectedModel);
   }, [selectedModel]);
+
+  useEffect(() => {
+    if (model !== "gpt-image-2-edit" && referenceImages.length > 0) {
+      referenceImages.forEach(revokeUploadedFileUrl);
+      setReferenceImages([]);
+    }
+  }, [model, referenceImages]);
 
   useEffect(() => {
     if (prompt === defaultPromptRef.current) {
@@ -111,32 +128,39 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   useEffect(() => {
     if (configMode !== "json") return;
 
+    const uploadedReferenceUrls = referenceImages
+      .map((image) => image.uploadedUrl)
+      .filter((url): url is string => Boolean(url));
     const input: GptImage2SubmitRequest["input"] = {
       prompt,
       size,
-      n: imageCount,
     };
 
-    if (model === "gpt-image-2-edit" && sourceImage?.uploadedUrl) {
-      input.image_urls = [sourceImage.uploadedUrl];
+    if (model === "gpt-image-2-edit" && uploadedReferenceUrls.length > 0) {
+      input.image_urls = uploadedReferenceUrls;
     }
 
     setJsonConfig(JSON.stringify({ model, input }, null, 2));
-  }, [configMode, imageCount, model, prompt, size, sourceImage]);
+  }, [configMode, model, prompt, referenceImages, size]);
+
+  useEffect(() => {
+    referenceImagesRef.current = referenceImages;
+  }, [referenceImages]);
 
   useEffect(() => {
     return () => {
       if (intervalIdRef.current) {
         clearInterval(intervalIdRef.current);
       }
-      if (sourceImage?.url.startsWith("blob:")) {
-        URL.revokeObjectURL(sourceImage.url);
-      }
+      referenceImagesRef.current.forEach(revokeUploadedFileUrl);
     };
-  }, [sourceImage]);
+  }, []);
 
-  const isAnyFileUploading = !!sourceImage?.uploading;
-  const needsSourceImage = model === "gpt-image-2-edit";
+  const isAnyFileUploading = referenceImages.some((image) => image.uploading);
+  const needsReferenceImages = model === "gpt-image-2-edit";
+  const uploadedReferenceUrls = referenceImages
+    .map((image) => image.uploadedUrl)
+    .filter((url): url is string => Boolean(url));
 
   const handleError = (error: any, defaultMessage: string) => {
     console.error(error);
@@ -191,64 +215,88 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(event.target.files || []);
+    if (files.length === 0) return;
 
-    try {
-      if (file.size > MAX_IMAGE_SIZE) {
-        throw new Error("Image exceeds 10MB limit");
-      }
+    const uploadResults = await Promise.all(
+      files.map(async (file) => {
+        const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        let url: string | null = null;
 
-      if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
-        throw new Error("Please upload JPEG, PNG, or WebP images only");
-      }
+        try {
+          if (file.size > MAX_IMAGE_SIZE) {
+            throw new Error("Image exceeds 10MB limit");
+          }
 
-      const url = URL.createObjectURL(file);
-      setSourceImage({ file, url, uploading: true });
+          if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+            throw new Error("Please upload JPEG, PNG, or WebP images only");
+          }
 
-      try {
-        const fileName = `gpt-image-2-edit-${Date.now()}-${Math.random()
-          .toString(36)
-          .slice(2)}-${file.name}`;
-        const result = await uploadToR2(file, fileName);
-        setSourceImage({ file, url, uploadedUrl: result.url, uploading: false });
-        toast.success("Image uploaded successfully");
-      } catch (uploadError) {
-        setSourceImage(null);
-        URL.revokeObjectURL(url);
-        throw uploadError;
-      }
+          url = URL.createObjectURL(file);
+          const pendingImage: UploadedFile = { id, file, url, uploading: true };
+          setReferenceImages((current) => [...current, pendingImage]);
 
-      event.target.value = "";
-    } catch (error: any) {
-      handleError(error, "Failed to upload image");
+          const fileName = `gpt-image-2-reference-${Date.now()}-${Math.random()
+            .toString(36)
+            .slice(2)}-${file.name}`;
+          const result = await uploadToR2(file, fileName);
+
+          setReferenceImages((current) =>
+            current.map((image) =>
+              image.id === id ? { ...image, uploadedUrl: result.url, uploading: false } : image,
+            ),
+          );
+          return true;
+        } catch (error: any) {
+          if (url) {
+            URL.revokeObjectURL(url);
+          }
+          setReferenceImages((current) => current.filter((image) => image.id !== id));
+          handleError(error, "Failed to upload image");
+          return false;
+        }
+      }),
+    );
+
+    event.target.value = "";
+    const uploadedCount = uploadResults.filter(Boolean).length;
+
+    if (uploadedCount === 0) {
+      return;
+    }
+
+    if (uploadedCount === 1) {
+      toast.success("Image uploaded successfully");
+    } else {
+      toast.success("Images uploaded successfully");
     }
   };
 
-  const handleRemoveImage = () => {
-    revokeUploadedFileUrl(sourceImage);
-    setSourceImage(null);
+  const handleRemoveImage = (id: string) => {
+    setReferenceImages((current) => {
+      const target = current.find((image) => image.id === id);
+      if (target) {
+        revokeUploadedFileUrl(target);
+      }
+      return current.filter((image) => image.id !== id);
+    });
   };
 
   const handleReset = () => {
-    revokeUploadedFileUrl(sourceImage);
+    referenceImages.forEach(revokeUploadedFileUrl);
     setConfigMode("form");
     setModel(selectedModel);
     setPrompt(defaultPrompt);
-    setSize("1024x1024");
-    setImageCount(1);
-    setSourceImage(null);
+    setSize("auto");
+    setReferenceImages([]);
     setJsonConfig("");
   };
 
   const validateForm = (): string | null => {
     if (!prompt.trim()) return "Please enter a prompt";
-    if (!SIZE_OPTIONS.includes(size)) return "Please choose a supported size";
-    if (!Number.isInteger(imageCount) || imageCount < 1 || imageCount > 4) {
-      return "Number of images must be an integer between 1 and 4";
-    }
-    if (needsSourceImage && !sourceImage?.uploadedUrl) {
-      return "Please upload one source image for gpt-image-2-edit";
+    if (!SIZE_OPTIONS.includes(size)) return t("gptImage2InvalidSize");
+    if (needsReferenceImages && uploadedReferenceUrls.length === 0) {
+      return t("gptImage2ReferenceRequired");
     }
     return null;
   };
@@ -257,11 +305,10 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
     const input: GptImage2SubmitRequest["input"] = {
       prompt: prompt.trim(),
       size,
-      n: imageCount,
     };
 
-    if (needsSourceImage && sourceImage?.uploadedUrl) {
-      input.image_urls = [sourceImage.uploadedUrl];
+    if (needsReferenceImages && uploadedReferenceUrls.length > 0) {
+      input.image_urls = uploadedReferenceUrls;
     }
 
     return {
@@ -287,27 +334,33 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
       }
 
       if (parsedInput.size && !SIZE_OPTIONS.includes(parsedInput.size as GptImage2Size)) {
-        toast.error("Size must be 1024x1024, 1536x1024, or 1024x1536");
+        toast.error(t("gptImage2InvalidSize"));
         return null;
       }
 
-      if (
-        parsedInput.n !== undefined &&
-        (!Number.isInteger(parsedInput.n) || parsedInput.n < 1 || parsedInput.n > 4)
-      ) {
-        toast.error("input.n must be an integer between 1 and 4");
+      if (parsedInput.n !== undefined) {
+        toast.error(t("gptImage2JsonNUnsupported"));
         return null;
       }
 
       if (parsedModel === "gpt-image-2-edit") {
-        if (!Array.isArray(parsedInput.image_urls) || parsedInput.image_urls.length !== 1) {
-          toast.error("gpt-image-2-edit requires exactly one image_urls entry");
+        if (!Array.isArray(parsedInput.image_urls) || parsedInput.image_urls.length === 0) {
+          toast.error(t("gptImage2JsonReferenceRequired"));
           return null;
         }
       }
 
-      if (parsedModel === "gpt-image-2" && parsedInput.image_urls?.length) {
-        toast.error("image_urls are only supported for gpt-image-2-edit");
+      if (parsedModel === "gpt-image-2" && parsedInput.image_urls !== undefined) {
+        toast.error(t("gptImage2JsonImageUrlsTextModelUnsupported"));
+        return null;
+      }
+
+      if (
+        parsedInput.image_urls !== undefined &&
+        (!Array.isArray(parsedInput.image_urls) ||
+          parsedInput.image_urls.some((url: unknown) => typeof url !== "string" || !url.trim()))
+      ) {
+        toast.error(t("gptImage2JsonImageUrlsInvalid"));
         return null;
       }
 
@@ -385,56 +438,60 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
     }
   };
 
-  const renderUploadSlot = () => (
+  const renderReferenceImages = () => (
     <div className="space-y-2">
       <Label className="text-sm font-medium">
-        Source Image <span className="text-red-500">*</span>
+        {t("referenceImages")} {needsReferenceImages ? <span className="text-red-500">*</span> : null}
       </Label>
       <div className="relative w-full rounded-lg border border-border bg-background p-3">
-        {sourceImage ? (
-          <div className="space-y-3">
-            <div className="relative aspect-square overflow-hidden rounded-lg bg-muted/20">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={sourceImage.url}
-                alt="Source"
-                className={`h-full w-full object-contain ${sourceImage.uploading ? "opacity-50" : ""}`}
-              />
-              {sourceImage.uploading ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <Loader2 className="h-6 w-6 animate-spin text-white" />
+        <div className="space-y-3">
+          {referenceImages.length > 0 ? (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {referenceImages.map((image) => (
+                <div key={image.id} className="relative aspect-square overflow-hidden rounded-lg bg-muted/20">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.url}
+                    alt="Reference"
+                    className={`h-full w-full object-cover ${image.uploading ? "opacity-50" : ""}`}
+                  />
+                  {image.uploading ? (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <Loader2 className="h-6 w-6 animate-spin text-white" />
+                    </div>
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(image.id)}
+                    disabled={image.uploading}
+                    className="absolute right-2 top-2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70 disabled:opacity-50"
+                    aria-label={t("removeReferenceImage")}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
                 </div>
-              ) : null}
-              <button
-                type="button"
-                onClick={handleRemoveImage}
-                disabled={sourceImage.uploading}
-                className="absolute right-2 top-2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70 disabled:opacity-50"
-                aria-label="Remove source image"
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
+              ))}
             </div>
-            <p className="text-xs text-muted-foreground">
-              One JPEG, PNG, or WebP image. Required for gpt-image-2-edit.
-            </p>
-          </div>
-        ) : (
-          <label className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-border/60 px-4 py-8 text-center transition-colors hover:border-primary/40 hover:bg-muted/20">
+          ) : null}
+
+          <label className="flex min-h-[150px] cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed border-border/60 px-4 py-8 text-center transition-colors hover:border-primary/40 hover:bg-muted/20">
             <Upload className="h-8 w-8 text-muted-foreground" />
             <div className="space-y-1">
-              <p className="text-sm font-medium">Upload source image</p>
-              <p className="text-xs text-muted-foreground">JPEG, PNG, or WebP up to 10MB</p>
+              <p className="text-sm font-medium">{t("uploadReferenceImages")}</p>
+              <p className="text-xs text-muted-foreground">
+                {t("gptImage2ReferenceImagesHelp")}
+              </p>
             </div>
             <Input
               type="file"
               accept="image/png,image/jpeg,image/webp"
+              multiple
               className="hidden"
               onChange={handleFileUpload}
               disabled={isSubmitting}
             />
           </label>
-        )}
+        </div>
       </div>
     </div>
   );
@@ -443,12 +500,12 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
     if (configMode === "json") {
       return (
         <div className="space-y-3">
-          <Label className="text-sm font-medium">JSON Configuration</Label>
+          <Label className="text-sm font-medium">{t("jsonConfiguration")}</Label>
           <Textarea
             value={jsonConfig}
             onChange={(e) => setJsonConfig(e.target.value)}
             className="min-h-[500px] font-mono text-sm"
-            placeholder={`{\n  "model": "gpt-image-2",\n  "input": {\n    "prompt": "A polished product hero shot",\n    "size": "1024x1024",\n    "n": 1\n  }\n}`}
+            placeholder={`{\n  "model": "gpt-image-2",\n  "input": {\n    "prompt": "A polished product hero shot",\n    "size": "auto"\n  }\n}`}
           />
         </div>
       );
@@ -458,10 +515,10 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
       <div className="space-y-4">
         <div className="space-y-2">
           <Label className="text-sm font-medium">
-            Prompt <span className="text-red-500">*</span>
+            {t("prompt")} <span className="text-red-500">*</span>
           </Label>
           <Textarea
-            placeholder="Describe the image you want to generate..."
+            placeholder={t("gptImage2PromptPlaceholder")}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             className="min-h-[120px] max-h-[320px] resize-y"
@@ -470,13 +527,14 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Size</Label>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+          <Label className="text-sm font-medium">{t("size")}</Label>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
             {SIZE_OPTIONS.map((option) => (
               <Button
                 key={option}
                 type="button"
                 variant={size === option ? "default" : "outline"}
+                className={size === option ? undefined : "hover:bg-muted hover:text-foreground"}
                 onClick={() => setSize(option)}
                 disabled={isSubmitting}
               >
@@ -484,30 +542,9 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
               </Button>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground">
-            Poyo-aligned presets: square, landscape, and portrait.
-          </p>
         </div>
 
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Number of Images</Label>
-          <Input
-            type="number"
-            min={1}
-            max={4}
-            step={1}
-            value={imageCount}
-            onChange={(e) => {
-              const nextValue = Number(e.target.value);
-              if (Number.isInteger(nextValue) && nextValue >= 1 && nextValue <= 4) {
-                setImageCount(nextValue as 1 | 2 | 3 | 4);
-              }
-            }}
-            disabled={isSubmitting}
-          />
-        </div>
-
-        {needsSourceImage ? renderUploadSlot() : null}
+        {needsReferenceImages ? renderReferenceImages() : null}
       </div>
     );
   };
@@ -726,23 +763,23 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
             <div className="space-y-3 sm:space-y-4 lg:space-y-6">
               <Card className="h-full rounded-3xl border bg-muted/50 shadow-none">
                 <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
-                  <div className="flex min-h-0 flex-1 flex-col gap-4">
+                  <div data-tool-action-boundary className="relative flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
-                      <div className="text-lg font-semibold">Input</div>
+                      <div className="text-lg font-semibold">{t("input")}</div>
                       <div className="flex gap-1 rounded-lg bg-muted p-1">
                         <Button
                           size="sm"
                           variant={configMode === "form" ? "default" : "ghost"}
                           onClick={() => setConfigMode("form")}
-                          className="h-8"
+                          className={configMode === "form" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
-                          Form
+                          {t("form")}
                         </Button>
                         <Button
                           size="sm"
                           variant={configMode === "json" ? "default" : "ghost"}
                           onClick={() => setConfigMode("json")}
-                          className="h-8"
+                          className={configMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>
@@ -753,9 +790,9 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
 
                     <FloatingGenerateBar
                       className="mt-auto"
-                      secondaryLabel="Reset"
-                      actionLabel="Generate Image"
-                      loadingLabel="Generating..."
+                      secondaryLabel={t("reset")}
+                      actionLabel={t("generateImage")}
+                      loadingLabel={t("streaming")}
                       onSecondaryClick={handleReset}
                       onClick={handleGenerateImage}
                       secondaryDisabled={isSubmitting || isAnyFileUploading}
@@ -776,21 +813,21 @@ const GptImage2 = ({ selectedModel = "gpt-image-2" }: GptImage2Props) => {
                 <CardContent className="flex h-full flex-col p-3 sm:p-4 lg:p-6">
                   <div className="flex min-h-0 flex-1 flex-col gap-4">
                     <div className="flex items-center justify-between border-b pb-3">
-                      <div className="text-lg font-semibold">Output</div>
+                      <div className="text-lg font-semibold">{t("output")}</div>
                       <div className="flex gap-1 rounded-lg bg-muted p-1">
                         <Button
                           size="sm"
                           variant={resultMode === "preview" ? "default" : "ghost"}
                           onClick={() => setResultMode("preview")}
-                          className="h-8"
+                          className={resultMode === "preview" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
-                          Preview
+                          {t("preview")}
                         </Button>
                         <Button
                           size="sm"
                           variant={resultMode === "json" ? "default" : "ghost"}
                           onClick={() => setResultMode("json")}
-                          className="h-8"
+                          className={resultMode === "json" ? "h-8" : "h-8 hover:bg-muted hover:text-foreground"}
                         >
                           JSON
                         </Button>

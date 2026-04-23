@@ -2183,8 +2183,8 @@
     "icon": "https://storage.poyo.ai/provider/gemini.svg",
     "thumbnail": "https://storage.poyo.ai/models/veo-3.1.webp",
     "models": [
-      "veo3.1-fast",
       "veo3.1-lite",
+      "veo3.1-fast",
       "veo3.1-quality"
     ],
     "description": "Google DeepMind's Veo 3.1 family for native-audio video generation with text, reference-image, and frame-guided workflows across Fast, Lite, and Quality variants.",

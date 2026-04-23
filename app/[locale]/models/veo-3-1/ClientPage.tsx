@@ -19,7 +19,7 @@ type Veo31Model = "veo3.1-fast" | "veo3.1-lite" | "veo3.1-quality";
 
 export default function ClientPage({ page, locale, docsEndpoint }: ClientPageProps) {
   const [activeSection, setActiveSection] = useState<"playground" | "api" | "pricing">("playground");
-  const [selectedModel, setSelectedModel] = useState<Veo31Model>("veo3.1-fast");
+  const [selectedModel, setSelectedModel] = useState<Veo31Model>("veo3.1-lite");
 
   return (
     <div className="model-tool-button-theme min-h-screen bg-background">
