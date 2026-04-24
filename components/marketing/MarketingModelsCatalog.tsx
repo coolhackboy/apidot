@@ -11,23 +11,24 @@ import {
   type CatalogAIModel,
   type CatalogCategory,
 } from "@/services/modelService";
+import { getCatalogRouteByCategory } from "@/lib/modelCatalog";
 
 type SortMode = "popular" | "price" | "name";
 type CategoryFilter = CatalogCategory["key"];
 
 const CATEGORY_TO_MODEL_CATEGORY: Record<Exclude<CategoryFilter, "all">, string[]> = {
-  Language: ["Chat"],
+  Chat: ["Chat"],
   Image: ["Image"],
   Video: ["Video"],
-  Audio: ["Audio", "Music"],
+  Music: ["Audio", "Music"],
 };
 
 const CATEGORY_TO_TRANSLATION_KEY: Record<CategoryFilter, string> = {
   all: "allModels",
-  Language: "language",
+  Chat: "chat",
   Image: "image",
   Video: "video",
-  Audio: "audio",
+  Music: "music",
 };
 
 type LocalizedModelCopy = {
@@ -94,13 +95,18 @@ const renderCatalogPreview = (model: CatalogAIModel) => {
   return <span>{model.catalogPreview?.label || `${model.name.toUpperCase()} · PREVIEW`}</span>;
 };
 
-export default function MarketingModelsCatalog() {
+interface MarketingModelsCatalogProps {
+  activeCategory?: CategoryFilter;
+}
+
+export default function MarketingModelsCatalog({
+  activeCategory = "all",
+}: MarketingModelsCatalogProps) {
   const tCatalog = useTranslations("MarketingModelsCatalog");
   const tHero = useTranslations("ModelHero");
   const models = useMemo(() => getCatalogModels(), []);
   const categories = useMemo(() => getCatalogCategories(), []);
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<CategoryFilter>("all");
   const [sort, setSort] = useState<SortMode>("popular");
   const localizedModels = useMemo(() => {
     try {
@@ -127,11 +133,11 @@ export default function MarketingModelsCatalog() {
           .join(" ")
           .toLowerCase();
 
-        return matchesCategory(model, category) && (!normalizedQuery || haystack.includes(normalizedQuery));
+        return matchesCategory(model, activeCategory) && (!normalizedQuery || haystack.includes(normalizedQuery));
       }),
       sort,
     );
-  }, [category, localizedModels, models, query, sort]);
+  }, [activeCategory, localizedModels, models, query, sort]);
 
   return (
     <div className="mk-models-page">
@@ -163,15 +169,14 @@ export default function MarketingModelsCatalog() {
 
             <div className="mk-models-tabs" role="tablist" aria-label={tCatalog("categoriesAriaLabel")}>
               {categories.map((item) => (
-                <button
+                <Link
                   key={item.key}
-                  type="button"
-                  onClick={() => setCategory(item.key)}
-                  className={`mk-models-tab ${category === item.key ? "is-active" : ""}`}
+                  href={getCatalogRouteByCategory(item.key)}
+                  className={`mk-models-tab ${activeCategory === item.key ? "is-active" : ""}`}
                 >
                   {tCatalog(`categories.${CATEGORY_TO_TRANSLATION_KEY[item.key]}`)}
                   <span className="mk-models-tab-count">{item.count}</span>
-                </button>
+                </Link>
               ))}
             </div>
 

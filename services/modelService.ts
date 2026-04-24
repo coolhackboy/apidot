@@ -1,6 +1,7 @@
 import modelsData from '@/data/models.json';
 import claudeOpus47Common from '@/i18n/pages/landing/claude-opus-4-7/common.json';
 import gptImage2Common from '@/i18n/pages/landing/gpt-image-2/common.json';
+import minimaxMusic26Common from '@/i18n/pages/landing/minimax-music-2-6/common.json';
 import seedance2Common from '@/i18n/pages/landing/seedance-2/common.json';
 import veo31Common from '@/i18n/pages/landing/veo-3-1/common.json';
 import { ModelCatalogPreview } from '@/types/pages/landing';
@@ -53,7 +54,7 @@ export interface CatalogAIModel extends AIModel {
 }
 
 export interface CatalogCategory {
-  key: "all" | "Language" | "Image" | "Video" | "Audio";
+  key: "all" | "Chat" | "Image" | "Video" | "Music";
   label: string;
   count: number;
 }
@@ -73,7 +74,19 @@ export interface HeaderModelGroup {
 }
 
 export const mockModels: AIModel[] = modelsData as AIModel[];
-export const ACTIVE_MARKET_MODEL_IDS = ["seedance-2", "gpt-image-2", "veo-3-1", "claude-opus-4-7"] as const;
+export const ACTIVE_MARKET_MODEL_IDS = [
+  "seedance-2",
+  "gpt-image-2",
+  "veo-3-1",
+  "claude-opus-4-7",
+  "minimax-music-2-6",
+] as const;
+export const HOME_FEATURED_MODEL_IDS = [
+  "seedance-2",
+  "gpt-image-2",
+  "veo-3-1",
+  "claude-opus-4-7",
+] as const;
 const activeMarketplaceModels = mockModels.filter((model) =>
   ACTIVE_MARKET_MODEL_IDS.includes(model.id as (typeof ACTIVE_MARKET_MODEL_IDS)[number])
 );
@@ -81,6 +94,7 @@ const CATALOG_PREVIEW_MAP: Record<string, ModelCatalogPreview | undefined> = {
   "claude-opus-4-7": claudeOpus47Common.catalogPreview as ModelCatalogPreview,
   "seedance-2": seedance2Common.catalogPreview as ModelCatalogPreview,
   "gpt-image-2": gptImage2Common.catalogPreview as ModelCatalogPreview,
+  "minimax-music-2-6": minimaxMusic26Common.catalogPreview as ModelCatalogPreview,
   "veo-3-1": veo31Common.catalogPreview as ModelCatalogPreview,
 };
 
@@ -130,16 +144,16 @@ export const getCatalogModels = (): CatalogAIModel[] => {
 
 export const getCatalogCategories = (): CatalogCategory[] => {
   const counts = {
-    Language: 0,
+    Chat: 0,
     Image: 0,
     Video: 0,
-    Audio: 0,
+    Music: 0,
   };
 
   activeMarketplaceModels.forEach((model) => {
     const category = model.category;
     if (category === "Chat") {
-      counts.Language += 1;
+      counts.Chat += 1;
       return;
     }
     if (category === "Image") {
@@ -151,16 +165,16 @@ export const getCatalogCategories = (): CatalogCategory[] => {
       return;
     }
     if (category === "Audio" || category === "Music") {
-      counts.Audio += 1;
+      counts.Music += 1;
     }
   });
 
   return [
     { key: "all", label: "All models", count: activeMarketplaceModels.length },
-    { key: "Language", label: "Language", count: counts.Language },
+    { key: "Chat", label: "Chat", count: counts.Chat },
     { key: "Image", label: "Image", count: counts.Image },
     { key: "Video", label: "Video", count: counts.Video },
-    { key: "Audio", label: "Audio", count: counts.Audio },
+    { key: "Music", label: "Music", count: counts.Music },
   ];
 };
 
@@ -227,6 +241,13 @@ export const formatModelCardPriceUSD = (amountUSD: number): string => {
 export const getFeaturedModels = (): CatalogAIModel[] => {
   const featured = activeMarketplaceModels.filter(model => model.featured);
   return (featured.length > 0 ? featured : activeMarketplaceModels).map(withCatalogPreview);
+};
+
+export const getHomeFeaturedModels = (): CatalogAIModel[] => {
+  return HOME_FEATURED_MODEL_IDS
+    .map((id) => activeMarketplaceModels.find((model) => model.id === id))
+    .filter((model): model is AIModel => Boolean(model))
+    .map(withCatalogPreview);
 };
 
 export const getModelsByProvider = (provider: string): AIModel[] => {

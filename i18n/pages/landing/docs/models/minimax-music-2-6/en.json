@@ -1,0 +1,204 @@
+{
+  "id": "minimax-music-2-6",
+  "groupKey": "music",
+  "navLabel": "MiniMax Music 2.6",
+  "method": "POST",
+  "endpoint": {
+    "label": "MiniMax Music 2.6",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "Generate songs with MiniMax Music 2.6 through APIDot's unified async submit endpoint.",
+    "seoTitle": "MiniMax Music 2.6 API Docs | APIDot",
+    "seoDescription": "MiniMax Music 2.6 API request fields, validation rules, examples, and async result flow for APIDot integrations.",
+    "about": "MiniMax Music 2.6 uses APIDot's shared async media workflow. Submit a request to `/api/generate/submit`, receive `task_id` immediately, then query `/api/generate/detail/music?task_id=...` for the final audio result. This page documents only the current official Poyo submit request shape.",
+    "bestPractices": [
+      "Write a prompt that makes genre, mood, pacing, instrumentation, and vocal intent explicit before you optimize anything else.",
+      "Send `input.lyrics` when you need direct lyrical control. If lyrics are omitted, you must enable either `input.lyrics_optimizer` or `input.is_instrumental`.",
+      "Use `input.is_instrumental=true` for BGM or non-vocal workflows, and do not combine that with a need for lyric generation.",
+      "Store `task_id` immediately after submit and use `/api/generate/detail/music?task_id=...` to retrieve final `audio_url`, `audio_id`, `title`, `duration`, and prompt metadata."
+    ],
+    "faq": [
+      {
+        "question": "Which model id should I send for MiniMax Music 2.6?",
+        "answer": "Use the top-level model id `minimax-music-2.6`."
+      },
+      {
+        "question": "When is `input.lyrics` required?",
+        "answer": "Lyrics are required only when both `input.lyrics_optimizer` and `input.is_instrumental` are false. If either one is true, lyrics can be omitted."
+      },
+      {
+        "question": "How do I get the final generated music file?",
+        "answer": "After submit returns `task_id`, query `/api/generate/detail/music?task_id=...` until the task reaches `finished`, then read the returned `audio_url` and related metadata."
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "minimax-music-2.6",
+        "description": "Target model id. Must be `minimax-music-2.6`."
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "Optional webhook callback URL for terminal task updates."
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "Container for MiniMax Music 2.6 generation parameters."
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "Music prompt describing genre, mood, instrumentation, pacing, and vocal direction. Official docs indicate a length range of 10 to 2000 characters."
+      },
+      {
+        "name": "input.lyrics",
+        "type": "string",
+        "required": false,
+        "description": "Optional lyrics content. Maximum length is 3500 characters. Required only when both `input.lyrics_optimizer` and `input.is_instrumental` are false."
+      },
+      {
+        "name": "input.lyrics_optimizer",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Enable automatic lyric optimization or lyric generation assistance when you do not want to provide final lyrics directly."
+      },
+      {
+        "name": "input.is_instrumental",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Generate instrumental-only music without vocals."
+      },
+      {
+        "name": "input.audio_setting.sample_rate",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "44100",
+        "description": "Optional sample rate. Supported values: `16000`, `24000`, `32000`, `44100`."
+      },
+      {
+        "name": "input.audio_setting.bitrate",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "256000",
+        "description": "Optional bitrate. Supported values: `32000`, `64000`, `128000`, `256000`."
+      },
+      {
+        "name": "input.audio_setting.format",
+        "type": "string",
+        "required": false,
+        "defaultValue": "mp3",
+        "description": "Optional audio format. Supported values: `mp3`, `wav`, `pcm`."
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "HTTP-style status code. Successful submits return `200`."
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "Async task identifier returned immediately after submission."
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "Initial task status, typically `not_started`."
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "ISO 8601 timestamp for task creation."
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "Missing prompt, a prompt that does not satisfy the documented length range, unsupported `audio_setting` values, or omitting lyrics while both `lyrics_optimizer` and `is_instrumental` are false."
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Missing, expired, or invalid Bearer API key."
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "The current prepaid balance cannot cover the MiniMax Music 2.6 generation cost."
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "The API key is temporarily above the allowed submit rate."
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"minimax-music-2.6\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"An uplifting indie pop song with female vocals, bright guitars, warm drums, and a clean festival-ready chorus\",\n    \"lyrics_optimizer\": true,\n    \"audio_setting\": {\n      \"sample_rate\": 44100,\n      \"bitrate\": 256000,\n      \"format\": \"mp3\"\n    }\n  }\n}\n'",
+      "node": "const payload = {\n  model: \"minimax-music-2.6\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"An uplifting indie pop song with female vocals, bright guitars, warm drums, and a clean festival-ready chorus\",\n    lyrics_optimizer: true,\n    audio_setting: {\n      sample_rate: 44100,\n      bitrate: 256000,\n      format: \"mp3\"\n    }\n  }\n};",
+      "python": "request = {\n    \"model\": \"minimax-music-2.6\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"An uplifting indie pop song with female vocals, bright guitars, warm drums, and a clean festival-ready chorus\",\n        \"lyrics_optimizer\": True,\n        \"audio_setting\": {\n            \"sample_rate\": 44100,\n            \"bitrate\": 256000,\n            \"format\": \"mp3\"\n        }\n    }\n}"
+    },
+    "exampleVariants": [
+      {
+        "id": "minimax-music-2.6",
+        "label": "minimax-music-2.6",
+        "payloadTemplate": {
+          "model": "minimax-music-2.6",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "An uplifting indie pop song with female vocals, bright guitars, warm drums, and a clean festival-ready chorus",
+            "lyrics_optimizer": true,
+            "audio_setting": {
+              "sample_rate": 44100,
+              "bitrate": 256000,
+              "format": "mp3"
+            }
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "minimax-music-2.6",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "An uplifting indie pop song with female vocals, bright guitars, warm drums, and a clean festival-ready chorus",
+        "lyrics_optimizer": true,
+        "audio_setting": {
+          "sample_rate": 44100,
+          "bitrate": 256000,
+          "format": "mp3"
+        }
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-music-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-24T10:12:41\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"lyrics is required when lyrics_optimizer and is_instrumental are both false\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-music-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-24T10:12:41\"\n  }\n}"
+  }
+}

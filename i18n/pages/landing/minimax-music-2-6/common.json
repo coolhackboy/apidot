@@ -1,0 +1,11 @@
+{
+  "catalogPreview": {
+    "type": "image",
+    "src": "https://storage.apidot.ai/models/minimax-music-2-6/mockg4xk_n07ubnb0lcb.webp",
+    "label": "MINIMAX MUSIC 2.6"
+  },
+  "playgroundExample": {
+    "imageUrl": "https://storage.apidot.ai/models/minimax-music-2-6/mockg4xk_n07ubnb0lcb.webp",
+    "audioUrl": "https://storage.apidot.ai/models/minimax-music-2-6/music-default.mp3"
+  }
+}

@@ -624,7 +624,8 @@
           "title": "对话 API"
         },
         "musicApi": {
-          "title": "音乐 API"
+          "title": "音乐 API",
+          "minimaxMusic26": "MiniMax Music 2.6"
         },
         "resources": {
           "title": "资源",
@@ -1447,7 +1448,9 @@
         "veo3.1-quality": "每个视频 | 720p/1080p：120 积分 ($0.60)，4K：400 积分 ($2.00)",
         "claude-opus-4-7": "每 1K 输入 tokens | 输出：5 积分 ($0.02 / 1K tokens)",
         "gpt-image-2": "每次生成 | 固定 2 积分 ($0.01)",
-        "gpt-image-2-edit": "每次生成 | 固定 2 积分 ($0.01)"
+        "gpt-image-2-edit": "每次生成 | 固定 2 积分 ($0.01)",
+        "minimax-music-2-6": "每次生成 | 固定 20 积分 ($0.10)",
+        "minimax-music-2.6": "每次生成 | 固定 20 积分 ($0.10)"
       }
     },
     "model": {
@@ -1652,6 +1655,14 @@
       "gpt-image-2-edit": {
         "name": "gpt-image-2-edit",
         "description": "OpenAI 的 GPT Image 2 单图编辑模型，适合在保留原始构图的前提下做局部、上下文感知的修改，例如替换背景、调整文案区域与优化视觉细节。"
+      },
+      "minimax-music-2-6": {
+        "name": "MiniMax Music 2.6",
+        "description": "MiniMax Music 2.6 是面向异步工作流的 AI 音乐生成模型，支持 prompt 生成歌曲、歌词辅助创作、纯音乐模式，以及可控制的音频导出设置。"
+      },
+      "minimax-music-2.6": {
+        "name": "MiniMax Music 2.6",
+        "description": "MiniMax Music 2.6 是面向异步工作流的 AI 音乐生成模型，支持 prompt 生成歌曲、歌词辅助创作、纯音乐模式，以及可控制的音频导出设置。"
       }
     },
     "actions": {
@@ -1667,10 +1678,10 @@
     "categoriesAriaLabel": "模型分类",
     "categories": {
       "allModels": "全部模型",
-      "language": "语言",
+      "chat": "对话",
       "image": "图像",
       "video": "视频",
-      "audio": "音频"
+      "music": "音乐"
     },
     "sortOptions": {
       "popular": "最受欢迎",

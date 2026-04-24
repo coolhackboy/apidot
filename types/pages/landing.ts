@@ -15,6 +15,8 @@ export interface ModelCatalogPreview {
   label?: string;
 }
 
+export type LandingCatalogCategoryKey = "image" | "video" | "music" | "chat";
+
 export interface LandingPage {
   feature_code?: string;
   credits_amount?: number;
@@ -480,6 +482,7 @@ export interface LandingPage {
     browseEyebrow: string;
     browseTitle: string;
     modalities: {
+      categoryKey: LandingCatalogCategoryKey;
       title: string;
       description: string;
       examples: string;

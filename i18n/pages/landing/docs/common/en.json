@@ -71,6 +71,10 @@
         "label": "Models · Image"
       },
       {
+        "key": "music",
+        "label": "Models · Music"
+      },
+      {
         "key": "video",
         "label": "Models · Video"
       }

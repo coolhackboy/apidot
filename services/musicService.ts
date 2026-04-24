@@ -210,6 +210,8 @@ export interface MusicFile {
   title?: string;
   style?: string;
   audio_id?: string;
+  duration?: number;
+  prompt?: string;
 }
 
 // 提交响应
@@ -239,10 +241,14 @@ export interface MusicDetailResponse {
 
 // 服务实现
 export const musicService = {
-  async submit(model: MusicModel, input: object): Promise<MusicSubmitResponse> {
+  async submit(
+    model: MusicModel,
+    input: object,
+    callback_url?: string,
+  ): Promise<MusicSubmitResponse> {
     const response = await apiService.post(
       "/api/generate/submit",
-      { model, input },
+      { model, input, ...(callback_url ? { callback_url } : {}) },
       appConfig.appName
     );
 

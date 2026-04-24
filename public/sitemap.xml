@@ -37,6 +37,78 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models" />
   </url>
   <url>
+    <loc>https://apidot.ai/models/image</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/image" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/image" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/image" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/models/image</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/image" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/image" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/image" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/models/video</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/video" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/video" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/video" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/models/video</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/video" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/video" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/video" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/models/music</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/music" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/music" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/music" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/models/music</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/music" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/music" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/music" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/models/chat</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/chat" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/chat" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/chat" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/models/chat</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/chat" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/chat" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/chat" />
+  </url>
+  <url>
     <loc>https://apidot.ai/pricing</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -125,6 +197,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/veo-3-1" />
     <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/veo-3-1" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/veo-3-1" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/models/minimax-music-2-6</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/minimax-music-2-6" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/models/minimax-music-2-6</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/models/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/models/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/models/minimax-music-2-6" />
   </url>
   <url>
     <loc>https://apidot.ai/docs/introduction</loc>
@@ -287,5 +377,41 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/docs/veo-3-1" />
     <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/docs/veo-3-1" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/docs/veo-3-1" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/docs/claude-opus-4-7</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/docs/claude-opus-4-7" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/docs/claude-opus-4-7" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/docs/claude-opus-4-7" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/docs/claude-opus-4-7</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/docs/claude-opus-4-7" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/docs/claude-opus-4-7" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/docs/claude-opus-4-7" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/docs/minimax-music-2-6</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/docs/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/docs/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/docs/minimax-music-2-6" />
+  </url>
+  <url>
+    <loc>https://apidot.ai/zh/docs/minimax-music-2-6</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://apidot.ai/docs/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://apidot.ai/zh/docs/minimax-music-2-6" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://apidot.ai/docs/minimax-music-2-6" />
   </url>
 </urlset>

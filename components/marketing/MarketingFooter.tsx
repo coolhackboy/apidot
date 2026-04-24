@@ -42,7 +42,7 @@ export default function MarketingFooter() {
     {
       title: t("columns.musicApi.title"),
       links: [
-        { label: t("comingSoon") },
+        { label: t("columns.musicApi.minimaxMusic26"), href: "/models/minimax-music-2-6" },
       ],
     },
     {

@@ -50,24 +50,28 @@
     "browseTitle": "\u8986\u76d6\u6240\u6709\u4e3b\u6d41\u6a21\u6001\u4e2d\u7684\u9876\u7ea7 AI API",
     "modalities": [
       {
+        "categoryKey": "image",
         "title": "\u56fe\u50cf",
         "description": "\u66f4\u5f3a\u56fe\u50cf API\uff0c\u8986\u76d6\u751f\u6210\u3001\u7f16\u8f91\u3001\u653e\u5927\u4e0e\u53c2\u8003\u56fe\u5de5\u4f5c\u6d41",
         "examples": "Nano Banana\uff0cGPT-4o Image\uff0cSeedream\uff0cFLUX",
         "icon": "ImageIcon"
       },
       {
+        "categoryKey": "video",
         "title": "\u89c6\u9891",
         "description": "\u66f4\u65b0\u66f4\u5feb\u7684\u89c6\u9891 API\uff0c\u66f4\u9ad8\u8d28\u91cf\u3001\u66f4\u4f4e\u6210\u672c\u3001\u66f4\u9002\u5408\u751f\u4ea7\u843d\u5730",
         "examples": "Seedance 2\uff0cVeo 3.1\uff0cSora 2\uff0cKling",
         "icon": "Clapperboard"
       },
       {
+        "categoryKey": "music",
         "title": "\u97f3\u4e50",
         "description": "\u751f\u4ea7\u7ea7\u97f3\u4e50 API\uff0c\u8986\u76d6\u751f\u6210\u3001\u7eed\u5199\u3001\u4eba\u58f0\u3001\u97f3\u9891\u5904\u7406\u4e0e\u5de5\u4f5c\u6d41\u81ea\u52a8\u5316",
         "examples": "AI Music\uff0cMiniMax Music 2.6\uff0cVocal Remover",
         "icon": "MicVocal"
       },
       {
+        "categoryKey": "chat",
         "title": "\u5bf9\u8bdd",
         "description": "\u9ad8\u8d28\u91cf\u5bf9\u8bdd API\uff0c\u9002\u5408\u7f16\u7801\u3001\u63a8\u7406\u4e0e\u591a\u6a21\u6001\u667a\u80fd\u52a9\u624b\u573a\u666f",
         "examples": "Claude Opus 4.7\uff0cClaude 4.5\uff0cGemini 3",

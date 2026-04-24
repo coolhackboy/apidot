@@ -1,0 +1,204 @@
+{
+  "id": "minimax-music-2-6",
+  "groupKey": "music",
+  "navLabel": "MiniMax Music 2.6",
+  "method": "POST",
+  "endpoint": {
+    "label": "MiniMax Music 2.6",
+    "method": "POST",
+    "path": "/api/generate/submit",
+    "endpoint": "/api/generate/submit",
+    "summary": "通过 APIDot 统一异步提交接口调用 MiniMax Music 2.6 生成歌曲。",
+    "seoTitle": "MiniMax Music 2.6 API 文档 | APIDot",
+    "seoDescription": "MiniMax Music 2.6 API 的请求字段、校验规则、示例代码与异步结果查询说明。",
+    "about": "MiniMax Music 2.6 复用 APIDot 的统一异步媒体工作流。先向 `/api/generate/submit` 提交请求，立即获得 `task_id`，然后通过 `/api/generate/detail/music?task_id=...` 查询最终音频结果。本页只记录当前官方 Poyo 文档明确公开的 submit 请求结构。",
+    "bestPractices": [
+      "先把风格、情绪、节奏、配器和人声方向写清楚，再去优化其它参数。",
+      "如果你要直接控制歌词内容，就传 `input.lyrics`；如果不传歌词，则必须开启 `input.lyrics_optimizer` 或 `input.is_instrumental` 之一。",
+      "需要 BGM 或无唱声输出时，优先使用 `input.is_instrumental=true`，不要同时依赖歌词生成逻辑。",
+      "提交后立刻保存 `task_id`，并通过 `/api/generate/detail/music?task_id=...` 查询最终的 `audio_url`、`audio_id`、`title`、`duration` 和 prompt 元数据。"
+    ],
+    "faq": [
+      {
+        "question": "MiniMax Music 2.6 应该传哪个 model id？",
+        "answer": "顶层 `model` 必须使用 `minimax-music-2.6`。"
+      },
+      {
+        "question": "`input.lyrics` 什么时候必填？",
+        "answer": "只有在 `input.lyrics_optimizer` 和 `input.is_instrumental` 都为 false 时，歌词才是必填。只要其中一个为 true，就可以不传歌词。"
+      },
+      {
+        "question": "怎么拿到最终生成的音乐文件？",
+        "answer": "submit 返回 `task_id` 后，轮询 `/api/generate/detail/music?task_id=...`，等任务进入 `finished` 后读取 `audio_url` 和相关元数据。"
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "minimax-music-2.6",
+        "description": "目标模型 id，必须是 `minimax-music-2.6`。"
+      },
+      {
+        "name": "callback_url",
+        "type": "string",
+        "required": false,
+        "defaultValue": "https://your-domain.com/callback",
+        "description": "可选 webhook 回调地址，用于接收任务终态通知。"
+      },
+      {
+        "name": "input",
+        "type": "object",
+        "required": true,
+        "description": "MiniMax Music 2.6 的输入参数容器。"
+      },
+      {
+        "name": "input.prompt",
+        "type": "string",
+        "required": true,
+        "description": "音乐提示词，用于描述风格、情绪、配器、节奏和人声方向。官方文档给出的长度范围为 10 到 2000 字符。"
+      },
+      {
+        "name": "input.lyrics",
+        "type": "string",
+        "required": false,
+        "description": "可选歌词内容，最大长度 3500 字符。仅当 `input.lyrics_optimizer` 和 `input.is_instrumental` 都为 false 时才必填。"
+      },
+      {
+        "name": "input.lyrics_optimizer",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "启用歌词优化或歌词自动生成辅助，适合你不想直接提供最终歌词时使用。"
+      },
+      {
+        "name": "input.is_instrumental",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "只生成纯音乐，不输出人声。"
+      },
+      {
+        "name": "input.audio_setting.sample_rate",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "44100",
+        "description": "可选采样率，支持 `16000`、`24000`、`32000`、`44100`。"
+      },
+      {
+        "name": "input.audio_setting.bitrate",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "256000",
+        "description": "可选码率，支持 `32000`、`64000`、`128000`、`256000`。"
+      },
+      {
+        "name": "input.audio_setting.format",
+        "type": "string",
+        "required": false,
+        "defaultValue": "mp3",
+        "description": "可选音频格式，支持 `mp3`、`wav`、`pcm`。"
+      }
+    ],
+    "response": [
+      {
+        "name": "code",
+        "type": "integer",
+        "description": "类 HTTP 状态码，成功提交时返回 `200`。"
+      },
+      {
+        "name": "data.task_id",
+        "type": "string",
+        "description": "异步任务 id，提交后立即返回。"
+      },
+      {
+        "name": "data.status",
+        "type": "string",
+        "description": "初始任务状态，通常为 `not_started`。"
+      },
+      {
+        "name": "data.created_time",
+        "type": "string",
+        "description": "任务创建时间，ISO 8601 格式。"
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "prompt 缺失、prompt 不满足文档长度要求、`audio_setting` 值不受支持，或在 `lyrics_optimizer` 与 `is_instrumental` 都为 false 时未提供歌词。"
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Bearer API Key 缺失、过期或无效。"
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "当前预付余额不足以覆盖 MiniMax Music 2.6 的生成成本。"
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "当前 API Key 的提交速率暂时超过允许范围。"
+      }
+    ],
+    "sample": {
+      "curl": "curl --request POST \\\n  --url https://api.apidot.ai/api/generate/submit \\\n  --header 'Authorization: Bearer <APIDOT_API_KEY>' \\\n  --header 'Content-Type: application/json' \\\n  --data '\n{\n  \"model\": \"minimax-music-2.6\",\n  \"callback_url\": \"https://your-domain.com/callback\",\n  \"input\": {\n    \"prompt\": \"一首明亮有力的 indie pop 歌曲，女声主唱，温暖鼓组，清晰副歌，适合节日氛围\",\n    \"lyrics_optimizer\": true,\n    \"audio_setting\": {\n      \"sample_rate\": 44100,\n      \"bitrate\": 256000,\n      \"format\": \"mp3\"\n    }\n  }\n}\n'",
+      "node": "const payload = {\n  model: \"minimax-music-2.6\",\n  callback_url: \"https://your-domain.com/callback\",\n  input: {\n    prompt: \"一首明亮有力的 indie pop 歌曲，女声主唱，温暖鼓组，清晰副歌，适合节日氛围\",\n    lyrics_optimizer: true,\n    audio_setting: {\n      sample_rate: 44100,\n      bitrate: 256000,\n      format: \"mp3\"\n    }\n  }\n};",
+      "python": "request = {\n    \"model\": \"minimax-music-2.6\",\n    \"callback_url\": \"https://your-domain.com/callback\",\n    \"input\": {\n        \"prompt\": \"一首明亮有力的 indie pop 歌曲，女声主唱，温暖鼓组，清晰副歌，适合节日氛围\",\n        \"lyrics_optimizer\": True,\n        \"audio_setting\": {\n            \"sample_rate\": 44100,\n            \"bitrate\": 256000,\n            \"format\": \"mp3\"\n        }\n    }\n}"
+    },
+    "exampleVariants": [
+      {
+        "id": "minimax-music-2.6",
+        "label": "minimax-music-2.6",
+        "payloadTemplate": {
+          "model": "minimax-music-2.6",
+          "callback_url": "https://your-domain.com/callback",
+          "input": {
+            "prompt": "一首明亮有力的 indie pop 歌曲，女声主唱，温暖鼓组，清晰副歌，适合节日氛围",
+            "lyrics_optimizer": true,
+            "audio_setting": {
+              "sample_rate": 44100,
+              "bitrate": 256000,
+              "format": "mp3"
+            }
+          }
+        }
+      }
+    ],
+    "payloadTemplate": {
+      "model": "minimax-music-2.6",
+      "callback_url": "https://your-domain.com/callback",
+      "input": {
+        "prompt": "一首明亮有力的 indie pop 歌曲，女声主唱，温暖鼓组，清晰副歌，适合节日氛围",
+        "lyrics_optimizer": true,
+        "audio_setting": {
+          "sample_rate": 44100,
+          "bitrate": 256000,
+          "format": "mp3"
+        }
+      }
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-music-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-24T10:12:41\"\n  }\n}"
+      },
+      {
+        "code": "400",
+        "label": "400",
+        "body": "{\n  \"code\": 400,\n  \"error\": {\n    \"message\": \"当 lyrics_optimizer 和 is_instrumental 都为 false 时必须提供 lyrics\",\n    \"type\": \"invalid_request_error\"\n  }\n}"
+      },
+      {
+        "code": "401",
+        "label": "401",
+        "body": "{\n  \"code\": 401,\n  \"error\": {\n    \"message\": \"Unauthorized - Invalid API key\",\n    \"type\": \"authentication_error\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"code\": 200,\n  \"data\": {\n    \"task_id\": \"task-music-1757165031-uyujaw3d\",\n    \"status\": \"not_started\",\n    \"created_time\": \"2026-04-24T10:12:41\"\n  }\n}"
+  }
+}

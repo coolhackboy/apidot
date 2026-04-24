@@ -7,7 +7,7 @@ import { appConfig } from "@/data/config";
 import { defaultLocale, locales } from "@/i18n/routing";
 import { LandingPageService } from "@/services/landingPageService";
 import DocsRequestCodeBlock from "@/components/docs/DocsRequestCodeBlock";
-import { getFeaturedModels } from "@/services/modelService";
+import { getHomeFeaturedModels } from "@/services/modelService";
 
 const HOME_ICON_MAP: Record<string, LucideIcon> = {
   Languages,
@@ -130,7 +130,7 @@ export default async function HomePage({
   }
 
   const homeUrl = locale === defaultLocale ? `${appConfig.webUrl}` : `${appConfig.webUrl}/${locale}`;
-  const featuredModels = getFeaturedModels();
+  const featuredModels = getHomeFeaturedModels();
   const getLocalizedDescription = (modelId: string, fallback: string) =>
     localizedModels[modelId]?.description || fallback;
 
@@ -296,7 +296,11 @@ export default async function HomePage({
             {content.modalities.map((card) => {
               const Icon = HOME_ICON_MAP[card.icon] || Blocks;
               return (
-                <Link key={card.title} href="/models" className="mk-home-modality-card">
+                <Link
+                  key={card.title}
+                  href={`/models/${card.categoryKey}`}
+                  className="mk-home-modality-card"
+                >
                   <div className="mk-home-modality-icon">
                     <Icon size={18} strokeWidth={2} />
                   </div>

@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "title": "MiniMax Music 2.6 API | APIDot",
+    "description": "在 APIDot 使用 MiniMax Music 2.6 API 做 AI 音乐生成，支持歌词输入、Lyrics Optimize、纯音乐模式、音频输出控制，以及固定 $0.10 定价。"
+  },
+  "hero": {
+    "title": "MiniMax Music 2.6 API Playground",
+    "description": "直接在 APIDot 测试 `minimax-music-2.6`。用与生产环境一致的异步请求结构生成歌曲，按需填写歌词，启用 Lyrics Optimize，切换纯音乐模式，并控制采样率、码率与输出格式。"
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "Overview",
+      "title": "用干净的异步工作流接入 MiniMax Music 2.6 API",
+      "paragraphs": [
+        "APIDot 上的 MiniMax Music 2.6 API 适合需要稳定 AI 音乐生成能力的团队。你只需要提交一次异步请求，立即拿到 `task_id`，然后通过统一的音乐详情接口查询最终音频结果。",
+        "这个页面刻意只保留真实支持的参数面：prompt、可选歌词、Lyrics Optimize、纯音乐模式，以及音频输出控制。这样既方便在 Playground 里验证，也方便在生产代码里直接接入。",
+        "如果你已经有明确歌词，可以用 prompt + lyrics 直接生成；如果只有风格和情绪方向，可以开启 Lyrics Optimize；如果你只需要 BGM 或无唱声配乐，直接切到纯音乐模式即可。"
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "title": "MiniMax Music 2.6 API 解决的核心问题",
+      "items": [
+        {
+          "title": "基于 prompt 和歌词生成完整歌曲",
+          "description": "MiniMax Music 2.6 API 支持用风格描述和可选歌词直接生成完整歌曲，适合需要快速 prompt-to-song 流程的内容产品，而不是复杂的手工编曲系统。"
+        },
+        {
+          "title": "Lyrics Optimize 降低输入门槛",
+          "description": "当歌词还没准备好时，可以启用 Lyrics Optimize，仅凭音乐方向描述继续生成。这对创意试跑、首版 demo 和快速验证尤其有用。"
+        },
+        {
+          "title": "纯音乐模式适合 BGM 与工具场景",
+          "description": "打开纯音乐模式后，你可以更直接地生成背景音乐、情绪配乐、产品演示音轨或创作者素材，同时不再要求歌词输入。"
+        },
+        {
+          "title": "音频输出控制便于生产交付",
+          "description": "通过 `audio_setting` 设置 `sample_rate`、`bitrate` 和 `format`，让导出文件更好地匹配播放器、存储策略和下游分发要求。"
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "Use Cases",
+      "title": "MiniMax Music 2.6 API 最适合哪些场景",
+      "description": "当你需要可预测的异步音乐生成、透明定价，以及开发者能快速接入的 prompt-to-audio 流程时，MiniMax Music 2.6 API 会很合适。",
+      "items": [
+        "创作者工具和媒体编辑器中的 AI 音乐生成",
+        "内容平台里的 prompt-to-song 功能",
+        "视频、应用和演示内容的纯音乐背景配乐",
+        "娱乐产品中的歌词辅助歌曲原型生成",
+        "音乐功能上线前的内部验证与低风险试跑",
+        "需要 webhook 或轮询编排的异步音乐 API 接入"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "Quickstart",
+      "title": "三步开始使用 MiniMax Music 2.6 API",
+      "steps": [
+        {
+          "eyebrow": "Step 1",
+          "title": "创建 APIDot API Key",
+          "description": "先生成 API Key，并把它保留在服务端。MiniMax Music 2.6 API 与 APIDot 其它图片、视频、聊天模型沿用同一套凭证方式。",
+          "actionText": "Get API Key",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "Step 2",
+          "title": "按固定价格预估成本",
+          "description": "这个页面上的 MiniMax Music 2.6 定价固定为每次生成 20 credits ($0.10)，接入前就能算清楚成本。",
+          "actionText": "Open Billing",
+          "actionHref": "/dashboard/billing"
+        },
+        {
+          "eyebrow": "Step 3",
+          "title": "提交任务并查询最终音频",
+          "description": "把请求提交到 `/api/generate/submit`，保存返回的 `task_id`，然后轮询 `/api/generate/detail/music?task_id=...` 直到任务完成。"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "MiniMax Music 2.6 API 常见问题",
+      "items": [
+        {
+          "question": "MiniMax Music 2.6 API 最适合做什么？",
+          "answer": "它适合异步 AI 歌曲生成、歌词辅助创作、纯音乐生成，以及需要明确音频输出控制的生产工作流。"
+        },
+        {
+          "question": "MiniMax Music 2.6 在 APIDot 上怎么收费？",
+          "answer": "当前页面价格固定为每次生成 20 credits ($0.10)，没有额外暴露更复杂的阶梯定价。"
+        },
+        {
+          "question": "什么时候必须传 lyrics？",
+          "answer": "如果你要直接控制歌词内容，就传 `lyrics`。当 `lyrics_optimizer=true` 或 `is_instrumental=true` 时，歌词不是必填。"
+        },
+        {
+          "question": "MiniMax Music 2.6 API 支持只生成纯音乐吗？",
+          "answer": "支持。把 `is_instrumental` 设为 `true` 即可，用风格、情绪、节奏和编排描述来控制结果。"
+        },
+        {
+          "question": "怎么获取最终生成结果？",
+          "answer": "提交成功后会返回 `task_id`，随后通过 `/api/generate/detail/music?task_id=...` 查询最终的 `audio_url`、`audio_id`、`title`、`duration` 和 prompt 元数据。"
+        },
+        {
+          "question": "当前支持哪些音频输出控制？",
+          "answer": "当前页面只支持 `audio_setting.sample_rate`、`audio_setting.bitrate` 和 `audio_setting.format`，与官方 Poyo 文档保持一致。"
+        },
+        {
+          "question": "这个页面的请求格式和官方文档一致吗？",
+          "answer": "一致。当前 Playground、API 示例和校验规则都按官方 Poyo MiniMax Music 2.6 文档来做，没有扩展到未明确公开的额外能力。"
+        }
+      ]
+    }
+  }
+}

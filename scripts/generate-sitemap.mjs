@@ -10,6 +10,10 @@ const DEFAULT_LOCALE = "en";
 const CORE_ROUTES = [
   { path: "/", changeFrequency: "daily", priority: 1 },
   { path: "/models", changeFrequency: "daily", priority: 0.9 },
+  { path: "/models/image", changeFrequency: "daily", priority: 0.85 },
+  { path: "/models/video", changeFrequency: "daily", priority: 0.85 },
+  { path: "/models/music", changeFrequency: "daily", priority: 0.85 },
+  { path: "/models/chat", changeFrequency: "daily", priority: 0.85 },
   { path: "/pricing", changeFrequency: "weekly", priority: 0.8 },
   { path: "/docs", changeFrequency: "weekly", priority: 0.8 },
 ];
@@ -20,6 +24,7 @@ const PUBLIC_ROUTES = [
   { path: "/models/gpt-image-2", changeFrequency: "weekly", priority: 0.8 },
   { path: "/models/seedance-2", changeFrequency: "weekly", priority: 0.8 },
   { path: "/models/veo-3-1", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/models/minimax-music-2-6", changeFrequency: "weekly", priority: 0.8 },
 ];
 
 const readJson = (relativePath) =>

@@ -71,6 +71,10 @@
         "label": "模型 · 图片"
       },
       {
+        "key": "music",
+        "label": "模型 · 音乐"
+      },
+      {
         "key": "video",
         "label": "模型 · 视频"
       }

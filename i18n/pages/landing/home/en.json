@@ -40,24 +40,28 @@
     "browseTitle": "The best AI APIs across every major modality",
     "modalities": [
       {
+        "categoryKey": "image",
         "title": "Image",
         "description": "Premium image APIs for generation, editing, upscale, and reference workflows",
         "examples": "Nano Banana, GPT-4o Image, Seedream, FLUX",
         "icon": "ImageIcon"
       },
       {
+        "categoryKey": "video",
         "title": "Video",
         "description": "Latest video APIs with better quality, faster launches, and lower cost",
         "examples": "Seedance 2, Veo 3.1, Sora 2, Kling",
         "icon": "Clapperboard"
       },
       {
+        "categoryKey": "music",
         "title": "Music",
         "description": "Production-ready music APIs for generation, vocals, extension, and audio workflows",
         "examples": "AI Music, MiniMax Music 2.6, Vocal Remover",
         "icon": "MicVocal"
       },
       {
+        "categoryKey": "chat",
         "title": "Chat",
         "description": "Premium chat APIs for coding, reasoning, and advanced multimodal assistants",
         "examples": "Claude Opus 4.7, Claude 4.5, Gemini 3",

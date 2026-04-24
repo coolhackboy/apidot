@@ -624,7 +624,8 @@
           "title": "Chat API"
         },
         "musicApi": {
-          "title": "Music API"
+          "title": "Music API",
+          "minimaxMusic26": "MiniMax Music 2.6"
         },
         "resources": {
           "title": "Resources",
@@ -1447,7 +1448,9 @@
         "veo3.1-quality": "per video | 720p/1080p: 120 credits ($0.60), 4K: 400 credits ($2.00)",
         "claude-opus-4-7": "per 1K input tokens | output: 5 credits ($0.02 / 1K tokens)",
         "gpt-image-2": "per generation | fixed 2 credits ($0.01)",
-        "gpt-image-2-edit": "per generation | fixed 2 credits ($0.01)"
+        "gpt-image-2-edit": "per generation | fixed 2 credits ($0.01)",
+        "minimax-music-2-6": "per generation | fixed 20 credits ($0.10)",
+        "minimax-music-2.6": "per generation | fixed 20 credits ($0.10)"
       }
     },
     "model": {
@@ -1493,7 +1496,7 @@
       "outputTokens": "Output Tokens",
       "totalTokens": "Total Tokens",
       "creditsUsed": "Credits Used",
-      "typeMessage": "send a message",
+      "typeMessage": "send a message...",
       "streaming": "Generating...",
       "playgroundNotice": "This Playground is for demo purposes. Data is only valid in the current window and will be cleared on refresh.",
       "chatPanelTitle": "Chat",
@@ -1652,6 +1655,14 @@
       "veo3.1-quality": {
         "name": "veo3.1-quality",
         "description": "The highest-fidelity Veo 3.1 tier for premium cinematic shots, richer detail, stronger polish, and top-end 4K delivery when output quality matters most."
+      },
+      "minimax-music-2-6": {
+        "name": "MiniMax Music 2.6",
+        "description": "MiniMax Music 2.6 is an async AI music generation model for prompt-based song creation, lyrics-assisted composition, instrumental mode, and controllable audio export settings."
+      },
+      "minimax-music-2.6": {
+        "name": "MiniMax Music 2.6",
+        "description": "MiniMax Music 2.6 is an async AI music generation model for prompt-based song creation, lyrics-assisted composition, instrumental mode, and controllable audio export settings."
       }
     },
     "actions": {
@@ -1667,10 +1678,10 @@
     "categoriesAriaLabel": "Model categories",
     "categories": {
       "allModels": "All models",
-      "language": "Language",
+      "chat": "Chat",
       "image": "Image",
       "video": "Video",
-      "audio": "Audio"
+      "music": "Music"
     },
     "sortOptions": {
       "popular": "Most popular",
