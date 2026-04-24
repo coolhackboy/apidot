@@ -1435,12 +1435,17 @@
       "textImageToVideo": "文/图生视频",
       "textToImage": "文生图",
       "imageEditing": "图片编辑",
+      "inputRateLabel": "输入价格",
+      "outputRateLabel": "输出价格",
+      "perMillionTokens": "1M tokens",
+      "chatSuccessOnlyNote": "聊天模型按实际输入和输出 token 用量计费，只有成功请求才会扣费。",
       "unitsByModel": {
         "seedance-2": "每秒 | 480p：含视频输入 10 积分 ($0.05)，文/图生视频 20 积分 ($0.10)；720p：含视频输入 20 积分 ($0.10)，文/图生视频 40 积分 ($0.20)；1080p：含视频输入 45 积分 ($0.225)，文/图生视频 90 积分 ($0.45)",
         "seedance-2-fast": "每秒 | 480p：含视频输入 8 积分 ($0.04)，文/图生视频 14 积分 ($0.07)；720p：含视频输入 16 积分 ($0.08)，文/图生视频 28 积分 ($0.14)",
         "veo3.1-fast": "每个视频 | 720p/1080p：20 积分 ($0.10)，4K：60 积分 ($0.30)",
         "veo3.1-lite": "每个视频 | 720p/1080p：10 积分 ($0.05)，4K：30 积分 ($0.15)",
         "veo3.1-quality": "每个视频 | 720p/1080p：120 积分 ($0.60)，4K：400 积分 ($2.00)",
+        "claude-opus-4-7": "每 1K 输入 tokens | 输出：5 积分 ($0.02 / 1K tokens)",
         "gpt-image-2": "每次生成 | 固定 2 积分 ($0.01)",
         "gpt-image-2-edit": "每次生成 | 固定 2 积分 ($0.01)"
       }
@@ -1491,8 +1496,30 @@
       "typeMessage": "输入消息...",
       "streaming": "生成中...",
       "playgroundNotice": "该 Playground 仅用于演示，数据只在当前窗口内有效，刷新页面后会被清空。",
+      "chatPanelTitle": "聊天",
       "newConversation": "新建对话",
-      "endpoint": "API 端点"
+      "endpoint": "API 端点",
+      "chatCompletionsEndpoint": "/v1/chat/completions",
+      "messagesEndpoint": "/v1/messages",
+      "messageComposer": "消息编辑区",
+      "chatPreviewTitle": "可直接用于生产的 Claude Opus 4.7 Playground",
+      "chatPreviewDescription": "发送与生产环境相同模型 id 的请求，并在 OpenAI 兼容端点和 Anthropic 原生端点之间切换，而不需要离开当前页面。",
+      "userMessage": "用户",
+      "assistantReply": "助手",
+      "lastResponse": "最近一次响应",
+      "chatSuccess": "响应已成功返回。",
+      "chatDraftRequired": "请先输入消息再发送。",
+      "chatNumericInvalid": "Temperature、max tokens 和 top p 必须是合法数字。",
+      "chatMessagesRequired": "JSON 配置里必须包含非空 messages 数组。",
+      "chatModelInvalid": "JSON 配置中的 model 必须是 claude-opus-4-7。",
+      "chatJsonInvalid": "JSON 配置格式无效。",
+      "chatEmptyResponse": "模型返回了空响应，请重试。",
+      "chatSubmitFailed": "请求发送失败，请稍后重试。",
+      "chatUpgradeTitle": "积分不足",
+      "chatUpgradeDescription": "Claude Opus 4.7 按 token 用量计费，请先充值后再继续发送请求。",
+      "chatJsonPlaceholder": "{\n  \"model\": \"claude-opus-4-7\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a professional AI assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Analyze this codebase and suggest improvements.\"\n    }\n  ],\n  \"temperature\": 1,\n  \"max_tokens\": 4096,\n  \"top_p\": 1\n}",
+      "cancel": "取消",
+      "openBilling": "打开 Billing"
     },
     "market": {
       "allModels": "全部模型",
@@ -1590,6 +1617,10 @@
       "audio": "音频"
     },
     "models": {
+      "claude-opus-4-7": {
+        "name": "claude-opus-4-7",
+        "description": "Anthropic 当前最强的通用可用模型，适合前沿编码、长链路推理、1M 上下文工作流，以及最高 2576px / 3.75MP 的高分辨率视觉理解。"
+      },
       "seedance-2": {
         "name": "seedance-2",
         "description": "ByteDance 的 Seedance 2 系列支持电影级多模态视频生成，具备原生音视频联合生成、多镜头叙事、8+ 语言 lip-sync，以及基于文本、图片、视频、音频输入的导演级控制能力。"

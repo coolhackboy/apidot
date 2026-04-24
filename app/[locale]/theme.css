@@ -119,3 +119,13 @@
   width: 0;
   height: 0;
 }
+
+.tool-chat-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tool-chat-scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

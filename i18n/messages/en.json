@@ -1435,12 +1435,17 @@
       "textImageToVideo": "text/image-to-video",
       "textToImage": "text-to-image",
       "imageEditing": "image editing",
+      "inputRateLabel": "Input rate",
+      "outputRateLabel": "Output rate",
+      "perMillionTokens": "1M tokens",
+      "chatSuccessOnlyNote": "Token-priced chat requests are billed from actual prompt and completion usage. Pay only for successful requests.",
       "unitsByModel": {
         "seedance-2": "per second | 480p: 10 cr/s ($0.05, with video input), 20 cr/s ($0.10, text/image-to-video); 720p: 20 cr/s ($0.10, with video input), 40 cr/s ($0.20, text/image-to-video); 1080p: 45 cr/s ($0.225, with video input), 90 cr/s ($0.45, text/image-to-video)",
         "seedance-2-fast": "per second | 480p: 8 cr/s ($0.04, with video input), 14 cr/s ($0.07, text/image-to-video); 720p: 16 cr/s ($0.08, with video input), 28 cr/s ($0.14, text/image-to-video)",
         "veo3.1-fast": "per video | 720p/1080p: 20 credits ($0.10), 4K: 60 credits ($0.30)",
         "veo3.1-lite": "per video | 720p/1080p: 10 credits ($0.05), 4K: 30 credits ($0.15)",
         "veo3.1-quality": "per video | 720p/1080p: 120 credits ($0.60), 4K: 400 credits ($2.00)",
+        "claude-opus-4-7": "per 1K input tokens | output: 5 credits ($0.02 / 1K tokens)",
         "gpt-image-2": "per generation | fixed 2 credits ($0.01)",
         "gpt-image-2-edit": "per generation | fixed 2 credits ($0.01)"
       }
@@ -1488,11 +1493,33 @@
       "outputTokens": "Output Tokens",
       "totalTokens": "Total Tokens",
       "creditsUsed": "Credits Used",
-      "typeMessage": "Type a message...",
+      "typeMessage": "send a message",
       "streaming": "Generating...",
       "playgroundNotice": "This Playground is for demo purposes. Data is only valid in the current window and will be cleared on refresh.",
+      "chatPanelTitle": "Chat",
       "newConversation": "New Conversation",
-      "endpoint": "API Endpoint"
+      "endpoint": "API Endpoint",
+      "chatCompletionsEndpoint": "/v1/chat/completions",
+      "messagesEndpoint": "/v1/messages",
+      "messageComposer": "Message Composer",
+      "chatPreviewTitle": "Production-ready Claude Opus 4.7 playground",
+      "chatPreviewDescription": "Send a message with the same model id used in production. Switch between OpenAI-compatible and Anthropic-native endpoints without changing the rest of the page.",
+      "userMessage": "User",
+      "assistantReply": "Assistant",
+      "lastResponse": "Last Response",
+      "chatSuccess": "Response received successfully.",
+      "chatDraftRequired": "Please enter a message before sending.",
+      "chatNumericInvalid": "Temperature, max tokens, and top p must be valid numbers.",
+      "chatMessagesRequired": "JSON configuration must include a non-empty messages array.",
+      "chatModelInvalid": "JSON configuration must use claude-opus-4-7 as the model id.",
+      "chatJsonInvalid": "Invalid JSON configuration.",
+      "chatEmptyResponse": "The model returned an empty response. Please try again.",
+      "chatSubmitFailed": "Failed to send the request. Please try again.",
+      "chatUpgradeTitle": "Insufficient Credits",
+      "chatUpgradeDescription": "Claude Opus 4.7 is billed by token usage. Add credits before sending more requests.",
+      "chatJsonPlaceholder": "{\n  \"model\": \"claude-opus-4-7\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a professional AI assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Analyze this codebase and suggest improvements.\"\n    }\n  ],\n  \"temperature\": 1,\n  \"max_tokens\": 4096,\n  \"top_p\": 1\n}",
+      "cancel": "Cancel",
+      "openBilling": "Open Billing"
     },
     "market": {
       "allModels": "All Models",
@@ -1590,6 +1617,10 @@
       "audio": "Audio"
     },
     "models": {
+      "claude-opus-4-7": {
+        "name": "claude-opus-4-7",
+        "description": "Anthropic's most capable generally available model for frontier coding, long-horizon reasoning, 1M context workflows, and high-resolution vision up to 2576px / 3.75MP."
+      },
       "seedance-2": {
         "name": "seedance-2",
         "description": "ByteDance's Seedance 2 family for cinematic multimodal video generation with native audio-video joint synthesis, multi-shot storytelling, lip-sync across 8+ languages, and director-level control from text, image, video, and audio inputs."

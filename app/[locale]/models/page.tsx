@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : `${appConfig.webUrl}/${supportedLocale}${path}`,
     ])
   );
-  const title = `Model APIs | Image and Video Models | ${appConfig.appNameInHeader}`;
+  const title = `Model APIs | Image, Video, and Chat Models | ${appConfig.appNameInHeader}`;
   const description =
-    `Explore APIDot's active image and video model lineup, including GPT Image 2, Seedance 2, and Veo 3.1.`;
+    `Explore APIDot's active image, video, and chat model lineup, including GPT Image 2, Seedance 2, Veo 3.1, and Claude Opus 4.7.`;
 
   return {
     title,

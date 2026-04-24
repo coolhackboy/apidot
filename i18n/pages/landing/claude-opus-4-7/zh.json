@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "title": "Claude Opus 4.7 API | APIDot",
+    "description": "通过 APIDot 即时接入 Claude Opus 4.7，用于前沿级 agentic coding、1M 上下文、128K 输出、高分辨率视觉理解，以及双聊天端点生产接入。"
+  },
+  "hero": {
+    "title": "Claude Opus 4.7 API Playground",
+    "description": "在 APIDot 上即时测试 `claude-opus-4-7`，可在 `/v1/chat/completions` 与 `/v1/messages` 两种端点之间切换。用同一个生产模型 id 完成编码、推理和高分辨率视觉工作流，并直接查看透明定价。"
+  },
+  "seoContent": {
+    "overview": {
+      "eyebrow": "概览",
+      "title": "在 APIDot 上使用 Claude Opus 4.7 处理前沿编码、推理与长上下文任务",
+      "paragraphs": [
+        "Claude Opus 4.7 是 Anthropic 截至 2026 年 4 月 16 日正式发布时能力最强的通用可用模型，重点面向 agentic coding、长链路推理，以及复杂专业工作流。在 APIDot 上，你可以直接使用生产模型 id `claude-opus-4-7`，不需要切换平台，也能在同一页里查看 Playground、API 示例和价格信息。",
+        "相比更早的 Opus 版本，Claude Opus 4.7 的核心定位更偏向编码完整度、自我校验、工具调用稳定性，以及对截图、图表、技术文档和界面内容的高分辨率视觉理解。Anthropic 官方资料和当前 PoYo 页面都在强化这些卖点，尤其适合工程型和知识密集型工作流。",
+        "当前页面按生产接入逻辑组织：既有可直接操作的 Playground，也有 API 文档、价格和 SEO 内容。如果你的系统既需要 OpenAI 兼容请求形态，又希望保留 Anthropic 原生接口，APIDot 同时支持 `/v1/chat/completions` 和 `/v1/messages`，并共用同一个 Claude Opus 4.7 模型 id。"
+      ]
+    },
+    "capabilities": {
+      "eyebrow": "能力",
+      "title": "Claude Opus 4.7 API 最值得用的几个方向",
+      "items": [
+        {
+          "title": "前沿级 agentic coding 与代码审查",
+          "description": "Claude Opus 4.7 更适合多步骤工程任务，例如大型重构、深度调试、复杂规划和代码审查。它的定位不是只回答短问题，而是在需要先推理、再校验、再输出的工作流里保持更高完成度。"
+        },
+        {
+          "title": "1M 上下文与 128K 输出",
+          "description": "如果你的任务涉及整仓代码、长文档集合或多文件技术分析，Claude Opus 4.7 API 更有优势。1M token 上下文窗口和 128K 输出上限，使它更适合高复杂度生产场景，而不只是普通聊天。"
+        },
+        {
+          "title": "最高 2576px / 3.75MP 的高分辨率视觉理解",
+          "description": "Claude Opus 4.7 是首个显著提升图像分辨率支持能力的 Claude 模型，更适合截图质检、Dashboard 审阅、图表解析、密集文档理解和 UI 分析等对图像细节要求更高的场景。"
+        },
+        {
+          "title": "双端点兼容，便于生产迁移",
+          "description": "如果你希望延续 OpenAI 风格接口，可以使用 `/v1/chat/completions`。如果你更偏向 Anthropic 原生请求结构，可以使用 `/v1/messages`。APIDot 围绕同一个 Claude Opus 4.7 模型 id 同时支持两种接入方式。"
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "适用场景",
+      "title": "哪些团队更适合接入 Claude Opus 4.7 API",
+      "description": "当你更关注准确性、长上下文能力和多步骤执行稳定性，而不是最低聊天成本时，Claude Opus 4.7 会更合适。",
+      "items": [
+        "用于多文件工程任务的 AI 编码智能体",
+        "整仓分析、代码审查与迁移规划",
+        "长上下文研究、法律、金融与知识工作流",
+        "高分辨率截图、图表和文档理解",
+        "需要双端点兼容能力的内部 Copilot",
+        "从更早 Opus 版本或混合聊天栈升级的团队"
+      ]
+    },
+    "quickstart": {
+      "eyebrow": "快速开始",
+      "title": "三步接入 Claude Opus 4.7",
+      "steps": [
+        {
+          "eyebrow": "步骤 01",
+          "title": "创建 API Key",
+          "description": "先在 APIDot 控制台创建 API Key，并仅保存在服务端。后续聊天、图片、视频和音频模型都可以共用这套认证方式。",
+          "actionText": "获取 API Key",
+          "actionHref": "/dashboard/api-key"
+        },
+        {
+          "eyebrow": "步骤 02",
+          "title": "充值并按 token 成本评估预算",
+          "description": "当前页面价格与 PoYo 对齐：输入 $4 / 1M tokens，输出 $20 / 1M tokens。由于 Claude Opus 4.7 可能产生更深推理和更长输出，预算时应重点看 token 用量，而不是把它当成固定按次收费模型。",
+          "actionText": "打开 Billing",
+          "actionHref": "/dashboard/billing"
+        },
+        {
+          "eyebrow": "步骤 03",
+          "title": "按你的技术栈选择端点",
+          "description": "如果你需要 OpenAI 兼容聊天接口，用 `/v1/chat/completions`；如果你希望使用 Anthropic 原生请求格式，用 `/v1/messages`。两种方式都使用同一个模型 id：`claude-opus-4-7`。"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "常见问题",
+      "title": "Claude Opus 4.7 API 常见问题",
+      "items": [
+        {
+          "question": "Claude Opus 4.7 是什么？",
+          "answer": "Claude Opus 4.7 是 Anthropic 在 2026 年 4 月 16 日发布时最强的通用可用模型，重点面向前沿编码、长链路推理、高分辨率视觉理解和复杂专业工作流。"
+        },
+        {
+          "question": "Claude Opus 4.7 在 APIDot 上怎么收费？",
+          "answer": "当前页面价格与 PoYo 页面保持一致：`claude-opus-4-7` 的输入价格为 $4 / 1M tokens，输出价格为 $20 / 1M tokens。"
+        },
+        {
+          "question": "APIDot 同时支持 `/v1/chat/completions` 和 `/v1/messages` 吗？",
+          "answer": "支持。Claude Opus 4.7 在 APIDot 上既可通过 `/v1/chat/completions` 以 OpenAI 兼容方式调用，也可通过 `/v1/messages` 以 Anthropic 原生方式调用，且共用同一个模型 id。"
+        },
+        {
+          "question": "Claude Opus 4.7 和 Opus 4.6 的主要区别是什么？",
+          "answer": "核心差异在于更强的 agentic coding、更好的自我校验、更稳定的工具调用，以及最高 2576px / 3.75MP 的高分辨率视觉输入支持。因此 Claude Opus 4.7 更适合工程智能体和文档密集型多模态场景。"
+        },
+        {
+          "question": "Claude Opus 4.7 支持长上下文吗？",
+          "answer": "支持。Claude Opus 4.7 提供 1M token 上下文窗口和最高 128K 输出，适合超长代码、长文档集合和复杂分析请求。"
+        },
+        {
+          "question": "为什么实际成本可能高于直觉预期？",
+          "answer": "Claude Opus 4.7 会因为更深的推理和更长的输出消耗更多 token。官方资料也提到 tokenizer 有变化，因此生产环境预算时，应该重点关注输入和输出 token 的真实消耗。"
+        },
+        {
+          "question": "什么时候应该选 Claude Opus 4.7，而不是更便宜的聊天模型？",
+          "answer": "当你的任务高度依赖编码质量、长上下文稳定性、结构化推理和高分辨率多模态理解时，Claude Opus 4.7 更值得选；如果只是轻量聊天或成本敏感场景，更小模型可能更合适。"
+        }
+      ]
+    }
+  }
+}

@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: page.meta?.title || `Docs | ${appConfig.appNameInHeader}`,
     description:
       page.meta?.description ||
-      "Reference docs for APIDot authentication, webhooks, Seedance 2, and Veo 3.1.",
+      "Reference docs for APIDot authentication, webhooks, chat endpoints, Seedance 2, Veo 3.1, and Claude Opus 4.7.",
     alternates: {
       canonical,
       languages: {
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: page.meta?.title || `Docs | ${appConfig.appNameInHeader}`,
       description:
         page.meta?.description ||
-        "Reference docs for APIDot authentication, webhooks, Seedance 2, and Veo 3.1.",
+        "Reference docs for APIDot authentication, webhooks, chat endpoints, Seedance 2, Veo 3.1, and Claude Opus 4.7.",
       url: canonical,
       type: "website",
     },
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: page.meta?.title || `Docs | ${appConfig.appNameInHeader}`,
       description:
         page.meta?.description ||
-        "Reference docs for APIDot authentication, webhooks, Seedance 2, and Veo 3.1.",
+        "Reference docs for APIDot authentication, webhooks, chat endpoints, Seedance 2, Veo 3.1, and Claude Opus 4.7.",
     },
   };
 }

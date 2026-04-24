@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { getModelById } from "@/services/modelService";
+import { getModelById, getModelTokenPricing } from "@/services/modelService";
 import { useTranslations } from "next-intl";
 import { getLocalizedPricingUnit, type PricingLocalizationLabels } from "@/lib/pricingLocalization";
 import DocsCodeBlock from "@/components/docs/DocsCodeBlock";
@@ -65,12 +65,61 @@ export function ModelApiPanel({ modelId, selectedModel, endpointDoc }: ModelDeta
 export function ModelPricingPanel({ modelId, selectedModel }: ModelDetailSectionsProps) {
   const detailData = useModelDetailData({ modelId, selectedModel });
   const t = useTranslations("modelDetail.pricing");
+  const tModel = useTranslations("modelDetail.model");
 
   if (!detailData) {
     return null;
   }
 
   const { model, activeModelId } = detailData;
+  const tokenPricing = getModelTokenPricing(model, activeModelId);
+
+  if (model.category === "Chat" && tokenPricing.input && tokenPricing.output) {
+    const inputPriceUSD = tokenPricing.input.priceUSD ?? 0;
+    const outputPriceUSD = tokenPricing.output.priceUSD ?? 0;
+    const chatRows = [
+      {
+        key: "input",
+        label: t("inputRateLabel"),
+        title: tModel("input"),
+        price: formatPrice(inputPriceUSD * 1000),
+      },
+      {
+        key: "output",
+        label: t("outputRateLabel"),
+        title: tModel("output"),
+        price: formatPrice(outputPriceUSD * 1000),
+      },
+    ];
+
+    return (
+      <div className="px-0 py-5 md:px-0 md:py-6">
+        <div className="grid max-w-[760px] gap-4 md:grid-cols-2">
+          {chatRows.map((row) => (
+            <div
+              key={row.key}
+              className="rounded-[14px] border border-border bg-card px-6 py-6 shadow-[0_10px_28px_rgba(15,15,13,0.04)]"
+            >
+              <div className="text-[12px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                {row.label}
+              </div>
+              <div className="mt-3 flex items-baseline gap-2">
+                <span className="mk-mono text-[32px] font-semibold tracking-[-0.02em] text-foreground">
+                  ${row.price}
+                </span>
+                <span className="text-[13px] text-muted-foreground">/ {t("perMillionTokens")}</span>
+              </div>
+              <p className="mt-3 text-[13px] font-medium text-foreground/85">{row.title}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 max-w-[620px] text-[13px] leading-7 text-foreground/85">
+          {t("chatSuccessOnlyNote")}
+        </p>
+      </div>
+    );
+  }
+
   const activePricing =
     model.pricingByModel?.[activeModelId] ||
     model.pricingByModel?.[model.id] ||

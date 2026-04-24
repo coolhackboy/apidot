@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "开发文档 | APIDot",
-    "description": "APIDot 统一开发文档，覆盖认证、异步生成、限流、Webhook 与模型接口接入。"
+    "description": "APIDot 统一开发文档，覆盖认证、聊天与媒体模型接口、Webhook、限流与生产接入。"
   },
   "docsPage": {
     "title": "开发文档",
@@ -62,6 +62,10 @@
       }
     ],
     "modelNavGroups": [
+      {
+        "key": "chat",
+        "label": "模型 · Chat"
+      },
       {
         "key": "image",
         "label": "模型 · 图片"

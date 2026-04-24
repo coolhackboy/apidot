@@ -3,9 +3,15 @@
     "id": "claude-opus-4-7",
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",
+    "providerOrder": 2,
     "icon": "https://storage.poyo.ai/provider/claude.svg",
     "thumbnail": "https://storage.poyo.ai/claude-opus-4-7/thumbnail.png",
     "description": "Anthropic's most capable generally available model for frontier coding, deep reasoning, and high-resolution vision.",
+    "catalogBadge": "New",
+    "catalogVendorLabel": "Anthropic",
+    "catalogPriceLabel": "$4 / 1M input",
+    "catalogLatencyLabel": "Sync chat",
+    "catalogPopularity": 92,
     "models": [
       "claude-opus-4-7"
     ],
@@ -36,6 +42,7 @@
         "falPriceUSD": null
       }
     ],
+    "featured": false,
     "doc": "https://docs.poyo.ai/api-manual/chat-series/claude-messages"
   },
   {

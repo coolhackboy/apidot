@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Blocks, Check, Clapperboard, ImageIcon, Languages, LucideIcon, MicVocal } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
@@ -37,7 +38,7 @@ const renderFeaturedPreview = (preview?: { type: "image" | "video"; src: string;
   }
 
   if (preview?.type === "image") {
-    return <img src={preview.src} alt="" className="mk-models-card-preview-image" />;
+    return <Image src={preview.src} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="mk-models-card-preview-image" />;
   }
 
   return <span>{preview?.label || `${name?.toUpperCase()} · PREVIEW`}</span>;
@@ -171,7 +172,6 @@ export default async function HomePage({
             <h1 className="mk-home-title">
               {content.titleLines[0]}
               <span className="mk-home-title-break">{content.titleLines[1]}</span>
-              <span className="mk-home-title-dot">.</span>
             </h1>
             <p className="mk-home-description">{content.description}</p>
             <div className="mk-home-actions">
@@ -227,13 +227,22 @@ export default async function HomePage({
           <div className="mk-home-model-grid">
             {featuredModels.map((model) => (
               <Link key={model.id} href={`/models/${model.id}`} className="mk-home-model-card is-link">
-                <div className="mk-home-model-preview">
+                <div className="mk-home-model-preview relative">
                   {renderFeaturedPreview(model.catalogPreview, model.name)}
                 </div>
                 <div className="mk-home-model-meta">
                   <div className="mk-home-model-provider">
                     <span className="mk-home-model-provider-icon" aria-hidden="true">
-                      {model.icon ? <img src={model.icon} alt="" className="mk-home-model-provider-icon-image" /> : null}
+                      {model.icon ? (
+                        <Image
+                          src={model.icon}
+                          alt=""
+                          width={12}
+                          height={12}
+                          unoptimized
+                          className="mk-home-model-provider-icon-image"
+                        />
+                      ) : null}
                     </span>
                     {model.catalogVendorLabel || model.provider}
                   </div>

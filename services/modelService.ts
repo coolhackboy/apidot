@@ -1,4 +1,5 @@
 import modelsData from '@/data/models.json';
+import claudeOpus47Common from '@/i18n/pages/landing/claude-opus-4-7/common.json';
 import gptImage2Common from '@/i18n/pages/landing/gpt-image-2/common.json';
 import seedance2Common from '@/i18n/pages/landing/seedance-2/common.json';
 import veo31Common from '@/i18n/pages/landing/veo-3-1/common.json';
@@ -72,11 +73,12 @@ export interface HeaderModelGroup {
 }
 
 export const mockModels: AIModel[] = modelsData as AIModel[];
-export const ACTIVE_MARKET_MODEL_IDS = ["seedance-2", "gpt-image-2", "veo-3-1"] as const;
+export const ACTIVE_MARKET_MODEL_IDS = ["seedance-2", "gpt-image-2", "veo-3-1", "claude-opus-4-7"] as const;
 const activeMarketplaceModels = mockModels.filter((model) =>
   ACTIVE_MARKET_MODEL_IDS.includes(model.id as (typeof ACTIVE_MARKET_MODEL_IDS)[number])
 );
 const CATALOG_PREVIEW_MAP: Record<string, ModelCatalogPreview | undefined> = {
+  "claude-opus-4-7": claudeOpus47Common.catalogPreview as ModelCatalogPreview,
   "seedance-2": seedance2Common.catalogPreview as ModelCatalogPreview,
   "gpt-image-2": gptImage2Common.catalogPreview as ModelCatalogPreview,
   "veo-3-1": veo31Common.catalogPreview as ModelCatalogPreview,
@@ -168,6 +170,27 @@ const isPer1KTokenTier = (tier: NonNullable<AIModel['pricingTiers']>[number]) =>
 
 const isInputTier = (tier: NonNullable<AIModel['pricingTiers']>[number]) => {
   return tier.description?.toLowerCase().includes('input');
+};
+
+const isOutputTier = (tier: NonNullable<AIModel['pricingTiers']>[number]) => {
+  return tier.description?.toLowerCase().includes('output');
+};
+
+export interface ModelTokenPricing {
+  input?: NonNullable<AIModel['pricingTiers']>[number];
+  output?: NonNullable<AIModel['pricingTiers']>[number];
+}
+
+export const getModelTokenPricing = (model: AIModel, variantId?: string): ModelTokenPricing => {
+  const tokenTiers = (model.pricingTiers ?? []).filter((tier) => {
+    const matchesVariant = !variantId || !tier.model || tier.model === variantId;
+    return matchesVariant && isPer1KTokenTier(tier) && typeof tier.priceUSD === 'number';
+  });
+
+  return {
+    input: tokenTiers.find((tier) => isInputTier(tier)),
+    output: tokenTiers.find((tier) => isOutputTier(tier)),
+  };
 };
 
 export const getModelCardPricing = (model: AIModel): ModelCardPricing => {

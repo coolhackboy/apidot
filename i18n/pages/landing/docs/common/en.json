@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Docs | APIDot",
-    "description": "Unified developer docs for APIDot authentication, async generation, rate limits, webhooks, and model APIs."
+    "description": "Unified developer docs for APIDot authentication, chat and media model APIs, webhooks, rate limits, and production integration."
   },
   "docsPage": {
     "title": "Docs",
@@ -62,6 +62,10 @@
       }
     ],
     "modelNavGroups": [
+      {
+        "key": "chat",
+        "label": "Models · Chat"
+      },
       {
         "key": "image",
         "label": "Models · Image"

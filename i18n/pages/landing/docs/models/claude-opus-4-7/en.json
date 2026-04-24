@@ -1,0 +1,181 @@
+{
+  "id": "claude-opus-4-7",
+  "groupKey": "chat",
+  "navLabel": "Claude Opus 4.7",
+  "method": "POST",
+  "endpoint": {
+    "label": "Claude Opus 4.7",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "endpoint": "/v1/chat/completions",
+    "summary": "Send synchronous chat completion requests to Claude Opus 4.7 through APIDot's OpenAI-compatible chat endpoint.",
+    "seoTitle": "Claude Opus 4.7 API Reference | /v1/chat/completions | APIDot",
+    "seoDescription": "Reference the Claude Opus 4.7 OpenAI-compatible chat completions endpoint on APIDot, including request shape, response fields, pricing notes, and examples.",
+    "about": "Use `/v1/chat/completions` when you want OpenAI-compatible chat integration with `claude-opus-4-7`. APIDot also supports the same model through `/v1/messages` for Anthropic-native request payloads, but this docs entry focuses on the chat completions path shown in the page API tab.",
+    "bestPractices": [
+      "Keep system instructions explicit because Claude Opus 4.7 is more literal than earlier models and performs best with clear success criteria.",
+      "Monitor prompt and completion token usage closely because pricing is split between input and output tokens, and longer reasoning chains can materially increase spend.",
+      "Use `/v1/messages` instead when your stack already depends on Anthropic-native request semantics or future Anthropic-specific features.",
+      "For screenshot, chart, and document workflows, pass multimodal content through the endpoint variant your backend already standardizes on, while keeping the model id `claude-opus-4-7` unchanged."
+    ],
+    "faq": [
+      {
+        "question": "Which model id should I send?",
+        "answer": "Use `claude-opus-4-7`."
+      },
+      {
+        "question": "How much does Claude Opus 4.7 cost on this page?",
+        "answer": "Pricing is aligned to the current PoYo reference page: $4 per 1M input tokens and $20 per 1M output tokens."
+      },
+      {
+        "question": "Does APIDot also support `/v1/messages` for Claude Opus 4.7?",
+        "answer": "Yes. `/v1/messages` is supported for the same model id, but this endpoint entry documents the OpenAI-compatible `/v1/chat/completions` path."
+      },
+      {
+        "question": "What context and output limits should I expect?",
+        "answer": "Claude Opus 4.7 is publicly positioned around a 1M token context window and up to 128K output tokens, depending on endpoint behavior and account limits."
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "claude-opus-4-7",
+        "description": "Target model id. Use `claude-opus-4-7`."
+      },
+      {
+        "name": "messages",
+        "type": "object[]",
+        "required": true,
+        "description": "Conversation array in OpenAI-compatible shape. Include `system`, `user`, and `assistant` roles as needed."
+      },
+      {
+        "name": "messages[].role",
+        "type": "string",
+        "required": true,
+        "description": "Message role. Common values are `system`, `user`, and `assistant`."
+      },
+      {
+        "name": "messages[].content",
+        "type": "string",
+        "required": true,
+        "description": "Plain text message content for the corresponding role."
+      },
+      {
+        "name": "temperature",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "Sampling temperature. Lower values bias toward more deterministic output."
+      },
+      {
+        "name": "max_tokens",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "4096",
+        "description": "Maximum completion tokens to return in the response."
+      },
+      {
+        "name": "top_p",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "Nucleus sampling parameter. Keep `1` unless your stack already standardizes a lower value."
+      }
+    ],
+    "response": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique response identifier."
+      },
+      {
+        "name": "object",
+        "type": "string",
+        "description": "Response object type, typically `chat.completion`."
+      },
+      {
+        "name": "created",
+        "type": "integer",
+        "description": "Unix timestamp for response creation."
+      },
+      {
+        "name": "model",
+        "type": "string",
+        "description": "Resolved model id used to serve the request."
+      },
+      {
+        "name": "choices[0].message.content",
+        "type": "string",
+        "description": "Assistant reply text."
+      },
+      {
+        "name": "usage.prompt_tokens",
+        "type": "integer",
+        "description": "Input token count billed at the input rate."
+      },
+      {
+        "name": "usage.completion_tokens",
+        "type": "integer",
+        "description": "Output token count billed at the output rate."
+      },
+      {
+        "name": "usage.total_tokens",
+        "type": "integer",
+        "description": "Total token count across input and output."
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "Missing model, empty messages array, invalid role values, or malformed numeric parameters."
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Missing, expired, or invalid Bearer API key."
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "Your prepaid balance cannot cover the request's token usage."
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "The API key is temporarily above the allowed request rate."
+      }
+    ],
+    "payloadTemplate": {
+      "model": "claude-opus-4-7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a professional AI assistant."
+        },
+        {
+          "role": "user",
+          "content": "Analyze this codebase and suggest improvements."
+        }
+      ],
+      "temperature": 1,
+      "max_tokens": 4096,
+      "top_p": 1
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"id\": \"chatcmpl-claude-opus-47-demo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1776326400,\n  \"model\": \"claude-opus-4-7\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Start by separating request validation, persistence, and provider calls into distinct layers. That will make retries, observability, and model swaps less fragile.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1865,\n    \"completion_tokens\": 524,\n    \"total_tokens\": 2389\n  }\n}"
+      },
+      {
+        "code": "402",
+        "label": "402",
+        "body": "{\n  \"error\": {\n    \"message\": \"Insufficient credits to process this request\",\n    \"type\": \"insufficient_credits\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"id\": \"chatcmpl-claude-opus-47-demo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1776326400,\n  \"model\": \"claude-opus-4-7\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Start by separating request validation, persistence, and provider calls into distinct layers. That will make retries, observability, and model swaps less fragile.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1865,\n    \"completion_tokens\": 524,\n    \"total_tokens\": 2389\n  }\n}"
+  }
+}

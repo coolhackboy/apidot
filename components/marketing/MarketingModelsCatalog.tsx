@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
 import { Link } from "@/i18n/routing";
@@ -79,7 +80,15 @@ const renderCatalogPreview = (model: CatalogAIModel) => {
   }
 
   if (model.catalogPreview?.type === "image") {
-    return <img src={model.catalogPreview.src} alt="" className="mk-models-card-preview-image" />;
+    return (
+      <Image
+        src={model.catalogPreview.src}
+        alt=""
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="mk-models-card-preview-image"
+      />
+    );
   }
 
   return <span>{model.catalogPreview?.label || `${model.name.toUpperCase()} · PREVIEW`}</span>;
@@ -186,12 +195,21 @@ export default function MarketingModelsCatalog() {
             <div className="mk-models-grid">
               {filteredModels.map((model) => (
                 <Link key={model.id} href={`/models/${model.id}`} className="mk-models-card">
-                  <div className="mk-models-card-preview">{renderCatalogPreview(model)}</div>
+                  <div className="mk-models-card-preview relative">{renderCatalogPreview(model)}</div>
 
                   <div className="mk-models-card-meta">
                     <div className="mk-models-card-vendor">
                       <span className="mk-models-card-vendor-icon" aria-hidden="true">
-                        {model.icon ? <img src={model.icon} alt="" className="mk-models-card-vendor-icon-image" /> : null}
+                        {model.icon ? (
+                          <Image
+                            src={model.icon}
+                            alt=""
+                            width={12}
+                            height={12}
+                            unoptimized
+                            className="mk-models-card-vendor-icon-image"
+                          />
+                        ) : null}
                       </span>
                       {model.catalogVendorLabel || model.provider}
                     </div>

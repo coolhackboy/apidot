@@ -1,0 +1,181 @@
+{
+  "id": "claude-opus-4-7",
+  "groupKey": "chat",
+  "navLabel": "Claude Opus 4.7",
+  "method": "POST",
+  "endpoint": {
+    "label": "Claude Opus 4.7",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "endpoint": "/v1/chat/completions",
+    "summary": "通过 APIDot 的 OpenAI 兼容聊天端点向 Claude Opus 4.7 发送同步聊天请求。",
+    "seoTitle": "Claude Opus 4.7 API 文档 | /v1/chat/completions | APIDot",
+    "seoDescription": "查看 APIDot 上 Claude Opus 4.7 的 OpenAI 兼容聊天接口文档，包含请求结构、响应字段、价格说明与代码示例。",
+    "about": "当你希望以 OpenAI 兼容方式接入 `claude-opus-4-7` 时，请使用 `/v1/chat/completions`。APIDot 也支持同一模型通过 `/v1/messages` 以 Anthropic 原生请求格式调用，但当前这个文档条目聚焦页面 API 标签页展示的 chat completions 路径。",
+    "bestPractices": [
+      "System prompt 要尽量明确，因为 Claude Opus 4.7 相比更早模型更偏字面执行，给清楚的目标和约束通常效果更好。",
+      "重点关注输入与输出 token 用量，因为 Claude Opus 4.7 按输入和输出分开计费，较长推理链会明显影响成本。",
+      "如果你的技术栈已经围绕 Anthropic 原生语义构建，可以改用 `/v1/messages`。",
+      "对于截图、图表和文档类任务，优先沿用你后端已经标准化的端点形式，同时保持模型 id `claude-opus-4-7` 不变。"
+    ],
+    "faq": [
+      {
+        "question": "应该传哪个 model id？",
+        "answer": "使用 `claude-opus-4-7`。"
+      },
+      {
+        "question": "Claude Opus 4.7 在这个页面上的价格是多少？",
+        "answer": "价格与当前 PoYo 页面保持一致：输入 $4 / 1M tokens，输出 $20 / 1M tokens。"
+      },
+      {
+        "question": "APIDot 也支持 Claude Opus 4.7 的 `/v1/messages` 吗？",
+        "answer": "支持。`/v1/messages` 可用于同一个模型 id，但当前这个 endpoint 文档主要说明 OpenAI 兼容的 `/v1/chat/completions`。"
+      },
+      {
+        "question": "上下文和输出能力大概是多少？",
+        "answer": "Claude Opus 4.7 的公开定位是支持 1M token 上下文窗口，以及最高 128K 输出 token，具体还会受到端点行为和账户限制影响。"
+      }
+    ],
+    "request": [
+      {
+        "name": "model",
+        "type": "string",
+        "required": true,
+        "defaultValue": "claude-opus-4-7",
+        "description": "目标模型 id，使用 `claude-opus-4-7`。"
+      },
+      {
+        "name": "messages",
+        "type": "object[]",
+        "required": true,
+        "description": "OpenAI 兼容格式的对话数组，可按需包含 `system`、`user`、`assistant`。"
+      },
+      {
+        "name": "messages[].role",
+        "type": "string",
+        "required": true,
+        "description": "消息角色，常见值为 `system`、`user`、`assistant`。"
+      },
+      {
+        "name": "messages[].content",
+        "type": "string",
+        "required": true,
+        "description": "对应角色的纯文本消息内容。"
+      },
+      {
+        "name": "temperature",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "采样温度。数值更低时，输出更偏稳定与确定。"
+      },
+      {
+        "name": "max_tokens",
+        "type": "integer",
+        "required": false,
+        "defaultValue": "4096",
+        "description": "本次响应允许返回的最大 completion token 数。"
+      },
+      {
+        "name": "top_p",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "description": "Nucleus sampling 参数。除非你的系统已有统一策略，否则保持 `1` 即可。"
+      }
+    ],
+    "response": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "本次响应的唯一标识。"
+      },
+      {
+        "name": "object",
+        "type": "string",
+        "description": "响应对象类型，通常为 `chat.completion`。"
+      },
+      {
+        "name": "created",
+        "type": "integer",
+        "description": "响应创建时间的 Unix 时间戳。"
+      },
+      {
+        "name": "model",
+        "type": "string",
+        "description": "实际用于处理请求的模型 id。"
+      },
+      {
+        "name": "choices[0].message.content",
+        "type": "string",
+        "description": "助手返回的文本内容。"
+      },
+      {
+        "name": "usage.prompt_tokens",
+        "type": "integer",
+        "description": "按输入单价计费的 prompt token 数。"
+      },
+      {
+        "name": "usage.completion_tokens",
+        "type": "integer",
+        "description": "按输出单价计费的 completion token 数。"
+      },
+      {
+        "name": "usage.total_tokens",
+        "type": "integer",
+        "description": "输入与输出 token 总数。"
+      }
+    ],
+    "errors": [
+      {
+        "code": "400",
+        "name": "invalid_request",
+        "description": "缺少 model、messages 为空、角色不合法，或数值参数格式错误。"
+      },
+      {
+        "code": "401",
+        "name": "authentication_error",
+        "description": "Bearer API Key 缺失、过期或无效。"
+      },
+      {
+        "code": "402",
+        "name": "insufficient_credits",
+        "description": "当前预付余额不足以覆盖这次请求的 token 成本。"
+      },
+      {
+        "code": "429",
+        "name": "rate_limited",
+        "description": "当前 API Key 暂时超过可用请求速率。"
+      }
+    ],
+    "payloadTemplate": {
+      "model": "claude-opus-4-7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a professional AI assistant."
+        },
+        {
+          "role": "user",
+          "content": "Analyze this codebase and suggest improvements."
+        }
+      ],
+      "temperature": 1,
+      "max_tokens": 4096,
+      "top_p": 1
+    },
+    "responseExamples": [
+      {
+        "code": "200",
+        "label": "200",
+        "body": "{\n  \"id\": \"chatcmpl-claude-opus-47-demo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1776326400,\n  \"model\": \"claude-opus-4-7\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Start by separating request validation, persistence, and provider calls into distinct layers. That will make retries, observability, and model swaps less fragile.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1865,\n    \"completion_tokens\": 524,\n    \"total_tokens\": 2389\n  }\n}"
+      },
+      {
+        "code": "402",
+        "label": "402",
+        "body": "{\n  \"error\": {\n    \"message\": \"Insufficient credits to process this request\",\n    \"type\": \"insufficient_credits\"\n  }\n}"
+      }
+    ],
+    "sampleResponse": "{\n  \"id\": \"chatcmpl-claude-opus-47-demo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1776326400,\n  \"model\": \"claude-opus-4-7\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Start by separating request validation, persistence, and provider calls into distinct layers. That will make retries, observability, and model swaps less fragile.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1865,\n    \"completion_tokens\": 524,\n    \"total_tokens\": 2389\n  }\n}"
+  }
+}

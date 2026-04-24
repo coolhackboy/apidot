@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Link } from "@/i18n/routing";
-import { getModelById } from "@/services/modelService";
+import { getModelById, getModelTokenPricing } from "@/services/modelService";
 import type { LandingPage } from "@/types/pages/landing";
 
 interface MarketingModelContentProps {
@@ -83,7 +83,13 @@ export default function MarketingModelContent({
     model.pricingByModel?.[activeModelId] ||
     model.pricingByModel?.[model.id] ||
     model.pricing;
-  const priceLabel = `$${formatPrice(activePricing.credits)} ${activePricing.unit}`;
+  const tokenPricing = getModelTokenPricing(model, activeModelId);
+  const priceLabel =
+    model.category === "Chat" && tokenPricing.input && tokenPricing.output
+      ? `Input: $${formatPrice((tokenPricing.input.priceUSD ?? 0) * 1000)} / 1M input tokens, Output: $${formatPrice(
+          (tokenPricing.output.priceUSD ?? 0) * 1000,
+        )} / 1M output tokens`
+      : `$${formatPrice(activePricing.credits)} ${activePricing.unit}`;
   const endpoint = endpointByCategory[model.category || ""] || "/v1/generations";
   const replacements = {
     modelName: model.name,
