@@ -3,7 +3,7 @@ title: "Sora 2 Pro API is Now Available on Poyo.ai"
 category: "announcements"
 description: "Experience OpenAI's most advanced video generation model with enhanced physics simulation, improved character consistency, and extended video length capabilities."
 locale: "en"
-image: "https://storage.poyo.ai/upload/mi62dhp2_nld47zeqbnl.webp"
+image: "https://storage.apidot.ai/upload/mi62dhp2_nld47zeqbnl.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-11-19T10:00:00.000Z"
 dateModified: "2025-11-19T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "sora, video generation, ai, openai"
 popular: true
 ---
 
-![Sora 2 Pro - Advanced AI Video Generation](https://storage.poyo.ai/upload/mi62dhp2_nld47zeqbnl.webp)
+![Sora 2 Pro - Advanced AI Video Generation](https://storage.apidot.ai/upload/mi62dhp2_nld47zeqbnl.webp)
 
 We're thrilled to announce that **[Sora 2 Pro](https://poyo.ai/models/sora-2-pro)**, OpenAI's most sophisticated video generation model, is now available on Poyo.ai. This groundbreaking advancement in AI video generation brings unprecedented realism, extended duration capabilities, and enhanced creative control to your fingertips.
 

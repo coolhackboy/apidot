@@ -331,7 +331,7 @@ print(response.json())`;
     "status": "finished",
     "files": [
       {
-        "file_url": "https://storage.poyo.ai/${apiType === 'image' ? 'images' : 'videos'}/FDR7H8Y7JAL97KCV/example.${apiType === 'image' ? 'png' : 'mp4'}",
+        "file_url": "https://storage.apidot.ai/${apiType === 'image' ? 'images' : 'videos'}/FDR7H8Y7JAL97KCV/example.${apiType === 'image' ? 'png' : 'mp4'}",
         "file_type": "${apiType}"
       }
     ],

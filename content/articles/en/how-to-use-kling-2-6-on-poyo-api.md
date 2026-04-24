@@ -3,7 +3,7 @@ title: "How to Use Kling 2.6 API on PoYo: Complete Developer Guide"
 category: "tutorials"
 description: "Learn how to integrate Kling 2.6 API for AI video generation with native audio. Step-by-step guide with code examples for text-to-video and image-to-video generation."
 locale: "en"
-image: "https://storage.poyo.ai/uplaod/misplv2r_2n263eq31fv.webp"
+image: "https://storage.apidot.ai/uplaod/misplv2r_2n263eq31fv.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-12-05T12:00:00.000Z"
 dateModified: "2025-12-05T12:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "kling 2.6, api tutorial, video generation, native audio, developer guide"
 popular: true
 ---
 
-![How to Use Kling 2.6 API on PoYo](https://storage.poyo.ai/uplaod/misplv2r_2n263eq31fv.webp)
+![How to Use Kling 2.6 API on PoYo](https://storage.apidot.ai/uplaod/misplv2r_2n263eq31fv.webp)
 
 Kling 2.6 API is a revolutionary AI video generation model that produces videos with synchronized native audio - including speech, singing, and sound effects. This comprehensive guide will walk you through integrating Kling 2.6's powerful capabilities into your applications.
 

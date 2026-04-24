@@ -3,7 +3,7 @@ title: "Kling 2.6 API - AI Video Generation with Native Audio Now Available"
 category: "announcements"
 description: "Access Kling 2.6 API on PoYo - Generate high-quality AI videos with synchronized native audio including speech, singing, and sound effects. Text-to-video and image-to-video support."
 locale: "en"
-image: "https://storage.poyo.ai/uplaod/misplv2r_2n263eq31fv.webp"
+image: "https://storage.apidot.ai/uplaod/misplv2r_2n263eq31fv.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-12-05T10:00:00.000Z"
 dateModified: "2025-12-05T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "kling 2.6, video generation, ai video, native audio, text to video"
 popular: true
 ---
 
-![Kling 2.6 API - AI Video Generation with Native Audio](https://storage.poyo.ai/uplaod/misplv2r_2n263eq31fv.webp)
+![Kling 2.6 API - AI Video Generation with Native Audio](https://storage.apidot.ai/uplaod/misplv2r_2n263eq31fv.webp)
 
 We're excited to announce that **[Kling 2.6 API](https://poyo.ai/models/kling-2-6)**, the groundbreaking AI video generation model with native audio capabilities, is now available on PoYo. Generate stunning videos with synchronized speech, singing, sound effects, and ambient audio - all in a single generation.
 

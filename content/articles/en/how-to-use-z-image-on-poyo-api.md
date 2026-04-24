@@ -3,7 +3,7 @@ title: "How to Use Z-Image API on PoYo: Complete Developer Guide"
 category: "tutorials"
 description: "Learn how to integrate Z-Image API into your applications. Step-by-step guide with code examples in JavaScript, Python, and cURL for ultra-fast AI image generation."
 locale: "en"
-image: "https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp"
+image: "https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-12-05T12:00:00.000Z"
 dateModified: "2025-12-05T12:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "z-image, api tutorial, image generation, alibaba, developer guide"
 popular: true
 ---
 
-![How to Use Z-Image API on PoYo](https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
+![How to Use Z-Image API on PoYo](https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
 
 Z-Image API, powered by Alibaba's innovative S3-DiT architecture, delivers ultra-fast image generation in under one second. This comprehensive guide will walk you through integrating Z-Image's powerful capabilities into your applications using PoYo's API.
 

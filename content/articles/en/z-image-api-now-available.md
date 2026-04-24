@@ -3,7 +3,7 @@ title: "Z-Image API - Alibaba's Ultra-Fast AI Image Generator Now Available"
 category: "announcements"
 description: "Access Z-Image API on PoYo - Alibaba's lightning-fast 6B parameter model. Generate high-quality images in under 1 second with sharp bilingual text rendering (English & Chinese)."
 locale: "en"
-image: "https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp"
+image: "https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-12-05T10:00:00.000Z"
 dateModified: "2025-12-05T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "z-image, image generation, alibaba, ai, fast image generator"
 popular: true
 ---
 
-![Z-Image API - Alibaba's Ultra-Fast AI Image Generator](https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
+![Z-Image API - Alibaba's Ultra-Fast AI Image Generator](https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
 
 We're excited to announce that **[Z-Image API](https://poyo.ai/models/z-image)**, Alibaba's groundbreaking ultra-fast AI image generator, is now available on PoYo. Powered by the innovative Single-Stream Diffusion Transformer (S3-DiT) architecture with 6 billion parameters, Z-Image delivers stunning image generation in under one second.
 

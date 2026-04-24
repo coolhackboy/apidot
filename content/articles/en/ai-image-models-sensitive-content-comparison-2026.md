@@ -3,7 +3,7 @@ title: "How AI Image Models Handle Sensitive Content in 2026"
 category: "guide"
 description: "Compare how Grok Imagine, Z-Image, and Seedream 4.5 handle sensitive and age-restricted image generation in 2026. Review policy transparency, moderation controls, platform differences, and compliance considerations."
 locale: "en"
-image: "https://storage.poyo.ai/uplaod/mj0254ps_piskwisalym.webp"
+image: "https://storage.apidot.ai/uplaod/mj0254ps_piskwisalym.webp"
 author: "Poyo.ai Team"
 datePublished: "2026-01-21T10:00:00.000Z"
 dateModified: "2026-03-21T10:00:00.000Z"
@@ -29,7 +29,7 @@ If your workflow may touch mature themes, brand-sensitive campaigns, or age-rest
 
 ## 1. Grok Imagine (xAI)
 
-![Grok Imagine by xAI](https://storage.poyo.ai/uplaod/mj0254ps_piskwisalym.webp)
+![Grok Imagine by xAI](https://storage.apidot.ai/uplaod/mj0254ps_piskwisalym.webp)
 
 ### Positioning
 
@@ -67,7 +67,7 @@ Grok Imagine is best for teams that want a mainstream hosted workflow with relat
 
 ## 2. Z-Image (Alibaba)
 
-![Z-Image by Alibaba](https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
+![Z-Image by Alibaba](https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp)
 
 ### Positioning
 
@@ -105,7 +105,7 @@ Z-Image is best for teams that want flexibility, internal moderation control, or
 
 ## 3. Seedream 4.5 (ByteDance)
 
-![Seedream 4.5 by ByteDance](https://storage.poyo.ai/models/seedream-4.5.webp)
+![Seedream 4.5 by ByteDance](https://storage.apidot.ai/models/seedream-4.5.webp)
 
 ### Positioning
 

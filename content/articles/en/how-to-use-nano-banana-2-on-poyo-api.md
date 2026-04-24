@@ -3,7 +3,7 @@ title: "How to Use Nano Banana 2 API on PoYo: Complete Developer Guide"
 category: "tutorials"
 description: "Learn how to integrate Nano Banana 2 API powered by Gemini 3 Pro Preview into your applications. Step-by-step guide with code examples for the revolutionary 5-step workflow."
 locale: "en"
-image: "https://storage.poyo.ai/upload/mi7lhu1q_gfzuxlx4dvv.webp"
+image: "https://storage.apidot.ai/upload/mi7lhu1q_gfzuxlx4dvv.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-11-20T12:00:00.000Z"
 dateModified: "2025-11-20T12:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "nano banana 2, api tutorial, image generation, gemini, developer guide"
 popular: true
 ---
 
-![How to Use Nano Banana 2 API on PoYo](https://storage.poyo.ai/upload/mi7lhu1q_gfzuxlx4dvv.webp)
+![How to Use Nano Banana 2 API on PoYo](https://storage.apidot.ai/upload/mi7lhu1q_gfzuxlx4dvv.webp)
 
 Nano Banana 2 API, powered by Google's Gemini 3 Pro Preview, introduces revolutionary capabilities in AI image generation. This comprehensive guide will walk you through implementing the world's first 5-step workflow (Plan → Generate → Review → Refine → Iterate) in your applications using PoYo's API.
 

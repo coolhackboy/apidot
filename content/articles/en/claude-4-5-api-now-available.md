@@ -3,7 +3,7 @@ title: "Claude 4.5 Series API - Opus, Sonnet & Haiku Now Available on PoYo"
 category: "announcements"
 description: "Access Claude 4.5 Series API on PoYo - Opus ($4/$20), Sonnet ($2.4/$12), Haiku ($0.8/$4) per 1M tokens. 200K context, 64K output, Extended Thinking, 80.9% SWE-bench."
 locale: "en"
-image: "https://storage.poyo.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp"
+image: "https://storage.apidot.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp"
 author: "Poyo.ai Team"
 datePublished: "2026-01-29T10:00:00.000Z"
 dateModified: "2026-01-29T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "claude 4.5, opus, sonnet, haiku, anthropic, chat api, extended thinking, 
 popular: true
 ---
 
-![Claude 4.5 Series API - Opus, Sonnet & Haiku](https://storage.poyo.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp)
+![Claude 4.5 Series API - Opus, Sonnet & Haiku](https://storage.apidot.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp)
 
 We're excited to announce that **[Claude 4.5 Series API](https://poyo.ai/models/claude-4-5-api)**, Anthropic's most capable AI model family, is now available on PoYo. Access Claude Opus 4.5, Sonnet 4.5, and Haiku 4.5 through a single API with no waitlist, no approval process, and instant access.
 

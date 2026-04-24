@@ -4,8 +4,8 @@
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",
     "providerOrder": 2,
-    "icon": "https://storage.poyo.ai/provider/claude.svg",
-    "thumbnail": "https://storage.poyo.ai/claude-opus-4-7/thumbnail.png",
+    "icon": "https://storage.apidot.ai/provider/claude.svg",
+    "thumbnail": "https://storage.apidot.ai/claude-opus-4-7/thumbnail.png",
     "description": "Anthropic's most capable generally available model for frontier coding, deep reasoning, and high-resolution vision.",
     "catalogBadge": "New",
     "catalogVendorLabel": "Anthropic",
@@ -50,8 +50,8 @@
     "name": "Seedance 2",
     "provider": "Seedance",
     "providerOrder": 4,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnailVideo": "https://storage.poyo.ai/seedance-2/demo.mp4",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnailVideo": "https://storage.apidot.ai/seedance-2/demo.mp4",
     "description": "ByteDance's director-level multimodal video model with native audio-video generation, multi-shot storytelling, and text, image, video, and audio reference inputs.",
     "catalogBadge": "New",
     "catalogVendorLabel": "ByteDance",
@@ -184,8 +184,8 @@
     "name": "Kling O3 Image",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnail": "https://storage.poyo.ai/kling-o3-image/mnsmw1su_uekmnqq0zr.webp",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnail": "https://storage.apidot.ai/kling-o3-image/mnsmw1su_uekmnqq0zr.webp",
     "description": "Kling's O3 image family supports prompt-only generation, multi-reference editing, single outputs, and connected series generation with 1K to 4K resolution tiers.",
     "models": [
       "kling-o3-image",
@@ -254,8 +254,8 @@
     "name": "Kling O1 Image",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnail": "https://storage.poyo.ai/kling-o1-image/mnr7ufmh_1zviambi3gu.webp",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnail": "https://storage.apidot.ai/kling-o1-image/mnr7ufmh_1zviambi3gu.webp",
     "description": "Kling O1 Image Edit focuses on reference-based image transformation with optional elements guidance, flexible aspect ratios, and 1K or 2K output tiers.",
     "models": [
       "kling-o1-image-edit"
@@ -294,8 +294,8 @@
     "name": "Wan 2.7 Image",
     "provider": "Wan",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/wan.png",
-    "thumbnail": "https://storage.poyo.ai/wan-2-7-image/wan-2-7-image-api-facial-control.webp",
+    "icon": "https://storage.apidot.ai/provider/wan.png",
+    "thumbnail": "https://storage.apidot.ai/wan-2-7-image/wan-2-7-image-api-facial-control.webp",
     "description": "Alibaba's unified Wan 2.7 image family for text-to-image generation and reference-based image editing with standard and pro quality tiers.",
     "models": [
       "wan-2.7-image",
@@ -346,8 +346,8 @@
     "name": "Sora 2 Official",
     "provider": "OpenAI",
     "providerOrder": 1,
-    "icon": "https://storage.poyo.ai/provider/sora.svg",
-    "thumbnailVideo": "https://storage.poyo.ai/sora-2-official/feature-3.mp4",
+    "icon": "https://storage.apidot.ai/provider/sora.svg",
+    "thumbnailVideo": "https://storage.apidot.ai/sora-2-official/feature-3.mp4",
     "description": "OpenAI Sora 2 on PoYo with synced audio, improved physics, optional reference image input, and fixed 4-second, 8-second, 12-second, 16-second, and 20-second tiers.",
     "models": [
       "sora-2-official"
@@ -412,8 +412,8 @@
     "name": "Kling 3.0 Motion Control",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnailVideo": "https://storage.poyo.ai/kling-3.0-motion-control/poyo-kling3.0-motion-control-demo.mp4",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnailVideo": "https://storage.apidot.ai/kling-3.0-motion-control/poyo-kling3.0-motion-control-demo.mp4",
     "description": "Kling 3.0 Motion Control is a reference-driven motion transfer model that combines one character image and one source video with transparent per-second pricing.",
     "models": [
       "kling-3.0-motion-control"
@@ -455,7 +455,7 @@
     "name": "Hailuo 2.3",
     "provider": "Hailuo",
     "providerOrder": 6,
-    "icon": "https://storage.poyo.ai/provider/minimax.svg",
+    "icon": "https://storage.apidot.ai/provider/minimax.svg",
     "thumbnailVideo": "https://cdn.doculator.org/hailuo-2.3/feature-2.mp4",
     "description": "MiniMax's Hailuo 2.3 video model for realistic human motion, expressive characters, and text-to-video or first-frame guided generation at 768p and 1080p.",
     "models": [
@@ -508,7 +508,7 @@
     "name": "Kling 2.1",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
     "description": "Kling 2.1 on PoYo provides Standard and Pro image-to-video modes with 5-second and 10-second clips, start-frame control, and optional end-frame control in Pro.",
     "thumbnailVideo": "https://cdn.doculator.org/kling-2.1/example-output-1.mp4",
     "models": [
@@ -570,7 +570,7 @@
     "name": "Kling 2.5 Turbo Pro",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
     "thumbnailVideo": "https://cdn.doculator.org/kling-2.5-turbo-pro/feature-1.mp4",
     "description": "Kling 2.5 Turbo Pro is a flexible short-form video model with text-to-video, optional frame guidance, smooth motion, cinematic depth, and fixed 5-second and 10-second tiers.",
     "models": [
@@ -612,7 +612,7 @@
     "name": "Wan 2.2 Fast",
     "provider": "Wan",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/wan.png",
+    "icon": "https://storage.apidot.ai/provider/wan.png",
     "thumbnailVideo": "https://cdn.doculator.org/wan-2-2-fast/feature-1.mp4",
     "description": "Wan 2.2 Fast provides fast text-to-video and image-to-video generation with low-cost 480p and 720p tiers for quick iteration.",
     "models": [
@@ -655,8 +655,8 @@
     "name": "Wan 2.5",
     "provider": "Wan",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/wan.png",
-    "thumbnailVideo": "https://storage.poyo.ai/wan-2-5/example-output-text-to-video.mp4",
+    "icon": "https://storage.apidot.ai/provider/wan.png",
+    "thumbnailVideo": "https://storage.apidot.ai/wan-2-5/example-output-text-to-video.mp4",
     "description": "Wan 2.5 combines text-to-video and image-to-video generation with 5-second and 10-second output, synchronized audio support, and multiple size and resolution tiers.",
     "models": [
       "wan2.5-image-to-video",
@@ -703,7 +703,7 @@
     "name": "Runway Gen-4.5",
     "provider": "Runway",
     "providerOrder": 8,
-    "icon": "https://storage.poyo.ai/provider/runway.svg",
+    "icon": "https://storage.apidot.ai/provider/runway.svg",
     "thumbnailVideo": "https://cdn.doculator.org/runway-gen-4-5/example-output.mp4",
     "description": "Runway Gen-4.5 is a high-fidelity video model focused on prompt adherence, cinematic motion, visual fidelity, and optional reference image guidance.",
     "models": [
@@ -744,8 +744,8 @@
     "name": "Nano Banana 2",
     "provider": "Google",
     "providerOrder": 1,
-    "icon": "https://storage.poyo.ai/provider/gemini.svg",
-    "thumbnail": "https://storage.poyo.ai/nano-banana-2/mm4xg8lg_tcl1yvpqm4.webp",
+    "icon": "https://storage.apidot.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.apidot.ai/nano-banana-2/mm4xg8lg_tcl1yvpqm4.webp",
     "description": "Google's next-gen image model powered by Gemini 3.1 Flash with native 2K/4K resolution, chain-of-thought reasoning, precise multi-language text rendering, and up to 14 reference images.",
     "models": [
       "nano-banana-2-new",
@@ -880,8 +880,8 @@
     "name": "Seedream 5.0 Lite",
     "provider": "Seedream",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnail": "https://storage.poyo.ai/seedream-5-0-lite-api/mm4mwb0o_s5lu1jx5ws9.webp",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.apidot.ai/seedream-5-0-lite-api/mm4mwb0o_s5lu1jx5ws9.webp",
     "description": "ByteDance's efficient multimodal image model with native 2K/3K resolution, deep thinking, bilingual text rendering, and smart editing.",
     "models": [
       "seedream-5.0-lite",
@@ -921,8 +921,8 @@
     "name": "Seedream 4",
     "provider": "Seedream",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnail": "https://storage.poyo.ai/models/seedream-4.5.webp",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.apidot.ai/models/seedream-4.5.webp",
     "description": "ByteDance's multimodal image model for native 1K to 4K generation, reference-guided editing, and batch outputs up to 15 images.",
     "models": [
       "seedream-4",
@@ -964,8 +964,8 @@
     "name": "Kling 3.0",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnailVideo": "https://storage.poyo.ai/kling-3.0-api/example-1.mp4",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnailVideo": "https://storage.apidot.ai/kling-3.0-api/example-1.mp4",
     "description": "Kuaishou's most advanced video model with native 4K/60fps output, multi-shot storyboarding, multilingual audio, and character consistency for up to 3 people.",
     "models": [
       "kling-3.0/standard",
@@ -1029,8 +1029,8 @@
     "id": "gemini-3-api",
     "name": "Gemini 3 Series",
     "provider": "Google",
-    "icon": "https://storage.poyo.ai/provider/gemini.svg",
-    "thumbnail": "https://storage.poyo.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp",
+    "icon": "https://storage.apidot.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.apidot.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp",
     "description": "Google's Gemini 3 series model — Flash Preview & Pro Preview",
     "models": [
       "gemini-3-flash-preview",
@@ -1085,8 +1085,8 @@
     "id": "claude-4-5-api",
     "name": "Claude 4.5 Series",
     "provider": "Anthropic",
-    "icon": "https://storage.poyo.ai/provider/claude.svg",
-    "thumbnail": "https://storage.poyo.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp",
+    "icon": "https://storage.apidot.ai/provider/claude.svg",
+    "thumbnail": "https://storage.apidot.ai/claude-opus-4-5-api/mkxu09ob_ofcqxi20xpm.webp",
     "description": "Anthropic's Claude 4.5 series model — Opus, Sonnet & Haiku",
     "models": [
       "claude-opus-4-5-20251101",
@@ -1159,8 +1159,8 @@
     "name": "Kling 2.6 Motion Control",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnail": "https://storage.poyo.ai/upload/mk1975gv_zrcx6zhadz.webp",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnail": "https://storage.apidot.ai/upload/mk1975gv_zrcx6zhadz.webp",
     "description": "Kuaishou's motion control model that transfers motion from reference videos to character images while maintaining identity and adapting environments.",
     "models": [
       "kling-2.6-motion-control"
@@ -1201,8 +1201,8 @@
     "name": "Seedance 1.5 Pro",
     "provider": "Seedance",
     "providerOrder": 4,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnail": "https://storage.poyo.ai/upload/mjlb3tgo_e9akkurd4n6.webp",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.apidot.ai/upload/mjlb3tgo_e9akkurd4n6.webp",
     "description": "ByteDance's latest video model with synchronized audio generation, flexible aspect ratios, and enhanced motion control.",
     "models": [
       "seedance-1.5-pro"
@@ -1347,8 +1347,8 @@
     "name": "Wan 2.6",
     "provider": "Wan",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/wan.png",
-    "thumbnail": "https://storage.poyo.ai/upload/mjicgb9y_80jrrkymdr6.webp",
+    "icon": "https://storage.apidot.ai/provider/wan.png",
+    "thumbnail": "https://storage.apidot.ai/upload/mjicgb9y_80jrrkymdr6.webp",
     "description": "Alibaba's Wan 2.6 video generation family for text-to-video, image-to-video, and video-to-video with multi-shot 1080p output.",
     "models": [
       "wan2.6-text-to-video",
@@ -1430,8 +1430,8 @@
     "name": "GPT Image 1.5",
     "provider": "OpenAI",
     "providerOrder": 2,
-    "icon": "https://storage.poyo.ai/provider/openai.svg",
-    "thumbnail": "https://storage.poyo.ai/uplaod/mj9hpmlg_qptxoug9bq.webp",
+    "icon": "https://storage.apidot.ai/provider/openai.svg",
+    "thumbnail": "https://storage.apidot.ai/uplaod/mj9hpmlg_qptxoug9bq.webp",
     "description": "OpenAI's latest image model with 4x speed, precision editing, and superior text rendering.",
     "models": [
       "gpt-image-1.5",
@@ -1464,7 +1464,7 @@
     "name": "GPT Image 2",
     "provider": "OpenAI",
     "providerOrder": 2,
-    "icon": "https://storage.poyo.ai/provider/openai.svg",
+    "icon": "https://storage.apidot.ai/provider/openai.svg",
     "description": "OpenAI's next-generation image model with near-perfect text rendering, stronger photorealism, UI screenshot fidelity, and precise single-image editing.",
     "catalogBadge": "New",
     "catalogVendorLabel": "OpenAI",
@@ -1522,8 +1522,8 @@
     "name": "Grok Imagine",
     "provider": "xAI",
     "providerOrder": 7,
-    "icon": "https://storage.poyo.ai/provider/xai.svg",
-    "thumbnail": "https://storage.poyo.ai/uplaod/mj0254ps_piskwisalym.webp",
+    "icon": "https://storage.apidot.ai/provider/xai.svg",
+    "thumbnail": "https://storage.apidot.ai/uplaod/mj0254ps_piskwisalym.webp",
     "description": "xAI's Aurora-powered visual AI for image generation and video creation with Fun, Normal, and Spicy creative modes.",
     "models": [
       "grok-imagine-image",
@@ -1563,8 +1563,8 @@
     "name": "Hailuo 02",
     "provider": "Hailuo",
     "providerOrder": 6,
-    "icon": "https://storage.poyo.ai/provider/minimax.svg",
-    "thumbnail": "https://storage.poyo.ai/uplaod/mj01xltp_250qe91o8j6.webp",
+    "icon": "https://storage.apidot.ai/provider/minimax.svg",
+    "thumbnail": "https://storage.apidot.ai/uplaod/mj01xltp_250qe91o8j6.webp",
     "description": "MiniMax's #2 globally-ranked video model with NCR architecture, ultra-realistic physics, and 1080p cinematic output.",
     "models": [
       "hailuo-02",
@@ -1605,8 +1605,8 @@
     "name": "Seedance 1.0 Pro",
     "provider": "Seedance",
     "providerOrder": 4,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnail": "https://storage.poyo.ai/uplaod/mj01xlt8_xih3qpqvndq.webp",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.apidot.ai/uplaod/mj01xlt8_xih3qpqvndq.webp",
     "description": "ByteDance's #1 ranked video model with multi-shot storytelling, cinema-grade motion, and bilingual text-to-video generation.",
     "models": [
       "seedance-1.0-pro"
@@ -1667,8 +1667,8 @@
     "name": "Z-Image",
     "provider": "Wan",
     "providerOrder": 4,
-    "icon": "https://storage.poyo.ai/provider/alibaba.svg",
-    "thumbnail": "https://storage.poyo.ai/uplaod/mispff6t_obqfsyv8c1d.webp",
+    "icon": "https://storage.apidot.ai/provider/alibaba.svg",
+    "thumbnail": "https://storage.apidot.ai/uplaod/mispff6t_obqfsyv8c1d.webp",
     "description": "Alibaba's efficient 6B-parameter image model with sub-second generation and exceptional Chinese-English bilingual text rendering capabilities.",
     "models": [
       "z-image"
@@ -1698,8 +1698,8 @@
     "name": "Kling 2.6",
     "provider": "Kling",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/kling.svg",
-    "thumbnail": "https://storage.poyo.ai/models/kling-2.6.webp",
+    "icon": "https://storage.apidot.ai/provider/kling.svg",
+    "thumbnail": "https://storage.apidot.ai/models/kling-2.6.webp",
     "description": "Kuaishou's revolutionary video model that simultaneously generates visuals with synchronized dialogue, sound effects, and ambient audio in one pass.",
     "models": [
       "kling-2.6"
@@ -1759,8 +1759,8 @@
     "name": "Seedream 4.5",
     "provider": "Seedream",
     "providerOrder": 3,
-    "icon": "https://storage.poyo.ai/provider/bytedance.svg",
-    "thumbnail": "https://storage.poyo.ai/models/seedream-4.5.webp",
+    "icon": "https://storage.apidot.ai/provider/bytedance.svg",
+    "thumbnail": "https://storage.apidot.ai/models/seedream-4.5.webp",
     "description": "ByteDance's unified 4K image generation and editing model with professional-grade text rendering and commercial photography quality.",
     "models": [
       "seedream-4.5",
@@ -1793,7 +1793,7 @@
     "name": "Flux Kontext",
     "provider": "Black Forest Labs",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/flux.webp",
+    "icon": "https://storage.apidot.ai/provider/flux.webp",
     "thumbnail": "https://cdn.doculator.org/flux-kontext/flux-kontext-4.webp",
     "description": "Black Forest Labs' in-context image generation and editing family for scene-preserving edits, text replacement, and prompt-driven visual changes.",
     "models": [
@@ -1854,8 +1854,8 @@
     "name": "FLUX.2",
     "provider": "Black Forest Labs",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/flux.webp",
-    "thumbnail": "https://storage.poyo.ai/upload/mivtnvff_cyqanj4l71q.webp",
+    "icon": "https://storage.apidot.ai/provider/flux.webp",
+    "thumbnail": "https://storage.apidot.ai/upload/mivtnvff_cyqanj4l71q.webp",
     "description": "Black Forest Labs' production-grade model combining 4MP image generation and editing with multi-reference support, precise typography, and hex color control.",
     "models": [
       "flux-2-pro",
@@ -1954,8 +1954,8 @@
     "name": "Wan Animate",
     "provider": "Wan",
     "providerOrder": 5,
-    "icon": "https://storage.poyo.ai/provider/wan.png",
-    "thumbnail": "https://storage.poyo.ai/upload/mivtkcgz_240zko0ou1z.webp",
+    "icon": "https://storage.apidot.ai/provider/wan.png",
+    "thumbnail": "https://storage.apidot.ai/upload/mivtkcgz_240zko0ou1z.webp",
     "description": "Alibaba's 14B-parameter character animation model that transfers motion from reference videos to static characters with exceptional identity preservation.",
     "models": [
       "wan-animate-move",
@@ -2004,8 +2004,8 @@
     "name": "GPT-4o Image",
     "provider": "OpenAI",
     "providerOrder": 2,
-    "icon": "https://storage.poyo.ai/provider/openai.svg",
-    "thumbnail": "https://storage.poyo.ai/models/gpt-4o-image.webp",
+    "icon": "https://storage.apidot.ai/provider/openai.svg",
+    "thumbnail": "https://storage.apidot.ai/models/gpt-4o-image.webp",
     "description": "OpenAI's native multimodal image generator with exceptional text rendering, precise prompt following, and conversational editing capabilities.",
     "models": [
       "gpt-4o-image",
@@ -2038,8 +2038,8 @@
     "name": "Nano Banana",
     "provider": "Google",
     "providerOrder": 1,
-    "icon": "https://storage.poyo.ai/provider/gemini.svg",
-    "thumbnail": "https://storage.poyo.ai/models/nano-banana.webp",
+    "icon": "https://storage.apidot.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.apidot.ai/models/nano-banana.webp",
     "description": "Google's leaderboard-topping image model (Gemini 2.5 Flash) excelling in natural language editing, character consistency, and multi-image blending.",
     "models": [
       "nano-banana-2-new",
@@ -2076,8 +2076,8 @@
     "name": "Sora 2",
     "provider": "OpenAI",
     "providerOrder": 1,
-    "icon": "https://storage.poyo.ai/provider/sora.svg",
-    "thumbnail": "https://storage.poyo.ai/models/sora-2.webp",
+    "icon": "https://storage.apidot.ai/provider/sora.svg",
+    "thumbnail": "https://storage.apidot.ai/models/sora-2.webp",
     "models": [
       "sora-2-stable",
       "sora-2",
@@ -2137,8 +2137,8 @@
     "name": "Sora 2 Pro",
     "provider": "OpenAI",
     "providerOrder": 1,
-    "icon": "https://storage.poyo.ai/provider/sora.svg",
-    "thumbnail": "https://storage.poyo.ai/models/sora-2-pro.webp",
+    "icon": "https://storage.apidot.ai/provider/sora.svg",
+    "thumbnail": "https://storage.apidot.ai/models/sora-2-pro.webp",
     "models": [
       "sora-2-pro"
     ],
@@ -2187,8 +2187,8 @@
     "name": "Veo 3.1",
     "provider": "Google",
     "providerOrder": 2,
-    "icon": "https://storage.poyo.ai/provider/gemini.svg",
-    "thumbnail": "https://storage.poyo.ai/models/veo-3.1.webp",
+    "icon": "https://storage.apidot.ai/provider/gemini.svg",
+    "thumbnail": "https://storage.apidot.ai/models/veo-3.1.webp",
     "models": [
       "veo3.1-lite",
       "veo3.1-fast",
@@ -2287,8 +2287,8 @@
     "id": "generate-music",
     "name": "AI Music",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/provider/suno.svg",
-    "thumbnail": "https://storage.poyo.ai/models/ai-music.webp",
+    "icon": "https://storage.apidot.ai/provider/suno.svg",
+    "thumbnail": "https://storage.apidot.ai/models/ai-music.webp",
     "description": "AI music generator with customizable styles, vocals, and full creative control over musical characteristics and quality.",
     "models": [
       "generate-music"
@@ -2317,8 +2317,8 @@
     "id": "extend-music",
     "name": "Extend Music",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/extend-music.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/extend-music.webp",
     "description": "Extend or modify existing music tracks by creating sequels based on source audio. Supports custom mode with full parameter control or simple mode inheriting original parameters. Specify continuation points and maintain style consistency across extensions up to 8 minutes.",
     "models": [
       "extend-music"
@@ -2347,8 +2347,8 @@
     "id": "upload-and-cover-audio",
     "name": "Upload and Cover Audio",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/upload-and-cover-audio.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/upload-and-cover-audio.webp",
     "description": "Transform audio tracks into new styles while preserving original melodies. Upload your audio files (up to 2 minutes) and convert them with AI-powered style transfer. Supports custom and simplified modes with vocal/instrumental options and audio weight controls.",
     "models": [
       "upload-and-cover-audio"
@@ -2377,8 +2377,8 @@
     "id": "upload-and-extend-audio",
     "name": "Upload and Extend Audio",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/upload-and-extend-audio.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/upload-and-extend-audio.webp",
     "description": "Upload audio files and extend them while maintaining the original style and characteristics. AI generates seamless continuations from specified time points. Supports multiple model versions with style weight and creative controls for natural extensions.",
     "models": [
       "upload-and-extend-audio"
@@ -2407,8 +2407,8 @@
     "id": "add-instrumental",
     "name": "Add Instrumental",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/add-instrumental.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/add-instrumental.webp",
     "description": "Generate musical accompaniment for uploaded audio files containing vocals or melodies. AI creates matching instrumental backing tracks with customizable style tags, genre preferences, and quality controls. Perfect for adding professional-quality backing to vocal recordings.",
     "models": [
       "add-instrumental"
@@ -2437,8 +2437,8 @@
     "id": "add-vocals",
     "name": "Add Vocals",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/add-vocals.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/add-vocals.webp",
     "description": "Layer AI-generated vocals onto existing instrumental tracks. Provide lyrics or descriptions and the API generates matching vocal performances with customizable gender, style, and expression. Transform instrumental music into complete songs with professional AI singing.",
     "models": [
       "add-vocals"
@@ -2467,8 +2467,8 @@
     "id": "get-timestamped-lyrics",
     "name": "Get Timestamped Lyrics",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/get-timestamped-lyrics.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/get-timestamped-lyrics.webp",
     "description": "Retrieve lyrics synchronized with precise timestamps from generated music. Returns word-by-word timing data, waveform visualization, and alignment accuracy scores. Essential for karaoke applications, lyric videos, and music synchronization projects.",
     "models": [
       "get-timestamped-lyrics"
@@ -2497,8 +2497,8 @@
     "id": "boost-music-style",
     "name": "Boost Music Style",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/boost-music-style.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/boost-music-style.webp",
     "description": "AI-enhanced music style description generator. Transform simple style inputs like 'pop, mysterious' into detailed, comprehensive musical descriptions. Optimize your prompts for better music generation results with enriched genre, mood, and instrumentation details.",
     "models": [
       "boost-music-style"
@@ -2527,8 +2527,8 @@
     "id": "generate-music-cover",
     "name": "Generate Music Cover",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/generate-music-cover.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/generate-music-cover.webp",
     "description": "Generate alternative cover versions of existing music tracks. Create variations with automatic style changes while maintaining the essence of the original composition. Perfect for producing multiple versions or exploring different interpretations of your generated music.",
     "models": [
       "generate-music-cover"
@@ -2557,8 +2557,8 @@
     "id": "replace-section",
     "name": "Replace Section",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/replace-section.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/replace-section.webp",
     "description": "Replace specific sections of generated music tracks with precision timing control. Modify choruses, verses, or any segment by specifying start and end times. Maintains overall coherence while allowing targeted changes to lyrics, style, or musical elements.",
     "models": [
       "replace-section"
@@ -2587,8 +2587,8 @@
     "id": "generate-persona",
     "name": "Generate Persona",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/generate-persona.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/generate-persona.webp",
     "description": "Create reusable music personas from existing audio tracks. Save distinctive vocal characteristics, musical styles, and personality traits for consistent use across multiple generations. Build your own AI artist profiles for brand consistency and style continuity.",
     "models": [
       "generate-persona"
@@ -2617,8 +2617,8 @@
     "id": "generate-lyrics",
     "name": "Generate Lyrics",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/generate-lyrics.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/generate-lyrics.webp",
     "description": "AI-powered lyrics generation based on themes, moods, and descriptions. Create original song lyrics from simple prompts up to 200 characters. Generate creative, coherent lyrics for any genre or emotional tone with professional songwriting quality.",
     "models": [
       "generate-lyrics"
@@ -2647,8 +2647,8 @@
     "id": "convert-to-wav",
     "name": "Convert to WAV",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/convert-to-wav.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/convert-to-wav.webp",
     "description": "Obtain high-quality WAV format files from your generated music. Convert any PoYo-generated audio to lossless WAV format for professional use, further editing, or high-fidelity playback. Essential for production workflows requiring uncompressed audio.",
     "models": [
       "convert-to-wav"
@@ -2677,8 +2677,8 @@
     "id": "vocal-remover-api",
     "name": "Vocal Remover",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/vocal-remover.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/vocal-remover.webp",
     "description": "Separate vocals from instrumentals or split audio into multiple stem tracks. Two modes available: vocal separation for isolating vocals and backing tracks, or stem splitting for extracting drums, bass, vocals, and other instruments individually. Professional-grade audio source separation.",
     "models": [
       "separate-vocals",
@@ -2709,8 +2709,8 @@
     "id": "create-music-video",
     "name": "AI Music Video",
     "provider": "PoYo",
-    "icon": "https://storage.poyo.ai/logo.webp",
-    "thumbnail": "https://storage.poyo.ai/models/create-music-video.webp",
+    "icon": "https://storage.apidot.ai/logo.webp",
+    "thumbnail": "https://storage.apidot.ai/models/create-music-video.webp",
     "description": "Generate visualized music videos from audio tracks. Create engaging visual content automatically synchronized to your music with optional author attribution and brand watermarks. Perfect for social media content, promotional materials, and music distribution.",
     "models": [
       "create-music-video"
@@ -2739,8 +2739,8 @@
     "id": "minimax-music-2-6",
     "name": "MiniMax Music 2.6",
     "provider": "MiniMax",
-    "icon": "https://storage.poyo.ai/provider/minimax.svg",
-    "thumbnail": "https://storage.poyo.ai/models/ai-music.webp",
+    "icon": "https://storage.apidot.ai/provider/minimax.svg",
+    "thumbnail": "https://storage.apidot.ai/models/ai-music.webp",
     "description": "Generate complete songs from style prompts and lyrics with MiniMax Music 2.6. Supports vocal tracks, instrumental generation, prompt-driven lyrics optimization, and configurable audio output settings.",
     "models": [
       "minimax-music-2.6"

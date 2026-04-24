@@ -3,7 +3,7 @@ title: "Comprehensive Add Instrumental API Guide - Generate Musical Accompanimen
 category: "announcements"
 description: "Transform vocals into full tracks with Add Instrumental API on PoYo. Upload audio, specify styles with tags, and generate professional instrumental backing tracks."
 locale: "en"
-image: "https://storage.poyo.ai/logo.webp"
+image: "https://storage.apidot.ai/logo.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-12-05T14:00:00.000Z"
 dateModified: "2025-12-05T14:00:00.000Z"

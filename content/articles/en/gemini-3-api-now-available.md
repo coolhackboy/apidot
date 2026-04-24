@@ -3,7 +3,7 @@ title: "Gemini 3 Series API - Flash Preview & Pro Preview Now Available on PoYo"
 category: "announcements"
 description: "Access Gemini 3 Series API on PoYo - Flash Preview ($0.4/$2.4), Pro Preview ($0.8/$4.8) per 1M tokens. 1M context window, dynamic thinking, multimodal, LMArena #1."
 locale: "en"
-image: "https://storage.poyo.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp"
+image: "https://storage.apidot.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp"
 author: "Poyo.ai Team"
 datePublished: "2026-01-29T10:00:00.000Z"
 dateModified: "2026-01-29T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "gemini 3, google, flash, pro, chat api, multimodal, 1m context, dynamic t
 popular: true
 ---
 
-![Gemini 3 Series API - Flash Preview & Pro Preview](https://storage.poyo.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp)
+![Gemini 3 Series API - Flash Preview & Pro Preview](https://storage.apidot.ai/gemini-3-api/mkywm3fv_9jyka0ca0gl.webp)
 
 We're excited to announce that **[Gemini 3 Series API](https://poyo.ai/models/gemini-3-api)**, Google's most advanced AI model family, is now available on PoYo. Access Gemini 3 Flash Preview and Gemini 3 Pro Preview through a unified API with no waitlist, instant access, and competitive pricing.
 

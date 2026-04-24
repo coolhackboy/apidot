@@ -8,7 +8,7 @@ const withNextIntl = createNextIntlPlugin('./i18n/routing.ts');
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['cdn.doculator.org', 'lh3.googleusercontent.com', 'storage.poyo.ai'],
+    domains: ['cdn.doculator.org', 'lh3.googleusercontent.com', 'storage.apidot.ai'],
   },
   async rewrites() {
     return [

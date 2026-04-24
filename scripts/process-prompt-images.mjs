@@ -24,7 +24,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 const CONFIG = {
   sourceBaseUrl: 'https://opennana.com/awesome-prompt-gallery/',
   r2Folder: 'nano-banana-pro-prompt',
-  cdnDomain: process.env.CLOUDFLARE_CDN_DOMAIN || 'storage.poyo.ai',
+  cdnDomain: process.env.CLOUDFLARE_CDN_DOMAIN || 'storage.apidot.ai',
   tempDir: path.join(__dirname, '..', 'temp-images'),
   promptsJsonPath: path.join(__dirname, '..', 'data', 'prompts.json'),
 };

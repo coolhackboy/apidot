@@ -220,7 +220,7 @@ async function generateLandingPage(keyword, docContent, toolComponent) {
           }
         ],
         "images": [
-          "https://storage.poyo.ai/${keyword}/hero_1.webp"
+          "https://storage.apidot.ai/${keyword}/hero_1.webp"
         ]
       },
       "sections": [
@@ -230,7 +230,7 @@ async function generateLandingPage(keyword, docContent, toolComponent) {
           "tag": "Features",
           "media": {
             "type": "image",
-            "src": "https://storage.poyo.ai/${keyword}/feature_1.webp",
+            "src": "https://storage.apidot.ai/${keyword}/feature_1.webp",
             "alt": "..."
           },
           "reverse": true,

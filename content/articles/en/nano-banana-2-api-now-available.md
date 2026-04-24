@@ -3,7 +3,7 @@ title: "Nano Banana 2 API - Google's Revolutionary Next-Gen Image AI Now Availab
 category: "announcements"
 description: "Access Nano Banana 2 API powered by Gemini 3 Pro Preview - featuring 4K resolution, 5-step workflow, self-correcting generation, and cultural context awareness on PoYo."
 locale: "en"
-image: "https://storage.poyo.ai/upload/mi7goosp_podult7ep7h.webp"
+image: "https://storage.apidot.ai/upload/mi7goosp_podult7ep7h.webp"
 author: "Poyo.ai Team"
 datePublished: "2025-11-20T10:00:00.000Z"
 dateModified: "2025-11-20T10:00:00.000Z"
@@ -11,7 +11,7 @@ tags: "nano banana, image generation, google, gemini, ai"
 popular: true
 ---
 
-![Nano Banana 2 API - Google's Revolutionary Next-Gen Image AI](https://storage.poyo.ai/upload/mi7goosp_podult7ep7h.webp)
+![Nano Banana 2 API - Google's Revolutionary Next-Gen Image AI](https://storage.apidot.ai/upload/mi7goosp_podult7ep7h.webp)
 
 We're excited to announce that **[Nano Banana 2 API](https://poyo.ai/models/nano-banana-2-api)**, Google's groundbreaking next-generation AI image generator, is now available on PoYo. Powered by Gemini 3 Pro Preview, this revolutionary model introduces the world's first 5-step workflow for image generation, delivering unprecedented control and professional-grade results.
 
