@@ -232,7 +232,7 @@ function EndpointArticle({
         <div className="flex flex-wrap gap-3">
           <Button
             asChild
-            className="rounded-full bg-black text-white hover:bg-black/90 hover:text-white"
+            className="rounded-full border border-[#111116] bg-[#111116] text-white shadow-none transition-[background-color,color,border-color,box-shadow,transform] duration-150 ease-out hover:-translate-y-px hover:border-[#1f1f27] hover:bg-[#1f1f27] hover:text-white hover:shadow-[0_12px_28px_rgba(15,15,13,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(47,155,95,0.45)] focus-visible:ring-offset-2"
           >
             <Link href={`/models/${docId}`}>
               <Zap className="mr-2 h-4 w-4" />

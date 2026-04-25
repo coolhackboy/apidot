@@ -942,7 +942,12 @@
   font-size: 14px;
   font-weight: 560;
   letter-spacing: -0.014em;
-  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .mk-home-primary-button,
@@ -951,15 +956,7 @@
   padding: 0 20px;
 }
 
-.mk-home-primary-button {
-  background: #121212;
-  color: #fff;
-}
-
-.mk-home-primary-button:hover {
-  background: #1d1d1d;
-}
-
+.mk-home-primary-button,
 .mk-home-secondary-button,
 .mk-home-inline-button {
   border: 1px solid #111116;
@@ -967,14 +964,22 @@
   color: #ffffff;
 }
 
+.mk-home-primary-button:hover,
 .mk-home-secondary-button:hover,
-.mk-home-cta-secondary:hover {
-  background: var(--mk-bg-sunk);
+.mk-home-inline-button:hover {
+  transform: translateY(-1px);
+  border-color: #1f1f27;
+  background: #1f1f27;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 15, 13, 0.14);
 }
 
-.mk-home-inline-button:hover {
-  background: #1b1b25;
-  border-color: #1b1b25;
+.mk-home-primary-button:focus-visible,
+.mk-home-secondary-button:focus-visible,
+.mk-home-inline-button:focus-visible,
+.mk-home-cta-secondary:focus-visible {
+  outline: 2px solid rgba(47, 155, 95, 0.45);
+  outline-offset: 3px;
 }
 
 .mk-home-subnote {
@@ -1453,6 +1458,14 @@
 .mk-home-cta-secondary {
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff;
+}
+
+.mk-home-cta-secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.88);
+  background: #ffffff;
+  color: #11110f;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26);
 }
 
 .mk-models-page {
