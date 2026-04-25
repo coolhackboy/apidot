@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "@/i18n/routing";
 import { appConfig } from "@/data/config";
 import { useTranslations } from "next-intl";
+import { getMarketingFooterModelGroups, type MarketingFooterModelGroup } from "@/services/modelService";
 
 interface FooterLinkItem {
   label: string;
@@ -16,49 +17,40 @@ interface FooterColumn {
 }
 
 const SOCIAL_ITEMS = ["X", "Gh", "Li", "Dc"] as const;
+const FOOTER_CATEGORY_TO_TITLE_KEY: Record<MarketingFooterModelGroup["category"], string> = {
+  Image: "columns.imageApi.title",
+  Video: "columns.videoApi.title",
+  Chat: "columns.chatApi.title",
+  Music: "columns.musicApi.title",
+};
 
 export default function MarketingFooter() {
   const t = useTranslations("Global.MarketingFooter");
-  const footerColumns: FooterColumn[] = [
-    {
-      title: t("columns.imageApi.title"),
-      links: [
-        { label: t("columns.imageApi.gptImage2"), href: "/models/gpt-image-2" },
-      ],
-    },
-    {
-      title: t("columns.videoApi.title"),
-      links: [
-        { label: t("columns.videoApi.seedance2"), href: "/models/seedance-2" },
-        { label: t("columns.videoApi.veo31"), href: "/models/veo-3-1" },
-      ],
-    },
-    {
-      title: t("columns.chatApi.title"),
-      links: [
-        { label: t("columns.chatApi.claudeOpus47"), href: "/models/claude-opus-4-7" },
-      ],
-    },
-    {
-      title: t("columns.musicApi.title"),
-      links: [
-        { label: t("columns.musicApi.minimaxMusic26"), href: "/models/minimax-music-2-6" },
-      ],
-    },
-    {
-      title: t("columns.resources.title"),
-      links: [
-        { label: t("columns.resources.models"), href: "/models" },
-        { label: t("columns.resources.docs"), href: "/docs" },
-        { label: t("columns.resources.pricing"), href: "/pricing" },
-        { label: t("columns.resources.blog") },
-        { label: t("columns.resources.changelog") },
-        { label: t("columns.resources.comparisonHub") },
-        { label: t("columns.resources.alternativeHub") },
-        { label: t("columns.resources.sitemap") },
-      ],
-    },
-  ];
+  const modelColumns = useMemo(
+    () =>
+      getMarketingFooterModelGroups().map((group) => ({
+        title: t(FOOTER_CATEGORY_TO_TITLE_KEY[group.category]),
+        links: group.links.map((link) => ({
+          label: link.name,
+          href: link.url,
+        })),
+      })),
+    [t]
+  );
+  const resourceColumn: FooterColumn = {
+    title: t("columns.resources.title"),
+    links: [
+      { label: t("columns.resources.models"), href: "/models" },
+      { label: t("columns.resources.docs"), href: "/docs" },
+      { label: t("columns.resources.pricing"), href: "/pricing" },
+      { label: t("columns.resources.blog") },
+      { label: t("columns.resources.changelog") },
+      { label: t("columns.resources.comparisonHub") },
+      { label: t("columns.resources.alternativeHub") },
+      { label: t("columns.resources.sitemap") },
+    ],
+  };
+  const footerColumns: FooterColumn[] = [...modelColumns, resourceColumn];
 
   return (
     <footer className="mk-footer">

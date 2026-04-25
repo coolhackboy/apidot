@@ -609,23 +609,18 @@
       "description": "One API for production-ready image, video, chat, and music models. Test in the playground, then ship with usage-based pricing.",
       "status": "All systems operational",
       "copyright": "© {year} {brand} Inc. All rights reserved.",
-    "columns": {
+      "columns": {
         "imageApi": {
-          "title": "Image API",
-          "gptImage2": "GPT Image 2"
+          "title": "Image API"
         },
         "videoApi": {
-          "title": "Video API",
-          "seedance2": "Seedance 2",
-          "veo31": "Veo 3.1"
+          "title": "Video API"
         },
-      "chatApi": {
-        "title": "Chat API",
-        "claudeOpus47": "Claude Opus 4.7"
-      },
+        "chatApi": {
+          "title": "Chat API"
+        },
         "musicApi": {
-          "title": "Music API",
-          "minimaxMusic26": "MiniMax Music 2.6"
+          "title": "Music API"
         },
         "resources": {
           "title": "Resources",

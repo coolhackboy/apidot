@@ -59,6 +59,17 @@ export interface CatalogCategory {
   count: number;
 }
 
+export interface MarketingFooterModelLink {
+  id: string;
+  name: string;
+  url: string;
+}
+
+export interface MarketingFooterModelGroup {
+  category: Exclude<CatalogCategory["key"], "all">;
+  links: MarketingFooterModelLink[];
+}
+
 export interface HeaderModelItem {
   id: string;
   name: string;
@@ -176,6 +187,54 @@ export const getCatalogCategories = (): CatalogCategory[] => {
     { key: "Video", label: "Video", count: counts.Video },
     { key: "Music", label: "Music", count: counts.Music },
   ];
+};
+
+const normalizeMarketingCategory = (category?: string): MarketingFooterModelGroup["category"] | null => {
+  if (category === "Chat") {
+    return "Chat";
+  }
+
+  if (category === "Image") {
+    return "Image";
+  }
+
+  if (category === "Video") {
+    return "Video";
+  }
+
+  if (category === "Audio" || category === "Music") {
+    return "Music";
+  }
+
+  return null;
+};
+
+export const getMarketingFooterModelGroups = (): MarketingFooterModelGroup[] => {
+  const categoryOrder: MarketingFooterModelGroup["category"][] = ["Image", "Video", "Chat", "Music"];
+  const groupedLinks = new Map<MarketingFooterModelGroup["category"], MarketingFooterModelLink[]>(
+    categoryOrder.map((category) => [category, []])
+  );
+
+  getCatalogModels().forEach((model) => {
+    const category = normalizeMarketingCategory(model.category);
+
+    if (!category) {
+      return;
+    }
+
+    groupedLinks.get(category)?.push({
+      id: model.id,
+      name: model.name,
+      url: `/models/${model.id}`,
+    });
+  });
+
+  return categoryOrder
+    .map((category) => ({
+      category,
+      links: groupedLinks.get(category) || [],
+    }))
+    .filter((group) => group.links.length > 0);
 };
 
 const isPer1KTokenTier = (tier: NonNullable<AIModel['pricingTiers']>[number]) => {
