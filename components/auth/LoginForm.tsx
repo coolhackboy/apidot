@@ -22,6 +22,7 @@ import { getInternalSourcePath, getSourceString, getUtmData } from '@/utils/sour
 import { trackSignUp } from '@/utils/gtm-events';
 import { fbTrackCompleteRegistration } from '@/utils/fb-events';
 import { useUserContext } from '@/contexts/UserContext';
+import { appConfig } from '@/data/config';
 
 import { Mail, Lock, User, ArrowLeft, Loader2 } from 'lucide-react';
 
@@ -74,6 +75,8 @@ const LoginForm = ({
   const tModal = useTranslations('Global.Common.modals.login');
   const tAuth = useTranslations('Auth.Login');
   const { isLoggedIn } = useUserContext();
+  const brandLogo = appConfig.appLogoUrl;
+  const brandLogoAlt = `${appConfig.appNameInHeader} logo`;
   const affiliateCodeLabel = tModal('affiliateCode.label');
   const affiliateCodePlaceholder = tModal('affiliateCode.placeholder');
   const normalizedDefaultAffiliateCode = defaultAffiliateCode.trim();
@@ -1059,10 +1062,10 @@ const LoginForm = ({
         <div className="flex flex-col items-center">
           {/* Small centered logo */}
           <Image
-            src="/logo.webp"
+            src={brandLogo}
             width={48}
             height={48}
-            alt="Logo"
+            alt={brandLogoAlt}
             className="mb-4 rounded-lg"
             priority
           />

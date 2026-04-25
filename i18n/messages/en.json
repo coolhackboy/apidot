@@ -2,10 +2,10 @@
   "Global": {
     "Header": {
       "brand": {
-        "title": "PoYo",
+        "title": "APIDot",
         "logo": {
           "src": "/logo.webp",
-          "alt": "PoYo"
+          "alt": "APIDot"
         },
         "url": "/"
       },
