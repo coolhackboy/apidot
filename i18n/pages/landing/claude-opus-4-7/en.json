@@ -1,60 +1,68 @@
 {
   "meta": {
-    "title": "Claude Opus 4.7 API | APIDot",
-    "description": "Access Claude Opus 4.7 instantly on APIDot for frontier agentic coding, 1M context, 128K output, high-resolution vision, and production-ready dual chat endpoint support."
+    "title": "Claude Opus 4.7 API | Agentic Coding, 1M Context, Vision & Dual Endpoints | APIDot",
+    "description": "Use Claude Opus 4.7 on APIDot for agentic coding, long-context analysis, and high-resolution vision. Access the same `claude-opus-4-7` model through `/v1/chat/completions` or `/v1/messages` for production workflows."
   },
   "hero": {
-    "title": "Claude Opus 4.7 API Playground",
-    "description": "Test `claude-opus-4-7` on APIDot with either `/v1/chat/completions` or `/v1/messages`. Run coding, reasoning, and high-resolution vision workflows with the same production model id and transparent token pricing."
+    "title": "Claude Opus 4.7 API for Coding, Long Context, and Vision",
+    "description": "Teams choose Claude Opus 4.7 when the work is too complex for a lightweight chat model, especially for repository-scale coding, structured reasoning, and screenshot or document analysis. On APIDot, the same `claude-opus-4-7` model id is available through both `/v1/chat/completions` and `/v1/messages`, so you can keep one production model while standardizing on the endpoint your stack already uses."
   },
   "seoContent": {
     "overview": {
       "eyebrow": "Overview",
-      "title": "Use Claude Opus 4.7 on APIDot for frontier coding, reasoning, and long-context work",
+      "title": "Choose Claude Opus 4.7 when the work needs deeper engineering judgment and longer context",
       "paragraphs": [
-        "Claude Opus 4.7 is Anthropic's most capable generally available model for agentic coding, long-horizon reasoning, and complex professional workflows. On APIDot, you can access the production model id `claude-opus-4-7` instantly without switching platforms, while keeping pricing and request shape visible on one page.",
-        "Compared with earlier Opus releases, Claude Opus 4.7 is positioned around stronger coding thoroughness, better self-verification, improved tool use, and materially better vision for screenshots, charts, technical diagrams, and document-heavy tasks. The official launch material and current PoYo page both emphasize coding quality, long-running agent reliability, and high-resolution image understanding as the main reasons to adopt it.",
-        "This page is intentionally structured for production teams: a working playground, API examples, pricing that matches the current PoYo benchmark, and SEO content that explains where Claude Opus 4.7 fits best. If you need both OpenAI-compatible integration and Anthropic-native compatibility, APIDot exposes both `/v1/chat/completions` and `/v1/messages` workflows around the same model."
+        "Claude Opus 4.7 makes the most sense when you are not just asking a model to chat, but asking it to inspect a codebase, reason across long documents, plan changes, or stay consistent through a multi-step task. That is where its agentic coding bias and up to 1M context matter more than a lower per-request price.",
+        "Teams usually adopt Claude Opus 4.7 because they want coding answers that feel more checked, reviews that hold together under detail, and multimodal analysis that can handle screenshots, charts, dense PDFs, and technical diagrams without collapsing on visual structure.",
+        "On APIDot, this page is built for that production decision: you use the same `claude-opus-4-7` model id, choose either `/v1/chat/completions` or `/v1/messages`, and keep pricing, playground behavior, and integration docs in one place while you standardize your stack."
       ]
     },
     "capabilities": {
       "eyebrow": "Capabilities",
-      "title": "What Claude Opus 4.7 API is best at",
+      "title": "What Claude Opus 4.7 API is worth using for",
       "items": [
         {
-          "title": "Frontier agentic coding and code review",
-          "description": "Claude Opus 4.7 is designed for multi-step engineering work, including large refactors, deep debugging, structured planning, and code review tasks where the model needs to verify its own reasoning before answering."
+          "title": "Agentic coding for multi-step engineering work",
+          "description": "People look for Claude Opus 4.7 when a coding task involves more than code generation, such as debugging, refactor planning, or moving through several files with consistent intent. On APIDot, you can run those workflows against the production `claude-opus-4-7` model id without changing platforms between testing and real use."
         },
         {
-          "title": "1M context with 128K output",
-          "description": "Use Claude Opus 4.7 API for repository-scale prompts, long document sets, and multi-file technical analysis. The 1M token context window and 128K output ceiling make it viable for demanding production workflows, not just short chat exchanges."
+          "title": "Code review, planning, and self-verification",
+          "description": "This is the kind of model teams choose when they want reviews and plans that feel checked instead of rushed. Claude Opus 4.7 on APIDot is a better fit for structured audits, implementation plans, and higher-stakes technical reasoning than a lightweight chat model."
         },
         {
-          "title": "High-resolution vision up to 2576px / 3.75MP",
-          "description": "Claude Opus 4.7 is the first Claude model with materially improved image resolution support. That makes it stronger for screenshot QA, dashboard reviews, chart interpretation, dense document parsing, and UI analysis tasks that break weaker multimodal models."
+          "title": "1M context with up to 128K output",
+          "description": "The long-context story matters when prompts span a repository, a contract set, or a large technical brief instead of a few paragraphs. APIDot keeps Claude Opus 4.7 positioned around a 1M token context window and up to 128K output, which is why it can cover larger analysis jobs in one pass."
         },
         {
-          "title": "Dual endpoint compatibility for production migration",
-          "description": "Use `/v1/chat/completions` when you want OpenAI-style integration, SDK compatibility, or a faster migration path from existing chat stacks. Use `/v1/messages` when you want the Anthropic-native request shape. APIDot supports both around the same Claude Opus 4.7 model id."
+          "title": "High-resolution vision for screenshots, charts, and documents",
+          "description": "Teams search for this model when visual detail actually matters, not just because it accepts images. On APIDot, Claude Opus 4.7 is a stronger option for screenshot QA, dashboard review, table reading, chart interpretation, and dense document analysis up to 2576px / 3.75MP."
+        },
+        {
+          "title": "Literal instruction following for production tasks",
+          "description": "A more literal model is valuable when prompts include constraints, output formats, or review checklists that cannot be hand-waved. Claude Opus 4.7 rewards explicit instructions on APIDot, which makes it easier to standardize production prompts for engineering and knowledge workflows."
+        },
+        {
+          "title": "Dual endpoint support for migration and standardization",
+          "description": "A lot of teams do not need a new model as much as they need a cleaner migration path. APIDot exposes Claude Opus 4.7 through both `/v1/chat/completions` and `/v1/messages`, so you can keep OpenAI-compatible or Anthropic-native payloads around the same model."
         }
       ]
     },
     "useCases": {
       "eyebrow": "Use Cases",
-      "title": "Who benefits from Claude Opus 4.7 API",
-      "description": "Claude Opus 4.7 is a strong fit when accuracy, long context, and multi-step task execution matter more than raw lowest-cost chat output.",
+      "title": "What teams actually use Claude Opus 4.7 API for",
+      "description": "This page is best suited to tasks where the prompt is long, the reasoning cannot be shallow, and the output needs to survive real engineering or knowledge-work review.",
       "items": [
         "AI coding agents for multi-file engineering work",
-        "Repository analysis, code review, and migration planning",
-        "Long-context research, legal, finance, and knowledge workflows",
-        "High-resolution screenshot, chart, and document analysis",
-        "Internal copilots that need dual endpoint compatibility",
-        "Teams upgrading from earlier Opus or mixed provider chat stacks"
+        "Repository analysis, refactor planning, and code review",
+        "Long-context document and knowledge workflows",
+        "Screenshot QA, dashboard review, and UI analysis",
+        "Chart, table, and dense PDF understanding",
+        "Internal copilots that need both OpenAI-compatible and Anthropic-native endpoints"
       ]
     },
     "quickstart": {
       "eyebrow": "Quickstart",
-      "title": "Start using Claude Opus 4.7 on APIDot in three steps",
+      "title": "Start using {modelName} on APIDot in three steps",
       "steps": [
         {
           "eyebrow": "Step 1",
@@ -65,8 +73,8 @@
         },
         {
           "eyebrow": "Step 2",
-          "title": "Top up credits with token pricing in mind",
-          "description": "Claude Opus 4.7 is priced at $4 per 1M input tokens and $20 per 1M output tokens on this page, aligned to the current PoYo model page. Because the model can reason deeply and produce longer completions, monitor token usage rather than assuming flat per-request cost.",
+        "title": "Top up credits",
+          "description": "Claude Opus 4.7 is currently billed on APIDot at $4 per 1M input tokens and $20 per 1M output tokens. Because the model can reason deeply and produce longer completions, monitor token usage rather than assuming flat per-request cost.",
           "actionText": "Open Billing",
           "actionHref": "/dashboard/billing"
         },
@@ -82,24 +90,28 @@
       "title": "Frequently asked questions about Claude Opus 4.7 API",
       "items": [
         {
-          "question": "What is Claude Opus 4.7?",
-          "answer": "Claude Opus 4.7 is Anthropic's most capable generally available model as of its April 16, 2026 launch. It is positioned for frontier coding, long-horizon reasoning, high-resolution vision, and demanding professional workflows."
-        },
-        {
-          "question": "How much does Claude Opus 4.7 cost on APIDot?",
-          "answer": "Pricing on this page is aligned with the current PoYo reference: $4 per 1M input tokens and $20 per 1M output tokens for `claude-opus-4-7`."
+          "question": "What is Claude Opus 4.7 on APIDot?",
+          "answer": "Claude Opus 4.7 on APIDot is the production `claude-opus-4-7` model for complex coding, long-context reasoning, and high-resolution multimodal work. It is a stronger fit when the task depends on careful technical judgment, longer working memory, or dense screenshot and document analysis."
         },
         {
           "question": "Does APIDot support both `/v1/chat/completions` and `/v1/messages`?",
-          "answer": "Yes. This page exposes Claude Opus 4.7 through both `/v1/chat/completions` and `/v1/messages`, so you can choose OpenAI-compatible or Anthropic-native integration without changing the model id."
+          "answer": "Yes. The same `claude-opus-4-7` model id is available through `/v1/chat/completions` for OpenAI-compatible integrations and through `/v1/messages` for Anthropic-native request payloads."
         },
         {
-          "question": "What makes Claude Opus 4.7 different from Opus 4.6?",
-          "answer": "The main positioning shift is stronger agentic coding, better self-verification, improved tool use, and high-resolution vision support up to 2576px / 3.75MP. That makes Claude Opus 4.7 more attractive for engineering agents and document-heavy multimodal workflows."
+          "question": "Why do teams choose Claude Opus 4.7 for coding and code review?",
+          "answer": "Because these workflows depend on more than generating code quickly. Claude Opus 4.7 is a better match for repository analysis, refactor planning, debugging, and code review work where the model needs to stay consistent across multiple steps and show stronger self-checking behavior."
         },
         {
-          "question": "Does Claude Opus 4.7 support long context?",
-          "answer": "Yes. Claude Opus 4.7 supports a 1M token context window and up to 128K output tokens, making it viable for very long code, document, and analysis prompts."
+          "question": "Does Claude Opus 4.7 support 1M context and up to 128K output?",
+          "answer": "Yes. Claude Opus 4.7 is publicly positioned around a 1M token context window and up to 128K output, which is why it is a better fit for very long code, document collections, and large technical prompts than a standard chat model."
+        },
+        {
+          "question": "How good is Claude Opus 4.7 at screenshots, charts, and dense documents?",
+          "answer": "This is one of the clearer reasons to use it. Claude Opus 4.7 on APIDot is better suited to screenshot QA, dashboard review, chart and table reading, and dense document analysis, with high-resolution image support up to 2576px / 3.75MP."
+        },
+        {
+          "question": "How much does Claude Opus 4.7 cost on APIDot?",
+          "answer": "On APIDot, `claude-opus-4-7` is billed at $4 per 1M input tokens and $20 per 1M output tokens."
         },
         {
           "question": "Why can real-world cost feel higher than list price?",
@@ -107,7 +119,7 @@
         },
         {
           "question": "When should I choose Claude Opus 4.7 over a cheaper chat model?",
-          "answer": "Choose Claude Opus 4.7 when your workload depends on coding quality, long-context reliability, structured reasoning, and high-resolution multimodal understanding. For lightweight or cost-sensitive chat, a smaller model may be a better fit."
+          "answer": "Choose it when the job depends on coding quality, repo-scale context, dense-document reading, or a more careful reasoning style. If the work is mostly lightweight chat, quick drafting, or highly cost-sensitive support flows, a smaller model will usually be the better operational choice."
         }
       ]
     }

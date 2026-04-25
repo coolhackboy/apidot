@@ -1,74 +1,83 @@
 {
   "meta": {
-    "title": "Veo 3.1 API | APIDot",
+    "title": "Veo 3.1 Video API | Native Audio, Text-to-Video, Frame Control & Reference Images | APIDot",
     "description": "Access Google DeepMind Veo 3.1 on APIDot for 8-second video generation with native audio, reference images, start/end frame control, and Fast, Lite, or Quality pricing tiers."
   },
   "hero": {
-    "title": "Veo 3.1 Playground",
-    "description": "Test Veo 3.1 Fast, Lite, and Quality on APIDot with native audio, reference-guided video generation, and the same async API flow you can ship directly into production."
+    "title": "Veo 3.1 Video API Playground",
+    "description": "Run Veo 3.1 text-to-video, frame-guided video generation, and reference image workflows from one APIDot page across Lite, Fast, and Quality. Use the same async API pattern to test prompts, compare modes, and move the workflow into production without changing how your integration works."
   },
   "seoContent": {
     "overview": {
       "eyebrow": "Overview",
-      "title": "What is {modelName}?",
+      "title": "Use {modelName} when you need short-form video that carries sound, camera intent, and visual continuity at the same time",
       "paragraphs": [
-        "{modelName} is Google DeepMind's video generation family built for cinematic short-form clips with synchronized native audio, stronger prompt adherence, and more deliberate control over motion, framing, and scene continuity.",
-        "On APIDot, Veo 3.1 is available through Fast, Lite, and Quality variants for 8-second jobs with 16:9 or 9:16 output, reference-image workflows, and async delivery. The currently selected variant is {activeModelId}, billed at {priceLabel}."
+        "Veo 3.1 is a strong fit when you need a video API for short ads, product videos, ecommerce launches, storyboard tests, or social clips that should feel closer to a finished piece than a rough motion draft. The main value is not just text-to-video generation. It is that native audio, cinematic prompts, camera direction, and scene continuity can stay in the same workflow instead of being patched together afterward.",
+        "On APIDot, Veo 3.1 is available through Fast, Lite, and Quality variants for 8-second jobs with 16:9 or 9:16 output, reference-image workflows, and async delivery. The currently selected variant is {activeModelId}, billed at {priceLabel}.",
+        "A simple way to choose the right mode is this: stay with text-only when you are exploring ideas fast, switch to frame-guided video generation when you want to steer transitions or motion between shots, and use reference images when character, product, or brand consistency matters more than raw speed. That makes {modelName} especially useful for short-form marketing videos, storyboard work, previs, and other production-minded clips where control matters as much as motion."
       ]
     },
     "capabilities": {
       "eyebrow": "Capabilities",
-      "title": "Why teams use {modelName}",
+      "title": "Key Veo 3.1 Video API capabilities teams actually use",
       "items": [
         {
-          "title": "Native audio with scene-aware sync",
-          "description": "Generate dialogue, ambient sound, and effects together with the video instead of stitching audio later. {modelName} is designed for short clips that already feel finished when they come out of the model."
+          "title": "Native audio video generation for short-form content",
+          "description": "Veo 3.1 can generate dialogue, ambience, and sound effects with the video, which is why teams search for it when they need more than silent motion tests. On APIDot, that makes the first output much closer to something you can review for pacing, mood, and story rather than just visual movement."
         },
         {
-          "title": "Text, ingredients, and frames-to-video workflows",
-          "description": "Start from a pure text prompt, upload reference images for character and style consistency, or use first and last frames to guide transitions. This mirrors the multi-input workflows that made Veo 3.1 stand out on PoYo."
+          "title": "Text-to-video for fast ideation and early prompt testing",
+          "description": "If you want the fastest way to test a concept, text-to-video is still the cleanest starting point. `veo3.1-lite` is the text-only option for low-cost ideation, while `veo3.1-fast` and `veo3.1-quality` let teams stay in the same API surface when they want to move from loose concepts into more directed shots."
         },
         {
-          "title": "Director-style camera and motion control",
-          "description": "Use film language such as dolly, tracking, overhead, portrait framing, lighting cues, and shot composition to push the model toward more intentional results instead of generic motion."
+          "title": "Frame-guided video generation for shot transitions",
+          "description": "Frame mode is the practical choice when a prompt alone cannot hold the motion you need. APIDot exposes Veo 3.1 frame-guided generation through `input.generate_type: \"frame\"`, which lets you work from a first frame or from first-and-last-frame guidance for cleaner transitions, product reveals, and storyboard-style motion."
         },
         {
-          "title": "Fast, Lite, and Quality tiers",
-          "description": "Choose Fast for quick iteration, Lite for the lowest per-video cost, or Quality when fidelity matters most. The broader Veo 3.1 family also carries production-oriented safeguards such as SynthID watermarking in Google's ecosystem."
+          "title": "Reference image video generation for visual consistency",
+          "description": "Reference image workflows are useful when the subject, style, or brand look needs to stay tighter across generations. On APIDot, reference mode is available only on `veo3.1-fast`, which makes it the best choice when you are generating marketing videos, character-led clips, or product scenes that need stronger visual consistency."
+        },
+        {
+          "title": "Cinematic prompts and camera control that translate better",
+          "description": "Prompts that mention tracking shots, overhead framing, portrait composition, lighting cues, motion pacing, and atmosphere usually land better here than they do in generic video models. That is why creative teams often use Veo 3.1 for clips where camera intent matters, not just for scenes that need to move."
+        },
+        {
+          "title": "Lite vs Fast vs Quality is a workflow choice, not just a tier list",
+          "description": "Use Lite when the goal is cheap text-only exploration, Fast when you want the most flexible working mode with frame and reference image support, and Quality when the final output matters more than turnaround. This split makes the Veo 3.1 API easier to adopt because teams can map the model choice to a clear production stage."
         }
       ]
     },
     "useCases": {
       "eyebrow": "Use Cases",
-      "title": "Where {modelName} fits best",
-      "description": "Teams use Veo 3.1 when they need native audio, faster iteration, and stronger control than prompt-only video tools usually provide. Common production patterns include:",
+      "title": "Common Veo 3.1 Video API use cases on APIDot",
+      "description": "This page is designed for teams that already know they need short-form AI video and want a more search-friendly answer to the real operational questions: which Veo 3.1 variant to choose, when to use text-only versus frame or reference image mode, and how to plug the result into an async API workflow.",
       "items": [
-        "Localized ad and campaign video generation",
-        "Film pre-visualization and storyboard validation",
-        "Educational explainers with narration-ready visuals",
-        "E-commerce product demos from reference images",
-        "Game trailers, cutscenes, and virtual world concept clips",
-        "Enterprise training and internal communications"
+        "Short ad videos for product launches and paid campaigns",
+        "Product demo videos and ecommerce launch clips",
+        "Social media short videos with stronger pacing and shot direction",
+        "Storyboard tests and film previs clips",
+        "Game teaser videos and concept reveal clips",
+        "Training, explainer, and internal comms videos"
       ]
     },
     "quickstart": {
       "eyebrow": "Quickstart",
-      "title": "How to use {modelName} with APIDot",
+      "title": "Start using {modelName} on APIDot in three steps",
       "steps": [
         {
-          "eyebrow": "Step 01",
+          "eyebrow": "Step 1",
           "title": "Create your API key",
           "description": "Generate an APIDot API key once and use it as the Bearer token for all Veo 3.1 Fast, Lite, and Quality requests.",
-          "actionText": "Open API Keys",
+          "actionText": "Get API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
-          "eyebrow": "Step 02",
-          "title": "Add credits for the tier you want",
+          "eyebrow": "Step 2",
+          "title": "Top up credits",
           "description": "Top up credits based on the Veo 3.1 variant and resolution you plan to run. Fast is optimized for iteration, Lite for cost efficiency, and Quality for premium output."
         },
         {
-          "eyebrow": "Step 03",
+          "eyebrow": "Step 3",
           "title": "Submit async jobs and retrieve results",
           "description": "POST to {endpoint} with model=\"{activeModelId}\", get a task ID back, then poll status or use callbacks to collect the finished video when the job completes."
         }
@@ -79,16 +88,20 @@
       "title": "Frequently asked questions",
       "items": [
         {
-          "question": "What is Veo 3.1 on APIDot?",
-          "answer": "It is APIDot's unified access point for Google DeepMind Veo 3.1 Fast, Lite, and Quality. You can submit 8-second generation jobs with text prompts, reference images, or frame-guided inputs through one async API flow."
+          "question": "What is Veo 3.1 Video API on APIDot?",
+          "answer": "It is APIDot's unified entry point for `veo3.1-lite`, `veo3.1-fast`, and `veo3.1-quality`. You can test Veo 3.1 text-to-video, frame-guided generation, and supported reference image workflows in one place, then keep the same async integration pattern when you move the workload into production."
         },
         {
-          "question": "Which inputs and generation modes are supported?",
-          "answer": "This page supports prompt-only generation plus image-guided workflows. In practice that means text-to-video, reference-image generation, and first-frame or first-and-last-frame guided video generation for more controlled scene transitions."
+          "question": "Which inputs, generation modes, and output settings are supported?",
+          "answer": "The current page is built around fixed 8-second generation with `16:9` and `9:16` output, plus `720p`, `1080p`, or `4k` depending on the variant. `veo3.1-lite` is text-to-video only. `veo3.1-fast` supports text, frame-guided generation, and reference images. `veo3.1-quality` supports text plus frame-guided generation, but not reference mode."
         },
         {
-          "question": "What output settings are available on this page?",
-          "answer": "The current APIDot Veo 3.1 page is built around 8-second videos, 16:9 or 9:16 aspect ratios, and 720p, 1080p, or 4K output depending on the variant you select."
+          "question": "Can I use reference images with every Veo 3.1 variant?",
+          "answer": "No. Reference image video generation is available only on `veo3.1-fast`. If you want the lowest-cost way to test a text idea, use `veo3.1-lite`. If you want higher-fidelity frame-guided generation for a more polished clip, `veo3.1-quality` is the better fit, but it does not support reference mode."
+        },
+        {
+          "question": "When should I use frame mode instead of reference mode?",
+          "answer": "Use frame mode when you already know the opening shot, the closing shot, or the transition you want to control. Use reference mode when the bigger goal is keeping the subject, product, or visual style consistent across generations. On APIDot, frame mode works on `veo3.1-fast` and `veo3.1-quality`, while reference mode is limited to `veo3.1-fast`."
         },
         {
           "question": "Does Veo 3.1 generate native audio, and do failed jobs get charged?",
@@ -96,11 +109,15 @@
         },
         {
           "question": "Does the API use an async job pattern?",
-          "answer": "Yes. You submit a job, receive a task ID, then poll the status endpoint or handle a callback when generation finishes. That keeps the integration practical for queue-based video workloads."
+          "answer": "Yes. You submit the request, receive a task ID, and then either poll the status endpoint or wait for a callback. That makes Veo 3.1 easier to plug into queue-based systems, content pipelines, and other production workflows without blocking the request lifecycle."
         },
         {
-          "question": "How does Veo 3.1 compare with Veo 3 or Sora 2?",
-          "answer": "Veo 3.1 is generally chosen for native audio, stronger reference control, and more structured cinematic prompting. Sora 2 is often favored for single-shot realism, while Veo 3.1 is especially compelling when audio, ingredients, and frame guidance matter."
+          "question": "How do teams choose between Lite, Fast, and Quality?",
+          "answer": "A practical rule is: use Lite for cheap text-only exploration, Fast when you need the broadest working mode with image guidance and frequent iteration, and Quality when the final video matters more than turnaround. Teams often move through them in that same order as a project becomes more defined."
+        },
+        {
+          "question": "What kinds of prompts and camera directions work best with Veo 3.1?",
+          "answer": "The safest pattern is to be explicit about subject, action, camera perspective, movement, lighting, atmosphere, and audio intent. Prompts that use film language such as tracking shot, overhead shot, close-up, slow push-in, backlight, or ambient street sound tend to give Veo 3.1 clearer instructions than short generic prompts."
         }
       ]
     }

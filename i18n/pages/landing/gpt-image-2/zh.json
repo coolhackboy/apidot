@@ -1,113 +1,125 @@
 {
   "meta": {
-    "title": "GPT Image 2 API | APIDot",
-    "description": "通过 APIDot 即时接入 GPT Image 2，用于高写实图像生成、清晰文本渲染、UI 截图风格画面与单图编辑，固定 2 积分/次。"
+    "title": "GPT Image 2 API | 图片生成、图片编辑、清晰文字与 UI Mockup | APIDot",
+    "description": "在 APIDot 上用 GPT Image 2 生成和编辑图片。它更适合清晰文字渲染、写实商品视觉、UI mockup 与更可控的单图编辑，并统一走同一套异步 API 工作流。"
   },
   "hero": {
-    "title": "GPT Image 2 API Playground",
-    "description": "在 APIDot 即时体验 `gpt-image-2` 与 `gpt-image-2-edit`。既可以生成高写实图片、UI 风格截图与营销视觉，也可以在同一套异步工作流下完成单图编辑并直接接入生产。"
+    "title": "GPT Image 2 图片生成与编辑 API",
+    "description": "当你需要清晰文字、写实商品图、更像真实截图的 UI mockup，以及更可控的图片编辑时，可以直接用 GPT Image 2。`gpt-image-2` 负责新图生成，`gpt-image-2-edit` 负责带参考图的受控修改，两者都走同一套 APIDot 异步任务流。"
   },
   "seoContent": {
     "overview": {
       "eyebrow": "概览",
-      "title": "在 APIDot 上使用 GPT Image 2 做高保真生成与编辑",
+      "title": "当图片既要字清楚、画面真实、又要更接近可直接交付的成品时，可以用 GPT Image 2",
       "paragraphs": [
-        "GPT Image 2 是 OpenAI 新一代原生图像模型，重点提升了指令遵循、图中文字清晰度，以及整体画面的真实感。在 APIDot 上，你可以通过同一个异步图片端点调用 `gpt-image-2` 做文生图，也可以调用 `gpt-image-2-edit` 做单图编辑。",
-        "这个模型家族尤其适合需要清晰文字和稳定版式的场景，例如 UI 截图、Dashboard mockup、产品营销图、社媒素材，以及保留原图结构的局部编辑。结合知识库内容和 Poyo 当前页面的卖点，GPT Image 2 的核心优势在于更自然的颜色表现、更少的 AI 痕迹，以及更强的截图与界面保真度。",
-        "当前页面故意把参数面收敛到最小集：prompt、size、图片数量，以及 edit 模式下的一张源图。这与 Poyo 当前 GPT Image 2 playground 保持一致，也更利于后续生产集成。"
+        "很多团队会选 GPT Image 2，不是因为它只是会出图，而是因为它更适合那些“图片真的要拿去用”的场景。比如图里要有清晰文字、商品和材质要更真实，或者画面要更像截图和 UI mockup，而不是只做一张概念氛围图。",
+        "在 APIDot 上，`gpt-image-2` 用来根据 prompt 直接生成新图，`gpt-image-2-edit` 用来处理带参考图的编辑请求。这样产品、品牌、电商和内容团队就能在同一页里完成新图生成和更受控的图片修改，而不用拆成两套流程。",
+        "它真正有价值的地方，是结果更容易直接进入业务流程。GPT Image 2 更擅长做清晰的图中文字、更自然的商品光影与材质、更像真实截图的版式结构，以及尽量保留原图构图的局部编辑。"
       ]
     },
     "capabilities": {
       "eyebrow": "能力",
-      "title": "GPT Image 2 最值得用的几个方向",
+      "title": "GPT Image 2 在 APIDot 上最适合用来做什么",
       "items": [
         {
-          "title": "更接近可用级别的文本渲染",
-          "description": "更适合生成带有标题、按钮、标签、菜单、说明文字的图片，相比上一代更容易得到可读、完整、布局合理的图中文字。"
+          "title": "图中文字和标签更清晰可读",
+          "description": "这是很多人搜 GPT Image 2 的最直接原因。放到 APIDot 上，它更适合广告图、菜单、包装图、信息图、社媒素材和界面概念图这类带标题、标签、按钮或 UI 文案的图片需求。"
         },
         {
-          "title": "更真实的光影、颜色与材质",
-          "description": "在人物肤色、产品质感、环境光线和细节层次上更自然，也更少出现偏黄偏暖和过度风格化的问题，适合商品图、广告图和写实视觉。"
+          "title": "更自然的光影、材质和颜色控制",
+          "description": "这项能力重要，是因为很多商业图片不是“能看”就够，而是要更像成品。放到 APIDot 上，GPT Image 2 更适合商品主图、电商视觉和偏写实的营销图片。"
         },
         {
-          "title": "更强的 UI 与截图风格生成",
-          "description": "适合生成应用界面、数据面板、官网截图、产品演示图等需要版式感和清晰文字的画面，对于设计验证和视觉原型很有价值。"
+          "title": "更像真实截图的 UI mockup 和版式生成",
+          "description": "很多团队会搜索这类能力，是因为界面图最怕结构一眼假。放到 APIDot 上，它更适合生成 Dashboard、落地页视觉和产品界面概念图，因为版式逻辑和截图式结构通常更可信。"
         },
         {
-          "title": "单图编辑与局部变换",
-          "description": "使用 `gpt-image-2-edit` 可以在一张上传图片基础上做更智能的局部修改，比如替换背景、调整产品摆放语境、更新文案区域或优化细节，而不是整张重画。"
+          "title": "商品视觉与电商图片质量",
+          "description": "这项能力的价值，在于商品图最终是拿来卖货和展示的。放到 APIDot 上，GPT Image 2 更适合商品详情页主图、目录图和商业化展示图，而不是只偏概念感。"
+        },
+        {
+          "title": "尽量保留原图结构的单图编辑",
+          "description": "这项能力重要，是因为很多业务场景并不想从零重画。放到 APIDot 上，`gpt-image-2-edit` 更适合在原图基础上换背景、换语境、调风格或修局部细节。"
+        },
+        {
+          "title": "生成和编辑共用一套异步工作流",
+          "description": "这项能力对接入方有价值，是因为它能减少后端复杂度。放到 APIDot 上，两个变体都沿用同一套异步任务流，所以你可以先做文生图，再切到带参考图的编辑模式，后端接入方式不用重写。"
         }
       ]
     },
     "useCases": {
       "eyebrow": "适用场景",
-      "title": "谁适合接入 GPT Image 2 API",
-      "description": "如果你的工作流同时需要清晰文字、较强真实感，以及统一的异步图片接口，GPT Image 2 会比通用图像模型更合适。",
+      "title": "常见的 GPT Image 2 API 使用场景",
+      "description": "如果你的核心需求是图中文字可读、画面更像真实成品，并且要在生成和编辑之间平滑切换，GPT Image 2 会比通用图像模型更顺手。",
       "items": [
-        "产品设计与 UI/UX 原型图生成",
-        "带品牌文案的营销广告创意图",
-        "电商品牌商品主图与生活方式场景图",
-        "社交媒体图文素材与教育类配图",
-        "信息图、示意图和出版类内容",
-        "单张图片精修、替换与局部编辑"
+        "UI mockup 和产品界面概念图",
+        "带清晰图中文字的广告创意图",
+        "电商商品图和商品主视觉",
+        "社媒视觉和编辑类图片",
+        "信息图、图解和演示类视觉素材",
+        "快速精修和上下文感知编辑"
       ]
     },
     "quickstart": {
       "eyebrow": "快速开始",
-      "title": "三步接入 GPT Image 2",
+      "title": "三步在 APIDot 上接入 {modelName}",
       "steps": [
         {
-          "eyebrow": "步骤 01",
+          "eyebrow": "步骤 1",
           "title": "创建 API Key",
-          "description": "先在 APIDot 后台创建 API Key，并将其保存在服务端。后续图片、视频、音频和聊天模型都可以共用这套认证方式。",
+          "description": "先生成 APIDot API Key，并保存在服务端。图片、视频、音频和聊天模型都可以共用同一套鉴权方式，接入更省事。",
           "actionText": "获取 API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
-          "eyebrow": "步骤 02",
+          "eyebrow": "步骤 2",
           "title": "充值积分",
-          "description": "`gpt-image-2` 与 `gpt-image-2-edit` 都是固定 2 积分/次生成，没有分档价格，成本估算更直接。",
-          "actionText": "打开 Billing",
+          "description": "`gpt-image-2` 和 `gpt-image-2-edit` 当前都是固定 2 积分/次生成，成本结构更直接，适合在上线前先做预算估算。",
+          "actionText": "打开充值页面",
           "actionHref": "/dashboard/billing"
         },
         {
-          "eyebrow": "步骤 03",
+          "eyebrow": "步骤 3",
           "title": "提交异步图片任务",
-          "description": "把 prompt、size、数量，以及 edit 模式下的源图提交到异步图片端点，然后通过轮询或 webhook 获取最终结果。"
+          "description": "提交 prompt，选择 `auto` 或当前支持的比例尺寸；如果是编辑模式，再附上参考图 URL。之后通过轮询任务状态或接收 webhook 获取最终结果。"
         }
       ]
     },
     "faq": {
       "eyebrow": "常见问题",
-      "title": "GPT Image 2 API 常见问题",
+      "title": "关于 GPT Image 2 API 的常见问题",
       "items": [
         {
           "question": "`gpt-image-2` 和 `gpt-image-2-edit` 有什么区别？",
-          "answer": "`gpt-image-2` 用于根据 prompt 直接生成新图片；`gpt-image-2-edit` 用于单图编辑，需要上传一张源图并描述你想修改的内容。"
+          "answer": "`gpt-image-2` 用于根据 prompt 直接生成新图片；`gpt-image-2-edit` 用于带一张或多张参考图发起编辑请求，适合对已有图片做更可控的修改。"
+        },
+        {
+          "question": "为什么团队会用 GPT Image 2 做 UI、产品和营销视觉？",
+          "answer": "因为这类场景通常同时依赖图中文字可读性、真实光影、稳定版式和更可信的界面结构。GPT Image 2 更适合做 mockup、广告图、商品视觉和截图风格素材，而不只是生成一张看起来还行的图片。"
+        },
+        {
+          "question": "当前页面支持哪些 size 选项？",
+          "answer": "当前工具支持 `auto`、`1:1`、`2:3`、`3:2`、`3:4`、`4:3`、`4:5`、`5:4`、`9:16` 和 `16:9`，与线上 APIDot GPT Image 2 工具当前开放的选项保持一致。"
+        },
+        {
+          "question": "`gpt-image-2-edit` 是否必须带参考图，什么时候该用 edit 模式？",
+          "answer": "是的。edit 模式本质上是基于已有图片做受控修改，所以请求里需要带一张或多张 `image_urls`。如果你想尽量保留原图构图，同时修改背景、语境、风格或局部细节，就该用 `gpt-image-2-edit`；如果只是根据文字直接出新图，用 `gpt-image-2` 就可以。"
+        },
+        {
+          "question": "是否支持一次返回多张图，或者使用 `input.n`？",
+          "answer": "不支持。当前 APIDot 上的 GPT Image 2 工作流是一次请求返回一张图，`input.n` 在这套模型形态里不支持。"
         },
         {
           "question": "GPT Image 2 在 APIDot 上怎么收费？",
-          "answer": "当前页面固定为 2 积分/次生成，两个变体同价，按 APIDot 的积分换算约为 $0.01/次。"
+          "answer": "当前两个变体都是固定 2 积分/次生成，按 APIDot 的积分换算约等于 $0.01/次。"
         },
         {
-          "question": "这个页面支持哪些尺寸？",
-          "answer": "当前 playground 仅提供 `1024x1024`、`1536x1024` 和 `1024x1536` 三个尺寸，优先与 Poyo 当前 GPT Image 2 页面保持一致，而不是提前暴露更宽泛的推测性尺寸。"
+          "question": "什么时候会扣积分？",
+          "answer": "成功生成后才会扣积分。你可以通过轮询或 webhook 先确认任务最终状态，再在业务流程里消费返回的图片 URL。"
         },
         {
-          "question": "GPT Image 2 支持图片编辑吗？",
-          "answer": "支持。使用 `gpt-image-2-edit` 并上传一张源图，就可以在保留原始构图的前提下完成更局部、更上下文感知的修改。"
-        },
-        {
-          "question": "什么时候扣积分？",
-          "answer": "只有成功完成的生成任务才会扣积分。失败任务通常不会消耗积分，你也可以通过轮询结果或 webhook 回调确认最终状态。"
-        },
-        {
-          "question": "GPT Image 2 现在算完全稳定了吗？",
-          "answer": "从公开知识和行业资料来看，这个模型家族仍常被描述为预发布或预览阶段，因此后续能力边界和支持尺寸仍可能变化。当前页面按照 APIDot 与 Poyo 风格的实际可用参数面来提供接入。"
-        },
-        {
-          "question": "如何在生产环境里接入 GPT Image 2？",
-          "answer": "沿用 APIDot 的异步图片工作流即可：先提交生成请求，保存返回的 task id，再轮询 `/api/generate/status/{task_id}` 或接收 webhook，最后读取任务完成后的图片 URL。"
+          "question": "如何把 GPT Image 2 接入生产环境？",
+          "answer": "沿用 APIDot 的异步工作流即可：先提交任务，保存返回的 `task_id`，再通过 `/api/generate/status/<task_id>` 或回调地址跟踪完成状态，等任务进入最终状态后再读取生成完成后的图片 URL。"
         }
       ]
     }

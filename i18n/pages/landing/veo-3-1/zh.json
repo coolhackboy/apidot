@@ -1,74 +1,83 @@
 {
   "meta": {
-    "title": "Veo 3.1 API | APIDot",
+    "title": "Veo 3.1 视频 API | 原生音频、文生视频、首尾帧控制与参考图 | APIDot",
     "description": "通过 APIDot 接入 Google DeepMind Veo 3.1 API，生成带原生音频的 8 秒视频，支持文本、参考图、首尾帧控制，以及 Fast、Lite、Quality 三档价格。"
   },
   "hero": {
-    "title": "Veo 3.1 Playground",
-    "description": "在 APIDot 上测试 Veo 3.1 Fast、Lite、Quality，体验原生音频、参考图驱动生成和电影级镜头控制，并直接复用同一套异步 API 进入生产环境。"
+    "title": "Veo 3.1 视频 API Playground",
+    "description": "在 APIDot 上，你可以用同一页跑 Veo 3.1 的文生视频、首尾帧引导和参考图工作流，覆盖 Lite、Fast、Quality 三个变体。前面用它试 prompt、比模式，后面真正接进业务系统时，继续沿用同一套异步 API 流程就可以。"
   },
   "seoContent": {
     "overview": {
       "eyebrow": "概览",
-      "title": "{modelName} 是什么？",
+      "title": "如果你要的是一条同时带声音、镜头意图和画面连续性的短视频，{modelName} 会比普通视频模型更合适",
       "paragraphs": [
-        "{modelName} 是 Google DeepMind 面向高质量短视频生成的模型家族，强调原生音频、镜头语言理解、更强的提示词遵循能力，以及对运动、构图和场景连续性的更细致控制。",
-        "在 APIDot 上，Veo 3.1 提供 Fast、Lite、Quality 三个变体，支持 8 秒生成、16:9 与 9:16 输出、参考图工作流，以及异步任务交付。当前选中的变体为 {activeModelId}，按 {priceLabel} 计费。"
+        "Veo 3.1 更适合拿来做短广告、商品视频、电商上新片段、分镜测试、社媒短视频这类对“成片感”有要求的内容。它真正值钱的地方不只是能把画面做动，而是能把原生音频、镜头语言、运动方向和场景连续性放在同一套工作流里处理，少很多后面再拼补的步骤。",
+        "在 APIDot 上，Veo 3.1 提供 Fast、Lite、Quality 三个变体，支持 8 秒生成、16:9 与 9:16 输出、参考图工作流，以及异步任务交付。当前选中的变体为 {activeModelId}，按 {priceLabel} 计费。",
+        "实际选模式时可以这样判断：只想快速验证创意，就先跑纯文本；想更明确地控制镜头衔接、运动方向或首尾过渡，就用首尾帧模式；如果你更在意人物、商品或品牌视觉的一致性，再切到参考图。也正因为这样，{modelName} 很适合短营销视频、分镜预演、previs 以及其他对可控性要求更高的短片工作流。"
       ]
     },
     "capabilities": {
       "eyebrow": "能力",
-      "title": "为什么团队会选择 {modelName}",
+      "title": "团队真正会拿来用的 Veo 3.1 视频 API 能力",
       "items": [
         {
-          "title": "原生音频与音画同步",
-          "description": "{modelName} 能在生成视频时直接生成对白、环境声与音效，不需要后期再手动拼接音轨，更适合接近成片状态的短视频生产。"
+          "title": "原生音频视频生成，更适合做短内容成片",
+          "description": "很多团队搜 Veo 3.1，本质上不是只想找一个会动的视频模型，而是想要能把对白、环境声、音效和画面一起生成出来的工作流。放到 APIDot 上，这意味着第一版结果就更接近能拿去评审节奏、氛围和叙事的样片，而不只是静音动图。"
         },
         {
-          "title": "文本、Ingredients、Frames 多种生成方式",
-          "description": "你可以直接用文本生成，也可以上传参考图保持角色和风格一致，或者使用首帧/尾帧控制转场。这正是 Veo 3.1 在 PoYo 页面上最突出的多输入工作流。"
+          "title": "文生视频适合最快速的创意验证",
+          "description": "如果你现在只是要试概念、试 prompt、试镜头方向，文生视频依然是最省事的入口。`veo3.1-lite` 负责低成本 text-to-video，`veo3.1-fast` 和 `veo3.1-quality` 则让你在同一套 API 里，从文本探索继续走到更受控的生成阶段。"
         },
         {
-          "title": "更像导演工具的镜头控制",
-          "description": "支持使用 dolly、tracking、overhead、portrait framing、lighting cue 等电影语言描述镜头、运动和氛围，让结果更有意图，而不是只有泛化的运动效果。"
+          "title": "首尾帧视频生成，适合控制过渡和镜头走向",
+          "description": "当 prompt 本身已经不够稳时，首尾帧模式会更实用。APIDot 通过 `input.generate_type: \"frame\"` 暴露 Veo 3.1 的 frame-guided video generation，你可以只给首帧，也可以同时给首帧和尾帧，用来控制过渡、商品展示、镜头转场和分镜式运动。"
         },
         {
-          "title": "Fast、Lite、Quality 三档取舍",
-          "description": "Fast 适合快速迭代，Lite 适合压低单条视频成本，Quality 适合更高保真输出。更广义的 Veo 3.1 家族在 Google 生态中还配有 SynthID 等生产级标记机制。"
+          "title": "参考图视频生成，更适合做视觉一致性",
+          "description": "如果你最在意的是人物、产品、风格或品牌外观不要跑偏，参考图工作流会比单纯写 prompt 靠谱得多。在 APIDot 上，reference image video generation 只开放给 `veo3.1-fast`，所以它通常是营销视频、角色类内容和商品场景生成里最灵活的那一档。"
+        },
+        {
+          "title": "更吃得住电影语言和镜头控制",
+          "description": "像 tracking shot、俯拍、近景、慢推、逆光、环境声这种带镜头感和氛围感的提示，在 Veo 3.1 上通常更容易转成明确的视频结果。这也是为什么很多团队会拿它来做不只是“会动”，而是真的有镜头意图的短片。"
+        },
+        {
+          "title": "Lite、Fast、Quality 的差别是工作流差别，不只是档位差别",
+          "description": "Lite 适合便宜地试纯文本创意，Fast 适合需要图片引导、又会频繁迭代的工作流，Quality 则更适合把最终视频质量放在第一位的阶段。这样分下来，团队更容易把 Veo 3.1 API 直接对应到项目不同阶段，而不是只把它当成价格不同的三个名字。"
         }
       ]
     },
     "useCases": {
       "eyebrow": "应用场景",
-      "title": "{modelName} 适合做什么？",
-      "description": "当团队需要原生音频、更快迭代速度，以及比纯提示词视频工具更强的控制力时，Veo 3.1 会很有优势。常见场景包括：",
+      "title": "APIDot 上常见的 Veo 3.1 视频 API 用法",
+      "description": "这页更适合那种已经确定要做 AI 短视频，但还需要更快判断该选哪个 Veo 3.1 变体、什么时候该用纯文本还是首尾帧或参考图、以及最后怎么接进异步 API 流程的团队。",
       "items": [
-        "本地化广告与营销视频批量生成",
-        "影视预演与分镜验证",
-        "带旁白感的视频化教育内容",
-        "基于参考图的电商商品展示视频",
-        "游戏预告、过场动画与虚拟世界概念片段",
-        "企业培训与内部沟通视频"
+        "产品发布和投放用的短广告视频",
+        "商品演示视频和电商上新短片",
+        "更强调声音、节奏和镜头感的社媒短视频",
+        "分镜测试与 previs 预演片段",
+        "游戏 teaser 和概念展示片段",
+        "培训、解释型与企业内部沟通视频"
       ]
     },
     "quickstart": {
       "eyebrow": "快速开始",
-      "title": "如何在 APIDot 上使用 {modelName}",
+      "title": "三步在 APIDot 上接入 {modelName}",
       "steps": [
         {
-          "eyebrow": "步骤 01",
+          "eyebrow": "步骤 1",
           "title": "创建 API Key",
           "description": "先生成一个 APIDot API Key，后续调用 Veo 3.1 Fast、Lite、Quality 时都用同一套 Bearer Token。",
-          "actionText": "打开 API Keys",
+          "actionText": "获取 API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
-          "eyebrow": "步骤 02",
-          "title": "按所选档位充值 credits",
+          "eyebrow": "步骤 2",
+          "title": "充值积分",
           "description": "根据你要使用的 Veo 3.1 变体和分辨率充值 credits。Fast 偏向快速迭代，Lite 偏向成本效率，Quality 偏向最终质量。"
         },
         {
-          "eyebrow": "步骤 03",
+          "eyebrow": "步骤 3",
           "title": "异步提交任务并获取结果",
           "description": "向 {endpoint} 提交 model=\"{activeModelId}\" 的请求，拿到 task ID 后通过轮询状态接口或回调获取最终视频。"
         }
@@ -79,28 +88,36 @@
       "title": "常见问题解答",
       "items": [
         {
-          "question": "APIDot 上的 Veo 3.1 是什么？",
-          "answer": "它是 APIDot 对 Google DeepMind Veo 3.1 Fast、Lite、Quality 的统一接入页。你可以通过同一套异步 API 流程提交 8 秒视频任务，支持文本提示、参考图和首尾帧引导。"
+          "question": "APIDot 上的 Veo 3.1 视频 API 是什么？",
+          "answer": "你可以把它理解成 APIDot 上统一接入 `veo3.1-lite`、`veo3.1-fast`、`veo3.1-quality` 的入口。你能在同一页里试 Veo 3.1 文生视频、首尾帧生成和支持的参考图工作流，后面真的接进生产环境时，也继续走同一套异步集成方式。"
         },
         {
-          "question": "支持哪些输入与生成模式？",
-          "answer": "当前页面支持纯文本生成，以及图像引导生成。实际使用上包括 text-to-video、参考图驱动生成，以及使用首帧或首尾帧控制的视频生成。"
+          "question": "支持哪些输入方式、生成模式和输出设置？",
+          "answer": "当前页面固定生成 8 秒视频，支持 `16:9` 和 `9:16`，分辨率可选 `720p`、`1080p`、`4k`。模式上，`veo3.1-lite` 只支持文生视频；`veo3.1-fast` 支持文生、首尾帧和参考图；`veo3.1-quality` 支持文生和首尾帧，不支持 reference。"
         },
         {
-          "question": "这个页面支持哪些输出设置？",
-          "answer": "当前 APIDot Veo 3.1 页面围绕 8 秒视频构建，支持 16:9 与 9:16 比例，以及 720p、1080p、4K 分辨率，具体取决于你选择的变体。"
+          "question": "每个 Veo 3.1 变体都能用参考图吗？",
+          "answer": "不能。参考图视频生成只开放给 `veo3.1-fast`。如果你只是想低成本跑一个文本创意，用 `veo3.1-lite` 就够了；如果你更想做高保真的首尾帧引导视频，`veo3.1-quality` 会更合适，但它不支持 reference 模式。"
+        },
+        {
+          "question": "什么时候该用首尾帧，而不是参考图？",
+          "answer": "如果你已经知道开场镜头、结尾镜头，或者很在意中间的过渡怎么走，用首尾帧会更直接。参考图更适合主体、商品或整体风格一致性优先的场景。放到 APIDot 上看，首尾帧模式可用于 `veo3.1-fast` 和 `veo3.1-quality`，参考图则只支持 `veo3.1-fast`。"
         },
         {
           "question": "Veo 3.1 支持原生音频吗？失败任务会扣费吗？",
           "answer": "支持。原生音频是 Veo 3.1 家族最重要的能力之一。在 APIDot 上，credits 的扣除以成功生成任务为主，而不是失败任务。"
         },
         {
-          "question": "API 是否是异步任务模式？",
-          "answer": "是。你先提交任务，收到 task ID，再轮询状态接口或处理回调。这种方式更适合视频生成这类需要排队和异步处理的工作流。"
+          "question": "API 是不是异步任务模式？",
+          "answer": "是。提交后会先返回 task ID，之后你可以轮询状态接口，也可以等回调拿结果。这样更适合接进队列系统、内容生产管线和其他不适合阻塞请求生命周期的生产流程。"
         },
         {
-          "question": "Veo 3.1 与 Veo 3 或 Sora 2 有什么区别？",
-          "answer": "Veo 3.1 更强调原生音频、参考图控制以及更结构化的电影镜头提示。Sora 2 常被用于单镜头写实感更强的场景，而 Veo 3.1 在音频、Ingredients 和 Frames 引导方面更有吸引力。"
+          "question": "Lite、Fast、Quality 一般该怎么选？",
+          "answer": "一个实用判断是：Lite 负责便宜地试纯文本创意，Fast 负责最灵活的工作模式，适合图片引导和高频迭代，Quality 则适合在最终视频质量比出片速度更重要的时候使用。很多团队会随着项目逐步收敛，按这个顺序往上切。"
+        },
+        {
+          "question": "什么样的 prompt 和镜头描述更适合 Veo 3.1？",
+          "answer": "最稳妥的写法是把主体、动作、镜头视角、运动方式、光线、氛围和音频意图写清楚。像 tracking shot、俯拍、近景、慢推、逆光、街头环境声这类更接近电影语言的提示，通常比短而泛的描述更容易让 Veo 3.1 生成你真正想要的视频结果。"
         }
       ]
     }

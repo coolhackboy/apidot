@@ -1,79 +1,87 @@
 {
   "meta": {
-    "title": "GPT Image 2 API | APIDot",
-    "description": "Access GPT Image 2 instantly on APIDot for photorealistic image generation, sharp text rendering, UI mockups, and single-image editing at 2 credits per generation."
+    "title": "GPT Image 2 API | Image Generation, Editing, Text Rendering & UI Mockups | APIDot",
+    "description": "Generate and edit images with GPT Image 2 on APIDot. It works especially well for readable text inside images, photoreal product visuals, UI mockups, and controlled single-image edits in one async API workflow."
   },
   "hero": {
-    "title": "GPT Image 2 API Playground",
-    "description": "Test `gpt-image-2` and `gpt-image-2-edit` instantly on APIDot. Generate photorealistic images, UI-style screenshots, and precise single-image edits with the same async workflow you can ship into production."
+    "title": "GPT Image 2 API for Image Generation and Editing",
+    "description": "Use GPT Image 2 when you need readable text, photoreal product visuals, cleaner UI mockups, and more controlled image edits in the same workflow. `gpt-image-2` handles new image generation, `gpt-image-2-edit` handles guided edits, and both use the same APIDot async job flow."
   },
   "seoContent": {
     "overview": {
       "eyebrow": "Overview",
-      "title": "Use GPT Image 2 on APIDot for high-fidelity generation and editing",
+      "title": "Use GPT Image 2 when the image needs to read clearly, look believable, and feel usable right away",
       "paragraphs": [
-        "GPT Image 2 is OpenAI's next-generation native image model focused on stronger prompt following, sharper text rendering, and more realistic visual detail. On APIDot, you can access both `gpt-image-2` for text-to-image work and `gpt-image-2-edit` for single-image editing through the same async image endpoint.",
-        "The model family is especially strong at layouts with readable text, dashboard-style UI mockups, product marketing visuals, social assets, and localized edits that preserve the original image structure. Compared with earlier GPT Image releases, the knowledge base and current Poyo positioning both emphasize more natural color, fewer stylized artifacts, and better screenshot fidelity.",
-        "This page keeps the parameter surface intentionally small: prompt, size, image count, and an optional source image for edit mode. That mirrors the current Poyo playground while keeping the request shape clean for production integrations."
+        "Teams usually reach for GPT Image 2 when a generic image model is not enough. It is a better fit when the image needs readable text, believable product or lifestyle detail, or a screenshot-style structure that looks closer to a finished asset than a loose concept draft.",
+        "On APIDot, `gpt-image-2` is the model for generating new images from a prompt, while `gpt-image-2-edit` is the model for requests that include reference image URLs and need guided changes. That makes the page useful for teams that need both fresh generation and controlled editing without splitting workflows.",
+        "The real advantage is business-ready output. GPT Image 2 is strongest when you need cleaner on-image typography, more natural product lighting and materials, interface visuals that feel more like real screenshots, and edits that preserve the original structure instead of rebuilding the entire scene."
       ]
     },
     "capabilities": {
       "eyebrow": "Capabilities",
-      "title": "What GPT Image 2 is best at",
+      "title": "What GPT Image 2 is most useful for on APIDot",
       "items": [
         {
-          "title": "Near-perfect text rendering",
-          "description": "Generate signs, labels, headlines, menus, and UI copy with much higher readability than earlier image models, making GPT Image 2 a practical choice for ads, diagrams, and interface concepts."
+          "title": "Readable text and labels inside images",
+          "description": "This is one of the clearest reasons teams search for GPT Image 2 in the first place. On APIDot, it is a practical fit for ads, menus, packaging, diagrams, social graphics, and interface concepts where headlines, labels, buttons, or UI copy need to stay readable."
         },
         {
-          "title": "Photorealism with cleaner color and detail",
-          "description": "Produce more candid, natural-looking imagery with better lighting, skin tones, and material detail, while avoiding the warmer tint and synthetic artifacts commonly associated with older generations."
+          "title": "Photoreal light, material, and color control",
+          "description": "This matters when the image needs to look commercially usable rather than obviously synthetic. On APIDot, that makes GPT Image 2 a stronger fit for product heroes, ecommerce visuals, and realistic campaign imagery."
         },
         {
-          "title": "UI and screenshot-style composition",
-          "description": "Create dashboards, landing-page mockups, product screenshots, and marketing comps with stronger layout fidelity, clearer typography, and more believable interface structure."
+          "title": "UI mockups and screenshot-style composition",
+          "description": "This is valuable when layout logic matters as much as raw style. On APIDot, GPT Image 2 works well for dashboard scenes, landing-page visuals, and interface concepts that need a more convincing screenshot-like structure."
         },
         {
-          "title": "Single-image editing with localized changes",
-          "description": "Use `gpt-image-2-edit` when you need targeted transformations on one uploaded image, such as swapping background elements, updating product context, or refining visual details without rebuilding the whole composition."
+          "title": "Product visuals and ecommerce image quality",
+          "description": "Teams also use GPT Image 2 when catalog visuals and merchandising assets need to feel cleaner and more sellable. On APIDot, it is a better fit for product hero shots and commerce-oriented image generation than a looser concept model."
+        },
+        {
+          "title": "Single-image edits that keep the original structure",
+          "description": "This matters when the goal is not to start over from scratch. On APIDot, `gpt-image-2-edit` is the mode to use when you want to change the background, context, styling, or local details of an existing image while staying closer to the source composition."
+        },
+        {
+          "title": "One async workflow for generation and edit mode",
+          "description": "This is useful for teams that want one integration pattern instead of separate generation and editing systems. On APIDot, both variants use the same async job flow, so it is easy to move from prompt-based generation to guided editing without changing backend wiring."
         }
       ]
     },
     "useCases": {
       "eyebrow": "Use Cases",
-      "title": "Who benefits from GPT Image 2 API",
-      "description": "GPT Image 2 fits teams that need readable text inside images, stronger realism, and a simple async API for both generation and editing.",
+      "title": "Common GPT Image 2 API use cases",
+      "description": "GPT Image 2 is most useful when the job depends on readable text, believable product or interface visuals, and a clean handoff between generation and editing in the same async workflow.",
       "items": [
-        "UI and UX mockups for product design and prototyping",
-        "Performance marketing creatives with crisp brand copy",
-        "E-commerce product heroes and lifestyle visuals",
-        "Social graphics, memes, and educational explainers",
-        "Infographics, diagrams, and publishing assets",
-        "Single-image retouching and context-aware edits"
+        "UI mockups and product interface concepts",
+        "Ads with readable on-image text",
+        "Ecommerce product images and hero shots",
+        "Social graphics and editorial visuals",
+        "Diagrams, infographics, and presentation visuals",
+        "Retouching and contextual image edits"
       ]
     },
     "quickstart": {
       "eyebrow": "Quickstart",
-      "title": "Start using GPT Image 2 on APIDot in three steps",
+      "title": "Start using {modelName} on APIDot in three steps",
       "steps": [
         {
           "eyebrow": "Step 1",
           "title": "Create your API key",
-          "description": "Generate an APIDot API key and keep it server-side. You will use the same key across image, video, audio, and chat models.",
+          "description": "Generate an APIDot API key and keep it on the server side. The same key works across image, video, audio, and chat models, so your auth setup stays simple.",
           "actionText": "Get API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
           "eyebrow": "Step 2",
           "title": "Top up credits",
-          "description": "Both `gpt-image-2` and `gpt-image-2-edit` are billed at 2 credits per generation, so you can estimate spend without model-specific pricing tiers.",
+          "description": "Both `gpt-image-2` and `gpt-image-2-edit` are priced at 2 credits per generation, giving you a flat-cost image workflow that is easy to estimate before rollout.",
           "actionText": "Open Billing",
           "actionHref": "/dashboard/billing"
         },
         {
           "eyebrow": "Step 3",
           "title": "Submit async image jobs",
-          "description": "Send your prompt, size, count, and optional source image to the async image endpoint, then poll task status or receive the final result through a webhook."
+          "description": "Send a prompt, choose `auto` or one of the supported aspect-ratio sizes, and include `image_urls` only for `gpt-image-2-edit`. Then poll task status or receive the completed result through your webhook."
         }
       ]
     },
@@ -83,31 +91,35 @@
       "items": [
         {
           "question": "What is the difference between `gpt-image-2` and `gpt-image-2-edit`?",
-          "answer": "`gpt-image-2` is the text-to-image model for generating new images from prompts. `gpt-image-2-edit` is the single-image editing variant, where you upload one source image and describe the changes you want."
+          "answer": "`gpt-image-2` is the text-to-image variant for generating new visuals from a prompt. `gpt-image-2-edit` is the editing variant for requests that include one or more reference image URLs and need controlled changes to an existing image."
+        },
+        {
+          "question": "Why do teams choose GPT Image 2 for UI, product, and marketing visuals?",
+          "answer": "Because those workflows usually depend on readable in-image text, believable materials and lighting, and more stable layout structure. GPT Image 2 is a better fit when the image needs to work like a mockup, ad, product visual, or screenshot-style asset, not just look visually interesting."
+        },
+        {
+          "question": "What size options are supported on this page?",
+          "answer": "The current tool supports `auto`, `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, and `16:9`, which matches the live GPT Image 2 experience on APIDot."
+        },
+        {
+          "question": "Does `gpt-image-2-edit` require reference images, and when should I use edit mode?",
+          "answer": "Yes. Edit mode is for guided changes to an existing image, so the request needs one or more `image_urls`. Use it when you want to preserve the original composition more closely while changing the background, context, styling, or local details. If you want to generate from text alone, stay with `gpt-image-2`."
+        },
+        {
+          "question": "Does GPT Image 2 support multiple outputs or `input.n`?",
+          "answer": "No. The current APIDot GPT Image 2 flow returns one image per request, and `input.n` is not supported in this model shape."
         },
         {
           "question": "How much does GPT Image 2 cost on APIDot?",
-          "answer": "Pricing on this page is fixed at 2 credits per generation for both variants, which equals $0.01 at APIDot's standard credit conversion."
-        },
-        {
-          "question": "What sizes are supported on this page?",
-          "answer": "The current playground supports `1024x1024`, `1536x1024`, and `1024x1536`. These presets align with the current Poyo GPT Image 2 page instead of exposing a wider speculative size matrix."
-        },
-        {
-          "question": "Does GPT Image 2 support image editing?",
-          "answer": "Yes. Use `gpt-image-2-edit` with exactly one uploaded source image to make localized, context-aware edits while preserving the original composition more faithfully than a full regeneration workflow."
+          "answer": "Both variants are currently priced at 2 credits per generation on APIDot, which maps to $0.01 with the platform's standard credit conversion."
         },
         {
           "question": "When are credits deducted?",
-          "answer": "Credits are charged only for successful generations. Failed tasks should not consume credits, and you can verify the final job state through polling or webhook callbacks."
-        },
-        {
-          "question": "Is GPT Image 2 fully stable yet?",
-          "answer": "The family is still commonly described as pre-release or preview-stage in public knowledge sources, so capabilities and supported sizes may evolve. This page follows the currently exposed APIDot and Poyo-style production parameter set."
+          "answer": "Credits are deducted for successful generations. You can confirm the final task state through polling or webhook delivery before consuming the resulting image URL in your application."
         },
         {
           "question": "How do I integrate GPT Image 2 into production?",
-          "answer": "Use APIDot's async image workflow: submit a generation request, store the returned task id, poll `/api/generate/status/{task_id}` or listen for a callback, then fetch the final image URL when the task completes."
+          "answer": "Use APIDot's async workflow: submit the job, store the returned `task_id`, track completion through `/api/generate/status/<task_id>` or a callback URL, and consume the final image URL only after the task reaches a terminal state."
         }
       ]
     }

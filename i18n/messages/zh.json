@@ -609,8 +609,7 @@
       "description": "统一接入图像、视频、对话和音乐模型。先在 Playground 验证效果，再按量计费接入生产环境。",
       "status": "所有系统运行正常",
       "copyright": "© {year} {brand} Inc. 保留所有权利。",
-      "comingSoon": "即将上线",
-      "columns": {
+    "columns": {
         "imageApi": {
           "title": "图像 API",
           "gptImage2": "GPT Image 2"
@@ -620,9 +619,10 @@
           "seedance2": "Seedance 2",
           "veo31": "Veo 3.1"
         },
-        "chatApi": {
-          "title": "对话 API"
-        },
+      "chatApi": {
+        "title": "对话 API",
+        "claudeOpus47": "Claude Opus 4.7"
+      },
         "musicApi": {
           "title": "音乐 API",
           "minimaxMusic26": "MiniMax Music 2.6"

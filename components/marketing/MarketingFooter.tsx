@@ -36,7 +36,7 @@ export default function MarketingFooter() {
     {
       title: t("columns.chatApi.title"),
       links: [
-        { label: t("comingSoon") },
+        { label: t("columns.chatApi.claudeOpus47"), href: "/models/claude-opus-4-7" },
       ],
     },
     {
