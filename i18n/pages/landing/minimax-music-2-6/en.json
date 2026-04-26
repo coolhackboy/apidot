@@ -1,71 +1,79 @@
 {
   "meta": {
-    "title": "MiniMax Music 2.6 API | APIDot",
-    "description": "Use MiniMax Music 2.6 API on APIDot for AI song generation with lyrics, Lyrics Optimize, instrumental mode, audio output control, and fixed $0.10 pricing."
+    "title": "MiniMax Music 2.6 API | AI Music, Lyrics, Instrumentals & Audio Export | APIDot",
+    "description": "Use MiniMax Music 2.6 API on APIDot for async AI music generation with lyrics, Lyrics Optimize, instrumental mode, audio export controls, and fixed 20-credit pricing."
   },
   "hero": {
-    "title": "MiniMax Music 2.6 API Playground",
-    "description": "Test `minimax-music-2.6` on APIDot with the same async API shape used in production. Generate full songs from prompts, add lyrics when needed, switch to instrumental mode, and control sample rate, bitrate, and export format."
+    "title": "MiniMax Music 2.6 API for AI Music Generation",
+    "description": "Generate songs from prompts, lyrics, or instrumental-only directions with MiniMax Music 2.6 on APIDot. Use the same async API flow for playground tests and production jobs, including sample rate, bitrate, and export format controls."
   },
   "seoContent": {
     "overview": {
       "eyebrow": "Overview",
-      "title": "Ship MiniMax Music 2.6 API with a clean async AI music workflow",
+      "title": "Build prompt-to-song workflows with MiniMax Music 2.6 API",
       "paragraphs": [
-        "MiniMax Music 2.6 API on APIDot is built for teams that need reliable AI song generation without inventing a custom audio pipeline. You submit one async request, receive a task id immediately, and then query the final music result through the shared music detail endpoint.",
-        "The current request surface stays narrow on purpose: prompt, optional lyrics, Lyrics Optimize, instrumental mode, and audio output control. That makes MiniMax Music 2.6 API easier to validate in the playground and easier to ship in production code.",
-        "If you already know the style and structure you want, send prompt plus lyrics. If you only have the musical direction, enable Lyrics Optimize and let MiniMax Music 2.6 generate the lyrical structure for you. If you need pure background music, switch on instrumental mode and keep the request even simpler."
+        "MiniMax Music 2.6 API is a strong fit when you need complete AI music generation instead of short audio clips or generic sound effects. It works well for apps that need prompt-to-song creation, lyric-driven demos, instrumental background music, and controllable audio exports from one production-ready request flow.",
+        "The APIDot page keeps the supported request shape clear: `prompt` is required, `lyrics` is optional when Lyrics Optimize or Instrumental Mode is enabled, and `audio_setting` controls sample rate, bitrate, and output format. That makes the playground useful for real integration decisions, not just casual testing.",
+        "Every generation uses APIDot's shared async workflow. Submit to `/api/generate/submit`, store the returned `task_id`, then use polling or webhook handling with `/api/generate/detail/music?task_id=...` to collect the final audio URL and metadata."
       ]
     },
     "capabilities": {
       "eyebrow": "Capabilities",
-      "title": "What MiniMax Music 2.6 API is designed to do",
+      "title": "MiniMax Music 2.6 API capabilities that matter in production",
       "items": [
         {
-          "title": "AI song generation from prompt and lyrics",
-          "description": "Use MiniMax Music 2.6 API to generate complete songs from a style prompt and optional lyrics, which is useful when your app needs fast prompt-to-song workflows instead of manual composition tooling."
+          "title": "Prompt-to-song generation",
+          "description": "Use a style prompt to describe genre, mood, pacing, instruments, and vocal direction when your product needs fast AI song generation. On APIDot, that prompt becomes the required input for every `minimax-music-2.6` request."
         },
         {
-          "title": "Lyrics optimizer for lighter input",
-          "description": "When lyrics are not ready, enable Lyrics Optimize so the request can still move forward from a descriptive music prompt. This is the practical path for fast creative ideation and first-pass demo generation."
+          "title": "Lyrics Optimize for first drafts",
+          "description": "Lyrics Optimize is useful when you know the musical direction but do not have finished lyrics yet. Enable `lyrics_optimizer` to let the request move from a prompt into a complete first-pass song structure."
         },
         {
-          "title": "Instrumental mode for BGM and utility audio",
-          "description": "Turn on instrumental mode when you need background music, mood loops, product demos, or creator assets without vocals. Instrumental mode also removes the need to provide lyrics."
+          "title": "Instrumental mode for background music",
+          "description": "Instrumental Mode fits videos, apps, podcasts, games, and demos that need music without vocals. Set `is_instrumental` to `true` and focus the prompt on mood, arrangement, pacing, and instrumentation."
         },
         {
-          "title": "Audio output control for production delivery",
-          "description": "Set `sample_rate`, `bitrate`, and `format` in `audio_setting` so the exported file matches your downstream player, storage policy, or delivery constraints."
+          "title": "Vocal songs with lyrics control",
+          "description": "When lyrics matter, send your own `lyrics` so the generated song follows the words and structure you provide. APIDot keeps this path explicit, including validation for lyric length and required lyrics when no optimizer or instrumental mode is active."
+        },
+        {
+          "title": "Audio export controls",
+          "description": "Production teams often need audio files that match a player, storage policy, or editing workflow. MiniMax Music 2.6 on APIDot exposes `sample_rate`, `bitrate`, and `format` with support for MP3, WAV, and PCM outputs."
+        },
+        {
+          "title": "Async production workflow",
+          "description": "Music generation takes long enough that a synchronous request is the wrong integration shape. APIDot returns a task id immediately, then lets your backend poll or process callbacks until the final music files are ready."
         }
       ]
     },
     "useCases": {
       "eyebrow": "Use Cases",
       "title": "Where MiniMax Music 2.6 API fits best",
-      "description": "MiniMax Music 2.6 API works well when you need predictable async music generation, explicit pricing, and a prompt-to-audio workflow that developers can integrate quickly.",
+      "description": "MiniMax Music 2.6 API is best for products that need complete AI music generation, clear request rules, and a predictable async path from prompt to final audio file.",
       "items": [
-        "AI music generation for creator tools and media editors",
-        "Prompt-to-song workflows inside content platforms",
-        "Instrumental background music for video, apps, and demos",
-        "Lyrics-assisted song prototyping for entertainment products",
-        "Internal prototyping of music features before full-scale rollout",
-        "Async music API integration with webhook or polling orchestration"
+        "Creator tools and AI song makers that need prompt-to-song generation",
+        "Background music for videos, product demos, reels, and short-form content",
+        "Podcast intros, channel themes, and branded audio sketches",
+        "Game, app, and interactive soundtrack drafts before final composition",
+        "Lyrics-assisted demo songs for entertainment and music products",
+        "Async music generation inside production apps with polling or webhooks"
       ]
     },
     "quickstart": {
       "eyebrow": "Quickstart",
-      "title": "Start using MiniMax Music 2.6 API in three steps",
+      "title": "Start using {modelName} on APIDot in three steps",
       "steps": [
         {
           "eyebrow": "Step 1",
-          "title": "Create your APIDot API key",
+          "title": "Create your API key",
           "description": "Generate an API key first, keep it on the server side, and use the same credential model you already use for APIDot image, video, and chat requests.",
           "actionText": "Get API Key",
           "actionHref": "/dashboard/api-key"
         },
         {
           "eyebrow": "Step 2",
-          "title": "Top up for fixed music pricing",
+          "title": "Top up credits",
           "description": "MiniMax Music 2.6 pricing on this page is fixed at 20 credits ($0.10) per generation, so you can estimate cost before you submit production traffic.",
           "actionText": "Open Billing",
           "actionHref": "/dashboard/billing"
@@ -82,32 +90,36 @@
       "title": "Frequently asked questions about MiniMax Music 2.6 API",
       "items": [
         {
-          "question": "What is MiniMax Music 2.6 API best used for?",
-          "answer": "MiniMax Music 2.6 API is best used for async AI song generation, lyrics-assisted composition, instrumental music generation, and production workflows where you want explicit audio export controls."
+          "question": "What is MiniMax Music 2.6 on APIDot?",
+          "answer": "MiniMax Music 2.6 on APIDot is an async AI music generation workflow for creating complete songs from prompts, optional lyrics, Lyrics Optimize, Instrumental Mode, and configurable audio export settings."
         },
         {
-          "question": "How much does MiniMax Music 2.6 cost on APIDot?",
-          "answer": "Pricing is fixed at 20 credits ($0.10) per generation on this page, with no separate tier matrix exposed for this MiniMax Music 2.6 API workflow."
+          "question": "What inputs and generation modes are supported?",
+          "answer": "The current page supports `prompt`, optional `lyrics`, `lyrics_optimizer`, `is_instrumental`, optional `callback_url`, and `audio_setting`. Lyrics are required only when both Lyrics Optimize and Instrumental Mode are off."
         },
         {
           "question": "When do I need to send lyrics?",
-          "answer": "You should send lyrics when you want direct lyrical control. If `lyrics_optimizer` is enabled or `is_instrumental` is true, lyrics are not required."
+          "answer": "Send lyrics when you want direct control over the words and song structure. If `lyrics_optimizer` is enabled or `is_instrumental` is true, lyrics are not required."
         },
         {
-          "question": "Can I use MiniMax Music 2.6 API for instrumental output only?",
-          "answer": "Yes. Set `is_instrumental` to `true` and keep the request focused on style, mood, pacing, and arrangement without supplying lyrics."
+          "question": "Should I use Lyrics Optimize or Instrumental Mode?",
+          "answer": "Use Lyrics Optimize when you want a vocal song but do not have finished lyrics. Use Instrumental Mode when you need background music, soundtrack drafts, or other vocal-free output."
+        },
+        {
+          "question": "Which audio output settings are supported?",
+          "answer": "The current page supports `audio_setting.sample_rate` values of 16000, 24000, 32000, or 44100; `audio_setting.bitrate` values of 32000, 64000, 128000, or 256000; and `audio_setting.format` values of `mp3`, `wav`, or `pcm`."
         },
         {
           "question": "How do I retrieve the final music result?",
           "answer": "After submit returns `task_id`, query `/api/generate/detail/music?task_id=...` to read the final `audio_url`, `audio_id`, `title`, `duration`, and prompt metadata."
         },
         {
-          "question": "Which audio controls are supported right now?",
-          "answer": "The current MiniMax Music 2.6 API page supports `audio_setting.sample_rate`, `audio_setting.bitrate`, and `audio_setting.format` only, matching the official Poyo docs shape."
+          "question": "How much does MiniMax Music 2.6 cost on APIDot?",
+          "answer": "Pricing is fixed at 20 credits ($0.10) per generation on this page, with no separate tier matrix exposed for this MiniMax Music 2.6 API workflow."
         },
         {
-          "question": "Is this page aligned to the official MiniMax Music 2.6 request format?",
-          "answer": "Yes. The playground, API examples, and validation rules on this page follow the current official Poyo MiniMax Music 2.6 documentation rather than speculative or broader music feature sets."
+          "question": "Is MiniMax Music 2.6 suitable for production apps?",
+          "answer": "Yes, when your app can use an async submit-and-query flow. APIDot keeps the request fields narrow, validates the supported audio settings, and returns task-based results that fit backend polling or webhook orchestration."
         }
       ]
     }

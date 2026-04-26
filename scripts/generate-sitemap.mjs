@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const ROOT_DIR = process.cwd();
 const WEB_URL = (process.env.NEXT_PUBLIC_WEB_URL || "https://apidot.ai").replace(/\/+$/, "");
-const LAST_MODIFIED = "2026-04-23";
 const LOCALES = ["en", "zh"];
 const DEFAULT_LOCALE = "en";
+const FALLBACK_LAST_MODIFIED = new Date().toISOString().slice(0, 10);
 
 const CORE_ROUTES = [
   { path: "/", changeFrequency: "daily", priority: 1 },
@@ -18,20 +19,123 @@ const CORE_ROUTES = [
   { path: "/docs", changeFrequency: "weekly", priority: 0.8 },
 ];
 
-// Add only public, indexable pages with real routes.
-// Do not include dashboard, auth, API, draft, or unfinished pages.
-const PUBLIC_ROUTES = [
-  { path: "/models/gpt-image-2", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/models/seedance-2", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/models/veo-3-1", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/models/minimax-music-2-6", changeFrequency: "weekly", priority: 0.8 },
-];
-
 const readJson = (relativePath) =>
   JSON.parse(fs.readFileSync(path.join(ROOT_DIR, relativePath), "utf8"));
 
 const readText = (relativePath) =>
   fs.readFileSync(path.join(ROOT_DIR, relativePath), "utf8");
+
+const fileExists = (relativePath) => fs.existsSync(path.join(ROOT_DIR, relativePath));
+
+const getGitLastModified = (relativePath) => {
+  try {
+    const result = execSync(`git log -1 --format=%cs -- "${relativePath}"`, {
+      cwd: ROOT_DIR,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+
+    return result || null;
+  } catch {
+    return null;
+  }
+};
+
+const hasUncommittedChanges = (relativePath) => {
+  try {
+    execSync(`git diff --quiet -- "${relativePath}"`, {
+      cwd: ROOT_DIR,
+      stdio: "ignore",
+    });
+    execSync(`git diff --cached --quiet -- "${relativePath}"`, {
+      cwd: ROOT_DIR,
+      stdio: "ignore",
+    });
+    return false;
+  } catch {
+    return true;
+  }
+};
+
+const getFileSystemLastModified = (relativePath) => {
+  const filePath = path.join(ROOT_DIR, relativePath);
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  return fs.statSync(filePath).mtime.toISOString().slice(0, 10);
+};
+
+const getLastModifiedForFiles = (relativePaths) => {
+  const dates = relativePaths
+    .filter((relativePath) => fileExists(relativePath))
+    .map((relativePath) => {
+      const gitDate = getGitLastModified(relativePath);
+      const fileDate = getFileSystemLastModified(relativePath);
+      if (hasUncommittedChanges(relativePath)) {
+        return [gitDate, fileDate].filter(Boolean).sort().at(-1);
+      }
+
+      return gitDate || fileDate;
+    })
+    .filter(Boolean);
+
+  return dates.sort().at(-1) || FALLBACK_LAST_MODIFIED;
+};
+
+const CORE_ROUTE_SOURCE_FILES = {
+  "/": [
+    "app/[locale]/page.tsx",
+    "i18n/pages/landing/home/en.json",
+    "i18n/pages/landing/home/zh.json",
+  ],
+  "/models": [
+    "app/[locale]/models/page.tsx",
+    "app/[locale]/models/catalogPageShared.ts",
+    "services/modelService.ts",
+  ],
+  "/models/image": [
+    "app/[locale]/models/image/page.tsx",
+    "app/[locale]/models/catalogPageShared.ts",
+    "services/modelService.ts",
+  ],
+  "/models/video": [
+    "app/[locale]/models/video/page.tsx",
+    "app/[locale]/models/catalogPageShared.ts",
+    "services/modelService.ts",
+  ],
+  "/models/music": [
+    "app/[locale]/models/music/page.tsx",
+    "app/[locale]/models/catalogPageShared.ts",
+    "services/modelService.ts",
+  ],
+  "/models/chat": [
+    "app/[locale]/models/chat/page.tsx",
+    "app/[locale]/models/catalogPageShared.ts",
+    "services/modelService.ts",
+  ],
+  "/pricing": [
+    "app/[locale]/pricing/page.tsx",
+    "i18n/pages/landing/pricing/en.json",
+    "i18n/pages/landing/pricing/zh.json",
+    "services/pricingService.ts",
+    "data/models.json",
+  ],
+  "/docs": [
+    "app/[locale]/docs/page.tsx",
+    "app/[locale]/docs/[docId]/page.tsx",
+    "lib/docs.ts",
+    "lib/docsManifest.ts",
+    "i18n/pages/landing/docs/common/en.json",
+    "i18n/pages/landing/docs/common/zh.json",
+  ],
+};
+
+const getCoreRoutes = () =>
+  CORE_ROUTES.map((route) => ({
+    ...route,
+    lastModified: getLastModifiedForFiles(CORE_ROUTE_SOURCE_FILES[route.path] || []),
+  }));
 
 const extractDocsModelIds = () => {
   const manifest = readText("lib/docsManifest.ts");
@@ -43,6 +147,59 @@ const extractDocsModelIds = () => {
 
   return Array.from(match[1].matchAll(/"([^"]+)"/g), (item) => item[1]);
 };
+
+const extractActiveMarketModelIds = () => {
+  const service = readText("services/modelService.ts");
+  const match = service.match(/ACTIVE_MARKET_MODEL_IDS\s*=\s*\[([^\]]*)\]/s);
+
+  if (!match) {
+    throw new Error("Failed to parse ACTIVE_MARKET_MODEL_IDS from services/modelService.ts");
+  }
+
+  return Array.from(match[1].matchAll(/"([^"]+)"/g), (item) => item[1]);
+};
+
+const getModelSourceFiles = (id) => [
+  `app/[locale]/models/${id}/page.tsx`,
+  `app/[locale]/models/${id}/ClientPage.tsx`,
+  `i18n/pages/landing/${id}/en.json`,
+  `i18n/pages/landing/${id}/zh.json`,
+  `i18n/pages/landing/${id}/common.json`,
+];
+
+const getModelRoutes = () =>
+  extractActiveMarketModelIds().map((id) => {
+    const pagePath = path.join(ROOT_DIR, "app", "[locale]", "models", id, "page.tsx");
+
+    if (!fs.existsSync(pagePath)) {
+      throw new Error(`Active marketplace model is missing a model page: ${id}`);
+    }
+
+    return {
+      path: `/models/${id}`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      lastModified: getLastModifiedForFiles(getModelSourceFiles(id)),
+    };
+  });
+
+const getDocsSourceFiles = (id, modelDocIds) =>
+  modelDocIds.includes(id)
+    ? [
+        "app/[locale]/docs/[docId]/page.tsx",
+        "lib/docs.ts",
+        "lib/docsManifest.ts",
+        `i18n/pages/landing/docs/models/${id}/en.json`,
+        `i18n/pages/landing/docs/models/${id}/zh.json`,
+      ]
+    : [
+        "app/[locale]/docs/page.tsx",
+        "app/[locale]/docs/[docId]/page.tsx",
+        "lib/docs.ts",
+        "lib/docsManifest.ts",
+        "i18n/pages/landing/docs/common/en.json",
+        "i18n/pages/landing/docs/common/zh.json",
+      ];
 
 const getDocsRoutes = () => {
   const common = readJson("i18n/pages/landing/docs/common/en.json");
@@ -58,6 +215,7 @@ const getDocsRoutes = () => {
     path: `/docs/${id}`,
     changeFrequency: "weekly",
     priority: modelDocIds.includes(id) ? 0.75 : 0.65,
+    lastModified: getLastModifiedForFiles(getDocsSourceFiles(id, modelDocIds)),
   }));
 };
 
@@ -94,7 +252,7 @@ const renderUrl = (route, locale) => {
   return [
     "  <url>",
     `    <loc>${escapeXml(url)}</loc>`,
-    `    <lastmod>${route.lastModified || LAST_MODIFIED}</lastmod>`,
+    `    <lastmod>${route.lastModified || FALLBACK_LAST_MODIFIED}</lastmod>`,
     `    <changefreq>${route.changeFrequency}</changefreq>`,
     `    <priority>${formatPriority(route.priority)}</priority>`,
     ...alternates.map(
@@ -131,7 +289,7 @@ const dedupeRoutes = (routes) => {
 
   for (const route of routes) {
     routeMap.set(route.path, {
-      lastModified: LAST_MODIFIED,
+      lastModified: FALLBACK_LAST_MODIFIED,
       ...route,
     });
   }
@@ -146,7 +304,7 @@ const writeFile = (relativePath, content) => {
 };
 
 const main = () => {
-  const routes = dedupeRoutes([...CORE_ROUTES, ...PUBLIC_ROUTES, ...getDocsRoutes()]);
+  const routes = dedupeRoutes([...getCoreRoutes(), ...getModelRoutes(), ...getDocsRoutes()]);
 
   writeFile("public/sitemap.xml", buildSitemapXml(routes));
   writeFile("public/robots.txt", buildRobotsTxt());
