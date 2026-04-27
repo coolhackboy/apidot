@@ -8,6 +8,13 @@ const montserrat = Montserrat({ subsets: ['latin'], variable: "--font-montserrat
 export const metadata = {
   title: 'Authentication',
   description: 'OAuth callback handler',
+  openGraph: {
+    images: [{ url: "https://storage.apidot.ai/og/og.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [{ url: "https://storage.apidot.ai/og/og.png" }],
+  },
 };
 
 export default function AuthLayout({

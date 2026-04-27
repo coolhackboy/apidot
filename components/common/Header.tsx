@@ -172,7 +172,7 @@ const Header: React.FC<HeaderProps> = ({ showOnlyButtons = false }) => {
   const commonT = useTranslations("Global.Common");
   const dashboardT = useTranslations("dashboard");
   const brandTitle = appConfig.appNameInHeader;
-  const brandLogo = appConfig.appLogoUrl || "/brand/apidot-mark.svg";
+  const brandLogo = appConfig.appLogoUrl;
   const brandLogoAlt = `${appConfig.appNameInHeader} logo`;
   const brandUrl = "/";
   const navItems: NavItem[] = [

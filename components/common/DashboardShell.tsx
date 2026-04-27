@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -124,6 +125,7 @@ function SidebarContent({
     onNavigate?.();
     apiService.logout(appConfig.appName);
   };
+  const brandLogoAlt = `${appConfig.appNameInHeader} logo`;
   const userIdentity = (
     <>
       <div className="relative shrink-0">
@@ -162,24 +164,24 @@ function SidebarContent({
           isDesktop ? "h-14 border-b border-border/70 px-4" : "min-h-[60px] px-2",
         )}
       >
-        <Link href="/" className="flex min-w-0 items-center gap-3" onClick={onNavigate}>
+        <Link href="/" className="flex min-w-0 items-center gap-2" onClick={onNavigate}>
+          <Image
+            src={appConfig.appLogoUrl}
+            alt={brandLogoAlt}
+            width={28}
+            height={28}
+            className={cn(
+              "shrink-0 rounded-lg object-contain",
+              isDesktop ? "h-7 w-7" : "h-8 w-8",
+            )}
+          />
           <div
             className={cn(
-              "flex items-center justify-center bg-foreground text-[11px] font-bold text-background",
-              isDesktop ? "h-6 w-6 rounded-md" : "h-8 w-8 rounded-xl",
+              "truncate font-bold tracking-[-0.02em] text-foreground",
+              isDesktop ? "text-base" : "text-lg",
             )}
           >
-            A
-          </div>
-          <div className="truncate text-sm font-semibold tracking-[-0.02em] text-foreground">
             {appConfig.appNameInHeader}
-            <span
-              className={cn(
-                isDesktop ? "ml-0.5 text-[0.95em] text-[#47c447]" : "ml-1 inline-block h-2 w-2 rounded-full bg-[#47c447]",
-              )}
-            >
-              {isDesktop ? "•" : null}
-            </span>
           </div>
         </Link>
         <div className="ml-auto hidden md:block">

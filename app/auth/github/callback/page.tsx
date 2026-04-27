@@ -4,8 +4,6 @@ import { useEffect, useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { toast } from 'sonner';
 import { apiService } from '@/services/api';
-import { trackSignUp } from '@/utils/gtm-events';
-import { fbTrackCompleteRegistration } from '@/utils/fb-events';
 
 import { Loader2 } from 'lucide-react';
 
@@ -91,10 +89,6 @@ function GitHubCallbackContent() {
         );
 
         if (response.code === 200 && response.data.access_token) {
-          if (response.data?.user_info?.is_new_user) {
-            trackSignUp('github');
-            fbTrackCompleteRegistration('github');
-          }
           // Store the token
           localStorage.setItem(`${appName}_token`, response.data.access_token);
 

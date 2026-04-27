@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { apiService } from "@/services/api";
 import { appConfig } from "@/data/config";
-import { pushUserData } from "@/utils/gtm-events";
 
 interface UserContextType {
   isLoggedIn: boolean;
@@ -25,14 +24,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           const loggedIn = apiService.isLoggedInToApp(appConfig.appName);
           setIsLoggedIn(loggedIn);
 
-          if (loggedIn) {
-            try {
-              const response = await apiService.getUserInfo(appConfig.appName);
-              if (response.code === 200 && response.data) {
-                pushUserData(response.data.email);
-              }
-            } catch (_) {}
-          }
         } else {
           setIsLoggedIn(false);
         }

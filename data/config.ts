@@ -3,7 +3,7 @@ const webUrl = (process.env.NEXT_PUBLIC_WEB_URL || "https://apidot.ai").replace(
 export const appConfig = {
   appName: "apidot",
   appNameInHeader: "APIDot",
-  appLogoUrl: "https://storage.apidot.ai/logo.webp",
+  appLogoUrl: "https://storage.apidot.ai/logo.png",
   loginRedirectUrl: "/",
   logoutRedirectUrl: "/",
   webUrl,

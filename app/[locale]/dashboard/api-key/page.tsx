@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { apiService } from '@/services/api';
 import { apiKeyService, ApiKey } from '@/services/apiKeyService';
-import { trackApiKeyGenerated } from '@/utils/gtm-events';
 import { appConfig } from '@/data/config';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -132,7 +131,6 @@ export default function ApiKeyPage() {
         name: formData.name,
       });
 
-      trackApiKeyGenerated();
       toast.success(t('success_create'));
       setShowCreateDialog(false);
       setFormData({

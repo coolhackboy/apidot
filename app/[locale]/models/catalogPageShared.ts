@@ -126,13 +126,13 @@ export const buildCatalogPageMetadata = async (
       description: copy.description,
       url: canonical,
       siteName: appConfig.appNameInHeader,
-      images: [{ url: appConfig.appLogoUrl }],
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
     twitter: {
       card: "summary_large_image",
       title: copy.title,
       description: copy.description,
-      images: [{ url: appConfig.appLogoUrl }],
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
   };
 };

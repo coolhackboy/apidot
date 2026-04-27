@@ -19,8 +19,6 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from 'next-intl';
 import { getInternalSourcePath, getSourceString, getUtmData } from '@/utils/source-detector';
-import { trackSignUp } from '@/utils/gtm-events';
-import { fbTrackCompleteRegistration } from '@/utils/fb-events';
 import { useUserContext } from '@/contexts/UserContext';
 import { appConfig } from '@/data/config';
 
@@ -312,10 +310,6 @@ const LoginForm = ({
   }, [getSocialAuthErrorMessage, tAuth, tModal]);
 
   const handleSocialLoginSuccess = useCallback((data: any, provider: 'google' | 'github' | 'google_one_tap') => {
-    if (data.data?.user_info?.is_new_user) {
-      trackSignUp(provider);
-      fbTrackCompleteRegistration(provider);
-    }
     handleLoginSuccess(data);
   }, [handleLoginSuccess]);
 
@@ -584,8 +578,6 @@ const LoginForm = ({
 
       const data = await submitEmailRegistration(sanitizedAffiliateCode);
 
-      trackSignUp('email');
-      fbTrackCompleteRegistration('email');
       handleLoginSuccess(data);
     } catch (error: any) {
       const message = (error.message || "").toLowerCase();

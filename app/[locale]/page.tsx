@@ -90,13 +90,13 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       siteName: appConfig.appNameInHeader,
-      images: [{ url: appConfig.appLogoUrl }],
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [{ url: appConfig.appLogoUrl }],
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
   };
 }

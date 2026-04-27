@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { appConfig } from "@/data/config";
 import { useTranslations } from "next-intl";
@@ -26,6 +27,7 @@ const FOOTER_CATEGORY_TO_TITLE_KEY: Record<MarketingFooterModelGroup["category"]
 
 export default function MarketingFooter() {
   const t = useTranslations("Global.MarketingFooter");
+  const brandLogoAlt = `${appConfig.appNameInHeader} logo`;
   const modelColumns = useMemo(
     () =>
       getMarketingFooterModelGroups().map((group) => ({
@@ -57,7 +59,13 @@ export default function MarketingFooter() {
       <div className="mk-container mk-footer-grid">
         <div className="mk-footer-brand-block">
           <Link href="/" className="mk-brand">
-            <span className="mk-brand-mark">A</span>
+            <Image
+              src={appConfig.appLogoUrl}
+              alt={brandLogoAlt}
+              width={28}
+              height={28}
+              className="mk-brand-logo"
+            />
             <span className="mk-brand-wordmark">
               {appConfig.appNameInHeader}
               <span className="mk-brand-dot" />

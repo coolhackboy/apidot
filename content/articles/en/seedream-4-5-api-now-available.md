@@ -150,4 +150,4 @@ Join thousands of developers who trust Poyo.ai for their AI-powered applications
 
 ---
 
-*Have questions about integrating Seedream 4.5 into your application? Our developer support team is here to help. Contact us at [support@poyo.ai](mailto:support@poyo.ai) or join our [Discord community](https://discord.com/invite/F8JNuUPB3j) for real-time assistance.*
+*Have questions about integrating Seedream 4.5 into your application? Our developer support team is here to help. Contact us at [support@apidot.ai](mailto:support@apidot.ai) or join our [Discord community](https://discord.com/invite/F8JNuUPB3j) for real-time assistance.*

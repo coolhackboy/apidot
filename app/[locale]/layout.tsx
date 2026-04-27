@@ -1,6 +1,5 @@
 import { JetBrains_Mono, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -41,11 +40,11 @@ export const metadata: Metadata = {
   description: "Unified AI API platform for image, video, audio, and chat models.",
   openGraph: {
     siteName: appConfig.appNameInHeader,
-    images: [{ url: appConfig.appLogoUrl }],
+    images: [{ url: "https://storage.apidot.ai/og/og.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    images: [{ url: appConfig.appLogoUrl }],
+    images: [{ url: "https://storage.apidot.ai/og/og.png" }],
   },
 };
 
@@ -64,24 +63,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NHQH3RLS');`}
-        </Script>
-      </head>
       <body className={`${sora.variable} ${jetBrainsMono.variable}`}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NHQH3RLS"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -122,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </NextIntlClientProvider>
         </ThemeProvider>
         <GoogleAnalytics />
-        <FacebookPixel />
+        {/* <FacebookPixel /> */}
 
       </body>
     </html>

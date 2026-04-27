@@ -118,7 +118,7 @@ const FAQ: React.FC<FAQProps> = ({ translations }) => {
                       <p className="text-muted-foreground">
                         {translations.contactText}{' '}
                         <a
-                          href="mailto:support@poyo.ai"
+                          href="mailto:support@apidot.ai"
                           className="text-primary hover:text-primary/80 font-bold transition-colors block mt-1"
                         >
                           {translations.contactLinkText} &rarr;

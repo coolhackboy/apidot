@@ -134,18 +134,11 @@
   text-decoration: none;
 }
 
-.mk-brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.mk-brand-logo {
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background: var(--mk-ink);
-  color: var(--mk-bg);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  object-fit: contain;
 }
 
 .mk-brand-wordmark {
@@ -156,6 +149,17 @@
   font-weight: 650;
   letter-spacing: -0.03em;
   color: var(--mk-ink);
+}
+
+.mk-header .mk-brand-wordmark,
+.mk-mobile-brand .mk-brand-wordmark {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mk-header .mk-brand,
+.mk-mobile-brand .mk-brand {
+  gap: 7px;
 }
 
 .mk-brand-dot,

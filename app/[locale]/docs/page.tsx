@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "Reference docs for APIDot authentication, webhooks, chat endpoints, Seedance 2, Veo 3.1, and Claude Opus 4.7.",
       url: canonical,
       type: "website",
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -60,6 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description:
         page.meta?.description ||
         "Reference docs for APIDot authentication, webhooks, chat endpoints, Seedance 2, Veo 3.1, and Claude Opus 4.7.",
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
   };
 }

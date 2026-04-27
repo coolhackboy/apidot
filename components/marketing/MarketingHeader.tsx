@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Menu, Moon, Sun } from "lucide-react";
+import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
@@ -34,6 +35,7 @@ export default function MarketingHeader() {
     { label: t("nav.pricing"), href: "/pricing" },
   ];
   const isDark = resolvedTheme === "dark";
+  const brandLogoAlt = `${appConfig.appNameInHeader} logo`;
 
   useEffect(() => {
     setIsLoggedIn(apiService.isLoggedInToApp(appConfig.appName));
@@ -55,10 +57,15 @@ export default function MarketingHeader() {
       <header className="mk-header">
         <div className="mk-container mk-header-inner">
           <Link href="/" className="mk-brand shrink-0">
-            <span className="mk-brand-mark">A</span>
+            <Image
+              src={appConfig.appLogoUrl}
+              alt={brandLogoAlt}
+              width={28}
+              height={28}
+              className="mk-brand-logo"
+            />
             <span className="mk-brand-wordmark">
               {appConfig.appNameInHeader}
-              <span className="mk-brand-dot" />
             </span>
           </Link>
 
@@ -118,10 +125,15 @@ export default function MarketingHeader() {
               <div className="mk-mobile-shell">
                 <div className="mk-mobile-brand">
                   <Link href="/" className="mk-brand" onClick={() => setMobileOpen(false)}>
-                    <span className="mk-brand-mark">A</span>
+                    <Image
+                      src={appConfig.appLogoUrl}
+                      alt={brandLogoAlt}
+                      width={28}
+                      height={28}
+                      className="mk-brand-logo"
+                    />
                     <span className="mk-brand-wordmark">
                       {appConfig.appNameInHeader}
-                      <span className="mk-brand-dot" />
                     </span>
                   </Link>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">

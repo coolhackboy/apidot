@@ -29,11 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: page.meta?.description || "Transparent credit-based pricing for APIDot's active image and video APIs.",
       url: canonical,
       type: "website",
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
     twitter: {
       card: "summary_large_image",
       title: page.meta?.title || `Pricing | ${appConfig.appNameInHeader}`,
       description: page.meta?.description || "Transparent credit-based pricing for APIDot's active image and video APIs.",
+      images: [{ url: "https://storage.apidot.ai/og/og.png" }],
     },
   };
 }

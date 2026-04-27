@@ -1145,19 +1145,6 @@ export const apiService = {
 
     const data = await response.json();
 
-    // Track first-time playground use when any generation task finishes
-    if (
-      (url.includes('/api/generate/status/') || url.includes('/api/generate/detail/')) &&
-      data?.data?.status === 'finished'
-    ) {
-      try {
-        const { trackPlaygroundUse } = await import('@/utils/gtm-events');
-        trackPlaygroundUse();
-      } catch (_) {
-        // Tracking should never break app functionality
-      }
-    }
-
     return data;
   },
 

@@ -12,8 +12,6 @@ import {
   normalizeAffiliateCode,
 } from '@/lib/affiliate-landing';
 import { getInternalSourcePath, getSourceString } from '@/utils/source-detector';
-import { trackSignUp } from '@/utils/gtm-events';
-import { fbTrackCompleteRegistration } from '@/utils/fb-events';
 import { useEffect, useState } from 'react';
 
 export default function GoogleOneTap() {
@@ -72,10 +70,6 @@ function OneTapInner({ affiliateCode }: { affiliateCode?: string | null }) {
           affiliateCode || undefined
         );
 
-        if (data.data?.user_info?.is_new_user) {
-          trackSignUp('google_one_tap');
-          fbTrackCompleteRegistration('google_one_tap');
-        }
         localStorage.setItem(`${appConfig.appName}_token`, data.data.access_token);
         window.location.reload();
       } catch (error: any) {

@@ -12,8 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import LoginForm from '@/components/auth/LoginForm';
-import { trackPurchase } from '@/utils/gtm-events';
-import { fbTrackPurchase } from '@/utils/fb-events';
 import AutoRechargeSettings from '@/components/dashboard/AutoRechargeSettings';
 import CreditAlertSettings from '@/components/dashboard/CreditAlertSettings';
 import {
@@ -441,11 +439,6 @@ export default function DashboardBillingPage() {
           clearInterval(interval);
           setPollingInterval(null);
           payWindow?.close();
-
-          if (planSnapshot) {
-            trackPurchase(orderNo, planSnapshot.price, 'USD', planSnapshot.code, planSnapshot.name, userInfo?.email);
-            fbTrackPurchase(planSnapshot.price, 'USD', 'ORDER_' + orderNo);
-          }
 
           toast.success('Payment successful!');
           setPurchaseLoading(false);
